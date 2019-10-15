@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
     <conversionRule conversionWord="wex"
@@ -56,12 +56,9 @@
             <appender-ref ref="FILE"/>
         </logger>
     </springProfile>
-
-
     <springProfile name="prod">
         <root level="INFO">
             <appender-ref ref="FILE"/>
         </root>
     </springProfile>
-
 </configuration>

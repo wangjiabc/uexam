@@ -14,8 +14,8 @@
         </commentGenerator>
 
         <!-- jdbc -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://101.132.110.182:3306/exam?useSSL=false"
-                        userId="root" password="root123">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://192.168.100.120:3306/exam?useSSL=false"
+                        userId="root" password="root">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -23,91 +23,91 @@
         </javaTypeResolver>
 
         <!-- domain -->
-        <javaModelGenerator targetPackage="com.alvis.exam.domain"
-                            targetProject="E:\private\exam-mysql\source\exam\src\main\java\">
+        <javaModelGenerator targetPackage=""
+                            targetProject="C:\Users\Administrator\Desktop\uexam\generator\">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- mapper xml -->
-        <sqlMapGenerator targetPackage="mapper"
-                         targetProject="E:\private\exam-mysql\source\exam\src\main\resources\">
+        <sqlMapGenerator targetPackage=""
+                         targetProject="C:\Users\Administrator\Desktop\uexam\generator\">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- repository -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.alvis.exam.repository"
-                             targetProject="E:\private\exam-mysql\source\exam\src\main\java\">
+        <javaClientGenerator type="XMLMAPPER" targetPackage=""
+                             targetProject="C:\Users\Administrator\Desktop\uexam\generator\">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-    <!--    <table tableName="t_user" domainObjectName="User" enableCountByExample="false"
+       <table tableName="t_user" domainObjectName="User" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
+        <!--
+
+                <table tableName="t_subject" domainObjectName="Subject" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
 
 
-        <table tableName="t_subject" domainObjectName="Subject" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-
-
-        <table tableName="t_question" domainObjectName="Question" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-
-
-
-        <table tableName="t_exam_paper" domainObjectName="ExamPaper" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-
-        <table tableName="t_exam_paper_answer" domainObjectName="ExamPaperAnswer" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-
-
-        <table tableName="t_exam_paper_question_customer_answer" domainObjectName="ExamPaperQuestionCustomerAnswer"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
+                <table tableName="t_question" domainObjectName="Question" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
 
 
 
+                <table tableName="t_exam_paper" domainObjectName="ExamPaper" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
 
-        <table tableName="t_message" domainObjectName="Message" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-
-        <table tableName="t_message_user" domainObjectName="MessageUser" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
+                <table tableName="t_exam_paper_answer" domainObjectName="ExamPaperAnswer" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
 
 
-        <table tableName="t_task_exam" domainObjectName="TaskExam" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
+                <table tableName="t_exam_paper_question_customer_answer" domainObjectName="ExamPaperQuestionCustomerAnswer"
+                       enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
 
-        <table tableName="t_task_exam_customer_answer" domainObjectName="TaskExamCustomerAnswer"
-               enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
 
-        <table tableName="t_user_token" domainObjectName="UserToken" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
--->
+
+
+                <table tableName="t_message" domainObjectName="Message" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
+
+                <table tableName="t_message_user" domainObjectName="MessageUser" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
+
+
+                <table tableName="t_task_exam" domainObjectName="TaskExam" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
+
+                <table tableName="t_task_exam_customer_answer" domainObjectName="TaskExamCustomerAnswer"
+                       enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
+
+                <table tableName="t_user_token" domainObjectName="UserToken" enableCountByExample="false"
+                       enableUpdateByExample="false"
+                       enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+                </table>
+
 
 
         <table tableName="t_subject" domainObjectName="Subject" enableCountByExample="false"
@@ -129,6 +129,6 @@
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="content" jdbcType="VARCHAR" />
         </table>
-
+-->
     </context>
 </generatorConfiguration>

@@ -68,7 +68,7 @@ public class UserController extends BaseApiController {
         user.setUserUuid(UUID.randomUUID().toString());
         user.setPassword(encodePwd);
         user.setRole(RoleEnum.STUDENT.getCode());
-        user.setStatus(UserStatusEnum.Enable.getCode());
+        user.setStatus(UserStatusEnum.Disable.getCode());
         user.setLastActiveTime(new Date());
         user.setCreateTime(new Date());
         user.setDeleted(false);

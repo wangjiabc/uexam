@@ -14,8 +14,14 @@ public class UserRegisterVM {
     @NotBlank
     private String password;
 
-    @NotNull
+    @NotBlank
+    private String code;
+
     private Integer userLevel;
+
+    private String telphone;
+
+    private String duty;
 
 	public String getUserName() {
 		// TODO Auto-generated method stub

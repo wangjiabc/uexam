@@ -264,19 +264,10 @@
   </select>
 
   <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM">
-    SELECT
-    <include refid="Base_Column_List"/>
-    FROM t_exam_paper
-    <where>
-       and deleted=0
-      <if test="subjectId != null ">
-        and subject_id=#{subjectId}
-      </if>
-      <if test="levelId != null ">
-        and grade_level=#{levelId}
-      </if>
-       and paper_type=#{paperType}
-    </where>
+    SELECT tep.* FROM t_exam_paper tep LEFT JOIN
+    (SELECT exam_paper_id,create_user FROM t_exam_paper_answer WHERE create_user = #{userId}) tepa ON tep.id = tepa.exam_paper_id
+    WHERE tep.deleted=0 AND tepa.create_user is NULL
+
   </select>
 
 

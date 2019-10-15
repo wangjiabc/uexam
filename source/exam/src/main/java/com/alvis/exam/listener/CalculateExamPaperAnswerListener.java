@@ -36,7 +36,7 @@ public class CalculateExamPaperAnswerListener implements ApplicationListener<Cal
 	private  TaskExamCustomerAnswerService examCustomerAnswerService;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void onApplicationEvent(CalculateExamPaperAnswerCompleteEvent calculateExamPaperAnswerCompleteEvent) {
         Date now = new Date();
 

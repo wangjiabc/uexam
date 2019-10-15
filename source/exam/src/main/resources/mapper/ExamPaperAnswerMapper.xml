@@ -211,10 +211,6 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-
-
-
-
   <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.exampaper.ExamPaperAnswerPageVM">
     SELECT
     <include refid="Base_Column_List"/>

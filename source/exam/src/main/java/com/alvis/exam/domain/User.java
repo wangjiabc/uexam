@@ -43,6 +43,10 @@ public class User implements Serializable {
 
     private String wxOpenId;
 
+    private String telphone;
+
+    private String duty;
+
     public Integer getId() {
         return id;
     }
@@ -185,5 +189,21 @@ public class User implements Serializable {
 
     public void setWxOpenId(String wxOpenId) {
         this.wxOpenId = wxOpenId == null ? null : wxOpenId.trim();
+    }
+
+    public String getTelphone() {
+        return telphone;
+    }
+
+    public void setTelphone(String telphone) {
+        this.telphone = telphone == null ? null : telphone.trim();
+    }
+
+    public String getDuty() {
+        return duty;
+    }
+
+    public void setDuty(String duty) {
+        this.duty = duty == null ? null : duty.trim();
     }
 }

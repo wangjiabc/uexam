@@ -22,6 +22,9 @@ public class RestResponse<T> {
     public static RestResponse fail(Integer code, String msg) {
         return new RestResponse<>(code, msg);
     }
+    public static <F> RestResponse<F> fail(Integer code, String msg,F response) {
+        return new RestResponse<>(code, msg,response);
+    }
 
     public static RestResponse ok() {
         SystemCode systemCode = SystemCode.OK;

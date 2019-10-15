@@ -42,6 +42,7 @@ public class UserTokenServiceImpl extends BaseServiceImpl<UserToken> implements 
     @Transactional
     public UserToken bind(User user) {
         user.setModifyTime(new Date());
+        //修改用户活跃时间
         userService.updateByIdFilter(user);
         return insertUserToken(user);
     }
@@ -81,7 +82,7 @@ public class UserTokenServiceImpl extends BaseServiceImpl<UserToken> implements 
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class)
     public void unBind(UserToken userToken) {
         User user = userService.selectById(userToken.getUserId());
         user.setModifyTime(new Date());

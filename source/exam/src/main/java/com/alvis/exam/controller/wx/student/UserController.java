@@ -2,6 +2,7 @@ package com.alvis.exam.controller.wx.student;
 
 import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.configuration.property.SystemConfig;
 import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
@@ -16,6 +17,7 @@ import com.alvis.exam.service.UserEventLogService;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
+import com.alvis.exam.utility.WxUtil;
 import com.alvis.exam.viewmodel.student.user.*;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
@@ -40,7 +42,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @ResponseBody
 public class UserController extends BaseWXApiController {
-	
+    @Autowired
+    private SystemConfig systemConfig;
 	@Autowired
     private  UserService userService;
 	@Autowired
@@ -66,6 +69,13 @@ public class UserController extends BaseWXApiController {
         if (null != existUser) {
             return new RestResponse<>(2, "用户已存在");
         }
+
+        String code = model.getCode();
+        String openid = WxUtil.getOpenId(systemConfig.getWx().getAppid(), systemConfig.getWx().getSecret(), code);
+        if (null == openid) {
+            return RestResponse.fail(4, "获取微信OpenId失败");
+        }
+
         User user = modelMapper.map(model, User.class);
         String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
@@ -75,6 +85,7 @@ public class UserController extends BaseWXApiController {
         user.setLastActiveTime(new Date());
         user.setCreateTime(new Date());
         user.setDeleted(false);
+        user.setWxOpenId(openid);
         userService.insertByFilter(user);
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         userEventLog.setContent("欢迎 " + user.getUserName() + " 注册来到学之思考试系统");

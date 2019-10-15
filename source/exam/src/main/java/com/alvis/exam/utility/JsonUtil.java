@@ -4,11 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.voucher.manage.tools.MyTestUtil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -41,7 +39,6 @@ public class JsonUtil {
         try {
             JavaType getCollectionType = MAPPER.getTypeFactory().constructParametricType(List.class, valueType);
             System.out.println("json="+json);
-            MyTestUtil.print(valueType);
             return (List<T>) MAPPER.readValue(json, getCollectionType);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);

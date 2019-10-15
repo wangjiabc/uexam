@@ -25,6 +25,7 @@ public class ErrorController extends BasicErrorController {
         super(new DefaultErrorAttributes(), new ErrorProperties());
     }
 
+    @Override
     @RequestMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseBody
     public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
