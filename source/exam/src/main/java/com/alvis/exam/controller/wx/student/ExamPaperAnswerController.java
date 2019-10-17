@@ -52,6 +52,7 @@ public class ExamPaperAnswerController extends BaseWXApiController {
     @RequestMapping(value = "/pageList", method = RequestMethod.POST)
     public RestResponse<PageInfo<ExamPaperAnswerPageResponseVM>> pageList(@Valid ExamPaperAnswerPageVM model) {
         model.setCreateUser(getCurrentUser().getId());
+        //查询已考试卷
         PageInfo<ExamPaperAnswer> pageInfo = examPaperAnswerService.studentPage(model);
         PageInfo<ExamPaperAnswerPageResponseVM> page = PageInfoHelper.copyMap(pageInfo, e -> {
             ExamPaperAnswerPageResponseVM vm = modelMapper.map(e, ExamPaperAnswerPageResponseVM.class);
@@ -105,8 +106,6 @@ public class ExamPaperAnswerController extends BaseWXApiController {
             String[] keys = p.split("_");
             examPaperSubmitItemVM.setQuestionId(Integer.parseInt(keys[1]));
             examPaperSubmitItemVM.setItemOrder(Integer.parseInt(keys[0]));
-            System.out.print("keys="+keys);
-            MyTestUtil.print(keys);
             QuestionTypeEnum typeEnum = QuestionTypeEnum.fromCode(Integer.parseInt(keys[2]));
             if (v.size() == 1) {
                 String content = request.getParameter(p);

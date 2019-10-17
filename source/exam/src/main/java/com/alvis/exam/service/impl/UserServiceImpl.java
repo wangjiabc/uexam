@@ -159,5 +159,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return userMapper.selectByWxOpenId(wxOpenId);
     }
 
+    @Override
+    public int calculateUserScore(Integer userId) {
+        
+        return 0;
+    }
+
 
 }

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.ArticleMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.Article">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="upload_day" jdbcType="TIMESTAMP" property="uploadDay" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="read_time_u" jdbcType="INTEGER" property="readTimeU" />
+    <result column="read_time_l" jdbcType="INTEGER" property="readTimeL" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.alvis.exam.domain.Article">
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, title, author, upload_day, user_id, type_id, read_time_u, read_time_l
+  </sql>
+  <sql id="Blob_Column_List">
+    content
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alvis.exam.domain.Article">
+    insert into t_article (id, title, author, 
+      upload_day, user_id, type_id, 
+      read_time_u, read_time_l, content
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
+      #{uploadDay,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, 
+      #{readTimeU,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.Article">
+    insert into t_article
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="uploadDay != null">
+        upload_day,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="readTimeU != null">
+        read_time_u,
+      </if>
+      <if test="readTimeL != null">
+        read_time_l,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDay != null">
+        #{uploadDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="readTimeU != null">
+        #{readTimeU,jdbcType=INTEGER},
+      </if>
+      <if test="readTimeL != null">
+        #{readTimeL,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.Article">
+    update t_article
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDay != null">
+        upload_day = #{uploadDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="readTimeU != null">
+        read_time_u = #{readTimeU,jdbcType=INTEGER},
+      </if>
+      <if test="readTimeL != null">
+        read_time_l = #{readTimeL,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.alvis.exam.domain.Article">
+    update t_article
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      upload_day = #{uploadDay,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      read_time_u = #{readTimeU,jdbcType=INTEGER},
+      read_time_l = #{readTimeL,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.Article">
+    update t_article
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      upload_day = #{uploadDay,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      read_time_u = #{readTimeU,jdbcType=INTEGER},
+      read_time_l = #{readTimeL,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

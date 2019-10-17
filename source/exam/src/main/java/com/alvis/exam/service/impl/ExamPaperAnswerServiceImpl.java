@@ -63,7 +63,6 @@ public class ExamPaperAnswerServiceImpl extends BaseServiceImpl<ExamPaperAnswer>
     public ExamPaperAnswerInfo calculateExamPaperAnswer(ExamPaperSubmitVM examPaperSubmitVM, User user) {
         ExamPaperAnswerInfo examPaperAnswerInfo = new ExamPaperAnswerInfo();
         Date now = new Date();
-        MyTestUtil.print(examPaperSubmitVM);
         ExamPaper examPaper = examPaperMapper.selectByPrimaryKey(examPaperSubmitVM.getId());
         //查看用户是否考过此试卷
         if (null != examPaperAnswerMapper.getByPidUid(examPaperSubmitVM.getId(), user.getId())) {
