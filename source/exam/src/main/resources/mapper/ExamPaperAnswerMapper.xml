@@ -246,5 +246,7 @@
     where exam_paper_id = #{pid} and create_user=#{uid}
     limit 1
   </select>
+    <select id="calculateExamPaperScore" resultType="java.lang.Integer">
+    </select>
 
 </mapper>

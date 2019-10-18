@@ -5,7 +5,9 @@ import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
 import com.github.pagehelper.PageInfo;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author alvis
@@ -126,5 +128,16 @@ public interface UserService extends BaseService<User> {
 
     User selectByWxOpenId(String wxOpenId);
 
-    int calculateUserScore(Integer userId);
+    int calculateUserScore(Integer userId, Date startTime, Date endTime);
+    /**
+     * @Author lz
+     * @Description: 个人阅读积分
+     * @param: [userId]
+     * @Date: 2019/10/18 10:18
+     **/
+    int calculateUserArticleScore(Integer userId, Date startTime, Date endTime);
+
+    List<Map<String,Object>> calculateUsersScore(Date startTime, Date endTime);
+
+    List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime);
 }

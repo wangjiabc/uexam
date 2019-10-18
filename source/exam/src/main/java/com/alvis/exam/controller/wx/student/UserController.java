@@ -19,6 +19,8 @@ import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.WxUtil;
 import com.alvis.exam.viewmodel.student.user.*;
+import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
+import com.alvis.exam.viewmodel.wx.student.user.QueryUserScoreVO;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -44,16 +46,16 @@ import java.util.stream.Collectors;
 public class UserController extends BaseWXApiController {
     @Autowired
     private SystemConfig systemConfig;
-	@Autowired
-    private  UserService userService;
-	@Autowired
-	private  UserEventLogService userEventLogService;
-	@Autowired
-	private MessageService messageService;
-	@Autowired
-	private AuthenticationService authenticationService;
-	@Autowired
-	private ApplicationEventPublisher eventPublisher;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserEventLogService userEventLogService;
+    @Autowired
+    private MessageService messageService;
+    @Autowired
+    private AuthenticationService authenticationService;
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
 
     @RequestMapping(value = "/current", method = RequestMethod.POST)
     public RestResponse<UserResponseVM> current() {
@@ -157,6 +159,15 @@ public class UserController extends BaseWXApiController {
     public RestResponse read(@PathVariable Integer id) {
         messageService.read(id);
         return RestResponse.ok();
+    }
+
+    @RequestMapping(value = "/calculateUserScore", method = RequestMethod.POST)
+    public RestResponse calculateUserScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {
+        return RestResponse.ok(userService.calculateUserScore(queryUserScoreVO.getUserId() == null ? getCurrentUser().getId() : queryUserScoreVO.getUserId(), queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
+    }
+    @RequestMapping(value = "/calculateUsersScore", method = RequestMethod.POST)
+    public RestResponse calculateUsersScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {
+        return RestResponse.ok(userService.calculateUsersScore(queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
 }

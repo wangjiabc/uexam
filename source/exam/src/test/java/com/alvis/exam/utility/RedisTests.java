@@ -1,6 +1,7 @@
 package com.alvis.exam.utility;
 
 import com.alvis.exam.ExamApplicationTests;
+import com.alvis.exam.domain.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,8 +9,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.*;
@@ -24,6 +29,8 @@ public class RedisTests {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     @Test
     public void redisAddTest() {
@@ -31,6 +38,13 @@ public class RedisTests {
         stringRedisTemplate.opsForValue().set("100000:apple", "0");
         stringRedisTemplate.opsForValue().set("100000:apple:red", "0");
         stringRedisTemplate.opsForHash().put("100000:people","name","alvis");
+    }
+    @Test
+    public void redisGetTest() {
+        //redisTemplate.setKeySerializer(RedisSerializer.string());
+        //redisTemplate.setHashKeySerializer(RedisSerializer.string());
+        //redisTemplate.setValueSerializer(new JdkSerializationRedisSerializer());
+        System.out.println(redisTemplate.opsForValue().get("User::777"));
     }
 
 

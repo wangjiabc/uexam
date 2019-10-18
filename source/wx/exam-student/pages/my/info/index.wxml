@@ -21,7 +21,7 @@
       <i-input value="{{ userInfo.birthDay }}" class="exam-hidden" name="birthDay" maxlength="-1" />
     </picker>
   </i-panel>
-  <i-panel title="手机">
+  <i-panel title="座机">
     <i-input value="{{ userInfo.phone }}" name="phone" maxlength="-1" />
   </i-panel>
   <i-panel title="年级">

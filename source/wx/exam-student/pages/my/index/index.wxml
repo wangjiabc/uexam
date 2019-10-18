@@ -32,13 +32,13 @@
   </i-cell-group>
 </view>
 
-<view>
+<!-- <view>
   <i-cell-group i-class="my-group-margin">
     <i-cell title="退出账号" bind:click="logOut">
       <i-icon type="flashlight_fill" slot="icon" size="20" />
     </i-cell>
   </i-cell-group>
-</view>
+</view> -->
 
 <i-spin size="large" fix wx:if="{{ spinShow }}"></i-spin>
 <i-message id="message" />
