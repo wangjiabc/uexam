@@ -165,13 +165,13 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public int calculateUserScore(Integer userId, Date startTime, Date endTime) {
+    public Integer calculateUserScore(Integer userId, Date startTime, Date endTime) {
         //int  examPaperScore= examPaperAnswerMapper.calculateExamPaperScore(userId,starTime,endTime);
         return userService.calculateUserArticleScore(userId, startTime, endTime);
     }
 
     @Override
-    public int calculateUserArticleScore(Integer userId, Date startTime, Date endTime) {
+    public Integer calculateUserArticleScore(Integer userId, Date startTime, Date endTime) {
         return userMapper.calculateUserArticleScore(userId, startTime, endTime);
     }
 

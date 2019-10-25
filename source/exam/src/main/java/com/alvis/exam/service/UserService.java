@@ -128,14 +128,15 @@ public interface UserService extends BaseService<User> {
 
     User selectByWxOpenId(String wxOpenId);
 
-    int calculateUserScore(Integer userId, Date startTime, Date endTime);
+    Integer calculateUserScore(Integer userId, Date startTime, Date endTime);
     /**
      * @Author lz
      * @Description: 个人阅读积分
      * @param: [userId]
      * @Date: 2019/10/18 10:18
-     **/
-    int calculateUserArticleScore(Integer userId, Date startTime, Date endTime);
+     *
+     * @return*/
+    Integer calculateUserArticleScore(Integer userId, Date startTime, Date endTime);
 
     List<Map<String,Object>> calculateUsersScore(Date startTime, Date endTime);
 

@@ -8,6 +8,9 @@ server:
   compression:
     enabled: true
     min-response-size: 1
+  jackson:
+  date-format: yyyy-MM-dd HH:mm:ss
+  time-zone: GMT+8
 
 #logging logback
 logging:
@@ -76,7 +79,9 @@ spring:
 
   #spring mvc
 
-
   #runningtime environment
   profiles:
     active:  @env@
+
+#swager
+springfox.documentation.swagger.v2.path: /api-docs

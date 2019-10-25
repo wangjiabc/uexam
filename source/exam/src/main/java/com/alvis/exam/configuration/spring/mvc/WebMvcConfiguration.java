@@ -22,7 +22,18 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     private  TokenHandlerInterceptor tokenHandlerInterceptor;
     @Autowired
 	private  SystemConfig systemConfig;
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("doc.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
+
+    }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         List<String> securityIgnoreUrls = systemConfig.getWx().getSecurityIgnoreUrls();
