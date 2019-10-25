@@ -156,4 +156,10 @@
       read_time_l = #{readTimeL,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="page" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM">
+    select
+    <include refid="Base_Column_List" />
+    from t_article
+  </select>
 </mapper>

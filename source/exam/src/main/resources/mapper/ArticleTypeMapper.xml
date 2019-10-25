@@ -55,4 +55,15 @@
     set type_name = #{typeName,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="page" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM">
+    select
+    <include refid="Base_Column_List" />
+    from t_article_type
+  </select>
+  <select id="findAll"  resultMap="BaseResultMap" parameterType="java.util.List">
+    select
+    *
+    from t_article_type
+  </select>
 </mapper>

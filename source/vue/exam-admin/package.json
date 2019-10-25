@@ -2,7 +2,7 @@
     "name": "exam-admin",
     "version": "2.0.1",
     "author": "alvis",
-    "description": "学之思管理系统",
+    "description": "江阳区烟草局考试管理系统",
     "license": "MIT",
     "private": true,
     "scripts": {
