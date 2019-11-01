@@ -15,7 +15,7 @@ public enum SystemCode {
     /**
      * UNAUTHORIZED
      */
-    UNAUTHORIZED(401, "用户未登录"),
+    UNAUTHORIZED(401, "江阳区局学习平台"),
     /**
      * UNAUTHORIZED
      */

@@ -6,6 +6,7 @@ import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -130,12 +131,12 @@ public interface UserMapper extends BaseMapper<User> {
      */
     void deleteUsersByIds(List<Integer> ids);
 
-    /**
-     * insertUserSql
-     *
-     * @param user user
-     */
-    void insertUserSql(User user);
+    ///**
+    // * insertUserSql
+    // *
+    // * @param user user
+    // */
+    //void insertUserSql(User user);
 
     Integer selectAllCount();
 
@@ -145,4 +146,8 @@ public interface UserMapper extends BaseMapper<User> {
 
 
     User selectByWxOpenId(@Param("wxOpenId") String wxOpenId);
+
+    int calculateUserArticleScore(@Param("userId")Integer userId, @Param("startTime")Date startTime, @Param("endTime")Date endTime);
+
+    List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime);
 }

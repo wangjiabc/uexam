@@ -2,24 +2,15 @@ package com.alvis.exam.service;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.Message;
-import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageInfo;
-import net.sf.json.JSONArray;
 
 import java.util.List;
-import java.util.Map;
 
-public interface UploadService {
+public interface ArticleTypeService {
     //查看文章分类
     List<ArticleType> findArticleType();
-    //将上传数据进行封装存储
-    void saveArticle(Article article);
-
-    //返回文章信息
-    PageInfo<Article> page(MessagePageRequestVM requestVM);
 
     //返回文章分类信息
     PageInfo<ArticleType> pageList(MessagePageRequestVM requestVM);
@@ -33,8 +24,4 @@ public interface UploadService {
 
     //删除文章分类
     void deleteType(ArticleType articleType);
-
-    //删除文章
-    void deleteArticle(Article article);
-
 }

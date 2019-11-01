@@ -4,6 +4,7 @@ import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
+import com.alvis.exam.repository.ExamPaperAnswerMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
@@ -13,10 +14,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +31,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private final static String CACHE_NAME = "User";
     private final UserMapper userMapper;
     private final ApplicationEventPublisher eventPublisher;
+    @Autowired
+    private ExamPaperAnswerMapper examPaperAnswerMapper;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     public UserServiceImpl(UserMapper userMapper, ApplicationEventPublisher eventPublisher) {
@@ -160,9 +165,24 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public int calculateUserScore(Integer userId) {
-        
-        return 0;
+    public Integer calculateUserScore(Integer userId, Date startTime, Date endTime) {
+        //int  examPaperScore= examPaperAnswerMapper.calculateExamPaperScore(userId,starTime,endTime);
+        return userService.calculateUserArticleScore(userId, startTime, endTime);
+    }
+
+    @Override
+    public Integer calculateUserArticleScore(Integer userId, Date startTime, Date endTime) {
+        return userMapper.calculateUserArticleScore(userId, startTime, endTime);
+    }
+
+    @Override
+    public List<Map<String, Object>> calculateUsersScore(Date startTime, Date endTime) {
+        return userService.calculateUsersArticleScore(startTime, endTime);
+    }
+
+    @Override
+    public List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime) {
+        return userMapper.calculateUsersArticleScore(startTime, endTime);
     }
 
 

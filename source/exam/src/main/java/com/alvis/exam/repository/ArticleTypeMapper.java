@@ -4,9 +4,9 @@ import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+
 @Mapper
 public interface ArticleTypeMapper {
     int deleteByPrimaryKey(Integer id);
@@ -19,9 +19,13 @@ public interface ArticleTypeMapper {
 
     int updateByPrimaryKeySelective(ArticleType record);
 
-    int updateByPrimaryKey(ArticleType record);
+    void updateType(ArticleType record);
+
+    List<ArticleType> page(MessagePageRequestVM requestVM);
 
     List<ArticleType> findAll();
 
-    List<ArticleType> page(MessagePageRequestVM requestVM);
+    void deleteType(ArticleType articleType);
+
+    void updateArticleType(ArticleType articleType);
 }

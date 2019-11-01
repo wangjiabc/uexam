@@ -2,41 +2,29 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.Message;
-import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.repository.ArticleMapper;
 import com.alvis.exam.repository.ArticleTypeMapper;
-import com.alvis.exam.service.UploadService;
+import com.alvis.exam.service.ArticleTypeService;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
-import net.sf.json.JSONArray;
-
-import javax.annotation.Resource;
-
-@Slf4j
 @Service
-public class UploadServiceImpl implements UploadService {
-
-
+public class ArticleTypeServiceImpl implements ArticleTypeService {
     @Resource
     private ArticleTypeMapper articleTypeMapper;
-    @Resource
-    private ArticleMapper articleMapper;
+
 
 
     /**
-     * 动态查看文章类型
+     * 动态查看文章分类
      * @return
      */
     @Override
@@ -45,27 +33,14 @@ public class UploadServiceImpl implements UploadService {
         return types;
     }
 
-    @Override
-    public void saveArticle(Article article) {
-        article.setUploadDay(new Date());     //上传时间
-        articleMapper.insert(article);
-    }
-
     /**
-     * 动态查看所有数据
+     * 动态查看所有分类信息
      * @return
      */
     @Override
     public PageInfo<ArticleType> pageList(MessagePageRequestVM requestVM) {
         return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
                 articleTypeMapper.page(requestVM)
-        );
-    }
-
-    @Override
-    public PageInfo<Article> page(MessagePageRequestVM requestVM) {
-        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
-                articleMapper.page(requestVM)
         );
     }
 
@@ -88,11 +63,6 @@ public class UploadServiceImpl implements UploadService {
     @Override
     public void deleteType(ArticleType articleType) {
         articleTypeMapper.deleteType(articleType);
-    }
-
-    @Override
-    public void deleteArticle(Article article) {
-        articleMapper.deleteArticle(article);
     }
 
     @Override

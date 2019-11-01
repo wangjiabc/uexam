@@ -8,6 +8,10 @@ server:
   compression:
     enabled: true
     min-response-size: 1
+  jackson:
+  date-format: yyyy-MM-dd HH:mm:ss
+  time-zone: GMT+8
+  maxPostSize: 0
 
 #logging logback
 logging:
@@ -20,7 +24,6 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
     log-prefix: repository.
-
 
 system:
   security-ignore-urls:
@@ -39,7 +42,8 @@ system:
       - /api/wx/student/auth/checkBind
       - /api/wx/student/user/register
   qn:
-    url: http://image.alvisu.com
+#    url: http://image.alvisu.com
+    url: http://192.168.100.185:8091/images
     bucket: alvisu
     access-key: KabOBTPGVll2sSV8d1OIlW8G4_n_cReE7RSsLafA
     secret-key: mSltk9_9KtCdFetCmxvvCAgsBg8JZHiXMuQeqSJA
@@ -54,6 +58,10 @@ pagehelper:
 
 #mybatis datasource default HikariPool
 spring:
+  servlet:
+    multipart:
+      maxFileSize: "1000MB"
+      maxRequestSize: "10000MB"
   session:
     store-type: redis
   datasource:
@@ -73,10 +81,13 @@ spring:
     type: redis
     redis:
       time-to-live: 12h   #12 hour
-
   #spring mvc
-
 
   #runningtime environment
   profiles:
     active:  @env@
+
+  url:
+    ip: http://192.168.100.185:8091
+#swager
+springfox.documentation.swagger.v2.path: /api-docs

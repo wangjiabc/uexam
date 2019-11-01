@@ -4,7 +4,9 @@ import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
+import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -26,9 +28,11 @@ public interface ArticleMapper {
 
     int updateByPrimaryKey(Article record);
 
-    @Select("select * from t_article")
     List<Article> findAll();
 
     List<Article> page(MessagePageRequestVM requestVM);
 
+    void deleteArticle(Article article);
+
+    void updateArticle(Article article);
 }

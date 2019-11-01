@@ -1,7 +1,6 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.ExamPaperAnswer;
-import com.alvis.exam.domain.other.ExamPaperAnswerUpdate;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.viewmodel.student.exampaper.ExamPaperAnswerPageVM;
 import org.apache.ibatis.annotations.Mapper;
@@ -32,4 +31,5 @@ public interface ExamPaperAnswerMapper extends BaseMapper<ExamPaperAnswer> {
 
     ExamPaperAnswer getByPidUid(@Param("pid") Integer paperId, @Param("uid") Integer uid);
 
+    int calculateExamPaperScore(@Param("userId")Integer userId,@Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }
