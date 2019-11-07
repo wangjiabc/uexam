@@ -64,7 +64,7 @@
 * element-ui  最新版
 * vue-element-admin 最新版，对该系统做了大量精简，只保留了部分样式和控件
 * echarts 图表统计
-* ueditor 为了支持填空题，做了部分修改
+*  为了支持填空题，做了部分修改
 
 #### 软件架构图
 ![](doc/image/frame/1.png)

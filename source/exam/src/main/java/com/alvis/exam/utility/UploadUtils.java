@@ -16,6 +16,11 @@ import java.util.*;
 public class UploadUtils {
 
     public static Map<String,String> upload(MultipartFile file) {
+        if(file == null){
+            HashMap<String, String> map = new HashMap<>();
+            map.put("fileNameNew","http://192.168.100.185:8091/images/aaa.png");
+            return map;
+        }
         ArticleType articleType = new ArticleType();
         String fileName = file.getOriginalFilename();
         String suffixName = fileName.substring(fileName.lastIndexOf("."));

@@ -7,8 +7,10 @@ import com.alvis.exam.repository.ArticleTypeMapper;
 import com.alvis.exam.service.ArticleTypeService;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.swagger.models.auth.In;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -39,6 +41,16 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
      */
     @Override
     public PageInfo<ArticleType> pageList(MessagePageRequestVM requestVM) {
+//        List<ArticleType> list = pageInfo.getList();
+////        for (ArticleType articleType : list) {
+////            String origname = articleType.getOrigname();
+////            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+////        }
+        List<ArticleType> page = articleTypeMapper.page(requestVM);
+        for (ArticleType articleType : page) {
+            String origname = articleType.getOrigname();
+            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+        }
         return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
                 articleTypeMapper.page(requestVM)
         );
@@ -63,6 +75,12 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     @Override
     public void deleteType(ArticleType articleType) {
         articleTypeMapper.deleteType(articleType);
+    }
+
+    @Override
+    public List<ArticleType> findType() {
+        Integer state = 1;
+        return articleTypeMapper.findType(state);
     }
 
     @Override

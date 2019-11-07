@@ -24,4 +24,7 @@ public interface ArticleTypeService {
 
     //删除文章分类
     void deleteType(ArticleType articleType);
+
+    List<ArticleType> findType();
+
 }

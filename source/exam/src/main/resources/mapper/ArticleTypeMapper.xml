@@ -87,6 +87,13 @@
     *
     from t_article_type
   </select>
+
+  <select id="findType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from t_article_type
+    where state = #{state,jdbcType=INTEGER}
+  </select>
+
   <update id="deleteType"  parameterType="com.alvis.exam.domain.ArticleType">
     update t_article_type
     set state = #{state,jdbcType=INTEGER}

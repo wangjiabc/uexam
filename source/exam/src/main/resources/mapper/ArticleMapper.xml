@@ -202,4 +202,25 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+  <select id="findArticle"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT * FROM t_article WHERE type_id = #{type_id,jdbcType=INTEGER};
+  </select>
+
+  <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.article.ArticleDto">
+    select *
+    from t_article
+    WHERE type_id = #{typeId,jdbcType=INTEGER};
+  </select>
+<!--  <resultMap id="pageMap" type="com.alvis.exam.viewmodel.student.article.ArticleDto">-->
+<!--    <result column="typeId" property="typeId" jdbcType="INTEGER" />-->
+<!--    <result column="requestVM" property="requestVM" jdbcType="MessageRequestVM" />-->
+
+<!--  </resultMap>-->
+  <select id="selectById" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.Article">
+    select *
+    from t_article
+    WHERE id = #{id,jdbcType=INTEGER};
+  </select>
+
+
 </mapper>

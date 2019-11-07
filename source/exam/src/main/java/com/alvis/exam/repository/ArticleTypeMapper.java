@@ -25,7 +25,12 @@ public interface ArticleTypeMapper {
 
     List<ArticleType> findAll();
 
+    List<ArticleType> findAllType(ArticleType articleType);
+
+
     void deleteType(ArticleType articleType);
 
     void updateArticleType(ArticleType articleType);
+
+    List<ArticleType> findType(Integer state);
 }

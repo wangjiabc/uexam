@@ -4,9 +4,16 @@ import com.alvis.exam.configuration.property.SystemConfig;
 import com.alvis.exam.configuration.spring.wx.TokenHandlerInterceptor;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,5 +62,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .allowedHeaders("*");
         super.addCorsMappings(registry);
     }
+
+
 
 }

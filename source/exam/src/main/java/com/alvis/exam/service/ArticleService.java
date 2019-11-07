@@ -5,6 +5,7 @@ import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.article.PageInfoVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -24,4 +25,12 @@ public interface ArticleService {
     String getConText(Article article);
 
     void updateArticle(Article article);
+
+    List<Article> findArticle(Integer typeId);
+
+    PageInfo<Article> studentPage(Integer typeId,MessageRequestVM messageRequestVM);
+
+    String findDetails(Integer id);
+
+    Article find(Integer id);
 }

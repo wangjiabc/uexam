@@ -2,12 +2,14 @@ package com.alvis.exam.controller.admin;
 
 
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.configuration.property.SystemConfig;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.service.ArticleTypeService;
 import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,6 +31,8 @@ public class ArticleTypeController {
 
     @Resource
     private ArticleTypeService articleTypeService;
+    //@Autowired
+    //private SystemConfig systemConfig;
 
     /**
      * 展示文章分类
@@ -38,11 +42,11 @@ public class ArticleTypeController {
     @RequestMapping(value = "/typeList")
     public RestResponse<PageInfo<ArticleType>> typeList(@RequestBody MessagePageRequestVM model) {
         PageInfo<ArticleType> pageInfo = articleTypeService.pageList(model);
-        List<ArticleType> list = pageInfo.getList();
-        for (ArticleType articleType : list) {
-            String origname = articleType.getOrigname();
-            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
-        }
+//        List<ArticleType> list = pageInfo.getList();
+//        for (ArticleType articleType : list) {
+//            String origname = articleType.getOrigname();
+//            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+//        }
         return RestResponse.ok(pageInfo);
     }
 
@@ -69,7 +73,7 @@ public class ArticleTypeController {
             System.out.println("上传的文件原名称:" + fileNameNew);
             articleType.setOrigname(fileNameNew);
 
-//            String url = "http://192.168.100.185:8091/images/";
+//            String url = "http://127.0.0.1:8091/images/";
             articleType.setPathDeposit(sqlSaveUrl);
             articleType.setTypeName(type);
             articleType.setId(id);
@@ -97,7 +101,7 @@ public class ArticleTypeController {
 
         //存名称
         articleType.setOrigname(fileNameNew);
-//        String url = "http://192.168.100.185:8091/images/";
+//        String url = "http://127.0.0.1:8091/images/";
         articleType.setPathDeposit(sqlSaveUrl);
         articleType.setTypeName(type);
         articleType.setState(1);
@@ -115,6 +119,8 @@ public class ArticleTypeController {
     @RequestMapping("deleteType")
     public RestResponse deleteType(@RequestBody ArticleType articleType) {
         articleTypeService.deleteType(articleType);
+//        String ip = systemConfig.getUrl().getIp();
+//        System.out.println(ip);
         return RestResponse.ok();
     }
 

@@ -16,7 +16,7 @@
 
         <!-- jdbc -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.100.120:3306/exam?useSSL=false"
+                        connectionURL="jdbc:mysql://192.168.100.200:3306/exam?useSSL=false"
                         userId="root" password="root">
         </jdbcConnection>
 
@@ -45,14 +45,14 @@
         </javaClientGenerator>
 
 
-        <table tableName="t_article" domainObjectName="Article" enableCountByExample="false"
+        <table tableName="t_read_state" domainObjectName="ReadState" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
-        <table tableName="t_article_type" domainObjectName="ArticleType" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
+<!--        <table tableName="t_article_type" domainObjectName="ArticleType" enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
 <!--        <table tableName="t_user_article_look" domainObjectName="UserArticleLook" enableCountByExample="false"-->
 <!--               enableUpdateByExample="false"-->
 <!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->

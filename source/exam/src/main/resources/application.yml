@@ -88,6 +88,6 @@ spring:
     active:  @env@
 
   url:
-    ip: http://192.168.100.185:8091
+    ip: http://127.0.0.1:8091
 #swager
 springfox.documentation.swagger.v2.path: /api-docs
