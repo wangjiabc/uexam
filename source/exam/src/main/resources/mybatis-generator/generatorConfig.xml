@@ -16,7 +16,7 @@
 
         <!-- jdbc -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.100.120:3306/exam?useSSL=false"
+                        connectionURL="jdbc:mysql://192.168.100.200:3306/exam?useSSL=false"
                         userId="root" password="root">
         </jdbcConnection>
 
@@ -26,36 +26,37 @@
 
         <!-- domain -->
         <javaModelGenerator targetPackage="com.alvis.exam.domain"
-                            targetProject="C:\Users\Administrator\Desktop\uexam\generator\">
+                            targetProject="D:\entity\">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- mapper xml -->
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="C:\Users\Administrator\Desktop\uexam\generator\">
+                         targetProject="D:\entity\">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- repository -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.alvis.exam.repository"
-                             targetProject="C:\Users\Administrator\Desktop\uexam\generator\">
+                             targetProject="D:\entity\">
+<!--            C:\Users\Administrator\Desktop\uexam\generator\-->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="t_article" domainObjectName="Article" enableCountByExample="false"
+        <table tableName="t_read_state" domainObjectName="ReadState" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
-        <table tableName="t_article_type" domainObjectName="ArticleType" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
-        <table tableName="t_user_article_look" domainObjectName="UserArticleLook" enableCountByExample="false"
-               enableUpdateByExample="false"
-               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-        </table>
+<!--        <table tableName="t_article_type" domainObjectName="ArticleType" enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
+<!--        <table tableName="t_user_article_look" domainObjectName="UserArticleLook" enableCountByExample="false"-->
+<!--               enableUpdateByExample="false"-->
+<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+<!--        </table>-->
         <!--
        <table tableName="t_user" domainObjectName="User" enableCountByExample="false"
                enableUpdateByExample="false"

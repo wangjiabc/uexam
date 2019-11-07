@@ -1,34 +1,16 @@
 const app = getApp()
 Page({
   data: {
-    levelIndex: 0,
-    code: ""
+    levelIndex: 0
   },
-  onLoad: function(e) {
-    this.getWxCode();
-  },
-  getWxCode() {
-    let _this = this;
-    wx.login({
-      success(wxres) {
-        if (wxres.code) {
-          _this.setData({
-            code: wxres.code
-          })
-        }
-      }
-    })
-  },
-  bindLevelChange: function(e) {
+  bindLevelChange: function (e) {
     this.setData({
       levelIndex: e.detail.value
     })
   },
   formSubmit: function(e) {
-    console.log('this', this.data);
     let _this = this;
     let form = e.detail.value
-    form.code = this.data.code
     if (form.userName == null || form.userName == '') {
       app.message('用户名不能为空', 'error');
       return;
@@ -37,12 +19,8 @@ Page({
       app.message('密码不能为空', 'error');
       return;
     }
-    if (form.duty == null || form.userLevel == '') {
-      app.message('职务不能为空', 'error');
-      return;
-    }
-    if (form.duty == null || form.phone == '') {
-      app.message('手机号不能为空', 'error');
+    if (form.userLevel == null || form.userLevel == '') {
+      app.message('年级不能为空', 'error');
       return;
     }
     _this.setData({

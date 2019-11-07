@@ -10,7 +10,7 @@
       <h1>{{form.name}}</h1>
     </view>
     <form bindsubmit='formSubmit'>
-      <i-panel title="{{titleItem.name}}" wx:for="{{form.titleItems}}" wx:for-item="titleItem" wx:key="{{titleItem.name}}" i-class="exam-panel-title">
+      <i-panel title="{{titleItem.name}}" wx:for="{{form.name}}" wx:for-item="titleItem" wx:key="{{titleItem.name}}" i-class="exam-panel-title">
         <i-cell-group i-class="exam-cell">
           <i-cell wx:for="{{titleItem.questionItems}}" wx:key="{{titleItem.id}}" wx:for-item="questionItem">
 

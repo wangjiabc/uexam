@@ -4,9 +4,12 @@
   <resultMap id="BaseResultMap" type="com.alvis.exam.domain.ArticleType">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="type_name" jdbcType="VARCHAR" property="typeName" />
+    <result column="path_deposit" jdbcType="VARCHAR" property="pathDeposit" />
+    <result column="origName" jdbcType="VARCHAR" property="origname" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, type_name
+    id, type_name, path_deposit, origName, state
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -19,8 +22,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.alvis.exam.domain.ArticleType">
-    insert into t_article_type (id, type_name)
-    values (#{id,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR})
+    insert into t_article_type (id, type_name, path_deposit, 
+      origName, state)
+    values (#{id,jdbcType=INTEGER}, #{typeName,jdbcType=VARCHAR}, #{pathDeposit,jdbcType=VARCHAR}, 
+      #{origname,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.ArticleType">
     insert into t_article_type
@@ -31,6 +36,15 @@
       <if test="typeName != null">
         type_name,
       </if>
+      <if test="pathDeposit != null">
+        path_deposit,
+      </if>
+      <if test="origname != null">
+        origName,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -39,20 +53,65 @@
       <if test="typeName != null">
         #{typeName,jdbcType=VARCHAR},
       </if>
+      <if test="pathDeposit != null">
+        #{pathDeposit,jdbcType=VARCHAR},
+      </if>
+      <if test="origname != null">
+        #{origname,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.ArticleType">
     update t_article_type
     <set>
-      <if test="typeName != null">
         type_name = #{typeName,jdbcType=VARCHAR},
-      </if>
+        path_deposit = #{pathDeposit,jdbcType=VARCHAR},
+        origName = #{origname,jdbcType=VARCHAR},
+        state = #{state,jdbcType=INTEGER},
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.ArticleType">
+
+<!--=======================-->
+  <select id="page" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM">
+    select
+    <include refid="Base_Column_List" />
+    from t_article_type
+  </select>
+
+  <select id="findAll"  resultMap="BaseResultMap" parameterType="java.util.List">
+    select
+    *
+    from t_article_type
+  </select>
+
+  <select id="findType" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select *
+    from t_article_type
+    where state = #{state,jdbcType=INTEGER}
+  </select>
+
+  <update id="deleteType"  parameterType="com.alvis.exam.domain.ArticleType">
+    update t_article_type
+    set state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+  <update id="updateArticleType" parameterType="com.alvis.exam.domain.ArticleType">
     update t_article_type
     set type_name = #{typeName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateType" parameterType="com.alvis.exam.domain.ArticleType">
+    update t_article_type
+    set type_name = #{typeName,jdbcType=VARCHAR},
+      path_deposit = #{pathDeposit,jdbcType=VARCHAR},
+      origName = #{origname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

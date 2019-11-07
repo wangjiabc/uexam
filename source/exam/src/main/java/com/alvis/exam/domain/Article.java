@@ -1,9 +1,11 @@
 package com.alvis.exam.domain;
 
+import com.alvis.exam.base.BasePage;
+
 import java.io.Serializable;
 import java.util.Date;
 
-public class Article implements Serializable {
+public class Article extends BasePage implements Serializable {
     private Integer id;
 
     private String title;
@@ -19,6 +21,8 @@ public class Article implements Serializable {
     private Integer readTimeU;
 
     private Integer readTimeL;
+
+    private Integer state =1;
 
     private String content;
 
@@ -86,6 +90,14 @@ public class Article implements Serializable {
 
     public void setReadTimeL(Integer readTimeL) {
         this.readTimeL = readTimeL;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 
     public String getContent() {

@@ -10,7 +10,7 @@ Page({
     timeLimitPaper: [],
     taskList: []
   },
-  onLoad: function () {
+  onLoad: function() {
     this.setData({
       spinShow: true
     });
@@ -24,7 +24,7 @@ Page({
       this.indexLoad()
     }
   },
-  indexLoad: function () {
+  indexLoad: function() {
     let _this = this
     app.formPost('/api/wx/student/dashboard/index', null).then(res => {
       _this.setData({

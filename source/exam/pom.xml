@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>exam</name>
-    <description>学之思考试平台</description>
+    <description>烟草局公司考试平台</description>
 
 
     <properties>
@@ -21,7 +21,6 @@
         <mysql.version>8.0.17</mysql.version>
         <spring.boot.version>2.1.6.RELEASE</spring.boot.version>
     </properties>
-
 
 
     <parent>
@@ -150,39 +149,53 @@
             <optional>true</optional>
         </dependency>
 
-	<dependency>
-		<groupId>com.alibaba</groupId>
-		<artifactId>fastjson</artifactId>
-		<version>1.1.26</version>
-	</dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.1.26</version>
+        </dependency>
 
-	<dependency>
-		<groupId>commons-lang</groupId>
-		<artifactId>commons-lang</artifactId>
-		<version>2.6</version>
-	</dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
 
-    <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger1</artifactId>
-        <version>2.9.2</version>
-    </dependency>
-    <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger2</artifactId>
-        <version>2.9.2</version>
-    </dependency>
+        <dependency>
+            <groupId>net.sf.json-lib</groupId>
+            <artifactId>json-lib</artifactId>
+            <version>2.4</version>
+        </dependency>
 
-    <dependency>
-        <groupId>io.springfox</groupId>
-        <artifactId>springfox-swagger-ui</artifactId>
-        <version>2.9.2</version>
-    </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger1</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.9.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.9.2</version>
+        </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>swagger-bootstrap-ui</artifactId>
             <version>1.8.1</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -235,7 +248,6 @@
             </plugin>
         </plugins>
     </build>
-
 
 
     <profiles>

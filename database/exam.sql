@@ -355,10 +355,10 @@ CREATE TABLE `t_user_event_log`  (
 -- ----------------------------
 -- Records of t_user_event_log
 -- ----------------------------
-INSERT INTO `t_user_event_log` VALUES (1, 1, 'student', '学生', 'student 登录了学之思考试系统', '2019-09-07 06:49:23');
-INSERT INTO `t_user_event_log` VALUES (2, 2, 'admin', '管理员', 'admin 登录了学之思考试系统', '2019-09-07 06:51:35');
-INSERT INTO `t_user_event_log` VALUES (3, 2, 'admin', '管理员', 'admin 登出了学之思考试系统', '2019-09-07 07:00:38');
-INSERT INTO `t_user_event_log` VALUES (4, 1, 'student', '学生', 'student 登录了学之思考试系统', '2019-09-07 07:00:44');
+INSERT INTO `t_user_event_log` VALUES (1, 1, 'student', '学生', 'student 登录烟草局公司学习系统', '2019-09-07 06:49:23');
+INSERT INTO `t_user_event_log` VALUES (2, 2, 'admin', '管理员', 'admin 登录了江阳区烟草局考试考试系统', '2019-09-07 06:51:35');
+INSERT INTO `t_user_event_log` VALUES (3, 2, 'admin', '管理员', 'admin 登出了江阳区烟草局考试考试系统', '2019-09-07 07:00:38');
+INSERT INTO `t_user_event_log` VALUES (4, 1, 'student', '学生', 'student 登录了江阳区烟草局考试考试系统', '2019-09-07 07:00:44');
 INSERT INTO `t_user_event_log` VALUES (5, 1, 'student', '学生', 'student 提交试卷：固定试卷 得分：3 耗时：4 秒', '2019-09-07 07:07:09');
 INSERT INTO `t_user_event_log` VALUES (6, 1, 'student', '学生', 'student 批改试卷：固定试卷 得分：6', '2019-09-07 07:07:20');
 

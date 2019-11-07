@@ -10,12 +10,13 @@
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
     <result column="read_time_u" jdbcType="INTEGER" property="readTimeU" />
     <result column="read_time_l" jdbcType="INTEGER" property="readTimeL" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.alvis.exam.domain.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, title, author, upload_day, user_id, type_id, read_time_u, read_time_l
+    id, title, author, upload_day, user_id, type_id, read_time_u, read_time_l, state
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -35,12 +36,12 @@
   <insert id="insert" parameterType="com.alvis.exam.domain.Article">
     insert into t_article (id, title, author, 
       upload_day, user_id, type_id, 
-      read_time_u, read_time_l, content
-      )
+      read_time_u, read_time_l, state, 
+      content)
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
       #{uploadDay,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, 
-      #{readTimeU,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
-      )
+      #{readTimeU,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.Article">
     insert into t_article
@@ -68,6 +69,9 @@
       </if>
       <if test="readTimeL != null">
         read_time_l,
+      </if>
+      <if test="state != null">
+        state,
       </if>
       <if test="content != null">
         content,
@@ -98,6 +102,9 @@
       <if test="readTimeL != null">
         #{readTimeL,jdbcType=INTEGER},
       </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
       </if>
@@ -127,6 +134,9 @@
       <if test="readTimeL != null">
         read_time_l = #{readTimeL,jdbcType=INTEGER},
       </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
@@ -142,6 +152,7 @@
       type_id = #{typeId,jdbcType=INTEGER},
       read_time_u = #{readTimeU,jdbcType=INTEGER},
       read_time_l = #{readTimeL,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -153,7 +164,63 @@
       user_id = #{userId,jdbcType=INTEGER},
       type_id = #{typeId,jdbcType=INTEGER},
       read_time_u = #{readTimeU,jdbcType=INTEGER},
-      read_time_l = #{readTimeL,jdbcType=INTEGER}
+      read_time_l = #{readTimeL,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+<!--  ======================-->
+  <select id="page" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM">
+    select
+    *
+    from t_article
+  </select>
+
+  <select id="findAll"  resultMap="BaseResultMap" parameterType="java.util.List">
+    select
+    *
+    from t_article
+  </select>
+
+  <update id="deleteArticle" parameterType="com.alvis.exam.domain.Article">
+    update t_article
+    set
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateArticle" parameterType="com.alvis.exam.domain.Article">
+    update t_article
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      upload_day = #{uploadDay,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      read_time_u = #{readTimeU,jdbcType=INTEGER},
+      read_time_l = #{readTimeL,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findArticle"  resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT * FROM t_article WHERE type_id = #{type_id,jdbcType=INTEGER};
+  </select>
+
+  <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.article.ArticleDto">
+    select *
+    from t_article
+    WHERE type_id = #{typeId,jdbcType=INTEGER};
+  </select>
+<!--  <resultMap id="pageMap" type="com.alvis.exam.viewmodel.student.article.ArticleDto">-->
+<!--    <result column="typeId" property="typeId" jdbcType="INTEGER" />-->
+<!--    <result column="requestVM" property="requestVM" jdbcType="MessageRequestVM" />-->
+
+<!--  </resultMap>-->
+  <select id="selectById" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.Article">
+    select *
+    from t_article
+    WHERE id = #{id,jdbcType=INTEGER};
+  </select>
+
+
 </mapper>

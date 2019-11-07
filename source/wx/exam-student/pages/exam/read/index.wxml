@@ -11,7 +11,7 @@
       <h1 class="exam-result-detail">试卷耗时: {{answer.doTime}}秒</h1>
     </view>
 
-    <i-panel title="{{titleItem.name}}" wx:for="{{paper.titleItems}}" wx:for-item="titleItem" wx:key="{{titleItem.name}}" i-class="exam-panel-title">
+    <i-panel title="{{titleItem.name}}" wx:for="{{paper.name}}" wx:for-item="titleItem" wx:key="{{titleItem.name}}" i-class="exam-panel-title">
       <i-cell-group i-class="exam-cell">
         <i-cell wx:for="{{titleItem.questionItems}}" wx:key="{{titleItem.id}}" wx:for-item="questionItem">
           <view wx:if="{{questionItem.questionType === 1}}">

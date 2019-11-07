@@ -39,7 +39,7 @@ public class RestLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler {
         org.springframework.security.core.userdetails.User springUser = (org.springframework.security.core.userdetails.User) authentication.getPrincipal();
         com.alvis.exam.domain.User user = userService.getUserByUserName(springUser.getUsername());
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
-        userEventLog.setContent(user.getUserName() + " 登出了学之思考试系统");
+        userEventLog.setContent(user.getUserName() + " 登出了烟草局学习平台");
         eventPublisher.publishEvent(new UserEvent(userEventLog));
         RestUtil.response(response, SystemCode.OK);
     }
