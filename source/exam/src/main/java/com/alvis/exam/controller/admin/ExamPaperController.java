@@ -6,18 +6,13 @@ import com.alvis.exam.domain.ExamPaper;
 import com.alvis.exam.service.ExamPaperService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
-import com.alvis.exam.viewmodel.admin.exam.ExamPaperPageRequestVM;
 import com.alvis.exam.viewmodel.admin.exam.ExamPaperEditRequestVM;
+import com.alvis.exam.viewmodel.admin.exam.ExamPaperPageRequestVM;
 import com.alvis.exam.viewmodel.admin.exam.ExamResponseVM;
 import com.github.pagehelper.PageInfo;
-import com.voucher.manage.tools.MyTestUtil;
-
 import lombok.AllArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController("AdminExamPaperController")
 @RequestMapping(value = "/api/admin/exam/paper")
@@ -42,7 +37,6 @@ public class ExamPaperController extends BaseApiController {
 
     @RequestMapping(value = "/taskExamPage", method = RequestMethod.POST)
     public RestResponse<PageInfo<ExamResponseVM>> taskExamPageList(@RequestBody ExamPaperPageRequestVM model) {
-        MyTestUtil.print(model);
     	PageInfo<ExamPaper> pageInfo = examPaperService.taskExamPage(model);
         PageInfo<ExamResponseVM> page = PageInfoHelper.copyMap(pageInfo, e -> {
             ExamResponseVM vm = modelMapper.map(e, ExamResponseVM.class);

@@ -166,6 +166,7 @@ public class UserController extends BaseWXApiController {
     public RestResponse calculateUserScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {
         return RestResponse.ok(userService.calculateUserScore(queryUserScoreVO.getUserId() == null ? getCurrentUser().getId() : queryUserScoreVO.getUserId(), queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
+
     @ApiOperation(value="测试方法,计算用户积分排名", produces = "application/json; charset=utf-8")
     @RequestMapping(value = "/calculateUsersScore", method = RequestMethod.POST)
     public RestResponse calculateUsersScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {

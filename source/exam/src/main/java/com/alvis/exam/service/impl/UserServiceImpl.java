@@ -164,22 +164,46 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return userMapper.selectByWxOpenId(wxOpenId);
     }
 
+    /**
+     * @Author lz
+     * @Description: 计算单个用户积分
+     * @param: [userId, startTime, endTime]
+     * @Date: 2019/11/7 14:20
+     **/
     @Override
     public Integer calculateUserScore(Integer userId, Date startTime, Date endTime) {
         //int  examPaperScore= examPaperAnswerMapper.calculateExamPaperScore(userId,starTime,endTime);
         return userService.calculateUserArticleScore(userId, startTime, endTime);
     }
 
+    /**
+     * @Author lz
+     * @Description: 计算单个用户阅读积分
+     * @param: [userId, startTime, endTime]
+     * @Date: 2019/11/7 14:20
+     **/
     @Override
     public Integer calculateUserArticleScore(Integer userId, Date startTime, Date endTime) {
         return userMapper.calculateUserArticleScore(userId, startTime, endTime);
     }
 
+    /**
+     * @Author lz
+     * @Description: 计算所有用户积分
+     * @param: [userId, startTime, endTime]
+     * @Date: 2019/11/7 14:20
+     **/
     @Override
     public List<Map<String, Object>> calculateUsersScore(Date startTime, Date endTime) {
         return userService.calculateUsersArticleScore(startTime, endTime);
     }
 
+    /**
+     * @Author lz
+     * @Description: 计算所有用户阅读积分
+     * @param: [userId, startTime, endTime]
+     * @Date: 2019/11/7 14:20
+     **/
     @Override
     public List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime) {
         return userMapper.calculateUsersArticleScore(startTime, endTime);
