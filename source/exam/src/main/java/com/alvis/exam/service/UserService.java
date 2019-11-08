@@ -3,6 +3,8 @@ package com.alvis.exam.service;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
+import com.alvis.exam.viewmodel.student.article.UserDto;
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
 
 import java.util.Date;
@@ -141,4 +143,10 @@ public interface UserService extends BaseService<User> {
     List<Map<String,Object>> calculateUsersScore(Date startTime, Date endTime);
 
     List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime);
+
+    /**
+     * 根据时间查询用户积分排名
+     */
+
+    PageInfo<UserDto> selectUserRanking(Date beginTime, Date endTime, MessageRequestVM requestVM);
 }

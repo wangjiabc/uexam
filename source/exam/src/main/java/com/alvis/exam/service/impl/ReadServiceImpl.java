@@ -32,10 +32,7 @@ public class ReadServiceImpl implements ReadService {
         );
     }
 
-    @Override
-    public List<Article> findAll() {
-        return articleMapper.findAll();
-    }
+
 
     @Override
     public void saveReadState(ReadState readState) {
@@ -43,42 +40,63 @@ public class ReadServiceImpl implements ReadService {
     }
 
     @Override
-    public int findIntegrate(Integer useId) {
-        List<ReadState> list = readStateMapper.selectByUseId(useId);
+    public int findIntegrate(Integer useId,Integer articleId) {
+        ReadState readState1 = new ReadState();
+        readState1.setUserId(useId);
+        readState1.setArticleId(articleId);
+        List<ReadState> list = readStateMapper.selectByTwoId(readState1);
         int count = 0;
         List<Integer> list1 = new ArrayList<>();
         for (ReadState readState : list) {
             int readTime = readState.getReadTime();
-            if(readTime != 0){
+            if (readTime != 0) {
                 list1.add(readTime);
             }
         }
-        if(list1 != null && list1.size() > 0){
+        if (list1 != null && list1.size() > 0) {
             //取数组中的最大值
 //            int max = Collections.max(list1);
             int max = getMax(list1);
             count = max;
-        }else {
+        } else {
             count = 0;
         }
         return count;
     }
 
+
+
+
+    @Override
+    public Integer findJiFen(Integer userId, Integer id) {
+        ReadState readState = new ReadState();
+        readState.setArticleId(id);
+        readState.setUserId(userId);
+        List<ReadState> list = readStateMapper.selectByTwoId(readState);
+        int jiFen = 0;
+        for (ReadState state : list) {
+            Integer count = state.getCount();
+            jiFen += count;
+        }
+
+        return jiFen;
+    }
+
     /**
      * 取list集合中的最大值
+     *
      * @param list
      * @return
      */
-    public static int getMax(List<Integer> list){
+    public static int getMax(List<Integer> list) {
         int max = list.get(0);
         for (int i = 0; i < list.size(); i++) {
-            if(max < list.get(i)){
+            if (max < list.get(i)) {
                 max = list.get(i);
             }
         }
         return max;
     }
-
 
 
 }

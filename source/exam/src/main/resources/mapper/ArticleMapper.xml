@@ -222,5 +222,23 @@
     WHERE id = #{id,jdbcType=INTEGER};
   </select>
 
+  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.article.ArticleDto">
+    <if test="typeId == 1">
+      SELECT *
+      FROM t_article as ta
+      RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) as trs
+      ON trs.article_id = ta.id;
+    </if>
+    <if test="typeId == 2">
+      SELECT *
+      FROM t_article ta RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs ON trs.article_id = ta.id;
+    </if>
+    <if test="typeId == 3">
+      SELECT *
+      FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;
+    </if>
+  </select>
+
+
 
 </mapper>

@@ -14,9 +14,11 @@ public interface ReadService {
 
     PageInfo<Article> page(MessagePageRequestVM requestVM);
 
-    List<Article> findAll();
 
     void saveReadState(ReadState readState);
 
-    int findIntegrate(Integer useId);
+    int findIntegrate(Integer useId,Integer articleId);
+
+
+    Integer findJiFen(Integer userId, Integer id);
 }

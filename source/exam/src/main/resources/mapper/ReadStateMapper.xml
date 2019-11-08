@@ -7,9 +7,11 @@
     <result column="read_time" jdbcType="INTEGER" property="readTime" />
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, article_id, read_time, count, user_id
+    id, article_id, read_time, count, user_id, start_time, state
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -23,9 +25,11 @@
   </delete>
   <insert id="insert" parameterType="com.alvis.exam.domain.ReadState">
     insert into t_read_state (id, article_id, read_time, 
-      count, user_id)
+      count, user_id, start_time, 
+      state)
     values (#{id,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{readTime,jdbcType=INTEGER}, 
-      #{count,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER})
+      #{count,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.ReadState">
     insert into t_read_state
@@ -45,6 +49,12 @@
       <if test="userId != null">
         user_id,
       </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -61,6 +71,12 @@
       </if>
       <if test="userId != null">
         #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -79,6 +95,12 @@
       <if test="userId != null">
         user_id = #{userId,jdbcType=INTEGER},
       </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -87,14 +109,21 @@
     set article_id = #{articleId,jdbcType=INTEGER},
       read_time = #{readTime,jdbcType=INTEGER},
       count = #{count,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER}
+      user_id = #{userId,jdbcType=INTEGER},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByUseId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select *
-    from t_read_state
-    where user_id = #{useId,jdbcType=INTEGER}
+  <select id="selectByTwoId" parameterType="com.alvis.exam.domain.ReadState" resultMap="BaseResultMap">
+    select * from t_read_state
+    where user_id = #{userId,jdbcType=INTEGER}
+    and article_id = #{articleId,jdbcType=INTEGER}
   </select>
 
+  <select id="selectByUseId" parameterType="com.alvis.exam.domain.ReadState" resultMap="BaseResultMap">
+    select *
+    from t_read_state
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

@@ -8,6 +8,9 @@ import com.alvis.exam.repository.ExamPaperAnswerMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
+import com.alvis.exam.viewmodel.student.article.UserDto;
+import com.alvis.exam.viewmodel.student.article.UserDtoVM;
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +20,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -31,7 +35,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private final static String CACHE_NAME = "User";
     private final UserMapper userMapper;
     private final ApplicationEventPublisher eventPublisher;
-    @Autowired
+    @Resource
     private ExamPaperAnswerMapper examPaperAnswerMapper;
     @Autowired
     private UserService userService;
@@ -185,5 +189,19 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return userMapper.calculateUsersArticleScore(startTime, endTime);
     }
 
+    /**
+     *根据时间查询用户积分排名
+     */
 
+    @Override
+    public PageInfo<UserDto> selectUserRanking(Date beginTime, Date endTime, MessageRequestVM requestVM){
+        UserDtoVM userDtoVM=new UserDtoVM();
+        userDtoVM.setBeginTime(beginTime);
+        userDtoVM.setEndTime(endTime);
+        userDtoVM.setPageIndex(requestVM.getPageIndex());
+        userDtoVM.setPageSize(requestVM.getPageSize());
+        return PageHelper.startPage(userDtoVM.getPageIndex(), userDtoVM.getPageSize(), "id desc").doSelectPageInfo(() ->
+                userMapper.selectUserRanking(userDtoVM)
+        );
+    }
 }

@@ -7,7 +7,9 @@ import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ReadService;
 import com.alvis.exam.service.UploadService;
 import com.alvis.exam.utility.DateTimeUtil;
+import com.alvis.exam.utility.ListUtils;
 import com.alvis.exam.utility.PageInfoHelper;
+import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.alvis.exam.viewmodel.student.exam.ExamPaperPageResponseVM;
 import com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM;
@@ -26,6 +28,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -73,8 +76,8 @@ public class ArticleController extends BaseWXApiController {
         //查询readState表中该用户读取这篇文章总时长
         User user = getCurrentUser();
         Integer useId = user.getId();  //得到useId
-        //根据useId查询该用户阅读文章的最大时长
-        int count = readService.findIntegrate(useId);
+        //根据useId和articleId 查询该用户阅读该文章的最大时长
+        int count = readService.findIntegrate(useId,id);
 
         Article article2 = new Article();
         article2.setContent(details);       //文章详情
@@ -98,26 +101,42 @@ public class ArticleController extends BaseWXApiController {
         //拿到下限时长
         Article article1 = articleService.find(id);
         Integer lowerLimit = article1.getReadTimeL();     //下限时长
-
         Integer integrate = article1.getReadTimeU();    //积分
+
         //阅读总时长 小于  下限时长时  积分为0
+        ReadState readState = new ReadState();
+        readState.setArticleId(id);        //文章id
+        readState.setReadTime(time);          //阅读时长
+        readState.setUserId(getCurrentUser().getId());
+        readState.setStartTime(new Date());     //阅读结束时间
         if(time < lowerLimit*1000){
             //将阅读信息存到read表中
-            ReadState readState = new ReadState();
-            readState.setArticleId(id);        //文章id
             readState.setCount(0);             //文章积分
-            readState.setReadTime(time);          //阅读时长
-            readState.setUserId(getCurrentUser().getId());
+            readState.setState("在读");
             readService.saveReadState(readState);   //存储到read表
-        }else {
-            //将阅读信息存到read表中
-            ReadState readState = new ReadState();
-            readState.setArticleId(id);        //文章id
-            readState.setCount(integrate);     //文章积分
-            readState.setReadTime(time);       //阅读时长
-            readState.setUserId(getCurrentUser().getId());
-            readService.saveReadState(readState);   //存储到read表
+        }else{
+            //判断用户阅读该文章是否已经获取了积分
+            Integer userId = getCurrentUser().getId();
+            Integer jiFen = readService.findJiFen(userId, id);
+            if(jiFen == 0){
+                //将阅读信息存到read表中
+                readState.setCount(integrate);     //文章积分
+                readState.setState("已读");
+                readService.saveReadState(readState);   //存储到read表
+            }
+
+
         }
+//        //查询readState表中该用户读取这篇文章总时长
+//        User user = getCurrentUser();
+//        Integer useId = user.getId();  //得到useId
+//        //根据useId,articleId查询该用户阅读该文章的最大时长
+//        int count = readService.findIntegrate(useId,id);
+//        //积分满时存一次数据，后面再阅读此文章不进行数据存储
+//        if(count != integrate){
+//            readService.saveReadState(readState);   //存储到read表
+//        }
+
         return RestResponse.ok();
     }
 
@@ -126,17 +145,31 @@ public class ArticleController extends BaseWXApiController {
 
     /**
      * 根据阅读状态返回文章列表
-     * 阅读状态：未读，在读，已读
+     * 阅读状态：已读1，在读2，未读3
      * @param
      */
-    @RequestMapping(value = "/typeArticleList")
-    public RestResponse<PageInfo<Article>> typeArticleList() {
-        User user = getCurrentUser();
-        Integer useId = user.getId();  //得到useId
-        //根据useId查询该用户阅读文章的总时长
+    @RequestMapping(value = "typeArticleList")
+    public RestResponse<PageInfo<Article>> typeArticleList(Integer state,MessageRequestVM messageRequestVM) {
 
+        messageRequestVM.setReceiveUserId(getCurrentUser().getId());
+        PageInfo<Article> articlePageInfo = articleService.articlePage(state,messageRequestVM);
+        List<Article> list = articlePageInfo.getList();
+        return RestResponse.ok(articlePageInfo);
+    }
 
-        return RestResponse.ok();
+    /**
+     * 自定义上传图片
+     * @param
+     */
+    @RequestMapping(value = "showImages")
+    public List<String> showImages(MultipartFile[] file) {
+        List<String> list = new ArrayList<>();
+        for (MultipartFile multipartFile : file) {
+            Map<String, String> upload = UploadUtils.upload(multipartFile);
+            String fileNameNew = upload.get("fileNameNew");
+            list.add(fileNameNew);
+        }
+        return list;
     }
 
 }

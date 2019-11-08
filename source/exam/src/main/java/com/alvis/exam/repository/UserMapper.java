@@ -3,6 +3,8 @@ package com.alvis.exam.repository;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
+import com.alvis.exam.viewmodel.student.article.UserDto;
+import com.alvis.exam.viewmodel.student.article.UserDtoVM;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -150,4 +152,10 @@ public interface UserMapper extends BaseMapper<User> {
     int calculateUserArticleScore(@Param("userId")Integer userId, @Param("startTime")Date startTime, @Param("endTime")Date endTime);
 
     List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime);
+
+    /**
+     * 根据时间查询用户积分排名
+     * @param userDtoVM
+     */
+    List<UserDto> selectUserRanking(UserDtoVM userDtoVM);
 }

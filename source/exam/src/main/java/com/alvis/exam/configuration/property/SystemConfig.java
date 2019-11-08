@@ -16,6 +16,16 @@ public class SystemConfig {
     private List<String> securityIgnoreUrls;
     private WxConfig wx;
     private QnConfig qn;
+    private UrlConfig url;
+
+	public UrlConfig getUrl() {
+		return url;
+	}
+
+	public void setUrl(UrlConfig url) {
+		this.url = url;
+	}
+
 	public PasswordKeyConfig getPwdKey() {
 		return pwdKey;
 	}

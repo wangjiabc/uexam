@@ -448,5 +448,26 @@
         GROUP BY user_id ORDER BY score desc;
     </select>
 
+    <select id="selectUserRanking" resultType="java.util.Map">
+        SELECT
+        a.user_name,
+        a.age,
+        a.phone,
+        a.sex,
+        b.count,
+        b.start_time
+        FROM
+        t_user a,
+        t_read_state b
+        WHERE
+        a.id = b.user_id
+        AND b.count > 0
+        <if test="beginTime != null">
+            AND start_time <![CDATA[ > ]]> #{beginTime}
+        </if>
+        <if test="endTime != null">
+            AND start_time <![CDATA[ < ]]> #{endTime}
+        </if>
+    </select>
 
 </mapper>

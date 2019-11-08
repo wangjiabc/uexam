@@ -33,4 +33,8 @@ public interface ArticleService {
     String findDetails(Integer id);
 
     Article find(Integer id);
+
+    List<Integer> findArticleId();
+
+    PageInfo<Article> articlePage( Integer x,MessageRequestVM messageRequestVM);
 }

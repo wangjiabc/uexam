@@ -17,6 +17,7 @@ import com.alvis.exam.service.UserService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.WxUtil;
+import com.alvis.exam.viewmodel.student.article.UserDto;
 import com.alvis.exam.viewmodel.student.user.*;
 import com.alvis.exam.viewmodel.wx.student.user.QueryUserScoreVO;
 import com.github.pagehelper.PageInfo;
@@ -170,6 +171,12 @@ public class UserController extends BaseWXApiController {
     @RequestMapping(value = "/calculateUsersScore", method = RequestMethod.POST)
     public RestResponse calculateUsersScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {
         return RestResponse.ok(userService.calculateUsersScore(queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
+    }
+
+    @RequestMapping(value = "/selectUserRanking", method = RequestMethod.POST)
+    public  RestResponse<PageInfo<UserDto>> selectUserRanking(@RequestBody Date beginTime, Date endTime, MessageRequestVM requestVM){
+        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(beginTime, endTime, requestVM);
+        return  RestResponse.ok(userDtoPageInfo);
     }
 
 }
