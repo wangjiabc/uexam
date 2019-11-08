@@ -15,10 +15,7 @@ import com.alvis.exam.viewmodel.admin.exam.ExamPaperTitleItemVM;
 import com.alvis.exam.viewmodel.admin.exam.ExamResponseVM;
 import com.alvis.exam.viewmodel.admin.question.QuestionEditRequestVM;
 import com.github.pagehelper.PageInfo;
-import com.voucher.manage.tools.MyTestUtil;
-
 import lombok.AllArgsConstructor;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -52,7 +49,6 @@ public class ExamPaperController extends BaseApiController {
 
     @RequestMapping(value = "/taskExamPage", method = RequestMethod.POST)
     public RestResponse<PageInfo<ExamResponseVM>> taskExamPageList(@RequestBody ExamPaperPageRequestVM model) {
-        MyTestUtil.print(model);
     	PageInfo<ExamPaper> pageInfo = examPaperService.taskExamPage(model);
         PageInfo<ExamResponseVM> page = PageInfoHelper.copyMap(pageInfo, e -> {
             ExamResponseVM vm = modelMapper.map(e, ExamResponseVM.class);
