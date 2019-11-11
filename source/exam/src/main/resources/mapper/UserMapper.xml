@@ -462,9 +462,6 @@
         WHERE
         a.id = b.user_id
 
-        and
-        a.id = #{id,jdbcType=INTEGER}
-
         AND b.count > 0
         <if test="beginTime != null">
             AND start_time <![CDATA[ > ]]> #{beginTime}

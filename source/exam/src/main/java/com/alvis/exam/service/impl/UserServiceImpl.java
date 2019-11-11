@@ -221,12 +221,11 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     public PageInfo<UserDto> selectUserRanking(Date beginTime, Date endTime, MessageRequestVM requestVM){
 
         UserDtoVM userDtoVM=new UserDtoVM();
-        userDtoVM.setId(requestVM.getReceiveUserId());
         userDtoVM.setBeginTime(beginTime);
         userDtoVM.setEndTime(endTime);
         userDtoVM.setPageIndex(requestVM.getPageIndex());
         userDtoVM.setPageSize(requestVM.getPageSize());
-        return PageHelper.startPage(userDtoVM.getPageIndex(), userDtoVM.getPageSize(), "id desc").doSelectPageInfo(() ->
+        return PageHelper.startPage(userDtoVM.getPageIndex(), userDtoVM.getPageSize(), "b.count desc").doSelectPageInfo(() ->
                 userMapper.selectUserRanking(userDtoVM)
         );
     }
