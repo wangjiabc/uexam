@@ -1,9 +1,10 @@
 package com.alvis.exam.service.impl;
 
-import com.alvis.exam.domain.other.KeyValue;
-import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.UserDto;
+import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
+import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.repository.ExamPaperAnswerMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
@@ -209,5 +210,13 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return userMapper.calculateUsersArticleScore(startTime, endTime);
     }
 
-
+    /**
+     *根据时间查询用户积分排名
+     * @param startTime
+     *
+     */
+    @Override
+    public List<UserDto> selectUserRanking(Date startTime, Date endTime){
+        return  userMapper.selectUserRanking(startTime,endTime);
+    }
 }

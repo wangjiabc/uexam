@@ -2,36 +2,20 @@ package com.alvis.exam.controller.wx.student;
 
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.controller.wx.BaseWXApiController;
-import com.alvis.exam.domain.*;
+import com.alvis.exam.domain.Article;
+import com.alvis.exam.domain.ReadState;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ReadService;
-import com.alvis.exam.service.UploadService;
-import com.alvis.exam.utility.DateTimeUtil;
-import com.alvis.exam.utility.PageInfoHelper;
-import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
-import com.alvis.exam.viewmodel.student.exam.ExamPaperPageResponseVM;
-import com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
-import com.alvis.exam.viewmodel.student.user.MessageResponseVM;
-import com.alvis.exam.viewmodel.wx.student.KeyObjDTO;
 import com.github.pagehelper.PageInfo;
-import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
-import java.text.ParseException;
-import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Controller

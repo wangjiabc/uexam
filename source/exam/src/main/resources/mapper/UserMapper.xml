@@ -445,7 +445,26 @@
         <if test="endTime != null">
             AND create_time <![CDATA[ < ]]> #{endTime}
         </if>
-        GROUP BY user_id ORDER BY score desc;
+        GROUP BY user_id ORDER BY score desc
+    </select>
+    <select id="selectUserRanking" resultType="java.util.Map">
+        SELECT
+        a.user_name,
+        a.age,
+        a.phone,
+        a.sex,
+        b.count,
+        b.start_time
+        FROM
+        t_user a,
+        t_read_state b
+        WHERE
+        a.id = b.user_id
+        AND b.count > 0
+        AND create_time >= #{startTime}
+        <if test="endTime != null">
+            AND create_time <![CDATA[ < ]]> #{endTime}
+        </if>
     </select>
 
 
