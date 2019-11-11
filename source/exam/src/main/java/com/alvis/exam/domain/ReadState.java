@@ -1,6 +1,7 @@
 package com.alvis.exam.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class ReadState implements Serializable {
     private Integer id;
@@ -12,6 +13,10 @@ public class ReadState implements Serializable {
     private Integer count;
 
     private Integer userId;
+
+    private Date startTime;
+
+    private String state;
 
     private static final long serialVersionUID = 1L;
 
@@ -53,5 +58,21 @@ public class ReadState implements Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
     }
 }

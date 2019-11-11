@@ -447,7 +447,8 @@
         </if>
         GROUP BY user_id ORDER BY score desc
     </select>
-    <select id="selectUserRanking" resultType="java.util.Map">
+
+    <select id="selectUserRanking" resultType="map" parameterType="com.alvis.exam.viewmodel.student.article.UserDtoVM">
         SELECT
         a.user_name,
         a.age,
@@ -461,11 +462,12 @@
         WHERE
         a.id = b.user_id
         AND b.count > 0
-        AND create_time >= #{startTime}
+        <if test="beginTime != null">
+        AND start_time <![CDATA[ > ]]> #{beginTime}
+    </if>
         <if test="endTime != null">
-            AND create_time <![CDATA[ < ]]> #{endTime}
+            AND start_time <![CDATA[ < ]]> #{endTime}
         </if>
     </select>
-
 
 </mapper>

@@ -32,46 +32,12 @@ public class UploadController extends BaseApiController {
     @Autowired
     private UploadService uploadService;
 
-
-//    /**
-//     * 返回文章分类
-//     *
-//     * @param
-//     */
-//    @RequestMapping(value = "/typeList", method = RequestMethod.POST)
-//    public List<String> typeList() {
-//        List<ArticleType> lists = uploadService.findArticleType();
-//        List<String> list = new ArrayList<>();  //存ArticleType表的typeName
-//        for (ArticleType articleType : lists) {
-//            String typeName = articleType.getTypeName();
-//            list.add(typeName);
-//        }
-//        return list;
-//    }
-
     /**
      * 存储上传文章
      */
     @RequestMapping("save")
     public void save(@RequestBody Article article) {
         List<ArticleType> lists = uploadService.findArticleType();
-//        ArticleVM articleVM = new ArticleVM();
-//        String name = jsonObject.getString("name");     //文章标题
-//        String author = jsonObject.getString("author"); //文章作者
-//        String doc = jsonObject.getString("doc");       //文章内容
-//        String a = jsonObject.getString("down");     //下限时长
-//        String type = jsonObject.getString("selectType");   //文章类型
-//        int down = Integer.parseInt(a);
-
-//        String b = jsonObject.getString("count");   //文章类型
-//        int count = Integer.parseInt(b);
-//
-//        articleVM.setTitle(name);
-//        articleVM.setAuthor(author);
-//        articleVM.setContent(doc);
-//        articleVM.setReadTimeL(down);
-//        articleVM.setReadTimeU(count);
-//        articleVM.setState(1);
         int typeId = 0; //接收typeId
         for (ArticleType articleType : lists) {
             String typeName = articleType.getTypeName();

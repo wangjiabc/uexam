@@ -140,8 +140,8 @@ public class UserController extends BaseApiController {
     }
 
     @RequestMapping(value = "/selectUserRanking", method = RequestMethod.POST)
-    public  RestResponse<List<UserDto>> selectUserRanking(@RequestBody Date startTime, Date endTime){
-        List<UserDto> list=userService.selectUserRanking(startTime,endTime);
-        return  RestResponse.ok(list);
+    public  RestResponse<PageInfo<UserDto>> selectUserRanking(@RequestBody Date beginTime, Date endTime, MessageRequestVM requestVM){
+        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(beginTime, endTime, requestVM);
+        return  RestResponse.ok(userDtoPageInfo);
     }
 }

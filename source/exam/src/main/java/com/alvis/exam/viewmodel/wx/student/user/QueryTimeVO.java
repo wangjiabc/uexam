@@ -2,6 +2,7 @@ package com.alvis.exam.viewmodel.wx.student.user;
 
 import com.alvis.exam.utility.DateTimeUtil;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,6 +15,8 @@ import java.util.Date;
 public class QueryTimeVO {
     //@JsonFormat用于单独配置,会覆盖全局配置
     //@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     Date startTime = DateTimeUtil.getMonthStartDay();
-    Date endTime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    Date endTime = DateTimeUtil.getMonthEndDay();
 }

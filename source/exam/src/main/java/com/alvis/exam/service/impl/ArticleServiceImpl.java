@@ -2,10 +2,10 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.repository.ArticleMapper;
 import com.alvis.exam.repository.ArticleTypeMapper;
 import com.alvis.exam.service.ArticleService;
+import com.alvis.exam.utility.ListUtils;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.alvis.exam.viewmodel.student.article.ArticleDto;
@@ -15,6 +15,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -107,5 +108,33 @@ public class ArticleServiceImpl implements ArticleService {
         article1.setId(id);
         Article article = articleMapper.selectById(article1);
         return article;
+    }
+
+    /**
+     * 获取所有文章id
+     * @return
+     */
+    @Override
+    public List<Integer> findArticleId() {
+        List<Article> all = articleMapper.findAll();
+        List<Integer> arrayList = new ArrayList<>();
+        for (Article article : all) {
+            Integer id = article.getId();
+            arrayList.add(id);
+        }
+        return arrayList;
+    }
+
+    @Override
+    public PageInfo<Article> articlePage(Integer state,MessageRequestVM requestVM) {
+        ArticleDto articleDto = new ArticleDto();
+        articleDto.setTypeId(state);
+        articleDto.setReceiveUserId(requestVM.getReceiveUserId());
+        articleDto.setPageIndex(requestVM.getPageIndex());
+        articleDto.setPageSize(requestVM.getPageSize());
+
+        return PageHelper.startPage(articleDto.getPageIndex(), articleDto.getPageSize(), "id desc").doSelectPageInfo(() ->
+                    articleMapper.articlePage(articleDto)
+            );
     }
 }

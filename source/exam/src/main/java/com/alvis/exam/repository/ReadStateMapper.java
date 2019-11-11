@@ -19,5 +19,7 @@ public interface ReadStateMapper {
 
     int updateByPrimaryKey(ReadState record);
 
-    List<ReadState> selectByUseId(Integer useId);
+    List<ReadState> selectByUseId(ReadState readState);
+
+    List<ReadState> selectByTwoId(ReadState readState1);
 }

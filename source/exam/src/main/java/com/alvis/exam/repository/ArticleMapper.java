@@ -43,4 +43,7 @@ public interface ArticleMapper {
     List<Article> studentPage(ArticleDto articleDto);
 
     Article selectById(Article article);
+
+    List<Article> articlePage(ArticleDto articleDto);
+
 }
