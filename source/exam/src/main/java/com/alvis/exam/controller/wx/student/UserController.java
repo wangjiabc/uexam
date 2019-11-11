@@ -19,11 +19,13 @@ import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.WxUtil;
 import com.alvis.exam.viewmodel.student.article.UserDto;
 import com.alvis.exam.viewmodel.student.user.*;
+import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import com.alvis.exam.viewmodel.wx.student.user.QueryUserScoreVO;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -31,6 +33,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -174,9 +177,12 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok(userService.calculateUsersScore(queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
-    @RequestMapping(value = "/selectUserRanking", method = RequestMethod.POST)
-    public  RestResponse<PageInfo<UserDto>> selectUserRanking(@RequestBody Date beginTime, Date endTime, MessageRequestVM requestVM){
-        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(beginTime, endTime, requestVM);
+    @RequestMapping(value = "selectUserRanking",method = RequestMethod.POST)
+    public  RestResponse<PageInfo<UserDto>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
+        Date startTime = queryTimeVO.getStartTime();
+        Date endTime = queryTimeVO.getEndTime();
+
+        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(startTime, endTime, requestVM);
         return  RestResponse.ok(userDtoPageInfo);
     }
 
