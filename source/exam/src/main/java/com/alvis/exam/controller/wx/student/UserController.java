@@ -179,6 +179,8 @@ public class UserController extends BaseWXApiController {
 
     @RequestMapping(value = "selectUserRanking",method = RequestMethod.POST)
     public  RestResponse<PageInfo<UserDto>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
+        Integer id = getCurrentUser().getId();
+        requestVM.setReceiveUserId(id);
         Date startTime = queryTimeVO.getStartTime();
         Date endTime = queryTimeVO.getEndTime();
 
