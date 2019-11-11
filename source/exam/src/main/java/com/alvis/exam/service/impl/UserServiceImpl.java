@@ -218,7 +218,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public PageInfo<UserDto> selectUserRanking(Date beginTime, Date endTime, MessageRequestVM requestVM){
+
         UserDtoVM userDtoVM=new UserDtoVM();
+        userDtoVM.setId(requestVM.getReceiveUserId());
         userDtoVM.setBeginTime(beginTime);
         userDtoVM.setEndTime(endTime);
         userDtoVM.setPageIndex(requestVM.getPageIndex());
