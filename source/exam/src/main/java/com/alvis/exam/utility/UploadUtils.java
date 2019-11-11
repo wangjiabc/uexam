@@ -40,15 +40,15 @@ public class UploadUtils {
             imgName = targetFile.getName();
             // 图片显示地址，例如"http://localhost:8080/imgFiles/" + imgName
             imgName = parent + imgName;
-            System.out.println(imgName);
+//            System.out.println(imgName);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("上传的文件原名称:" + fileName);
+        System.out.println("上传的文件的原名称:" + fileName);
         String url = "http://192.168.100.185:8091/images/";
         String sqlSaveUrl = "url/images/" + fileNameNew;   //数据库存储地址
         articleType.setPathDeposit(sqlSaveUrl);
-        System.out.println("本地图片磁盘地址:" + imgName);
+        System.out.println("本地图片的磁盘地址:" + imgName);
         System.out.println("服务器图片磁盘地址:" + url+fileNameNew);
 
         HashMap<String, String> map = new HashMap<>();

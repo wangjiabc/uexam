@@ -157,19 +157,6 @@ public class ArticleController extends BaseWXApiController {
         return RestResponse.ok(articlePageInfo);
     }
 
-    /**
-     * 自定义上传图片
-     * @param
-     */
-    @RequestMapping(value = "showImages")
-    public List<String> showImages(MultipartFile[] file) {
-        List<String> list = new ArrayList<>();
-        for (MultipartFile multipartFile : file) {
-            Map<String, String> upload = UploadUtils.upload(multipartFile);
-            String fileNameNew = upload.get("fileNameNew");
-            list.add(fileNameNew);
-        }
-        return list;
-    }
+
 
 }
