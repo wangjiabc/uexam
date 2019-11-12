@@ -448,7 +448,7 @@
         GROUP BY user_id ORDER BY score desc
     </select>
 
-    <select id="selectUserRanking" resultType="map" parameterType="com.alvis.exam.viewmodel.student.article.UserDtoVM">
+    <select id="selectUserRanking" resultType="com.alvis.exam.viewmodel.student.article.UserDto" parameterType="com.alvis.exam.viewmodel.student.article.UserDtoVM">
         SELECT
         a.user_name,
         a.age,
@@ -461,10 +461,6 @@
         t_read_state b
         WHERE
         a.id = b.user_id
-
-        and
-        a.id = #{id,jdbcType=INTEGER}
-
         AND b.count > 0
         <if test="beginTime != null">
             AND start_time <![CDATA[ > ]]> #{beginTime}

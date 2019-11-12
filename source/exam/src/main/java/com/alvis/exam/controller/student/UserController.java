@@ -6,7 +6,6 @@ import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserEventLog;
-import com.alvis.exam.domain.dto.UserDto;
 import com.alvis.exam.domain.enums.RoleEnum;
 import com.alvis.exam.domain.enums.UserStatusEnum;
 import com.alvis.exam.event.UserEvent;
@@ -139,9 +138,4 @@ public class UserController extends BaseApiController {
         return RestResponse.ok();
     }
 
-    @RequestMapping(value = "/selectUserRanking", method = RequestMethod.POST)
-    public  RestResponse<PageInfo<UserDto>> selectUserRanking(@RequestBody Date beginTime, Date endTime, MessageRequestVM requestVM){
-        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(beginTime, endTime, requestVM);
-        return  RestResponse.ok(userDtoPageInfo);
-    }
 }

@@ -225,7 +225,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         userDtoVM.setEndTime(endTime);
         userDtoVM.setPageIndex(requestVM.getPageIndex());
         userDtoVM.setPageSize(requestVM.getPageSize());
-        return PageHelper.startPage(userDtoVM.getPageIndex(), userDtoVM.getPageSize(), "id desc").doSelectPageInfo(() ->
+        return PageHelper.startPage(userDtoVM.getPageIndex(), userDtoVM.getPageSize(), "b.count desc").doSelectPageInfo(() ->
                 userMapper.selectUserRanking(userDtoVM)
         );
     }

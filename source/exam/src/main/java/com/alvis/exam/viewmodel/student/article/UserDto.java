@@ -14,4 +14,6 @@ public class UserDto extends User {
 
     private Date startTime;
 
+    private Integer rank;
+
 }
