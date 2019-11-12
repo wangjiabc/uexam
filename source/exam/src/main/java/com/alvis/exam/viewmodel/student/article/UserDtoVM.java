@@ -12,15 +12,6 @@ public class UserDtoVM extends MessageRequestVM {
 	/**
 	 * 开始时间
 	 */
-	private Integer id;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	private Date beginTime;
 	/**

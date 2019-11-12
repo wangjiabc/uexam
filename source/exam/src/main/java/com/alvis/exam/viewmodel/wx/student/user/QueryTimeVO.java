@@ -16,7 +16,22 @@ public class QueryTimeVO {
     //@JsonFormat用于单独配置,会覆盖全局配置
     //@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    Date startTime = DateTimeUtil.getMonthStartDay();
+      Date  startTime = DateTimeUtil.getMonthStartDay();
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    Date endTime = DateTimeUtil.getMonthEndDay();
+     Date endTime = DateTimeUtil.getMonthEndDay();
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

@@ -9,5 +9,13 @@ import lombok.Data;
  */
 @Data
 public class QueryUserScoreVO extends QueryTimeVO{
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     Integer userId;
 }
