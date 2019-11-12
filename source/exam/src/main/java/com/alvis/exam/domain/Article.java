@@ -4,7 +4,6 @@ import com.alvis.exam.base.BasePage;
 
 import java.io.Serializable;
 import java.util.Date;
-
 public class Article extends BasePage implements Serializable {
     private Integer id;
 

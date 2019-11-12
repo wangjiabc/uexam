@@ -445,10 +445,10 @@
         <if test="endTime != null">
             AND create_time <![CDATA[ < ]]> #{endTime}
         </if>
-        GROUP BY user_id ORDER BY score desc;
+        GROUP BY user_id ORDER BY score desc
     </select>
 
-    <select id="selectUserRanking" resultType="map" parameterType="com.alvis.exam.viewmodel.student.article.UserDtoVM">
+    <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.UserDto" parameterType="com.alvis.exam.domain.dto.UserDtoVM">
         SELECT
         a.user_name,
         a.age,
@@ -461,7 +461,6 @@
         t_read_state b
         WHERE
         a.id = b.user_id
-
         AND b.count > 0
         <if test="beginTime != null">
             AND start_time <![CDATA[ > ]]> #{beginTime}

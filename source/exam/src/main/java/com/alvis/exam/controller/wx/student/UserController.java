@@ -7,6 +7,7 @@ import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserEventLog;
+import com.alvis.exam.domain.dto.UserDto;
 import com.alvis.exam.domain.enums.RoleEnum;
 import com.alvis.exam.domain.enums.UserStatusEnum;
 import com.alvis.exam.event.UserEvent;
@@ -17,7 +18,6 @@ import com.alvis.exam.service.UserService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.WxUtil;
-import com.alvis.exam.viewmodel.student.article.UserDto;
 import com.alvis.exam.viewmodel.student.user.*;
 import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import com.alvis.exam.viewmodel.wx.student.user.QueryUserScoreVO;
@@ -25,7 +25,6 @@ import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -33,7 +32,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -177,6 +175,12 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok(userService.calculateUsersScore(queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
+    /**
+     * 积分排名
+     * @param queryTimeVO   时间区间
+     * @param requestVM     分页对象
+     * @return
+     */
     @RequestMapping(value = "selectUserRanking",method = RequestMethod.POST)
     public  RestResponse<PageInfo<UserDto>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
 
@@ -185,6 +189,8 @@ public class UserController extends BaseWXApiController {
         PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(startTime, endTime, requestVM);
         return  RestResponse.ok(userDtoPageInfo);
     }
+
+
 
     /**
      * 返回个人资料

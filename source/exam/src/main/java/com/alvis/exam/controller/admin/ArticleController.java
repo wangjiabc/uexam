@@ -1,5 +1,6 @@
 package com.alvis.exam.controller.admin;
 
+import com.alibaba.fastjson.JSONObject;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
@@ -13,7 +14,6 @@ import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
-import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

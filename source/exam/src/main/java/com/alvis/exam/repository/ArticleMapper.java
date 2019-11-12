@@ -1,16 +1,9 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.Article;
-import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.Message;
-import com.alvis.exam.domain.MessageUser;
-import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
-import com.alvis.exam.viewmodel.student.article.ArticleDto;
-import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
+import com.alvis.exam.domain.dto.ArticleDto;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

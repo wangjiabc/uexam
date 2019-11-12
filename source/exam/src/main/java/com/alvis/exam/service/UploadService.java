@@ -2,15 +2,10 @@ package com.alvis.exam.service;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.Message;
-import com.alvis.exam.domain.MessageUser;
-import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageInfo;
-import net.sf.json.JSONArray;
 
 import java.util.List;
-import java.util.Map;
 
 public interface UploadService {
     //查看文章分类

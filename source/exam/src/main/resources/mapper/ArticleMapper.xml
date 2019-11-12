@@ -206,12 +206,12 @@
     SELECT * FROM t_article WHERE type_id = #{type_id,jdbcType=INTEGER};
   </select>
 
-  <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.article.ArticleDto">
+  <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.dto.ArticleDto">
     select *
     from t_article
     WHERE type_id = #{typeId,jdbcType=INTEGER};
   </select>
-<!--  <resultMap id="pageMap" type="com.alvis.exam.viewmodel.student.article.ArticleDto">-->
+<!--  <resultMap id="pageMap" type="com.alvis.exam.domain.dto.ArticleDto">-->
 <!--    <result column="typeId" property="typeId" jdbcType="INTEGER" />-->
 <!--    <result column="requestVM" property="requestVM" jdbcType="MessageRequestVM" />-->
 
@@ -222,7 +222,7 @@
     WHERE id = #{id,jdbcType=INTEGER};
   </select>
 
-  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.article.ArticleDto">
+  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.dto.ArticleDto">
     <if test="typeId == 1">
       SELECT *
       FROM t_article as ta
@@ -238,7 +238,6 @@
       FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;
     </if>
   </select>
-
 
 
 </mapper>

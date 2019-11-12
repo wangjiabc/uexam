@@ -1,15 +1,15 @@
 package com.alvis.exam.service.impl;
 
-import com.alvis.exam.domain.other.KeyValue;
-import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.UserDto;
+import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
+import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.repository.ExamPaperAnswerMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.viewmodel.student.article.UserDto;
-import com.alvis.exam.viewmodel.student.article.UserDtoVM;
+import com.alvis.exam.domain.dto.UserDtoVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -20,7 +20,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +34,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private final static String CACHE_NAME = "User";
     private final UserMapper userMapper;
     private final ApplicationEventPublisher eventPublisher;
-    @Resource
+    @Autowired
     private ExamPaperAnswerMapper examPaperAnswerMapper;
     @Autowired
     private UserService userService;

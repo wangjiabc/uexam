@@ -1,4 +1,4 @@
-package com.alvis.exam.viewmodel.student.article;
+package com.alvis.exam.domain.dto;
 
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import lombok.Data;
