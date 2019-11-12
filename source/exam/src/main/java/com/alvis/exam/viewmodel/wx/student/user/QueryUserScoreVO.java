@@ -1,5 +1,6 @@
 package com.alvis.exam.viewmodel.wx.student.user;
 
+import com.alvis.exam.viewmodel.QueryTimeVO;
 import lombok.Data;
 
 /**
@@ -8,7 +9,7 @@ import lombok.Data;
  * @date 2019/10/18
  */
 @Data
-public class QueryUserScoreVO extends QueryTimeVO{
+public class QueryUserScoreVO extends QueryTimeVO {
     public Integer getUserId() {
         return userId;
     }

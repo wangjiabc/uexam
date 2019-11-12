@@ -448,7 +448,7 @@
         GROUP BY user_id ORDER BY score desc
     </select>
 
-    <select id="selectUserRanking" resultType="com.alvis.exam.viewmodel.student.article.UserDto" parameterType="com.alvis.exam.viewmodel.student.article.UserDtoVM">
+    <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.article.UserDTO" parameterType="com.alvis.exam.viewmodel.QueryTimeVO">
         SELECT
         a.user_name,
         a.age,
@@ -462,8 +462,8 @@
         WHERE
         a.id = b.user_id
         AND b.count > 0
-        <if test="beginTime != null">
-            AND start_time <![CDATA[ > ]]> #{beginTime}
+        <if test="startTime != null">
+            AND start_time <![CDATA[ > ]]> #{startTime}
         </if>
         <if test="endTime != null">
             AND start_time <![CDATA[ < ]]> #{endTime}

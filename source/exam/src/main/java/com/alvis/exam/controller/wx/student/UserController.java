@@ -17,9 +17,9 @@ import com.alvis.exam.service.UserService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.WxUtil;
-import com.alvis.exam.viewmodel.student.article.UserDto;
+import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.viewmodel.student.user.*;
-import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
+import com.alvis.exam.viewmodel.QueryTimeVO;
 import com.alvis.exam.viewmodel.wx.student.user.QueryUserScoreVO;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -32,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -41,7 +42,7 @@ import java.util.stream.Collectors;
 /**
  * @author alvis
  */
-@Api(value = "微信端user",tags = "用户api")
+@Api(value = "微信端user", tags = "用户api")
 @Controller("WXStudentUserController")
 @RequestMapping(value = "/api/wx/student/user")
 @AllArgsConstructor
@@ -169,28 +170,25 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok(userService.calculateUserScore(queryUserScoreVO.getUserId() == null ? getCurrentUser().getId() : queryUserScoreVO.getUserId(), queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
-    @ApiOperation(value="测试方法,计算用户积分排名", produces = "application/json; charset=utf-8")
+    @ApiOperation(value = "测试方法,计算用户积分排名", produces = "application/json; charset=utf-8")
     @RequestMapping(value = "/calculateUsersScore", method = RequestMethod.POST)
     public RestResponse calculateUsersScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {
         return RestResponse.ok(userService.calculateUsersScore(queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
-    @RequestMapping(value = "selectUserRanking",method = RequestMethod.POST)
-    public  RestResponse<PageInfo<UserDto>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
+    @RequestMapping(value = "selectUserRanking", method = RequestMethod.POST)
+    public RestResponse<PageInfo<UserDTO>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
 
-        Date startTime = queryTimeVO.getStartTime();
-        Date endTime = queryTimeVO.getEndTime();
+        queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
 
-        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(startTime, endTime, requestVM);
-       /* //排名
-        for(int i=1;i<=userDtoPageInfo.getList().size();i++){
-            List<UserDto> dto=userDtoPageInfo.getList();
-            for(UserDto list:dto){
-                list.setRank(i);
-            }
-        }*/
+        PageInfo<UserDTO> userDtoPageInfo = userService.selectUserRanking(queryTimeVO, requestVM);
+        //排名
+        for (int i = 1, rank = userDtoPageInfo.getStartRow(); i <= userDtoPageInfo.getList().size(); i++) {
+            UserDTO userDTO = userDtoPageInfo.getList().get(i - 1);
+            userDTO.setRank(rank++);
+        }
 
-        return  RestResponse.ok(userDtoPageInfo);
+        return RestResponse.ok(userDtoPageInfo);
     }
 
 }

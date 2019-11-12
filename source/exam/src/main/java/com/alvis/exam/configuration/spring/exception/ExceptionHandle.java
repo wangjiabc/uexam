@@ -28,6 +28,7 @@ public class ExceptionHandle {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public RestResponse handler(MethodArgumentNotValidException e) {
+        logger.error(e.getMessage(), e);
         String errorMsg = e.getBindingResult().getAllErrors().stream().map(file -> {
             FieldError fieldError = (FieldError) file;
             return ErrorUtil.parameterErrorFormat(fieldError.getField(), fieldError.getDefaultMessage());
@@ -38,6 +39,7 @@ public class ExceptionHandle {
     @ExceptionHandler(BindException.class)
     @ResponseBody
     public RestResponse handler(BindException e) {
+        logger.error(e.getMessage(), e);
         String errorMsg = e.getBindingResult().getAllErrors().stream().map(file -> {
             FieldError fieldError = (FieldError) file;
             return ErrorUtil.parameterErrorFormat(fieldError.getField(), fieldError.getDefaultMessage());

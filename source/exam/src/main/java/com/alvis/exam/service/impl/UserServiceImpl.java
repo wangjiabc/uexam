@@ -1,6 +1,7 @@
 package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
 import com.alvis.exam.exception.BusinessException;
@@ -8,9 +9,8 @@ import com.alvis.exam.repository.ExamPaperAnswerMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.viewmodel.student.article.UserDto;
-import com.alvis.exam.viewmodel.student.article.UserDtoVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
+import com.alvis.exam.viewmodel.QueryTimeVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -217,15 +217,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
      */
 
     @Override
-    public PageInfo<UserDto> selectUserRanking(Date beginTime, Date endTime, MessageRequestVM requestVM){
+    public PageInfo<UserDTO> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
 
-        UserDtoVM userDtoVM=new UserDtoVM();
-        userDtoVM.setBeginTime(beginTime);
-        userDtoVM.setEndTime(endTime);
-        userDtoVM.setPageIndex(requestVM.getPageIndex());
-        userDtoVM.setPageSize(requestVM.getPageSize());
-        return PageHelper.startPage(userDtoVM.getPageIndex(), userDtoVM.getPageSize(), "b.count desc").doSelectPageInfo(() ->
-                userMapper.selectUserRanking(userDtoVM)
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "b.count desc").doSelectPageInfo(() ->
+                userMapper.selectUserRanking(queryTimeVO)
         );
     }
 }

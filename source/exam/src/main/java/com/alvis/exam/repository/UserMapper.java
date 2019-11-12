@@ -1,10 +1,10 @@
 package com.alvis.exam.repository;
 
-import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.article.UserDTO;
+import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.viewmodel.student.article.UserDto;
-import com.alvis.exam.viewmodel.student.article.UserDtoVM;
+import com.alvis.exam.viewmodel.QueryTimeVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -157,5 +157,5 @@ public interface UserMapper extends BaseMapper<User> {
      * 根据时间查询用户积分排名
      * @param userDtoVM
      */
-    List<UserDto> selectUserRanking(UserDtoVM userDtoVM);
+    List<UserDTO> selectUserRanking(QueryTimeVO queryTimeVO);
 }
