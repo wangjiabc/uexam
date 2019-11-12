@@ -18,5 +18,21 @@ public class QueryTimeVO {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
      Date  startTime = DateTimeUtil.getMonthStartDay();
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-     Date endTime = DateTimeUtil.getMonthEndDay();
+    Date endTime = DateTimeUtil.getMonthEndDay();
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

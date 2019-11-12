@@ -450,12 +450,12 @@
 
     <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.article.UserDTO" parameterType="com.alvis.exam.viewmodel.QueryTimeVO">
         SELECT
-        a.user_name,
+        a.user_name userName,
         a.age,
         a.phone,
         a.sex,
         b.count,
-        b.start_time
+        b.start_time startTime
         FROM
         t_user a,
         t_read_state b
