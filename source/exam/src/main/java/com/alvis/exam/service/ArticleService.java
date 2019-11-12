@@ -37,4 +37,6 @@ public interface ArticleService {
     List<Integer> findArticleId();
 
     PageInfo<Article> articlePage( Integer x,MessageRequestVM messageRequestVM);
+
+    void trunCate();
 }

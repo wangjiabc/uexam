@@ -137,4 +137,9 @@ public class ArticleServiceImpl implements ArticleService {
                     articleMapper.articlePage(articleDto)
             );
     }
+
+    @Override
+    public void trunCate() {
+
+    }
 }

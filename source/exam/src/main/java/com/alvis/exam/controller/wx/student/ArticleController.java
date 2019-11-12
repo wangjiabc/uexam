@@ -6,6 +6,7 @@ import com.alvis.exam.domain.*;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ReadService;
 import com.alvis.exam.service.UploadService;
+import com.alvis.exam.service.ViewPagerService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.ListUtils;
 import com.alvis.exam.utility.PageInfoHelper;
@@ -32,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.io.File;
 import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -47,6 +49,8 @@ public class ArticleController extends BaseWXApiController {
     private ReadService readService;
     @Resource
     private ArticleService articleService;
+    @Resource
+    private ViewPagerService viewPagerService;
 
     /**
      * 返回文章列表
@@ -158,5 +162,22 @@ public class ArticleController extends BaseWXApiController {
     }
 
 
+
+
+
+    /**
+     * 展示上传图片
+     * @param
+     */
+    @RequestMapping(value = "showImages")
+    public List<String>  showImages() {
+        List<ViewPager> viewPagers = viewPagerService.findAll();
+        List<String> arrayList = new ArrayList<>();
+        for (ViewPager viewPager : viewPagers) {
+            String address = viewPager.getAddress();
+            arrayList.add(address);
+        }
+        return arrayList;
+    }
 
 }

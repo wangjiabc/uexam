@@ -79,4 +79,10 @@
       address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findAll"  resultType="java.lang.String">
+    select
+    *
+    from view_pager
+  </select>
+
 </mapper>
