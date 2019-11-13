@@ -34,4 +34,9 @@ public class ViewPagerServiceImpl implements ViewPagerService {
         List<ViewPager> all = viewPagerMapper.findAll();
         return all;
     }
+
+    @Override
+    public void deleteImages(Integer id) {
+        viewPagerMapper.deleteByPrimaryKey(id);
+    }
 }

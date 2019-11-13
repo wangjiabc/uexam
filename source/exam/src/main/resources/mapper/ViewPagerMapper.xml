@@ -79,7 +79,7 @@
       address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <select id="findAll"  resultType="java.lang.String">
+  <select id="findAll"  resultType="com.alvis.exam.domain.ViewPager">
     select
     *
     from view_pager

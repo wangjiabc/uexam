@@ -43,6 +43,7 @@ public class ArticleController {
 
     /**
      * 返回文章分类
+     *
      * @param
      */
     @RequestMapping(value = "typeList")
@@ -57,9 +58,9 @@ public class ArticleController {
     }
 
 
-
     /**
      * 存储上传文章
+     *
      * @param jsonObject
      */
     @RequestMapping("saveArticle")
@@ -108,6 +109,7 @@ public class ArticleController {
 
     /**
      * 删除文章
+     *
      * @param
      * @return 返回状态码
      */
@@ -120,6 +122,7 @@ public class ArticleController {
 
     /**
      * 编辑文章
+     *
      * @param
      */
     @RequestMapping("updateArticle")
@@ -130,87 +133,85 @@ public class ArticleController {
 
     /**
      * 自定义上传图片:一张图片存一个地址
+     *
      * @param
      */
     @RequestMapping(value = "uploadImages")
-    public void uploadImages(MultipartFile[] file) {
-        //清除数据库以前的图片
-        viewPagerService.trunCate();
-        //删除文件夹下所有文件
+    public RestResponse uploadImages(MultipartFile file) {
 
+        //查询所有取size
+        int size = viewPagerService.findAll().size();
 
-        int count = 0;
-        for (MultipartFile multipartFile : file) {
-            String fileNameNew = null;
-            if(multipartFile != null){
-                //自定义上传位置
-                Map<String, String> map = UploadUtils.upload(multipartFile,"D:/manage-upload/images/wx/");
-                fileNameNew = map.get("fileNameNew");
-            }
-            else {
-                fileNameNew = "http://192.168.100.185:8091/images/wx/aaa.png";
-            }
-            ViewPager viewPager = new ViewPager();
-            viewPager.setName("轮播图_"+ (count++));
-            viewPager.setUploadTime(new Date());
-            viewPager.setAddress(fileNameNew);
-            viewPagerService.insert(viewPager);  //插入数据
+        String fileNameNew = null;
+        if (file != null) {
+            //自定义上传位置
+            Map<String, String> map = UploadUtils.upload(file, "D:/manage-upload/images/wx/");
+            fileNameNew = map.get("fileNameNew");
         }
+        ViewPager viewPager = new ViewPager();
+        viewPager.setName("轮播图_"+(size+1));
+        viewPager.setUploadTime(new Date());
+        viewPager.setAddress(fileNameNew);
+        viewPagerService.insert(viewPager);  //插入数据
+
+        return RestResponse.ok();
     }
 
     /**
      * 删除上传图片:单个删除
+     *
      * @param
      */
     @RequestMapping(value = "delImages")
-    public void delImages(String file) {
-        File file1 = new File("D:/manage-upload/images/wx/" + file);
-        file1.delete();
-    }
-
-    /**
-     * 删除上传图片:全部删除
-     * @param
-     */
-    @RequestMapping(value = "delAllImages")
-    public void delAllImages(String[] file) {
-        for (String s : file) {
-            File file1 = new File("D:/manage-upload/images/wx/" + s);
-            file1.delete();
+    public RestResponse delImages(ViewPager viewPager) {
+        String url = viewPager.getAddress();
+        for (ViewPager viewPager1 : viewPagerService.findAll()) {
+            String address = viewPager.getAddress();
+            String s = address;
+            viewPager1.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            if(address.equals(url)){
+                Integer id = viewPager1.getId();
+                viewPagerService.deleteImages(id);  //数据库删除数据
+                new File("D:/manage-upload/images/wx/" + s).delete();//删除本地文件
+            }
         }
+        return RestResponse.ok();
     }
-
-
 
     /**
      * 展示上传图片
+     *
      * @param
      */
     @RequestMapping(value = "showImages")
-    public List<String>  showImages() {
+    public List<ViewPager> showImages() {
         List<ViewPager> viewPagers = viewPagerService.findAll();
-        List<String> arrayList = new ArrayList<>();
+        List<ViewPager> arrayList = new ArrayList<>();
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
-            arrayList.add(address);
+            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            arrayList.add(viewPager);
         }
+
         return arrayList;
     }
 
     /**
      * 设为首图
+     *
      * @param
      */
     @RequestMapping(value = "setPopImages")
-    public List<String>  setPopImages(String imagesAddress) {
+    public List<String> setPopImages(String url) {
+
         List<ViewPager> viewPagers = viewPagerService.findAll();
         List<String> arrayList = new ArrayList<>();
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
-            if(address.equals(imagesAddress)){
-                arrayList.add(0,address);
-            }
-            else {
+            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            if (address.equals(url)) {
+                arrayList.add(0, address);
+            } else {
                 arrayList.add(address);
             }
         }

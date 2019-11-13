@@ -190,19 +190,6 @@ public class UserController extends BaseWXApiController {
         return  RestResponse.ok(userDtoPageInfo);
     }
 
-
-
-    /**
-     * 返回个人资料
-     */
-    @RequestMapping(value = "findUser",method = RequestMethod.POST)
-    public  User findUser(){
-        Integer id = getCurrentUser().getId();
-        User user = userService.selectById(id);
-        return user;
-    }
-
-
     /**
      * 修改个人资料
      */
