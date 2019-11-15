@@ -85,7 +85,7 @@ spring:
 
   #runningtime environment
   profiles:
-    active: @env@
+    active: dev
 
   url:
     ip: http://127.0.0.1:8091

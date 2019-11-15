@@ -5,8 +5,8 @@ server:
 
 spring:
   redis:
-    host: 127.0.0.1
+    host: 192.168.100.200
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/exam
+    url: jdbc:mysql://192.168.100.200:3306/exam
     username: root
-    password: 123
+    password: root

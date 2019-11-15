@@ -155,7 +155,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     /**
      * 根据时间查询用户积分排名
-     * @param userDtoVM
+     * @param queryTimeVO
      */
     List<UserDTO> selectUserRanking(QueryTimeVO queryTimeVO);
 }
