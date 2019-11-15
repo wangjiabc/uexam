@@ -2,6 +2,7 @@ package com.alvis.exam.service;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
+import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.article.PageInfoVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
@@ -28,7 +29,7 @@ public interface ArticleService {
 
     List<Article> findArticle(Integer typeId);
 
-    PageInfo<Article> studentPage(Integer typeId,MessageRequestVM messageRequestVM);
+    PageInfo<ArticleDTO> studentPage(Integer typeId, MessageRequestVM messageRequestVM);
 
     String findDetails(Integer id);
 

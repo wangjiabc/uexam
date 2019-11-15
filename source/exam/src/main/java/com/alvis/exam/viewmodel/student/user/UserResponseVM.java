@@ -44,6 +44,13 @@ public class UserResponseVM extends BaseVM {
 
     public static UserResponseVM from(User user) {
         UserResponseVM vm = modelMapper.map(user, UserResponseVM.class);
+
+        vm.setPhone(user.getPhone());
+        vm.setUserName(user.getUserName());
+        vm.setRealName(user.getRealName());
+        vm.setAge(user.getAge());
+        vm.setSex(user.getSex());
+
         vm.setBirthDay(DateTimeUtil.dateFormat(user.getBirthDay()));
         vm.setLastActiveTime(DateTimeUtil.dateFormat(user.getLastActiveTime()));
         vm.setCreateTime(DateTimeUtil.dateFormat(user.getCreateTime()));

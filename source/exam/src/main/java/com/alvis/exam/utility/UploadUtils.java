@@ -18,7 +18,7 @@ public class UploadUtils {
     public static Map<String,String> upload(MultipartFile file) {
         if(file == null){
             HashMap<String, String> map = new HashMap<>();
-            map.put("fileNameNew","http://192.168.100.185:8091/images/aaa.png");
+            map.put("fileNameNew","aaa.png");
             return map;
         }
         ArticleType articleType = new ArticleType();
