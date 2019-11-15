@@ -15,8 +15,9 @@ public class ViewPagerServiceImpl implements ViewPagerService {
     private ViewPagerMapper viewPagerMapper;
 
     @Override
-    public void insert(ViewPager viewPager) {
-        viewPagerMapper.insert(viewPager);
+    public Integer insert(ViewPager viewPager) {
+        int insert = viewPagerMapper.insert(viewPager);
+        return insert;
     }
 
     @Override
@@ -36,7 +37,8 @@ public class ViewPagerServiceImpl implements ViewPagerService {
     }
 
     @Override
-    public void deleteImages(Integer id) {
-        viewPagerMapper.deleteByPrimaryKey(id);
+    public Integer deleteImages(Integer id) {
+        int i = viewPagerMapper.deleteByPrimaryKey(id);
+        return i;
     }
 }

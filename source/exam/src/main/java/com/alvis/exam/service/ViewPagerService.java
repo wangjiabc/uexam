@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public interface ViewPagerService {
-    void insert(ViewPager viewPager);
+    Integer insert(ViewPager viewPager);
 
     void trunCate();
 
     List<ViewPager> findAll();
 
-    void deleteImages(Integer id);
+    Integer deleteImages(Integer id);
 }

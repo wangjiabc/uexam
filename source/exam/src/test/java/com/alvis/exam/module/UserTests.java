@@ -36,19 +36,19 @@ public class UserTests {
         //Assert.assertNotEquals(0, pageInfo.getTotal());
     }
 
-    @Test
-    public void test() {
-        MessageRequestVM requestVM = new MessageRequestVM();
-        requestVM.setReceiveUserId(24);
-        requestVM.setPageIndex(1);
-        requestVM.setPageSize(10);
-        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(DateTimeUtil.getMonthStartDay(), new Date(), requestVM);
-        //for (UserDto userDto : userDtoPageInfo.getList()) {
-        //    userDto.setRank(1);
-        //}
-        System.out.println(userDtoPageInfo.getList());
-
-    }
+//    @Test
+//    public void test() {
+//        MessageRequestVM requestVM = new MessageRequestVM();
+//        requestVM.setReceiveUserId(24);
+//        requestVM.setPageIndex(1);
+//        requestVM.setPageSize(10);
+//        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(DateTimeUtil.getMonthStartDay(), new Date(), requestVM);
+//        //for (UserDto userDto : userDtoPageInfo.getList()) {
+//        //    userDto.setRank(1);
+//        //}
+//        System.out.println(userDtoPageInfo.getList());
+//
+//    }
 
 
 }

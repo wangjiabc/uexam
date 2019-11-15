@@ -163,13 +163,14 @@ public class ArticleController {
      * @param
      */
     @RequestMapping(value = "delImages")
-    public RestResponse delImages(ViewPager viewPager) {
+    public RestResponse delImages(@RequestBody ViewPager viewPager) {
         String url = viewPager.getAddress();
         for (ViewPager viewPager1 : viewPagerService.findAll()) {
-            String address = viewPager.getAddress();
+            String address = viewPager1.getAddress();
             String s = address;
             viewPager1.setAddress("http://192.168.100.185:8091/images/wx/" + address);
-            if(address.equals(url)){
+            String address1 = viewPager1.getAddress();
+            if(address1.equals(url)){
                 Integer id = viewPager1.getId();
                 viewPagerService.deleteImages(id);  //数据库删除数据
                 new File("D:/manage-upload/images/wx/" + s).delete();//删除本地文件
@@ -190,7 +191,7 @@ public class ArticleController {
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
             viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
-            arrayList.add(viewPager);
+            arrayList.add(0,viewPager);
         }
 
         return arrayList;
@@ -202,20 +203,24 @@ public class ArticleController {
      * @param
      */
     @RequestMapping(value = "setPopImages")
-    public List<String> setPopImages(String url) {
-
+    public RestResponse setPopImages(@RequestBody ViewPager viewPager1) {
+        String url = viewPager1.getAddress();
         List<ViewPager> viewPagers = viewPagerService.findAll();
-        List<String> arrayList = new ArrayList<>();
+        ViewPager viewPagerFirst = new ViewPager();
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
+            Integer id = viewPager.getId();
             viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
-            if (address.equals(url)) {
-                arrayList.add(0, address);
-            } else {
-                arrayList.add(address);
+            String address1 = viewPager.getAddress();
+            if (address1.equals(url)) {
+                viewPagerService.deleteImages(id);
+                viewPagerFirst = viewPager;
+                viewPagerFirst.setAddress(address);
+                viewPagerFirst.setUploadTime(new Date());
+                viewPagerFirst.setId(null);
             }
         }
-
-        return arrayList;
+        viewPagerService.insert(viewPagerFirst);
+        return RestResponse.ok();
     }
 }

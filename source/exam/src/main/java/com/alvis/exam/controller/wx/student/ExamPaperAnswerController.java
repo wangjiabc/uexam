@@ -80,6 +80,9 @@ public class ExamPaperAnswerController extends BaseWXApiController {
         ExamPaperAnswer examPaperAnswer = examPaperAnswerInfo.getExamPaperAnswer();
         Integer userScore = examPaperAnswer.getUserScore();
         String scoreVm = ExamUtil.scoreToVM(userScore);
+
+
+
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         String content = user.getUserName() + " 提交试卷：" + examPaperAnswerInfo.getExamPaper().getName()
                 + " 得分：" + scoreVm

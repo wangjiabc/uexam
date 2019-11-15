@@ -448,26 +448,59 @@
         GROUP BY user_id ORDER BY score desc
     </select>
 
-    <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.UserDto" parameterType="com.alvis.exam.domain.dto.UserDtoVM">
+    <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.article.UserDTO" parameterType="com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO">
         SELECT
-        a.user_name,
+        a.user_name userName,
         a.age,
         a.phone,
         a.sex,
         b.count,
-        b.start_time
+        b.start_time startTime
         FROM
         t_user a,
         t_read_state b
         WHERE
         a.id = b.user_id
         AND b.count > 0
-        <if test="beginTime != null">
-            AND start_time <![CDATA[ > ]]> #{beginTime}
+        <if test="startTime != null">
+            AND start_time <![CDATA[ > ]]> #{startTime}
         </if>
         <if test="endTime != null">
             AND start_time <![CDATA[ < ]]> #{endTime}
         </if>
     </select>
+
+    <select id="selectExamRanking" resultType="com.alvis.exam.domain.dto.article.ExamDTO" parameterType="com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO">
+        SELECT
+        a.user_name userName,
+        a.age,
+        a.phone,
+        a.sex,
+        b.user_score userScore,
+        b.create_time startTime
+        FROM
+        t_user a,
+        t_exam_paper_answer b
+        WHERE
+        a.id = b.create_user
+        AND b.user_score > 0
+        <if test="startTime != null">
+            AND b.create_time <![CDATA[ > ]]> #{startTime}
+        </if>
+        <if test="endTime != null">
+            AND b.create_time <![CDATA[ < ]]> #{endTime}
+        </if>
+    </select>
+
+    <update id="updateByPrimaryUser" parameterType="com.alvis.exam.domain.User">
+    update t_user
+    set
+      real_name = #{realName,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 
 </mapper>

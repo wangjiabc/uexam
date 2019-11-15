@@ -19,7 +19,9 @@ public class UserRegisterVM {
 
     private Integer userLevel;
 
-    private String telphone;
+    private String phone;
+
+    private String duty;
 
     public String getUserName() {
         return userName;
@@ -53,12 +55,12 @@ public class UserRegisterVM {
         this.userLevel = userLevel;
     }
 
-    public String getTelphone() {
-        return telphone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getDuty() {
@@ -68,8 +70,4 @@ public class UserRegisterVM {
     public void setDuty(String duty) {
         this.duty = duty;
     }
-
-    private String duty;
-
-
 }

@@ -8,6 +8,8 @@ import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserEventLog;
 import com.alvis.exam.domain.dto.UserDto;
+import com.alvis.exam.domain.dto.article.ExamDTO;
+import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.enums.RoleEnum;
 import com.alvis.exam.domain.enums.UserStatusEnum;
 import com.alvis.exam.event.UserEvent;
@@ -32,6 +34,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.Duration;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -82,6 +85,7 @@ public class UserController extends BaseWXApiController {
         }
 
         User user = modelMapper.map(model, User.class);
+        user.setPhone(model.getPhone());
         String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
         user.setPassword(encodePwd);
@@ -181,21 +185,63 @@ public class UserController extends BaseWXApiController {
      * @param requestVM     分页对象
      * @return
      */
-    @RequestMapping(value = "selectUserRanking",method = RequestMethod.POST)
-    public  RestResponse<PageInfo<UserDto>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
+    @RequestMapping(value = "selectUserRanking", method = RequestMethod.POST)
+    public RestResponse<PageInfo<UserDTO>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
 
-        Date startTime = queryTimeVO.getStartTime();
-        Date endTime = queryTimeVO.getEndTime();
-        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(startTime, endTime, requestVM);
-        return  RestResponse.ok(userDtoPageInfo);
+        queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
+
+        PageInfo<UserDTO> userDtoPageInfo = userService.selectUserRanking(queryTimeVO, requestVM);
+        //排名
+        for (int i = 1, rank = userDtoPageInfo.getStartRow(); i <= userDtoPageInfo.getList().size(); i++) {
+            UserDTO userDTO = userDtoPageInfo.getList().get(i - 1);
+            userDTO.setRank(rank++);
+        }
+
+        return RestResponse.ok(userDtoPageInfo);
     }
+
+
+    /**
+     * 考试积分排名
+     * @param queryTimeVO   时间区间
+     * @param requestVM     分页对象
+     * @return
+     */
+    @RequestMapping(value = "selectExamRanking", method = RequestMethod.POST)
+    public RestResponse<PageInfo<ExamDTO>> selectExamRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
+
+        queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
+
+        PageInfo<ExamDTO> userDtoPageInfo = userService.selectExamRanking(queryTimeVO, requestVM);
+        //排名
+        for (int i = 1, rank = userDtoPageInfo.getStartRow(); i <= userDtoPageInfo.getList().size(); i++) {
+            ExamDTO userDTO = userDtoPageInfo.getList().get(i - 1);
+            userDTO.setRank(rank++);
+        }
+
+        return RestResponse.ok(userDtoPageInfo);
+    }
+
 
     /**
      * 修改个人资料
      */
-    @RequestMapping(value = "updateUser",method = RequestMethod.POST)
-    public  void updateUser(User user){
+    @RequestMapping(value = "updateUser")
+    public  RestResponse updateUser(User user){
+        Integer id = getCurrentUser().getId();
+        user.setId(id);
         userService.updateUser(user);
+        return RestResponse.ok();
     }
+
+//    /**
+//     * f返回个人资料
+//     */
+//    @RequestMapping(value = "findUser",method = RequestMethod.POST)
+//    public  RestResponse<User> findUser(){
+//        Integer id = getCurrentUser().getId();
+//        User u = userService.findUser(id);
+//        return RestResponse.ok(u);
+//    }
 
 }

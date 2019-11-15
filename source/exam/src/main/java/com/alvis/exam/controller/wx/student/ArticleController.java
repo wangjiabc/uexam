@@ -163,16 +163,19 @@ public class ArticleController extends BaseWXApiController {
 
     /**
      * 展示上传图片
+     *
      * @param
      */
     @RequestMapping(value = "showImages")
-    public List<String>  showImages() {
+    public List<ViewPager> showImages() {
         List<ViewPager> viewPagers = viewPagerService.findAll();
-        List<String> arrayList = new ArrayList<>();
+        List<ViewPager> arrayList = new ArrayList<>();
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
-            arrayList.add(address);
+            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            arrayList.add(0,viewPager);
         }
+
         return arrayList;
     }
 

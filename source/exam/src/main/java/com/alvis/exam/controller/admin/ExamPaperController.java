@@ -62,6 +62,7 @@ public class ExamPaperController extends BaseApiController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public RestResponse<ExamPaperEditRequestVM> edit(@RequestBody ExamPaperEditRequestVM model) {
+
         List<ExamPaperTitleItemVM> titleItems = model.getTitleItems();
         if(titleItems.size() == 0){
             return RestResponse.fail(2,"请添加标题");

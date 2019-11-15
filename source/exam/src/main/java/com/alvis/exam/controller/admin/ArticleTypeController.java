@@ -42,11 +42,11 @@ public class ArticleTypeController {
     @RequestMapping(value = "/typeList")
     public RestResponse<PageInfo<ArticleType>> typeList(@RequestBody MessagePageRequestVM model) {
         PageInfo<ArticleType> pageInfo = articleTypeService.pageList(model);
-//        List<ArticleType> list = pageInfo.getList();
-//        for (ArticleType articleType : list) {
-//            String origname = articleType.getOrigname();
-//            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
-//        }
+        List<ArticleType> list = pageInfo.getList();
+        for (ArticleType articleType : list) {
+            String origname = articleType.getOrigname();
+            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+        }
         return RestResponse.ok(pageInfo);
     }
 

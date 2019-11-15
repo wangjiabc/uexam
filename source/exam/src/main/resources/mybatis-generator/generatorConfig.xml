@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
 
-        <table tableName="view_pager" domainObjectName="ViewPager" enableCountByExample="false"
+        <table tableName="t_exam_paper_answer" domainObjectName="ExamPaperAnswer" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>

@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class ExamPaperAnswer implements Serializable {
-
-    private static final long serialVersionUID = -2143539181805283910L;
-
     private Integer id;
 
     private Integer examPaperId;
@@ -36,6 +33,10 @@ public class ExamPaperAnswer implements Serializable {
     private Date createTime;
 
     private Integer taskExamId;
+
+    private Integer count;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -155,5 +156,13 @@ public class ExamPaperAnswer implements Serializable {
 
     public void setTaskExamId(Integer taskExamId) {
         this.taskExamId = taskExamId;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

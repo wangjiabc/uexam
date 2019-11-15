@@ -26,8 +26,18 @@ public class ExamPaperEditRequestVM {
     private List<String> limitDateTime;
 
     private String score;
-    
-    @Size(min = 1,message = "请添加试卷标题")
+
+    private Integer count;
+
+	public Integer getCount() {
+		return count;
+	}
+
+	public void setCount(Integer count) {
+		this.count = count;
+	}
+
+	@Size(min = 1,message = "请添加试卷标题")
     @Valid
     private List<ExamPaperTitleItemVM> titleItems;
 

@@ -6,21 +6,26 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class UserDTO extends User {
-    private Integer count;
+public class ExamDTO extends User {
+
+    private static final long serialVersionUID = 0L;
+
+    private Integer userScore;
 
     private Date startTime;
 
     private Integer rank;
 
-    private static final long serialVersionUID = 0L;
-
-    public Integer getCount() {
-        return count;
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 
-    public void setCount(Integer count) {
-        this.count = count;
+    public Integer getUserScore() {
+        return userScore;
+    }
+
+    public void setUserScore(Integer userScore) {
+        this.userScore = userScore;
     }
 
     public Date getStartTime() {
@@ -38,7 +43,4 @@ public class UserDTO extends User {
     public void setRank(Integer rank) {
         this.rank = rank;
     }
-
-
-
 }
