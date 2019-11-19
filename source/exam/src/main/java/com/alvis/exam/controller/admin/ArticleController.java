@@ -235,6 +235,8 @@ public class ArticleController {
         Map<String, Object> map = new HashMap<>();
         map.put("type3", urlConfig.getType3());
         map.put("url", urlConfig.getUrl());
+
+
         return map;
     }
 }
