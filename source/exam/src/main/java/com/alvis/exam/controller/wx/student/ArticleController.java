@@ -5,8 +5,14 @@ import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ReadState;
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.ViewPager;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ReadService;
+import com.alvis.exam.service.UploadService;
+import com.alvis.exam.service.ViewPagerService;
+import com.alvis.exam.utility.DateTimeUtil;
+import com.alvis.exam.utility.ListUtils;
+import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
@@ -18,6 +24,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
+import java.io.File;
+import java.text.ParseException;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -34,6 +45,8 @@ public class ArticleController extends BaseWXApiController {
     private ReadService readService;
     @Resource
     private ArticleService articleService;
+    @Resource
+    private ViewPagerService viewPagerService;
 
     /**
      * 返回文章列表
@@ -144,19 +157,26 @@ public class ArticleController extends BaseWXApiController {
         return RestResponse.ok(articlePageInfo);
     }
 
+
+
+
+
     /**
-     * 自定义上传图片
+     * 展示上传图片
+     *
      * @param
      */
     @RequestMapping(value = "showImages")
-    public List<String> showImages(MultipartFile[] file) {
-        List<String> list = new ArrayList<>();
-        for (MultipartFile multipartFile : file) {
-            Map<String, String> upload = UploadUtils.upload(multipartFile);
-            String fileNameNew = upload.get("fileNameNew");
-            list.add(fileNameNew);
+    public List<ViewPager> showImages() {
+        List<ViewPager> viewPagers = viewPagerService.findAll();
+        List<ViewPager> arrayList = new ArrayList<>();
+        for (ViewPager viewPager : viewPagers) {
+            String address = viewPager.getAddress();
+            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            arrayList.add(0,viewPager);
         }
-        return list;
+
+        return arrayList;
     }
 
 }

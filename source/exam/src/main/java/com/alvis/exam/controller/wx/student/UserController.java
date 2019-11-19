@@ -7,6 +7,9 @@ import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserEventLog;
+import com.alvis.exam.domain.dto.UserDto;
+import com.alvis.exam.domain.dto.article.ExamDTO;
+import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.enums.RoleEnum;
 import com.alvis.exam.domain.enums.UserStatusEnum;
 import com.alvis.exam.event.UserEvent;
@@ -17,9 +20,8 @@ import com.alvis.exam.service.UserService;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.WxUtil;
-import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.viewmodel.student.user.*;
-import com.alvis.exam.viewmodel.QueryTimeVO;
+import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import com.alvis.exam.viewmodel.wx.student.user.QueryUserScoreVO;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -42,7 +44,7 @@ import java.util.stream.Collectors;
 /**
  * @author alvis
  */
-@Api(value = "微信端user", tags = "用户api")
+@Api(value = "微信端user",tags = "用户api")
 @Controller("WXStudentUserController")
 @RequestMapping(value = "/api/wx/student/user")
 @AllArgsConstructor
@@ -83,6 +85,7 @@ public class UserController extends BaseWXApiController {
         }
 
         User user = modelMapper.map(model, User.class);
+        user.setPhone(model.getPhone());
         String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
         user.setPassword(encodePwd);
@@ -170,12 +173,18 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok(userService.calculateUserScore(queryUserScoreVO.getUserId() == null ? getCurrentUser().getId() : queryUserScoreVO.getUserId(), queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
-    @ApiOperation(value = "测试方法,计算用户积分排名", produces = "application/json; charset=utf-8")
+    @ApiOperation(value="测试方法,计算用户积分排名", produces = "application/json; charset=utf-8")
     @RequestMapping(value = "/calculateUsersScore", method = RequestMethod.POST)
     public RestResponse calculateUsersScore(@RequestBody QueryUserScoreVO queryUserScoreVO) {
         return RestResponse.ok(userService.calculateUsersScore(queryUserScoreVO.getStartTime(), queryUserScoreVO.getEndTime()));
     }
 
+    /**
+     * 积分排名
+     * @param queryTimeVO   时间区间
+     * @param requestVM     分页对象
+     * @return
+     */
     @RequestMapping(value = "selectUserRanking", method = RequestMethod.POST)
     public RestResponse<PageInfo<UserDTO>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
 
@@ -190,5 +199,49 @@ public class UserController extends BaseWXApiController {
 
         return RestResponse.ok(userDtoPageInfo);
     }
+
+
+    /**
+     * 考试积分排名
+     * @param queryTimeVO   时间区间
+     * @param requestVM     分页对象
+     * @return
+     */
+    @RequestMapping(value = "selectExamRanking", method = RequestMethod.POST)
+    public RestResponse<PageInfo<ExamDTO>> selectExamRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
+
+        queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
+
+        PageInfo<ExamDTO> userDtoPageInfo = userService.selectExamRanking(queryTimeVO, requestVM);
+        //排名
+        for (int i = 1, rank = userDtoPageInfo.getStartRow(); i <= userDtoPageInfo.getList().size(); i++) {
+            ExamDTO userDTO = userDtoPageInfo.getList().get(i - 1);
+            userDTO.setRank(rank++);
+        }
+
+        return RestResponse.ok(userDtoPageInfo);
+    }
+
+
+    /**
+     * 修改个人资料
+     */
+    @RequestMapping(value = "updateUser")
+    public  RestResponse updateUser(User user){
+        Integer id = getCurrentUser().getId();
+        user.setId(id);
+        userService.updateUser(user);
+        return RestResponse.ok();
+    }
+
+//    /**
+//     * f返回个人资料
+//     */
+//    @RequestMapping(value = "findUser",method = RequestMethod.POST)
+//    public  RestResponse<User> findUser(){
+//        Integer id = getCurrentUser().getId();
+//        User u = userService.findUser(id);
+//        return RestResponse.ok(u);
+//    }
 
 }

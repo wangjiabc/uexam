@@ -2,7 +2,9 @@ package com.alvis.exam.module;
 
 import com.alvis.exam.ExamApplicationTests;
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.UserDto;
 import com.alvis.exam.service.UserService;
+import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
@@ -12,6 +14,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.Date;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ExamApplicationTests.class)
@@ -32,17 +36,19 @@ public class UserTests {
         //Assert.assertNotEquals(0, pageInfo.getTotal());
     }
 
-    @Test
-    public void test() {
-        MessageRequestVM requestVM = new MessageRequestVM();
-        requestVM.setReceiveUserId(24);
-        requestVM.setPageIndex(2);
-        requestVM.setPageSize(10);
-        //for (UserDTO userDto : userDtoPageInfo.getList()) {
-        //    userDto.setRank(1);
-        //}
-
-    }
+//    @Test
+//    public void test() {
+//        MessageRequestVM requestVM = new MessageRequestVM();
+//        requestVM.setReceiveUserId(24);
+//        requestVM.setPageIndex(1);
+//        requestVM.setPageSize(10);
+//        PageInfo<UserDto> userDtoPageInfo = userService.selectUserRanking(DateTimeUtil.getMonthStartDay(), new Date(), requestVM);
+//        //for (UserDto userDto : userDtoPageInfo.getList()) {
+//        //    userDto.setRank(1);
+//        //}
+//        System.out.println(userDtoPageInfo.getList());
+//
+//    }
 
 
 }

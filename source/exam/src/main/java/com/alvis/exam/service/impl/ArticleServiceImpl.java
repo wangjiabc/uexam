@@ -2,12 +2,12 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.repository.ArticleMapper;
 import com.alvis.exam.repository.ArticleTypeMapper;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.alvis.exam.domain.dto.ArticleDto;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -76,7 +76,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public PageInfo<Article> studentPage(Integer typeId,MessageRequestVM requestVM) {
-        ArticleDTO articleDto = new ArticleDTO();
+        ArticleDto articleDto = new ArticleDto();
         articleDto.setTypeId(typeId);
         articleDto.setPageIndex(requestVM.getPageIndex());
         articleDto.setPageSize(requestVM.getPageSize());
@@ -126,7 +126,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public PageInfo<Article> articlePage(Integer state,MessageRequestVM requestVM) {
-        ArticleDTO articleDto = new ArticleDTO();
+        ArticleDto articleDto = new ArticleDto();
         articleDto.setTypeId(state);
         articleDto.setReceiveUserId(requestVM.getReceiveUserId());
         articleDto.setPageIndex(requestVM.getPageIndex());
@@ -135,5 +135,10 @@ public class ArticleServiceImpl implements ArticleService {
         return PageHelper.startPage(articleDto.getPageIndex(), articleDto.getPageSize(), "id desc").doSelectPageInfo(() ->
                     articleMapper.articlePage(articleDto)
             );
+    }
+
+    @Override
+    public void trunCate() {
+
     }
 }

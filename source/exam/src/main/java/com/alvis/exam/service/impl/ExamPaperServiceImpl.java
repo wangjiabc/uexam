@@ -94,6 +94,7 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
             examPaper.setCreateTime(now);
             examPaper.setCreateUser(user.getId());
             examPaper.setDeleted(false);
+            examPaper.setCount(examPaperEditRequestVM.getCount());  //设置积分
             examPaperFromVM(examPaperEditRequestVM, examPaper, titleItemsVM);
             examPaperMapper.insertSelective(examPaper);
         } else {

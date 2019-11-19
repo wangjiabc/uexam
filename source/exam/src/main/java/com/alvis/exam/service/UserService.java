@@ -1,11 +1,13 @@
 package com.alvis.exam.service;
 
-import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.UserDto;
+import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.other.KeyValue;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
-import com.alvis.exam.viewmodel.QueryTimeVO;
+import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import com.github.pagehelper.PageInfo;
 
 import java.util.Date;
@@ -150,4 +152,8 @@ public interface UserService extends BaseService<User> {
      */
 
     PageInfo<UserDTO> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM);
+
+    PageInfo<ExamDTO> selectExamRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM);
+
+    User findUser(Integer id);
 }

@@ -1,10 +1,10 @@
-package com.alvis.exam.domain.dto.article;
+package com.alvis.exam.domain.dto;
 
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import lombok.Data;
 
 @Data
-public class ArticleDTO extends MessageRequestVM {
+public class ArticleDto extends MessageRequestVM {
     private Integer typeId;
 
     public Integer getTypeId() {
