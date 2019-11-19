@@ -206,16 +206,43 @@
     SELECT * FROM t_article WHERE type_id = #{type_id,jdbcType=INTEGER};
   </select>
 
-  <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.dto.ArticleDto">
-    select *
-    from t_article
-    WHERE type_id = #{typeId,jdbcType=INTEGER};
-  </select>
-<!--  <resultMap id="pageMap" type="com.alvis.exam.domain.dto.ArticleDto">-->
-<!--    <result column="typeId" property="typeId" jdbcType="INTEGER" />-->
-<!--    <result column="requestVM" property="requestVM" jdbcType="MessageRequestVM" />-->
+  <select id="studentPage" resultMap="atMap" parameterType="com.alvis.exam.domain.dto.ArticleDto">
 
-<!--  </resultMap>-->
+      SELECT ta.*,'已读' AS readState
+      FROM t_article as ta
+      RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) as trs
+      ON trs.article_id = ta.id
+      where type_id = #{typeId,jdbcType=INTEGER}
+      UNION ALL
+      SELECT ta.*,'在读' AS readState
+      FROM t_article ta RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs ON trs.article_id = ta.id
+      where type_id = #{typeId,jdbcType=INTEGER}
+      UNION ALL
+      SELECT ta.*,'未读' AS readState
+      FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL
+      and type_id = #{typeId,jdbcType=INTEGER}
+      ;
+
+  </select>
+
+
+  <resultMap id="atMap" type="com.alvis.exam.domain.dto.article.ArticleDTO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="upload_day" jdbcType="TIMESTAMP" property="uploadDay" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="read_time_u" jdbcType="INTEGER" property="readTimeU" />
+    <result column="read_time_l" jdbcType="INTEGER" property="readTimeL" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="readState" jdbcType="VARCHAR" property="readState" />
+  </resultMap>
+
+
+
+
+
   <select id="selectById" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.Article">
     select *
     from t_article

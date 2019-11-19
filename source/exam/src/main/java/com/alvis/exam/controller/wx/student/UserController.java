@@ -7,7 +7,6 @@ import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserEventLog;
-import com.alvis.exam.domain.dto.UserDto;
 import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.enums.RoleEnum;
@@ -65,7 +64,8 @@ public class UserController extends BaseWXApiController {
 
     @RequestMapping(value = "/current", method = RequestMethod.POST)
     public RestResponse<UserResponseVM> current() {
-        User user = getCurrentUser();
+        User user = userService.selectById(getCurrentUser().getId());
+
         UserResponseVM userVm = UserResponseVM.from(user);
         userVm.setBirthDay(DateTimeUtil.dateShortFormat(user.getBirthDay()));
         return RestResponse.ok(userVm);
@@ -86,6 +86,10 @@ public class UserController extends BaseWXApiController {
 
         User user = modelMapper.map(model, User.class);
         user.setPhone(model.getPhone());
+        user.setUserName(model.getUserName());
+        user.setAge(model.getAge());
+        user.setSex(model.getSex());
+
         String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
         user.setPassword(encodePwd);
@@ -212,14 +216,14 @@ public class UserController extends BaseWXApiController {
 
         queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
 
-        PageInfo<ExamDTO> userDtoPageInfo = userService.selectExamRanking(queryTimeVO, requestVM);
+        PageInfo<ExamDTO> examDTOPageInfo = userService.selectExamRanking(queryTimeVO, requestVM);
         //排名
-        for (int i = 1, rank = userDtoPageInfo.getStartRow(); i <= userDtoPageInfo.getList().size(); i++) {
-            ExamDTO userDTO = userDtoPageInfo.getList().get(i - 1);
-            userDTO.setRank(rank++);
+        for (int i = 1, rank = examDTOPageInfo.getStartRow(); i <= examDTOPageInfo.getList().size(); i++) {
+            ExamDTO examDTO = examDTOPageInfo.getList().get(i - 1);
+            examDTO.setRank(rank++);
         }
 
-        return RestResponse.ok(userDtoPageInfo);
+        return RestResponse.ok(examDTOPageInfo);
     }
 
 
@@ -234,14 +238,5 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok();
     }
 
-//    /**
-//     * f返回个人资料
-//     */
-//    @RequestMapping(value = "findUser",method = RequestMethod.POST)
-//    public  RestResponse<User> findUser(){
-//        Integer id = getCurrentUser().getId();
-//        User u = userService.findUser(id);
-//        return RestResponse.ok(u);
-//    }
 
 }

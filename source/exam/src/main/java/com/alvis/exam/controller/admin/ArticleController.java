@@ -2,6 +2,7 @@ package com.alvis.exam.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.domain.ViewPager;
@@ -15,6 +16,7 @@ import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,10 +25,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.io.UnsupportedEncodingException;
+import java.util.*;
 
 @AllArgsConstructor
 @RequestMapping("/api/admin/article")
@@ -222,5 +222,21 @@ public class ArticleController {
         }
         viewPagerService.insert(viewPagerFirst);
         return RestResponse.ok();
+    }
+
+
+
+
+    @Autowired
+    private UrlConfig urlConfig;
+
+    @RequestMapping("/env")
+    public Map<String, Object> env() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("type3", urlConfig.getType3());
+        map.put("url", urlConfig.getUrl());
+
+
+        return map;
     }
 }

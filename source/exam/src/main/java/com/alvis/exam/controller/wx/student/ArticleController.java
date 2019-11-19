@@ -6,6 +6,7 @@ import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ReadState;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.ViewPager;
+import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ReadService;
 import com.alvis.exam.service.UploadService;
@@ -53,12 +54,22 @@ public class ArticleController extends BaseWXApiController {
      * @param
      */
     @RequestMapping(value = "/article")
-    public RestResponse<PageInfo<Article>> pageList(Integer typeId,MessageRequestVM messageRequestVM) {
+    public RestResponse<PageInfo<ArticleDTO>> pageList(Integer typeId,MessageRequestVM messageRequestVM) {
         //根据分类id查询该类型下所有的文章
-//        List<Article> articles = articleService.findArticle(typeId);
-//        PageInfo<Article> pageInfo = articleService.page(messageRequestVM);
         messageRequestVM.setReceiveUserId(getCurrentUser().getId());
-        PageInfo<Article> pageInfo = articleService.studentPage(typeId,messageRequestVM);
+        PageInfo<ArticleDTO> pageInfo = articleService.studentPage(typeId,messageRequestVM);
+//        for (ArticleDTO articleDTO : pageInfo.getList()) {
+//            String readState = articleDTO.getReadState();
+//            if("已读".equals(readState)){
+//                articleDTO.setReadState("1");
+//            }
+//            else if("在读".equals(readState)){
+//                articleDTO.setReadState("2");
+//            }
+//            else if(readState == null){
+//                articleDTO.setReadState("3");
+//            }
+//        }
         return RestResponse.ok(pageInfo);
     }
 
@@ -112,7 +123,7 @@ public class ArticleController extends BaseWXApiController {
         if(time < lowerLimit*1000){
             //将阅读信息存到read表中
             readState.setCount(0);             //文章积分
-            readState.setState("在读");
+            readState.setReadState("在读");
             readService.saveReadState(readState);   //存储到read表
         }else{
             //判断用户阅读该文章是否已经获取了积分
@@ -121,7 +132,7 @@ public class ArticleController extends BaseWXApiController {
             if(jiFen == 0){
                 //将阅读信息存到read表中
                 readState.setCount(integrate);     //文章积分
-                readState.setState("已读");
+                readState.setReadState("已读");
                 readService.saveReadState(readState);   //存储到read表
             }
 
