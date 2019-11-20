@@ -48,6 +48,7 @@ public class XmindController extends BaseApiController {
      */
     @RequestMapping(value = "/updatexmind", method = RequestMethod.POST)
     public RestResponse<Xmind> update(@RequestBody XmindVM model){
+
         this.xmindService.updateXmind(model);
         return RestResponse.ok();
     }
