@@ -43,7 +43,7 @@ system:
       - /api/wx/student/user/register
   qn:
 #    url: http://image.alvisu.com
-    url: http://192.168.100.185:8091/images
+    url: http://223.86.150.188:8091/images/
     bucket: alvisu
     access-key: KabOBTPGVll2sSV8d1OIlW8G4_n_cReE7RSsLafA
     secret-key: mSltk9_9KtCdFetCmxvvCAgsBg8JZHiXMuQeqSJA

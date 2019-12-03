@@ -1,6 +1,7 @@
 package com.alvis.exam.controller.wx.student;
 
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ReadState;
@@ -19,7 +20,9 @@ import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -34,7 +37,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin
 @Slf4j
 @Controller
 @RequestMapping(value = "/api/wx/student/article" )
@@ -169,7 +172,8 @@ public class ArticleController extends BaseWXApiController {
     }
 
 
-
+@Autowired
+private UrlConfig urlConfig;
 
 
     /**
@@ -183,7 +187,7 @@ public class ArticleController extends BaseWXApiController {
         List<ViewPager> arrayList = new ArrayList<>();
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
-            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            viewPager.setAddress(urlConfig.getUrl() + "wx/" + address);
             arrayList.add(0,viewPager);
         }
 

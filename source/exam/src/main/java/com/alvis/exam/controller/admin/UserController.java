@@ -28,6 +28,7 @@ import java.util.UUID;
 /**
  * @author alvis
  */
+@CrossOrigin
 @RestController("AdminUserController")
 @RequestMapping(value = "/api/admin/user")
 @AllArgsConstructor
@@ -127,6 +128,7 @@ public class UserController extends BaseApiController {
         User user = userService.getUserById(id);
         UserStatusEnum userStatusEnum = UserStatusEnum.fromCode(user.getStatus());
         Integer newStatus = userStatusEnum == UserStatusEnum.Enable ? UserStatusEnum.Disable.getCode() : UserStatusEnum.Enable.getCode();
+//        Integer newStatus = userStatusEnum == UserStatusEnum.Enable ? UserStatusEnum.Enable.getCode() : UserStatusEnum.Disable.getCode();
         user.setStatus(newStatus);
         user.setModifyTime(new Date());
         userService.updateByIdFilter(user);

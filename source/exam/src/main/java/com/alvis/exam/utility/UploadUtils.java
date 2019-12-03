@@ -1,7 +1,10 @@
 package com.alvis.exam.utility;
 
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.configuration.property.QnConfig;
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.ArticleType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,7 +18,8 @@ import java.util.*;
  */
 public class UploadUtils {
 
-    public static Map<String,String> upload(MultipartFile file) {
+
+    public static Map<String,String> upload(MultipartFile file,String url) {
         if(file == null){
             HashMap<String, String> map = new HashMap<>();
             map.put("fileNameNew","aaa.png");
@@ -45,7 +49,7 @@ public class UploadUtils {
             e.printStackTrace();
         }
         System.out.println("上传的文件的原名称:" + fileName);
-        String url = "http://192.168.100.185:8091/images/";
+//        String url = "http://192.168.100.185:8091/images/";
         String sqlSaveUrl = "url/images/" + fileNameNew;   //数据库存储地址
         articleType.setPathDeposit(sqlSaveUrl);
         System.out.println("本地图片的磁盘地址:" + imgName);
@@ -55,7 +59,7 @@ public class UploadUtils {
         map.put("fileName",fileName);
         map.put("sqlSaveUrl",sqlSaveUrl);
         map.put("fileNameNew",fileNameNew);
-        map.put("url",url+fileNameNew);
+        map.put("url",url + fileNameNew);
         return map;
     }
 
@@ -65,10 +69,12 @@ public class UploadUtils {
      * @param address   文件存放磁盘地址
      * @return
      */
-    public static Map<String,String> upload(MultipartFile file,String address) {
+    public static Map<String,String> upload(MultipartFile file,String address,String url) {
         if(file == null){
             HashMap<String, String> map = new HashMap<>();
-            map.put("fileNameNew","http://192.168.100.185:8091/images/wx/aaa.png");
+//            String url = "http://223.86.150.188:8091/images/wx/";
+//            String url = "http://192.168.100.185:8091/images/wx/";
+            map.put("fileNameNew",url + "wx/aaa.png");
             return map;
         }
         ArticleType articleType = new ArticleType();
@@ -95,7 +101,8 @@ public class UploadUtils {
             e.printStackTrace();
         }
         System.out.println("上传的文件的原名称:" + fileName);
-        String url = "http://192.168.100.185:8091/images/wx/";
+//        String url = "http://223.86.150.188:8091/images/wx/";
+//        String url = "http://192.168.100185:8091/images/wx/";
         String sqlSaveUrl = "url/images/" + fileNameNew;   //数据库存储地址
         articleType.setPathDeposit(sqlSaveUrl);
         System.out.println("本地图片的磁盘地址:" + imgName);

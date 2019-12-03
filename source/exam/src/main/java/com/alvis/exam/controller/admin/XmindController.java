@@ -21,6 +21,7 @@ import java.util.List;
 /**
  * @author yangsy
  */
+@CrossOrigin
 @RestController("AdminXmindController")
 @RequestMapping(value = "/api/admin/xmind")
 @AllArgsConstructor

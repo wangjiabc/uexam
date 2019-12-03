@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author yangsy
  */
+@CrossOrigin
 @Api(value = "微信端user", tags = "用户api")
 @RestController("WXXmindController")
 @RequestMapping(value = "/api/wx/student/xmind")

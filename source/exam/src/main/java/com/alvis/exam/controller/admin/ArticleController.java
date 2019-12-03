@@ -14,13 +14,12 @@ import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -28,9 +27,11 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.util.*;
 
+@CrossOrigin
 @AllArgsConstructor
 @RequestMapping("/api/admin/article")
 @RestController("ArticleController")
+@Api(value = "文章controller")
 public class ArticleController {
 
 
@@ -40,12 +41,16 @@ public class ArticleController {
     private ArticleTypeService articleTypeService;
     @Resource
     private ViewPagerService viewPagerService;
+    @Autowired
+    private UrlConfig urlConfig;
+
 
     /**
      * 返回文章分类
      *
      * @param
      */
+    @ApiOperation(value = "返回文章分类")
     @RequestMapping(value = "typeList")
     public List<String> typeList() {
         List<String> arrayList = new ArrayList<>();
@@ -101,6 +106,7 @@ public class ArticleController {
      *
      * @param
      */
+    @ApiOperation(value = "展示文章信息")
     @RequestMapping(value = "articleList", method = RequestMethod.POST)
     public RestResponse<PageInfo<Article>> pageList(@RequestBody MessagePageRequestVM model) {
         PageInfo<Article> pageInfo = articleService.page(model);
@@ -145,7 +151,7 @@ public class ArticleController {
         String fileNameNew = null;
         if (file != null) {
             //自定义上传位置
-            Map<String, String> map = UploadUtils.upload(file, "D:/manage-upload/images/wx/");
+            Map<String, String> map = UploadUtils.upload(file, "D:/manage-upload/images/wx/",urlConfig.getUrl());
             fileNameNew = map.get("fileNameNew");
         }
         ViewPager viewPager = new ViewPager();
@@ -156,6 +162,8 @@ public class ArticleController {
 
         return RestResponse.ok();
     }
+
+
 
     /**
      * 删除上传图片:单个删除
@@ -168,7 +176,8 @@ public class ArticleController {
         for (ViewPager viewPager1 : viewPagerService.findAll()) {
             String address = viewPager1.getAddress();
             String s = address;
-            viewPager1.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+//            viewPager1.setAddress("http://223.86.150.188:8091/images/wx/" + address);
+            viewPager1.setAddress(urlConfig.getUrl() + "wx/" + address);
             String address1 = viewPager1.getAddress();
             if(address1.equals(url)){
                 Integer id = viewPager1.getId();
@@ -190,7 +199,7 @@ public class ArticleController {
         List<ViewPager> arrayList = new ArrayList<>();
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
-            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            viewPager.setAddress(urlConfig.getUrl() + "wx/" + address);
             arrayList.add(0,viewPager);
         }
 
@@ -210,7 +219,7 @@ public class ArticleController {
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
             Integer id = viewPager.getId();
-            viewPager.setAddress("http://192.168.100.185:8091/images/wx/" + address);
+            viewPager.setAddress(urlConfig.getUrl() + "wx/" + address);
             String address1 = viewPager.getAddress();
             if (address1.equals(url)) {
                 viewPagerService.deleteImages(id);
@@ -227,16 +236,16 @@ public class ArticleController {
 
 
 
-    @Autowired
-    private UrlConfig urlConfig;
-
-    @RequestMapping("/env")
-    public Map<String, Object> env() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("type3", urlConfig.getType3());
-        map.put("url", urlConfig.getUrl());
-
-
-        return map;
-    }
+//    @Autowired
+//    private UrlConfig urlConfig;
+//
+//    @RequestMapping("/env")
+//    public Map<String, Object> env() {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("type3", urlConfig.getType3());
+//        map.put("url", urlConfig.getUrl());
+//
+//
+//        return map;
+//    }
 }

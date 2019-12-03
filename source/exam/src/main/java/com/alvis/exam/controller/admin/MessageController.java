@@ -23,6 +23,7 @@ import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+@CrossOrigin
 @RestController("AdminMessageController")
 @RequestMapping(value = "/api/admin/message")
 @AllArgsConstructor

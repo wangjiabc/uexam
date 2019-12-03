@@ -14,7 +14,7 @@ import java.util.List;
 public interface ExamPaperAnswerService extends BaseService<ExamPaperAnswer> {
 
     /**
-     * 学生考试记录分页
+     * 考试记录分页
      *
      * @param requestVM 过滤条件
      * @return PageInfo<ExamPaperAnswer>

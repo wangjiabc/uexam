@@ -289,6 +289,13 @@
         where deleted=0 and user_name=#{value} limit 1
     </select>
 
+    <select id="getUserByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        *
+        from t_user
+        where deleted=0 and user_name = #{username,jdbcType=VARCHAR} limit 1
+    </select>
+
     <select id="getUserByUserNamePwd" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -451,56 +458,110 @@
     <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.article.UserDTO" parameterType="com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO">
         SELECT
         a.user_name userName,
+        a.real_name realName,
         a.age,
         a.phone,
         a.sex,
-        b.count,
+        a.image_path imagePath,
+        sum(b.count) count,
         b.start_time startTime
         FROM
         t_user a,
         t_read_state b
         WHERE
         a.id = b.user_id
-        AND b.count > 0
+        AND count > 0
         <if test="startTime != null">
             AND start_time <![CDATA[ > ]]> #{startTime}
         </if>
         <if test="endTime != null">
             AND start_time <![CDATA[ < ]]> #{endTime}
         </if>
+        GROUP BY
+        userName
     </select>
 
     <select id="selectExamRanking" resultType="com.alvis.exam.domain.dto.article.ExamDTO" parameterType="com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO">
         SELECT
         a.user_name userName,
+        a.real_name realName,
         a.age,
         a.phone,
         a.sex,
-        b.user_score userScore,
+        a.image_path imagePath,
+        SUM(b.user_score) userScore,
         b.create_time startTime
         FROM
         t_user a,
         t_exam_paper_answer b
         WHERE
         a.id = b.create_user
-        AND b.user_score > 0
         <if test="startTime != null">
             AND b.create_time <![CDATA[ > ]]> #{startTime}
         </if>
         <if test="endTime != null">
             AND b.create_time <![CDATA[ < ]]> #{endTime}
         </if>
+        GROUP BY
+        userName
     </select>
 
     <update id="updateByPrimaryUser" parameterType="com.alvis.exam.domain.User">
     update t_user
     set
-      real_name = #{realName,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       sex = #{sex,jdbcType=INTEGER},
       phone = #{phone,jdbcType=VARCHAR},
       duty = #{duty,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <update id="updateByPrimaryImage" parameterType="com.alvis.exam.domain.User">
+    update t_user
+    set
+      image_path = #{imagePath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+<!-- start 阅读-->
+    <select id="findYiRead" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+        SELECT COUNT(ta.read_time_l) count1,SUM(ta.read_time_l) integralCount
+        FROM t_article ta
+        RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) trs
+        ON trs.article_id = ta.id
+    </select>
+
+    <select id="findZaiRead" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+        SELECT COUNT(ta.read_time_l) count2
+        FROM t_article ta
+        RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs
+        ON trs.article_id = ta.id
+    </select>
+
+    <select id="findWeiRead" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+        SELECT COUNT(ta.read_time_l) count3 FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL
+    </select>
+    <!-- end 阅读-->
+
+
+    <!-- start 考试-->
+    <select id="findYiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+      SELECT COUNT(ta.read_time_l) count1,SUM(ta.read_time_l) integralCount
+      FROM t_article AS ta
+      RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) AS trs
+      ON trs.article_id = ta.id;
+    </select>
+
+    <select id="findWeiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+      SELECT COUNT(ta.read_time_l) count3
+      FROM t_article ta
+      LEFT JOIN  (SELECT article_id
+      FROM t_read_state
+      WHERE user_id = #{id,jdbcType=INTEGER}
+      GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;
+    </select>
+    <!-- end 考试-->
+
+
 
 </mapper>

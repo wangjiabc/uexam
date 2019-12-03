@@ -3,6 +3,7 @@ package com.alvis.exam.controller.wx.student;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.configuration.property.SystemConfig;
 import com.alvis.exam.controller.wx.BaseWXApiController;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserToken;
 import com.alvis.exam.domain.enums.UserStatusEnum;
 import com.alvis.exam.service.AuthenticationService;
@@ -21,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
-
+@CrossOrigin
 @Controller("WXStudentAuthController")
 @RequestMapping(value = "/api/wx/student/auth")
 @AllArgsConstructor
@@ -38,7 +39,7 @@ public class AuthController extends BaseWXApiController {
 
     @RequestMapping(value = "/bind", method = RequestMethod.POST)
     public RestResponse bind(@Valid BindInfo model) {
-    	//登录
+        //登录
         String code = model.getCode();
         String openid = WxUtil.getOpenId(systemConfig.getWx().getAppid(), systemConfig.getWx().getSecret(), code);
         if (null == openid) {
@@ -49,13 +50,36 @@ public class AuthController extends BaseWXApiController {
         if (user == null) {
             return RestResponse.fail(5, "用户未绑定微信,请注册");
         }
+        Integer status = user.getStatus();
+        if (status == 2) {
+            return RestResponse.fail(6, "用户未获得登录权限,请联系管理员");
+        }
         UserToken userToken = userTokenService.bind(user);
         return RestResponse.ok(userToken.getToken());
     }
 
+    /**
+     * 保存用户登录头像
+     * @param image
+     * @return
+     */
+    @RequestMapping(value = "/saveBuddha", method = RequestMethod.POST)
+    public RestResponse saveBuddha(String image) {
+        //保存用户头像
+        Integer id = getCurrentUser().getId();
+        User user = new User();
+        user.setId(id);
+        user.setImagePath(image);
+        userService.updateUserImage(user);
+
+        return RestResponse.ok();
+    }
+
+
 
     @RequestMapping(value = "/checkBind", method = RequestMethod.POST)
     public RestResponse checkBind(@Valid @NotBlank String code) {
+
     	System.out.println("code="+code);
         String openid = WxUtil.getOpenId(systemConfig.getWx().getAppid(), systemConfig.getWx().getSecret(), code);
         if (null == openid) {

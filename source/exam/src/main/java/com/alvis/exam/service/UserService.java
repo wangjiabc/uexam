@@ -1,5 +1,6 @@
 package com.alvis.exam.service;
 
+import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.dto.UserDto;
 import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
@@ -156,4 +157,10 @@ public interface UserService extends BaseService<User> {
     PageInfo<ExamDTO> selectExamRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM);
 
     User findUser(Integer id);
+
+    void updateUserImage(User user);
+
+    IntegralBasic userReadBasic(Integer id);
+
+    IntegralBasic userExamBasic(Integer id);
 }

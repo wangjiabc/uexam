@@ -29,7 +29,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin
 @Controller("WXStudentExamController")
 @RequestMapping(value = "/api/wx/student/exampaper")
 @AllArgsConstructor

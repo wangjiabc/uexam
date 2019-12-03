@@ -3,6 +3,7 @@ package com.alvis.exam.controller.admin;
 
 import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.configuration.property.SystemConfig;
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.service.FileUpload;
 import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.admin.file.UeditorConfigVM;
@@ -23,7 +24,7 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Map;
 
-
+@CrossOrigin
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/api/admin/upload")
@@ -37,6 +38,8 @@ public class UploadEditorController extends BaseApiController {
     private static final Logger logger = LoggerFactory.getLogger(UploadController.class);
     private static final String IMAGE_UPLOAD = "imgUpload";
     private static final String IMAGE_UPLOAD_FILE = "upFile";
+    @Autowired
+    private UrlConfig urlConfig;
 
     @ResponseBody
     @RequestMapping("/configAndUpload")
@@ -62,7 +65,7 @@ public class UploadEditorController extends BaseApiController {
                 uploadResultVM.setSize(multipartFile.getSize());
                 uploadResultVM.setType(imageType);  //.png
                 uploadResultVM.setState("SUCCESS");
-                Map<String, String> map = UploadUtils.upload(multipartFile);//上传图片
+                Map<String, String> map = UploadUtils.upload(multipartFile,urlConfig.getUrl());//上传图片
                 String url = map.get("url");
 //                uploadResultVM.setUrl(url.replace(".png",""));    //服务器图片地址  不加  图片类型后缀
                 uploadResultVM.setUrl(url);    //服务器图片地址  不加  图片类型后缀

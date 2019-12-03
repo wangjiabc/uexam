@@ -26,6 +26,7 @@ import javax.validation.constraints.Size;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+@CrossOrigin
 @RestController("AdminExamPaperController")
 @RequestMapping(value = "/api/admin/exam/paper")
 @AllArgsConstructor
