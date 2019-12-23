@@ -5,11 +5,13 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="paper_type" jdbcType="VARCHAR" property="paperType" />
   </resultMap>
+
   <sql id="Base_Column_List">
     id, paper_type
   </sql>
   <!-- 查询章节 -->
   <select id="queryExamType" resultType="com.alvis.exam.domain.ExamType">
-    select * from t_exam_type
+    select id,paper_type as paperType from t_exam_type
   </select>
+
 </mapper>
