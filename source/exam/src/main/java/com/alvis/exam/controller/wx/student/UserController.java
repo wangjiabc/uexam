@@ -272,14 +272,14 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok();
     }
 
-    /**
-     * 返回登录权限状态：1为禁用，2为启用
-     */
-    @RequestMapping(value = "returnState")
-    public  Integer returnState(){
-        Integer id = getCurrentUser().getId();
-        User user = userService.selectById(id);
-        Integer status = user.getStatus();
-        return status;
-    }
+//    /**
+//     * 返回登录权限状态：1为禁用，2为启用
+//     */
+//    @RequestMapping(value = "returnState")
+//    public  Integer returnState(){
+//        Integer id = getCurrentUser().getId();
+//        User user = userService.selectById(id);
+//        Integer status = user.getStatus();
+//        return status;
+//    }
 }

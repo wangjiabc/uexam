@@ -90,6 +90,12 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     }
 
     @Override
+    public ArticleType findByTypeId(Integer typeId) {
+        ArticleType byTypeId = articleTypeMapper.findByTypeId(typeId);
+        return byTypeId;
+    }
+
+    @Override
     public void updateArticleType(ArticleType articleType) {
         articleTypeMapper.updateArticleType(articleType);
     }

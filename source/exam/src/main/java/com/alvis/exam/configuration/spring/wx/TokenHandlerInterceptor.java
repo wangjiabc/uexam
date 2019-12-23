@@ -54,6 +54,10 @@ public class TokenHandlerInterceptor implements HandlerInterceptor {
             return false;
         }
 
+        if(userService.selectById(userToken.getUserId()).getStatus() == 2){
+            RestUtil.response(response, SystemCode.AccessDeniedLogin);
+            return false;
+        }
         Date now = new Date();
         User user = userService.getUserByUserName(userToken.getUserName());
         if (now.before(userToken.getEndTime())) {

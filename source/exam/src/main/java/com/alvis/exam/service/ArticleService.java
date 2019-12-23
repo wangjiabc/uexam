@@ -4,7 +4,6 @@ import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
-import com.alvis.exam.viewmodel.admin.article.PageInfoVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;

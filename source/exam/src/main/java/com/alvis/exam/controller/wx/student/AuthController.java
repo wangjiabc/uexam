@@ -50,10 +50,10 @@ public class AuthController extends BaseWXApiController {
         if (user == null) {
             return RestResponse.fail(5, "用户未绑定微信,请注册");
         }
-        Integer status = user.getStatus();
-        if (status == 2) {
-            return RestResponse.fail(6, "用户未获得登录权限,请联系管理员");
-        }
+//        Integer status = user.getStatus();
+//        if (status == 2) {
+//            return RestResponse.fail(6, "用户未获得登录权限,请联系管理员");
+//        }
         UserToken userToken = userTokenService.bind(user);
         return RestResponse.ok(userToken.getToken());
     }

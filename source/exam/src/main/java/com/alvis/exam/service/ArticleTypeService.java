@@ -27,4 +27,5 @@ public interface ArticleTypeService {
 
     List<ArticleType> findType();
 
+    ArticleType findByTypeId(Integer typeId);
 }

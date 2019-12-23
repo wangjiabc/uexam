@@ -1,5 +1,6 @@
 package com.alvis.exam.service.impl;
 
+import com.alvis.exam.domain.ExamPaper;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.dto.UserDto;
@@ -9,6 +10,7 @@ import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
 import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.repository.ExamPaperAnswerMapper;
+import com.alvis.exam.repository.ExamPaperMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
@@ -270,20 +272,24 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         return a1;
     }
 
+    @Resource
+    private ExamPaperMapper examPaperMapper;
+
     @Override
     public IntegralBasic userExamBasic(Integer id) {
         IntegralBasic a1 = userMapper.findYiExam(id);         //已考
-        IntegralBasic a3 = userMapper.findWeiExam(id);        //未考
-        Integer integralCount = a1.getIntegralCount();          //積分
+        IntegralBasic a3 = examPaperMapper.findAll();//总考试科目数
         Integer count3 = a3.getCount3();
+        Integer integralCount = a1.getIntegralCount();          //積分
+        if(count3 == null){
+            count3 = 0;
+        }
         if(integralCount == null){
             integralCount = 0;
             a1.setIntegralCount(integralCount);
         }
-        if(count3 == null){
-            count3 = 0;
-        }
-        a1.setCount3(count3);
+        int a = count3 - a1.getCount1();        //未考
+        a1.setCount3(a);
         return a1;
     }
 }

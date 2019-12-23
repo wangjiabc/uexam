@@ -546,20 +546,17 @@
 
     <!-- start 考试-->
     <select id="findYiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
-      SELECT COUNT(ta.read_time_l) count1,SUM(ta.read_time_l) integralCount
-      FROM t_article AS ta
-      RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) AS trs
-      ON trs.article_id = ta.id;
+          SELECT COUNT(1) count1,SUM(user_score) integralCount FROM `t_exam_paper_answer` WHERE create_user = #{id,jdbcType=INTEGER}
     </select>
 
-    <select id="findWeiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
-      SELECT COUNT(ta.read_time_l) count3
-      FROM t_article ta
-      LEFT JOIN  (SELECT article_id
-      FROM t_read_state
-      WHERE user_id = #{id,jdbcType=INTEGER}
-      GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;
-    </select>
+<!--    <select id="findWeiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">-->
+<!--      SELECT COUNT(ta.read_time_l) count3-->
+<!--      FROM t_article ta-->
+<!--      LEFT JOIN  (SELECT article_id-->
+<!--      FROM t_read_state-->
+<!--      WHERE user_id = #{id,jdbcType=INTEGER}-->
+<!--      GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;-->
+<!--    </select>-->
     <!-- end 考试-->
 
 

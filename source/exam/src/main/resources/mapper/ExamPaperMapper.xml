@@ -331,4 +331,11 @@
     </foreach>
   </update>
 
+
+  <select id="findAll" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic">
+    select
+    count(1) count3
+    from t_exam_paper
+  </select>
+
 </mapper>

@@ -6,7 +6,6 @@ import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.domain.ViewPager;
-import com.alvis.exam.repository.ViewPagerMapper;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ArticleTypeService;
 import com.alvis.exam.service.ViewPagerService;
@@ -18,13 +17,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import java.io.File;
-import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 @CrossOrigin
@@ -69,7 +66,7 @@ public class ArticleController {
      * @param jsonObject
      */
     @RequestMapping("saveArticle")
-    public void save(@RequestBody JSONObject jsonObject) {
+    public RestResponse save(@RequestBody JSONObject jsonObject) {
         List<ArticleType> lists = articleService.findArticleType();
         ArticleVM articleVM = new ArticleVM();
         String name = jsonObject.getString("title");     //文章标题
@@ -99,6 +96,48 @@ public class ArticleController {
         }
         articleVM.setTypeId(typeId);
         articleService.saveArticle(articleVM);
+        return RestResponse.ok();
+    }
+
+    /**
+     * 编辑文章
+     *
+     * @param
+     */
+    @RequestMapping("updateArticle")
+    public RestResponse updateArticle(@RequestBody JSONObject jsonObject) {
+        List<ArticleType> lists = articleService.findArticleType();
+        Article article = new Article();
+        Integer id1 = jsonObject.getInteger("id");
+        String name = jsonObject.getString("title");     //文章标题
+        String author = jsonObject.getString("author"); //文章作者
+        String doc = jsonObject.getString("content");       //文章内容
+        String a = jsonObject.getString("readTimeL");     //下限时长
+        String type = jsonObject.getString("typeName");   //文章类型
+        int down = Integer.parseInt(a);
+
+        String b = jsonObject.getString("readTimeU");   //文章积分
+        int count = Integer.parseInt(b);
+
+        article.setId(id1);
+        article.setTitle(name);
+        article.setAuthor(author);
+        article.setContent(doc);
+        article.setReadTimeL(down);
+        article.setReadTimeU(count);
+        article.setState(1);
+
+        int typeId = 0; //接收typeId
+        for (ArticleType articleType : lists) {
+            String typeName = articleType.getTypeName();
+            if (typeName.equals(type)) {
+                Integer id = articleType.getId();
+                typeId = id;
+            }
+        }
+        article.setTypeId(typeId);
+        articleService.updateArticle(article);
+        return RestResponse.ok();
     }
 
     /**
@@ -110,13 +149,18 @@ public class ArticleController {
     @RequestMapping(value = "articleList", method = RequestMethod.POST)
     public RestResponse<PageInfo<Article>> pageList(@RequestBody MessagePageRequestVM model) {
         PageInfo<Article> pageInfo = articleService.page(model);
+        for (Article article : pageInfo.getList()) {
+            Integer typeId = article.getTypeId();
+            ArticleType byTypeId = articleTypeService.findByTypeId(typeId);
+            String typeName = byTypeId.getTypeName();
+            article.setTypeName(typeName);
+        }
         return RestResponse.ok(pageInfo);
     }
 
     /**
      * 删除文章
-     *
-     * @param
+     * @param article state 隐藏为0 显示为1  从前端传过来的
      * @return 返回状态码
      */
     @RequestMapping("deleteArticle")
@@ -127,19 +171,7 @@ public class ArticleController {
 
 
     /**
-     * 编辑文章
-     *
-     * @param
-     */
-    @RequestMapping("updateArticle")
-    public RestResponse updateArticle(@RequestBody Article article) {
-        articleService.updateArticle(article);
-        return RestResponse.ok();
-    }
-
-    /**
      * 自定义上传图片:一张图片存一个地址
-     *
      * @param
      */
     @RequestMapping(value = "uploadImages")
@@ -151,11 +183,11 @@ public class ArticleController {
         String fileNameNew = null;
         if (file != null) {
             //自定义上传位置
-            Map<String, String> map = UploadUtils.upload(file, "D:/manage-upload/images/wx/",urlConfig.getUrl());
+            Map<String, String> map = UploadUtils.upload(file, "D:/manage-upload/images/wx/", urlConfig.getUrl());
             fileNameNew = map.get("fileNameNew");
         }
         ViewPager viewPager = new ViewPager();
-        viewPager.setName("轮播图_"+(size+1));
+        viewPager.setName("轮播图_" + (size + 1));
         viewPager.setUploadTime(new Date());
         viewPager.setAddress(fileNameNew);
         viewPagerService.insert(viewPager);  //插入数据
@@ -164,10 +196,8 @@ public class ArticleController {
     }
 
 
-
     /**
      * 删除上传图片:单个删除
-     *
      * @param
      */
     @RequestMapping(value = "delImages")
@@ -179,7 +209,7 @@ public class ArticleController {
 //            viewPager1.setAddress("http://223.86.150.188:8091/images/wx/" + address);
             viewPager1.setAddress(urlConfig.getUrl() + "wx/" + address);
             String address1 = viewPager1.getAddress();
-            if(address1.equals(url)){
+            if (address1.equals(url)) {
                 Integer id = viewPager1.getId();
                 viewPagerService.deleteImages(id);  //数据库删除数据
                 new File("D:/manage-upload/images/wx/" + s).delete();//删除本地文件
@@ -200,7 +230,7 @@ public class ArticleController {
         for (ViewPager viewPager : viewPagers) {
             String address = viewPager.getAddress();
             viewPager.setAddress(urlConfig.getUrl() + "wx/" + address);
-            arrayList.add(0,viewPager);
+            arrayList.add(0, viewPager);
         }
 
         return arrayList;
@@ -234,18 +264,4 @@ public class ArticleController {
     }
 
 
-
-
-//    @Autowired
-//    private UrlConfig urlConfig;
-//
-//    @RequestMapping("/env")
-//    public Map<String, Object> env() {
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("type3", urlConfig.getType3());
-//        map.put("url", urlConfig.getUrl());
-//
-//
-//        return map;
-//    }
 }

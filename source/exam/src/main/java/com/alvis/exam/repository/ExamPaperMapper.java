@@ -1,6 +1,7 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.ExamPaper;
+import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.viewmodel.admin.exam.ExamPaperPageRequestVM;
 import com.alvis.exam.viewmodel.student.dashboard.PaperFilter;
@@ -41,4 +42,6 @@ public interface ExamPaperMapper extends BaseMapper<ExamPaper> {
     int updateTaskPaper(@Param("taskId") Integer taskId,@Param("paperIds") List<Integer> paperIds);
 
     int clearTaskPaper(@Param("paperIds") List<Integer> paperIds);
+
+    IntegralBasic findAll();
 }

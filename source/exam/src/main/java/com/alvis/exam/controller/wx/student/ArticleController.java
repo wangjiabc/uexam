@@ -61,18 +61,6 @@ public class ArticleController extends BaseWXApiController {
         //根据分类id查询该类型下所有的文章
         messageRequestVM.setReceiveUserId(getCurrentUser().getId());
         PageInfo<ArticleDTO> pageInfo = articleService.studentPage(typeId,messageRequestVM);
-//        for (ArticleDTO articleDTO : pageInfo.getList()) {
-//            String readState = articleDTO.getReadState();
-//            if("已读".equals(readState)){
-//                articleDTO.setReadState("1");
-//            }
-//            else if("在读".equals(readState)){
-//                articleDTO.setReadState("2");
-//            }
-//            else if(readState == null){
-//                articleDTO.setReadState("3");
-//            }
-//        }
         return RestResponse.ok(pageInfo);
     }
 
@@ -141,15 +129,6 @@ public class ArticleController extends BaseWXApiController {
 
 
         }
-//        //查询readState表中该用户读取这篇文章总时长
-//        User user = getCurrentUser();
-//        Integer useId = user.getId();  //得到useId
-//        //根据useId,articleId查询该用户阅读该文章的最大时长
-//        int count = readService.findIntegrate(useId,id);
-//        //积分满时存一次数据，后面再阅读此文章不进行数据存储
-//        if(count != integrate){
-//            readService.saveReadState(readState);   //存储到read表
-//        }
 
         return RestResponse.ok();
     }
@@ -190,7 +169,6 @@ private UrlConfig urlConfig;
             viewPager.setAddress(urlConfig.getUrl() + "wx/" + address);
             arrayList.add(0,viewPager);
         }
-
         return arrayList;
     }
 
