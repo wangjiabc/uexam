@@ -33,7 +33,7 @@
           route, user_id)
         values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
           #{route,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
-  </insert>
+    </insert>
 
     <insert id="insertSelective" parameterType="com.alvis.exam.domain.Xmind">
         insert into t_xmind
@@ -99,7 +99,7 @@
           route = #{route,jdbcType=VARCHAR},
           user_id = #{userId,jdbcType=INTEGER}
         where id = #{id,jdbcType=INTEGER}
-  </update>
+     </update>
 
     <select id="checkXmindCode" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select count(0) from t_xmind where code=#{code,jdbcType=VARCHAR}
