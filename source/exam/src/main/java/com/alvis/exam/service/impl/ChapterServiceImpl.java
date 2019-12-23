@@ -29,8 +29,8 @@ public class ChapterServiceImpl implements ChapterService {
     }
 
     @Override
-    public void deleteChapterByIds(Integer id) {
-        this.chapterMapper.deleteChapterByIds(id);
+    public void deleteChapterById(Integer id) {
+        this.chapterMapper.deleteChapterById(id);
     }
 
     @Override

@@ -28,7 +28,7 @@ public interface ChapterService {
      *删除章节
      * @param id
      */
-    void deleteChapterByIds(Integer id);
+    void deleteChapterById(Integer id);
 
     /**
      * queryChapter

@@ -7,12 +7,12 @@ import java.util.List;
 
 /**
  * @author yangsy
- * 章节管理
+ * 试卷类型
  */
 public interface ExamTypeService {
     /**
      * queryExamType
-     * 查询章节
+     * 查询试卷类型
      * @param examType
      */
     List<ExamType> queryExamType(ExamType examType);

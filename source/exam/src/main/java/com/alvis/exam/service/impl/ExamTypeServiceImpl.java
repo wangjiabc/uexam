@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * 试卷类型impl
+ * 试卷类型IMPL
  * @author yangsy
  */
 @Service

@@ -28,11 +28,11 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
     void updateChapter(Chapter chapter);
 
     /**
-     * deleteChapterByIds
+     * deleteChapterById
      *删除章节
      * @param id
      */
-    void deleteChapterByIds(Integer id);
+    void deleteChapterById(Integer id);
 
     /**
      * 查询思维导图

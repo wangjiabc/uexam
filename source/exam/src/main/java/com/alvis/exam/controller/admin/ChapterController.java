@@ -55,7 +55,7 @@ public class ChapterController extends BaseApiController {
     @RequestMapping(value = "/deleteChapter", method = RequestMethod.POST)
     public RestResponse delete(@RequestBody Chapter model) {
 
-        this.chapterService.deleteChapterByIds(model.getId());
+        this.chapterService.deleteChapterById(model.getId());
         return RestResponse.ok();
     }
 
