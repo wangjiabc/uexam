@@ -33,7 +33,7 @@ import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin
 @Controller("WXStudentExamPaperAnswerController")
 @RequestMapping(value = "/api/wx/student/exampaper/answer")
 @AllArgsConstructor

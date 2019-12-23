@@ -7,6 +7,7 @@ import com.alvis.exam.domain.Message;
 import com.alvis.exam.domain.MessageUser;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.UserEventLog;
+import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.enums.RoleEnum;
@@ -36,6 +37,7 @@ import javax.validation.Valid;
 import java.time.Duration;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -43,6 +45,7 @@ import java.util.stream.Collectors;
 /**
  * @author alvis
  */
+@CrossOrigin
 @Api(value = "微信端user",tags = "用户api")
 @Controller("WXStudentUserController")
 @RequestMapping(value = "/api/wx/student/user")
@@ -90,15 +93,17 @@ public class UserController extends BaseWXApiController {
         user.setAge(model.getAge());
         user.setSex(model.getSex());
 
-        String encodePwd = authenticationService.pwdEncode(model.getPassword());
+//        String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
-        user.setPassword(encodePwd);
+//        user.setPassword(encodePwd);
         user.setRole(RoleEnum.STUDENT.getCode());
-        user.setStatus(UserStatusEnum.Enable.getCode());
+        user.setStatus(UserStatusEnum.Disable.getCode());   //默认不能登录  必须管理员给与权限
         user.setLastActiveTime(new Date());
         user.setCreateTime(new Date());
         user.setDeleted(false);
         user.setWxOpenId(openid);
+        user.setImagePath(model.getImagePath());    //传入头像
+
         userService.insertByFilter(user);
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         userEventLog.setContent("欢迎 " + user.getUserName() + " 注册来到系统");
@@ -184,24 +189,34 @@ public class UserController extends BaseWXApiController {
     }
 
     /**
-     * 积分排名
+     * 阅读积分排名
      * @param queryTimeVO   时间区间
      * @param requestVM     分页对象
      * @return
      */
     @RequestMapping(value = "selectUserRanking", method = RequestMethod.POST)
     public RestResponse<PageInfo<UserDTO>> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
-
+        requestVM.setReceiveUserId(getCurrentUser().getId());
         queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
-
         PageInfo<UserDTO> userDtoPageInfo = userService.selectUserRanking(queryTimeVO, requestVM);
         //排名
         for (int i = 1, rank = userDtoPageInfo.getStartRow(); i <= userDtoPageInfo.getList().size(); i++) {
             UserDTO userDTO = userDtoPageInfo.getList().get(i - 1);
             userDTO.setRank(rank++);
         }
-
         return RestResponse.ok(userDtoPageInfo);
+    }
+
+
+    /**
+     * 个人阅读基础情况
+     * @return
+     */
+    @RequestMapping(value = "userReadBasic", method = RequestMethod.POST)
+    public RestResponse userReadBasic() {
+        Integer id = getCurrentUser().getId();
+        IntegralBasic list = userService.userReadBasic(id);
+        return RestResponse.ok(list);
     }
 
 
@@ -213,10 +228,17 @@ public class UserController extends BaseWXApiController {
      */
     @RequestMapping(value = "selectExamRanking", method = RequestMethod.POST)
     public RestResponse<PageInfo<ExamDTO>> selectExamRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
-
+        requestVM.setReceiveUserId(getCurrentUser().getId());
         queryTimeVO.setEndTime(DateTimeUtil.addDuration(queryTimeVO.getEndTime(), Duration.ofDays(1)));
-
         PageInfo<ExamDTO> examDTOPageInfo = userService.selectExamRanking(queryTimeVO, requestVM);
+        List<ExamDTO> list = examDTOPageInfo.getList();
+        for (ExamDTO examDTO : list) {
+            Integer userScore = examDTO.getUserScore();
+            if(userScore != 0){
+                userScore = userScore / 10;
+                examDTO.setUserScore(userScore);
+            }
+        }
         //排名
         for (int i = 1, rank = examDTOPageInfo.getStartRow(); i <= examDTOPageInfo.getList().size(); i++) {
             ExamDTO examDTO = examDTOPageInfo.getList().get(i - 1);
@@ -225,6 +247,18 @@ public class UserController extends BaseWXApiController {
 
         return RestResponse.ok(examDTOPageInfo);
     }
+
+    /**
+     * 个人考试基础情况
+     * @return
+     */
+    @RequestMapping(value = "userExamBasic", method = RequestMethod.POST)
+    public RestResponse userExamBasic() {
+        Integer id = getCurrentUser().getId();
+        IntegralBasic list = userService.userExamBasic(id);
+        return RestResponse.ok(list);
+    }
+
 
 
     /**
@@ -238,5 +272,14 @@ public class UserController extends BaseWXApiController {
         return RestResponse.ok();
     }
 
-
+//    /**
+//     * 返回登录权限状态：1为禁用，2为启用
+//     */
+//    @RequestMapping(value = "returnState")
+//    public  Integer returnState(){
+//        Integer id = getCurrentUser().getId();
+//        User user = userService.selectById(id);
+//        Integer status = user.getStatus();
+//        return status;
+//    }
 }

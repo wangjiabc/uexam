@@ -33,4 +33,6 @@ public interface ArticleTypeMapper {
     void updateArticleType(ArticleType articleType);
 
     List<ArticleType> findType(Integer state);
+
+    ArticleType findByTypeId(Integer typeId);
 }

@@ -158,14 +158,35 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.Article">
     update t_article
-    set title = #{title,jdbcType=VARCHAR},
-      author = #{author,jdbcType=VARCHAR},
-      upload_day = #{uploadDay,jdbcType=TIMESTAMP},
-      user_id = #{userId,jdbcType=INTEGER},
-      type_id = #{typeId,jdbcType=INTEGER},
-      read_time_u = #{readTimeU,jdbcType=INTEGER},
-      read_time_l = #{readTimeL,jdbcType=INTEGER},
-      state = #{state,jdbcType=INTEGER}
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadDay != null">
+        upload_day = #{uploadDay,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="readTimeU != null">
+        read_time_u = #{readTimeU,jdbcType=INTEGER},
+      </if>
+      <if test="readTimeL != null">
+        read_time_l = #{readTimeL,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -212,15 +233,15 @@
       FROM t_article as ta
       RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) as trs
       ON trs.article_id = ta.id
-      where type_id = #{typeId,jdbcType=INTEGER}
+      where type_id = #{typeId,jdbcType=INTEGER} and state = 1
       UNION ALL
       SELECT ta.*,'在读' AS readState
       FROM t_article ta RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs ON trs.article_id = ta.id
-      where type_id = #{typeId,jdbcType=INTEGER}
+      where type_id = #{typeId,jdbcType=INTEGER} and state = 1
       UNION ALL
       SELECT ta.*,'未读' AS readState
       FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL
-      and type_id = #{typeId,jdbcType=INTEGER}
+      and type_id = #{typeId,jdbcType=INTEGER} and state = 1
       ;
 
   </select>
@@ -254,15 +275,24 @@
       SELECT *
       FROM t_article as ta
       RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) as trs
-      ON trs.article_id = ta.id;
+      ON trs.article_id = ta.id
+      where ta.state = 1;
     </if>
     <if test="typeId == 2">
       SELECT *
-      FROM t_article ta RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs ON trs.article_id = ta.id;
+      FROM t_article ta
+      RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state
+      WHERE user_id = #{receiveUserId,jdbcType=INTEGER}
+      GROUP BY article_id HAVING maxCount = 0) trs ON trs.article_id = ta.id
+      where ta.state = 1;
     </if>
     <if test="typeId == 3">
       SELECT *
-      FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;
+      FROM t_article ta
+      LEFT JOIN  (SELECT article_id
+      FROM t_read_state
+      WHERE user_id = #{receiveUserId,jdbcType=INTEGER}
+      GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL and  ta.state = 1;
     </if>
   </select>
 

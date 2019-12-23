@@ -22,7 +22,7 @@ public interface ArticleMapper {
 
     int updateByPrimaryKeyWithBLOBs(Article record);
 
-    int updateByPrimaryKey(Article record);
+    int updateByPrimaryKey(Article article);
 
     List<Article> findAll();
 
@@ -34,7 +34,6 @@ public interface ArticleMapper {
 
     List<Article> findArticle(Integer typeId);
 
-//    List<Article> studentPage(ArticleDto articleDto);
     List<ArticleDTO> studentPage(ArticleDto articleDto);
 
     Article selectById(Article article);

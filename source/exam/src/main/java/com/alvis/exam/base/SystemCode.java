@@ -1,5 +1,7 @@
 package com.alvis.exam.base;
 
+import java.awt.geom.AffineTransform;
+
 /**
  * @author alvis
  */
@@ -30,9 +32,14 @@ public enum SystemCode {
     ParameterValidError(501, "参数验证错误"),
 
     /**
+     * AccessDeniedLogin
+     */
+    AccessDeniedLogin(503,"用户没有登录权限，请联系管理员"),
+    /**
      * AccessDenied
      */
     AccessDenied(502,"用户没有权限访问");
+
 
     int code;
     String message;

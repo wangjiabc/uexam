@@ -114,4 +114,12 @@
       origName = #{origname,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findByTypeId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    *
+    from t_article_type
+    where id = #{typeId,jdbcType=INTEGER}
+  </select>
+
+
 </mapper>

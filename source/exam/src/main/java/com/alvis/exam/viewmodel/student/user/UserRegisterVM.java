@@ -11,7 +11,6 @@ public class UserRegisterVM {
     @NotBlank
     private String userName;
 
-    @NotBlank
     private String password;
 
     @NotBlank
@@ -26,6 +25,16 @@ public class UserRegisterVM {
     private Integer age;
 
     private String duty;
+
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public String getUserName() {
         return userName;

@@ -1,5 +1,6 @@
 package com.alvis.exam.service.impl;
 
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.repository.ArticleMapper;
@@ -11,6 +12,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.models.auth.In;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -35,6 +37,9 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
         return types;
     }
 
+
+    @Autowired
+    private UrlConfig urlConfig;
     /**
      * 动态查看所有分类信息
      * @return
@@ -44,12 +49,13 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
 //        List<ArticleType> list = pageInfo.getList();
 ////        for (ArticleType articleType : list) {
 ////            String origname = articleType.getOrigname();
-////            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+////            articleType.setPathDeposit("http://223.86.150.188:8091/images/" + origname);
 ////        }
         List<ArticleType> page = articleTypeMapper.page(requestVM);
         for (ArticleType articleType : page) {
             String origname = articleType.getOrigname();
-            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+//            articleType.setPathDeposit("http://223.86.150.188:8091/images/" + origname);
+            articleType.setPathDeposit(urlConfig.getUrl() + origname);
         }
         return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
                 articleTypeMapper.page(requestVM)
@@ -81,6 +87,12 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     public List<ArticleType> findType() {
         Integer state = 1;
         return articleTypeMapper.findType(state);
+    }
+
+    @Override
+    public ArticleType findByTypeId(Integer typeId) {
+        ArticleType byTypeId = articleTypeMapper.findByTypeId(typeId);
+        return byTypeId;
     }
 
     @Override

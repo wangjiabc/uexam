@@ -18,6 +18,7 @@ import java.util.Arrays;
 /**
  * @author yangsy
  */
+@CrossOrigin
 @RestController("AdminXmindController")
 @RequestMapping(value = "/api/admin/xmind")
 @AllArgsConstructor

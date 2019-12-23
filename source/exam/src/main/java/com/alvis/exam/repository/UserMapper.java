@@ -1,5 +1,6 @@
 package com.alvis.exam.repository;
 
+import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.dto.UserDto;
 import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
@@ -58,6 +59,8 @@ public interface UserMapper extends BaseMapper<User> {
      * @return User
      */
     User getUserByUserName(String username);
+
+    User getUserByName(String username);
 
     /**
      * getUserByUserNamePwd
@@ -166,4 +169,18 @@ public interface UserMapper extends BaseMapper<User> {
     List<ExamDTO> selectExamRanking(QueryTimeVO queryTimeVO);
 
     int updateByPrimaryUser(User user);
+
+    int updateByPrimaryImage(User user);
+
+
+    IntegralBasic findYiRead(Integer id);
+
+    IntegralBasic findZaiRead(Integer id);
+
+    IntegralBasic findWeiRead(Integer id);
+
+
+    IntegralBasic findYiExam(Integer id);
+
+//    IntegralBasic findWeiExam(Integer id);
 }

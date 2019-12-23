@@ -2,6 +2,7 @@ package com.alvis.exam.controller.admin;
 
 import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.service.UploadService;
@@ -11,10 +12,7 @@ import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
@@ -22,7 +20,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-
+@CrossOrigin
 @Slf4j
 @AllArgsConstructor
 @RequestMapping("/api/admin/upload")
@@ -71,11 +69,13 @@ public class UploadController extends BaseApiController {
         List<ArticleType> list = pageInfo.getList();
         for (ArticleType articleType : list) {
             String origname = articleType.getOrigname();
-            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+            articleType.setPathDeposit("http://192.168.100.:8091/images/" + origname);
         }
         return RestResponse.ok(pageInfo);
     }
 
+    @Autowired
+    private UrlConfig urlConfig;
 
     /**
      * 修改分类
@@ -120,7 +120,8 @@ public class UploadController extends BaseApiController {
             //存名称
             articleType.setOrigname(fileName);
             //file:///D:/manage-upload/static/fdc65ea0-dbe1-4ced-983f-55e14778d2dc.png
-            String url = "http://192.168.100.185:8091/images/";
+//            String url = "http://223.86.150.188:8091/images/";
+            String url = urlConfig.getUrl();
             articleType.setPathDeposit("url/images/" + fileName);
             articleType.setTypeName(type);
             articleType.setId(id);
@@ -130,6 +131,7 @@ public class UploadController extends BaseApiController {
         }
         return RestResponse.ok();
     }
+
 
 
     /**
@@ -143,56 +145,20 @@ public class UploadController extends BaseApiController {
         ArticleType articleType = new ArticleType();
 
         //图片上传
-        Map<String, String> stringMap = UploadUtils.upload(file);
+        Map<String, String> stringMap = UploadUtils.upload(file,urlConfig.getUrl());
 //        String fileName = stringMap.get("fileName");    //图片原名称
         String sqlSaveUrl = stringMap.get("sqlSaveUrl");    //图片访问地址
         String fileNameNew = stringMap.get("fileNameNew");
 
         //存名称
         articleType.setOrigname(fileNameNew);
-//        String url = "http://192.168.100.185:8091/images/";
+//        String url = "http://223.86.150.188:8091/images/";
         articleType.setPathDeposit(sqlSaveUrl);
         articleType.setTypeName(type);
         articleType.setState(1);
-//        System.out.println(url + fileName);
         uploadService.saveArticleType(articleType);
         System.out.println("图片上传成功:" + sqlSaveUrl);
         return RestResponse.ok();
-//        ArticleType articleType = new ArticleType();
-//        String fileName = file.getOriginalFilename();
-//        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-//        fileName = UUID.randomUUID() + suffixName;
-//        // 图片存储地址，例如"E:/imagesServer/"
-//        String parent = "D:/manage-upload/images/";
-//        String imgName = "";
-//        try {
-//            File targetFile = new File(parent, fileName);
-//            // 创建文件夹
-//            if (!targetFile.getParentFile().exists()) {
-//                targetFile.getParentFile().mkdirs();
-//            }
-//            // 将上传文件存储到服务器中
-//            file.transferTo(targetFile);
-//            // 背景图片地址
-//            imgName = targetFile.getName();
-//            // 图片显示地址，例如"http://localhost:8080/imgFiles/" + imgName
-//            imgName = parent + imgName;
-//            System.out.println(imgName);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        System.out.println("上传的文件原名称:" + fileName);
-//        //存名称
-//        articleType.setOrigname(fileName);
-//        //file:///D:/manage-upload/static/fdc65ea0-dbe1-4ced-983f-55e14778d2dc.png
-//        String url = "http://192.168.100.185:8091/images/";
-//        articleType.setPathDeposit("url/images/" + fileName);
-//        articleType.setTypeName(type);
-//        articleType.setState(1);
-//        System.out.println(url + fileName);
-//        uploadService.saveArticleType(articleType);
-//        System.out.println("图片上传成功:" + imgName);
-//        return RestResponse.ok();
     }
 
     /**

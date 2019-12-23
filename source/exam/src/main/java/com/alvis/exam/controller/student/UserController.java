@@ -62,9 +62,9 @@ public class UserController extends BaseApiController {
             return new RestResponse<>(2, "用户已存在");
         }
         User user = modelMapper.map(model, User.class);
-        String encodePwd = authenticationService.pwdEncode(model.getPassword());
+//        String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
-        user.setPassword(encodePwd);
+//        user.setPassword(encodePwd);
         user.setRole(RoleEnum.STUDENT.getCode());
         user.setStatus(UserStatusEnum.Disable.getCode());
         user.setLastActiveTime(new Date());
