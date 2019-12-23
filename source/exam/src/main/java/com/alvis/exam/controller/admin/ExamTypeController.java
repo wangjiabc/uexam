@@ -23,14 +23,14 @@ public class ExamTypeController extends BaseApiController {
 
     /**
      * 查询试卷分类
-     * @param examType
+     * @param
      * @param
      * @return
      */
     @RequestMapping(value = "/queryExamType", method = RequestMethod.POST)
-    public List<ExamType> queryExamType(@RequestBody ExamType examType) {
+    public List<ExamType> queryExamType() {
 
-        List<ExamType> list= this.examTypeService.queryExamType(examType);
+        List<ExamType> list= this.examTypeService.queryExamType();
         return list;
     }
 }

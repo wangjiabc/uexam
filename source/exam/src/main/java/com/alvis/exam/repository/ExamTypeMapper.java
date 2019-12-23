@@ -15,7 +15,7 @@ public interface ExamTypeMapper extends BaseMapper<ExamType> {
 
     /**
      * 查询试卷分类
-     * @param examType
+     * @param
      */
-    List<ExamType> queryExamType(ExamType examType);
+    List<ExamType> queryExamType();
 }

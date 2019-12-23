@@ -13,7 +13,7 @@ public interface ExamTypeService {
     /**
      * queryExamType
      * 查询试卷类型
-     * @param examType
+     * @param
      */
-    List<ExamType> queryExamType(ExamType examType);
+    List<ExamType> queryExamType();
 }

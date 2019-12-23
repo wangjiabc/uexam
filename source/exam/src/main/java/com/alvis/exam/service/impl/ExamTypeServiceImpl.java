@@ -18,8 +18,8 @@ public class ExamTypeServiceImpl implements ExamTypeService {
     private ExamTypeMapper examTypeMapper;
 
     @Override
-    public List<ExamType> queryExamType(ExamType examType) {
-        List<ExamType> list=this.examTypeMapper.queryExamType(examType);
+    public List<ExamType> queryExamType() {
+        List<ExamType> list=this.examTypeMapper.queryExamType();
         return list;
     }
 }

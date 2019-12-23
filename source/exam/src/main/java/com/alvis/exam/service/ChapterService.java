@@ -1,6 +1,7 @@
 package com.alvis.exam.service;
 
 import com.alvis.exam.domain.Chapter;
+import com.alvis.exam.viewmodel.admin.user.ChapterVM;
 
 import java.util.List;
 
@@ -14,21 +15,21 @@ public interface ChapterService {
      *添加章节
      * @param chapter
      */
-    void insertChapter(Chapter chapter);
+    void insertChapter(ChapterVM chapter);
 
     /**
      * updateChapter
      *修改章节
      * @param chapter
      */
-    void updateChapter(Chapter chapter);
+    void updateChapter(ChapterVM chapter);
 
     /**
      * deleteChapterByIds
      *删除章节
      * @param id
      */
-    void deleteChapterById(Integer id);
+    void deleteChapterById(Integer id,Integer state);
 
     /**
      * queryChapter

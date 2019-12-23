@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.ChapterMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.Chapter">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="sequence" jdbcType="INTEGER" property="sequence" />
+    <result column="criterion" jdbcType="INTEGER" property="criterion" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, type_id, sequence, criterion
+  </sql>
+  <!-- 添加章节 -->
+  <insert id="insertChapter" parameterType="com.alvis.exam.domain.Chapter">
+    insert into t_chapter (id, name, type_id, 
+      sequence, criterion)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+      #{sequence,jdbcType=INTEGER}, #{criterion,jdbcType=INTEGER})
+  </insert>
+  <!-- 修改章节 -->
+  <update id="updateChapter" parameterType="com.alvis.exam.domain.Chapter">
+    update t_chapter
+    set name = #{name,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      criterion = #{criterion,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 删除章节 -->
+  <update id="deleteChapterById" parameterType="com.alvis.exam.domain.Chapter">
+    update t_article
+    set
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询章节 -->
+  <select id="queryChapter" resultType="com.alvis.exam.domain.Chapter">
+    select * from t_chapter
+  </select>
+
+</mapper>

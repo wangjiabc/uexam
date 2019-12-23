@@ -4,6 +4,7 @@ import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.Chapter;
 import com.alvis.exam.service.ChapterService;
+import com.alvis.exam.viewmodel.admin.user.ChapterVM;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +30,7 @@ public class ChapterController extends BaseApiController {
      * @return
      */
     @RequestMapping(value = "/insertChapter", method = RequestMethod.POST)
-    public RestResponse<Chapter> insert(@RequestBody Chapter model){
+    public RestResponse<Chapter> insert(@RequestBody ChapterVM model){
 
         this.chapterService.insertChapter(model);
         return RestResponse.ok();
@@ -41,7 +42,7 @@ public class ChapterController extends BaseApiController {
      * @return
      */
     @RequestMapping(value = "/updateChapter", method = RequestMethod.POST)
-    public RestResponse<Chapter> update(@RequestBody Chapter model){
+    public RestResponse<Chapter> update(@RequestBody ChapterVM model){
 
         this.chapterService.updateChapter(model);
         return RestResponse.ok();
@@ -53,9 +54,9 @@ public class ChapterController extends BaseApiController {
      * @return
      */
     @RequestMapping(value = "/deleteChapter", method = RequestMethod.POST)
-    public RestResponse delete(@RequestBody Chapter model) {
+    public RestResponse delete(@RequestBody ChapterVM model) {
 
-        this.chapterService.deleteChapterById(model.getId());
+        this.chapterService.deleteChapterById(model.getId(),model.getState());
         return RestResponse.ok();
     }
 
