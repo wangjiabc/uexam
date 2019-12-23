@@ -1,7 +1,7 @@
 package com.alvis.exam.domain;
 
 /**
- * 思维导入
+ * 思维导图
  */
 public class Xmind {
 
