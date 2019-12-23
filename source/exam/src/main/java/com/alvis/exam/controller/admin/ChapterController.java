@@ -62,14 +62,14 @@ public class ChapterController extends BaseApiController {
 
     /**
      * 查询章节
-     * @param typeId
+     * @param model
      * @param
      * @return
      */
     @RequestMapping(value = "/queryChapter", method = RequestMethod.POST)
-    public List<Chapter> queryChapter(@RequestBody Integer typeId) {
+    public List<Chapter> queryChapter(@RequestBody ChapterVM model) {
 
-        List<Chapter> list= this.chapterService.queryChapter(typeId);
+        List<Chapter> list= this.chapterService.queryChapter(model.getTypeId());
         return list;
     }
 

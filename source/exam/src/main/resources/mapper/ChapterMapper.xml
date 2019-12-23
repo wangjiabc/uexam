@@ -7,16 +7,17 @@
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
     <result column="sequence" jdbcType="INTEGER" property="sequence" />
     <result column="criterion" jdbcType="INTEGER" property="criterion" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, type_id, sequence, criterion
+    id, name, type_id, sequence, criterion, state
   </sql>
   <!-- 添加章节 -->
   <insert id="insertChapter" parameterType="com.alvis.exam.domain.Chapter">
     insert into t_chapter (id, name, type_id, 
-      sequence, criterion)
+      sequence, criterion, state)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
-      #{sequence,jdbcType=INTEGER}, #{criterion,jdbcType=INTEGER})
+      #{sequence,jdbcType=INTEGER}, #{criterion,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
   </insert>
   <!-- 修改章节 -->
   <update id="updateChapter" parameterType="com.alvis.exam.domain.Chapter">
@@ -24,19 +25,20 @@
     set name = #{name,jdbcType=VARCHAR},
       type_id = #{typeId,jdbcType=INTEGER},
       sequence = #{sequence,jdbcType=INTEGER},
-      criterion = #{criterion,jdbcType=INTEGER}
+      criterion = #{criterion,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!-- 删除章节 -->
   <update id="deleteChapterById" parameterType="com.alvis.exam.domain.Chapter">
-    update t_article
+    update t_chapter
     set
       state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <!-- 查询章节 -->
   <select id="queryChapter" resultType="com.alvis.exam.domain.Chapter">
-    select * from t_chapter
+    select * from t_chapter where type_id = #{typeId,jdbcType=INTEGER}
   </select>
 
 </mapper>
