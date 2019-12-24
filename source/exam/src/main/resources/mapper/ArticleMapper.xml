@@ -316,7 +316,7 @@
     select
     *
     from t_article_type
-    where title = #{name,jdbcType=STRING}
+    where title = #{name,jdbcType=INTEGER}
   </select>
 
 </mapper>

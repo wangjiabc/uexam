@@ -1,22 +1,16 @@
 package com.alvis.exam.controller.admin;
 
-import com.alibaba.fastjson.JSONObject;
 import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.Xmind;
 import com.alvis.exam.service.XmindService;
 import com.alvis.exam.viewmodel.admin.user.XmindVM;
-import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
-import com.google.gson.JsonObject;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Arrays;
-import java.util.List;
-
 
 /**
  * @author yangsy
@@ -49,6 +43,7 @@ public class XmindController extends BaseApiController {
      */
     @RequestMapping(value = "/updatexmind", method = RequestMethod.POST)
     public RestResponse<Xmind> update(@RequestBody XmindVM model){
+
         this.xmindService.updateXmind(model);
         return RestResponse.ok();
     }

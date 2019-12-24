@@ -7,12 +7,13 @@
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
     <result column="sequence" jdbcType="INTEGER" property="sequence" />
     <result column="criterion" jdbcType="INTEGER" property="criterion" />
+    <result column="state" jdbcType="INTEGER" property="state" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, type_id, sequence, criterion
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_chapter
     where id = #{id,jdbcType=INTEGER}
@@ -22,9 +23,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.alvis.exam.domain.Chapter">
-    insert into t_chapter (id, name, type_id, 
+    insert into t_chapter (id, name, type_id,
       sequence, criterion)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER},
       #{sequence,jdbcType=INTEGER}, #{criterion,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.Chapter">
@@ -82,17 +83,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.Chapter">
-    update t_chapter
-    set name = #{name,jdbcType=VARCHAR},
-      type_id = #{typeId,jdbcType=INTEGER},
-      sequence = #{sequence,jdbcType=INTEGER},
-      criterion = #{criterion,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
 
 <!--  =================分割==================-->
-
   <select id="findByTypeId" parameterType="java.lang.Integer" resultType="java.lang.String">
     select
     name
@@ -104,7 +96,7 @@
     select
     id
     from t_chapter
-    where name = #{chapter,jdbcType=STRING}
+    where name = #{chapter,jdbcType=INTEGER}
   </select>
 
   <select id="findAll"  resultType="com.alvis.exam.domain.Chapter">
@@ -120,7 +112,6 @@
     where type_id = #{typeId,jdbcType=INTEGER}
   </select>
 
-
   <select id="findAllByTypeId" parameterType="java.lang.Integer" resultType="com.alvis.exam.domain.Chapter">
     select
     *
@@ -128,5 +119,38 @@
     where type_id = #{typeId,jdbcType=INTEGER}
   </select>
 
+  <!-- 添加章节 -->
+  <insert id="insertChapter" parameterType="com.alvis.exam.domain.Chapter">
+    insert into t_chapter (id, name, type_id,
+      sequence, criterion, state)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER},
+      #{sequence,jdbcType=INTEGER}, #{criterion,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+  </insert>
+  <!-- 修改章节 -->
+  <update id="updateChapter" parameterType="com.alvis.exam.domain.Chapter">
+    update t_chapter
+    set name = #{name,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      sequence = #{sequence,jdbcType=INTEGER},
+      criterion = #{criterion,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <!-- 删除章节 -->
+  <update id="deleteChapterById" parameterType="com.alvis.exam.domain.Chapter">
+    update t_chapter
+    set
+      state = #{state,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <!-- 查询章节 -->
+  <select id="queryChapter" resultType="com.alvis.exam.domain.Chapter">
+    select id,name,type_id as typeId,sequence,criterion,state from t_chapter where type_id = #{typeId,jdbcType=INTEGER}
+  </select>
+  <!-- 获取下一排序号 -->
+  <select id="getNextSequence" resultType="com.alvis.exam.domain.Chapter">
+    SELECT * FROM t_chapter where type_id=#{typeId,jdbcType=INTEGER} ORDER BY sequence DESC LIMIT 0,1
+  </select>
 
 </mapper>

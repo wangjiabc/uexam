@@ -9,7 +9,7 @@
     id, paper_type
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_exam_type
     where id = #{id,jdbcType=INTEGER}
@@ -61,7 +61,7 @@
     select
     id
     from t_exam_type
-    where paper_type = #{examTypeName,jdbcType=STRING}
+    where paper_type = #{examTypeName,jdbcType=INTEGER}
   </select>
 
   <select id="findAll"  resultType="com.alvis.exam.domain.ExamType">
@@ -75,5 +75,8 @@
     id,paper_type paperType
     from t_exam_type
     where id = #{examTypeId,jdbcType=INTEGER}
+  </select>
+    <select id="queryExamType" resultType="com.alvis.exam.domain.ExamType">
+    select id,paper_type as paperType from t_exam_type
   </select>
 </mapper>

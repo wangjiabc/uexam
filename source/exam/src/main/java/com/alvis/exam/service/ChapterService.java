@@ -1,19 +1,15 @@
-package com.alvis.exam.repository;
+package com.alvis.exam.service;
 
 import com.alvis.exam.domain.Chapter;
 import com.alvis.exam.viewmodel.admin.user.ChapterVM;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
- * 章节管理
  * @author yangsy
+ * 章节管理
  */
-
-@Mapper
-public interface ChapterMapper extends BaseMapper<Chapter> {
-
+public interface ChapterService {
     /**
      * insertChapter
      *添加章节
@@ -29,14 +25,15 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
     void updateChapter(ChapterVM chapter);
 
     /**
-     * deleteChapterById
+     * deleteChapterByIds
      *删除章节
      * @param id
      */
     void deleteChapterById(Integer id,Integer state);
 
     /**
-     * 查询思维导图
+     * queryChapter
+     * 查询章节
      * @param typeId
      */
     List<Chapter> queryChapter(Integer typeId);
@@ -45,12 +42,4 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
      * 获取下一排序号
      */
     Chapter getNextSequence(Integer typeId);
-
-    List<String> findByTypeId(Integer typeId);
-
-    String findNameByChapterId(Integer chapterId);
-
-    List<Chapter> findAllByTypeId(Integer typeId);
-
-    Integer findChapterIdByName(String chapter);
 }

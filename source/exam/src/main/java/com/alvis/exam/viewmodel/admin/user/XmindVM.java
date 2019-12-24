@@ -3,7 +3,7 @@ package com.alvis.exam.viewmodel.admin.user;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 
 /**
- * 思维导入
+ * 思维导图
  */
 public class XmindVM extends MessageRequestVM {
 

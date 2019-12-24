@@ -126,7 +126,7 @@
     select
     *
     from t_article_type
-    where type_name = #{typeName,jdbcType=STRING}
+    where type_name = #{typeName,jdbcType=INTEGER}
   </select>
 
 

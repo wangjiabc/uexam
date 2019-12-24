@@ -24,4 +24,10 @@ public interface ExamTypeMapper {
     List<ExamType> findAll();
 
     ExamType findNameByExamTypeId(Integer examTypeId);
+
+    /**
+     * 查询试卷分类
+     * @param
+     */
+    List<ExamType> queryExamType();
 }
