@@ -4,6 +4,7 @@ import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.Chapter;
 import com.alvis.exam.service.ChapterService;
+import com.alvis.exam.viewmodel.admin.article.ArticleTypeVM;
 import com.alvis.exam.viewmodel.admin.user.ChapterVM;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,14 +63,14 @@ public class ChapterController extends BaseApiController {
 
     /**
      * 查询章节
-     * @param model
+     * @param articleTypeVM
      * @param
      * @return
      */
     @RequestMapping(value = "/queryChapter", method = RequestMethod.POST)
-    public List<Chapter> queryChapter(@RequestBody ChapterVM model) {
+    public List<Chapter> queryChapter(@RequestBody ArticleTypeVM articleTypeVM) {
 
-        List<Chapter> list= this.chapterService.queryChapter(model.getTypeId());
+        List<Chapter> list= this.chapterService.queryChapter(articleTypeVM.getId());
         return list;
     }
 
