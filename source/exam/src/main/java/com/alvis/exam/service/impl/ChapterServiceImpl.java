@@ -18,7 +18,6 @@ public class ChapterServiceImpl implements ChapterService {
     @Autowired
     private ChapterMapper chapterMapper;
 
-
     @Override
     public void insertChapter(ChapterVM chapter) {
         this.chapterMapper.insertChapter(chapter);
