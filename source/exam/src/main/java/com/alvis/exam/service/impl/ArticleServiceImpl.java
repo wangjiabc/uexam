@@ -5,6 +5,7 @@ import com.alvis.exam.domain.ArticleType;
 import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.repository.ArticleMapper;
 import com.alvis.exam.repository.ArticleTypeMapper;
+import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
@@ -24,9 +25,10 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Resource
     private ArticleMapper articleMapper;
-
     @Resource
     private ArticleTypeMapper articleTypeMapper;
+    @Resource
+    private ChapterMapper chapterMapper;
 
 
 
@@ -41,7 +43,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void saveArticle(ArticleVM articleVM) {
+    public void saveArticle(Article articleVM) {
         articleVM.setUploadDay(new Date());     //上传时间
         articleMapper.insert(articleVM);
     }
@@ -142,5 +144,16 @@ public class ArticleServiceImpl implements ArticleService {
     @Override
     public void trunCate() {
 
+    }
+
+    @Override
+    public Integer findChapter(String chapter) {
+        Integer id = chapterMapper.findChapterIdByName(chapter);
+        return id;
+    }
+
+    @Override
+    public Article findByName(String name) {
+        return articleMapper.findByName(name);
     }
 }

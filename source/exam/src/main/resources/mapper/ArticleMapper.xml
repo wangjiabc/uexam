@@ -11,12 +11,13 @@
     <result column="read_time_u" jdbcType="INTEGER" property="readTimeU" />
     <result column="read_time_l" jdbcType="INTEGER" property="readTimeL" />
     <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.alvis.exam.domain.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, title, author, upload_day, user_id, type_id, read_time_u, read_time_l, state
+    id, title, author, upload_day, user_id, type_id, read_time_u, read_time_l, state,chapter_id
   </sql>
   <sql id="Blob_Column_List">
     content
@@ -37,11 +38,11 @@
     insert into t_article (id, title, author, 
       upload_day, user_id, type_id, 
       read_time_u, read_time_l, state, 
-      content)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR}, 
-      #{uploadDay,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER}, 
-      #{readTimeU,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
-      #{content,jdbcType=LONGVARCHAR})
+      chapter_id, content)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
+      #{uploadDay,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER},
+      #{readTimeU,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{state,jdbcType=INTEGER},
+      #{chapterId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.Article">
     insert into t_article
@@ -72,6 +73,9 @@
       </if>
       <if test="state != null">
         state,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
       </if>
       <if test="content != null">
         content,
@@ -105,9 +109,13 @@
       <if test="state != null">
         #{state,jdbcType=INTEGER},
       </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=INTEGER},
+      </if>
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
       </if>
+
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.Article">
@@ -137,6 +145,9 @@
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
       </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+      </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
       </if>
@@ -153,6 +164,7 @@
       read_time_u = #{readTimeU,jdbcType=INTEGER},
       read_time_l = #{readTimeL,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -182,6 +194,9 @@
       </if>
       <if test="state != null">
         state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
@@ -296,5 +311,12 @@
     </if>
   </select>
 
+
+  <select id="findByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    *
+    from t_article_type
+    where title = #{name,jdbcType=STRING}
+  </select>
 
 </mapper>

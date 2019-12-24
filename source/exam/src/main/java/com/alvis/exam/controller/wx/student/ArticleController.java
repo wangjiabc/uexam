@@ -134,8 +134,6 @@ public class ArticleController extends BaseWXApiController {
     }
 
 
-
-
     /**
      * 根据阅读状态返回文章列表
      * 阅读状态：已读1，在读2，未读3

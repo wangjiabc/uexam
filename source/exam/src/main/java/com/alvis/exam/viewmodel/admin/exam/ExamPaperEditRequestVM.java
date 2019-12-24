@@ -29,6 +29,12 @@ public class ExamPaperEditRequestVM {
 
     private Integer count;
 
+	private Integer examTypeId;     //试卷类型id
+
+	private List<Integer> arr;		//文章类型+章节
+
+	private Integer passScore;      //阅读章节及格分
+
 	public Integer getCount() {
 		return count;
 	}

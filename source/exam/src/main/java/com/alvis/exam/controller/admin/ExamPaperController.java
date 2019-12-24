@@ -76,7 +76,6 @@ public class ExamPaperController extends BaseApiController {
         }
         ExamPaper examPaper = examPaperService.savePaperFromVM(model, getCurrentUser());
         ExamPaperEditRequestVM newVM = examPaperService.examPaperToVM(examPaper.getId());
-
         return RestResponse.ok(newVM);
     }
 

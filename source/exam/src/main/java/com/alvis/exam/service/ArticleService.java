@@ -14,7 +14,7 @@ public interface ArticleService {
     List<ArticleType> findArticleType();
 
     //将上传数据进行封装存储
-    void saveArticle(ArticleVM articleVM);
+    void saveArticle(Article articleVM);
 
     //返回文章信息
     PageInfo<Article> page(MessagePageRequestVM requestVM);
@@ -39,4 +39,8 @@ public interface ArticleService {
     PageInfo<Article> articlePage( Integer x,MessageRequestVM messageRequestVM);
 
     void trunCate();
+
+    Integer findChapter(String chapter);
+
+    Article findByName(String name);
 }
