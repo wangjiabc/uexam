@@ -37,4 +37,9 @@ public interface ChapterService {
      * @param typeId
      */
     List<Chapter> queryChapter(Integer typeId);
+
+    /**
+     * 获取下一排序号
+     */
+    Chapter getNextSequence(Integer typeId);
 }

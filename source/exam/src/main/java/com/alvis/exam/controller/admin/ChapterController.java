@@ -37,7 +37,7 @@ public class ChapterController extends BaseApiController {
         ChapterVM model1= new ChapterVM();
         model1.setName(model.getChapterVM().getName());
         model1.setTypeId(model.getTypeId());
-        model1.setSequence(model.getChapterVM().getSequence());
+        model1.setSequence(chapterService.getNextSequence(model.getTypeId()).getSequence()+1);
         model1.setCriterion(model.getChapterVM().getCriterion());
         model1.setState(1);
         this.chapterService.insertChapter(model1);

@@ -39,4 +39,10 @@ public class ChapterServiceImpl implements ChapterService {
        List<Chapter> list= this.chapterMapper.queryChapter(typeId);
         return list;
     }
+
+    @Override
+    public Chapter getNextSequence(Integer typeId) {
+        return this.chapterMapper.getNextSequence(typeId);
+    }
+
 }

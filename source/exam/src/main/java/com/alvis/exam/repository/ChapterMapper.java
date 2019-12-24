@@ -40,4 +40,9 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
      * @param typeId
      */
     List<Chapter> queryChapter(Integer typeId);
+
+    /**
+     * 获取下一排序号
+     */
+    Chapter getNextSequence(Integer typeId);
 }

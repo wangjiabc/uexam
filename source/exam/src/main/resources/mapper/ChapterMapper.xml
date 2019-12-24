@@ -41,4 +41,9 @@
     select * from t_chapter where type_id = #{typeId,jdbcType=INTEGER}
   </select>
 
+  <!-- 获取下一排序号 -->
+  <select id="getNextSequence" resultType="com.alvis.exam.domain.Chapter">
+    SELECT * FROM t_chapter where type_id=#{typeId,jdbcType=INTEGER} ORDER BY sequence DESC LIMIT 0,1
+  </select>
+
 </mapper>
