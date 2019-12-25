@@ -72,7 +72,6 @@ public class ArticleTypeController {
             //存名称
             System.out.println("上传的文件原名称:" + fileNameNew);
             articleType.setOrigname(fileNameNew);
-
 //            String url = "http://127.0.0.1:8091/images/";
             articleType.setPathDeposit(sqlSaveUrl);
             articleType.setTypeName(type);

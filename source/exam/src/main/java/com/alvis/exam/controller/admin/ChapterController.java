@@ -74,7 +74,7 @@ public class ChapterController extends BaseApiController {
      * @param
      * @return
      */
-    @RequestMapping(value = "/queryChapter", method = RequestMethod.POST)
+    @RequestMapping(value = "/queryChapter")
     public List<Chapter> queryChapter(@RequestBody ArticleTypeVM articleTypeVM) {
 
         List<Chapter> list= this.chapterService.queryChapter(articleTypeVM.getId());

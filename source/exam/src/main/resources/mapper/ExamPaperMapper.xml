@@ -324,7 +324,13 @@
     SELECT tep.* FROM t_exam_paper tep LEFT JOIN
     (SELECT exam_paper_id,create_user FROM t_exam_paper_answer WHERE create_user = #{userId}) tepa ON tep.id = tepa.exam_paper_id
     WHERE tep.deleted=0 AND tepa.create_user is NULL
+  </select>
 
+
+  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM">
+    SELECT tep.* FROM t_exam_paper tep LEFT JOIN
+    (SELECT exam_paper_id,create_user FROM t_exam_paper_answer WHERE create_user = #{userId}) tepa ON tep.id = tepa.exam_paper_id
+    WHERE tep.deleted=0 AND tep.`type_id` = #{typeId,jdbcType=INTEGER} AND tep.`chapter_id` = #{chapterId,jdbcType=INTEGER}
   </select>
 
 

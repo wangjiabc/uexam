@@ -82,7 +82,7 @@
     from t_article_type
   </select>
 
-  <select id="findAll"  resultMap="BaseResultMap" >
+  <select id="findAll"  resultType="com.alvis.exam.domain.ArticleType" >
     select
     *
     from t_article_type

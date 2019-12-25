@@ -13,6 +13,16 @@ public class Chapter implements Serializable {
 
     private Integer criterion;
 
+    private Integer state;
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

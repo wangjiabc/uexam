@@ -60,40 +60,41 @@ public class EducationController extends BaseApiController {
 
     /**
      * 添加试卷  测试试卷下的文章分类+章节
-     *
      * @return
      */
     @ApiOperation(value = "添加试卷  测试试卷下的文章分类+章节")
     @RequestMapping(value = "/subject/listTest", method = RequestMethod.POST)
     public RestResponse listTest(Integer examTypeId) {
         ExamType examType = subjectService.findNameByExamTypeId(examTypeId);
-        List<ArticleType> articleTypes = new ArrayList<>();
-        if ("测试试卷".equals(examType.getPaperType())) {
-            articleTypes = subjectService.findArticleType();    //文章分类
-            ArrayList<Object> arrayList1 = new ArrayList<>();
-            for (ArticleType articleType : articleTypes) {
-                String typeName = articleType.getTypeName();
-                Integer typeId = articleType.getId();
-                KvobjDTO k1 = new KvobjDTO();
-                k1.setValue(typeId);
-                k1.setLabel(typeName);
-                List<Chapter> chapters = subjectService.findChapterById(typeId);  //文章分类下的章节
-                ArrayList<Object> arrayList = new ArrayList<>();
-                for (Chapter chapter : chapters) {
-                    KvobjDTO k2 = new KvobjDTO();
-                    String name = chapter.getName();
-                    Integer id = chapter.getId();
-                    k2.setValue(id);
-                    k2.setLabel(name);
-                    arrayList.add(k2);
+        ArrayList<Object> arrayList1 = new ArrayList<>();
+        if(examType != null){
+            List<ArticleType> articleTypes = new ArrayList<>();
+            if ("测试试卷".equals(examType.getPaperType())) {
+                articleTypes = subjectService.findArticleType();    //文章分类
+                for (ArticleType articleType : articleTypes) {
+                    String typeName = articleType.getTypeName();
+                    Integer typeId = articleType.getId();
+                    KvobjDTO k1 = new KvobjDTO();
+                    k1.setValue(typeId);
+                    k1.setLabel(typeName);
+                    List<Chapter> chapters = subjectService.findChapterById(typeId);  //文章分类下的章节
+                    ArrayList<Object> arrayList = new ArrayList<>();
+                    for (Chapter chapter : chapters) {
+                        KvobjDTO k2 = new KvobjDTO();
+                        String name = chapter.getName();
+                        Integer id = chapter.getId();
+                        k2.setValue(id);
+                        k2.setLabel(name);
+                        arrayList.add(k2);
+                    }
+                    k1.setChildren(arrayList);
+                    arrayList1.add(k1);
                 }
-                k1.setChildren(arrayList);
-                arrayList1.add(k1);
             }
             return RestResponse.ok(arrayList1);
         }
         else {
-            return RestResponse.ok();
+            return RestResponse.fail(500,"系统内部错误");
         }
     }
 

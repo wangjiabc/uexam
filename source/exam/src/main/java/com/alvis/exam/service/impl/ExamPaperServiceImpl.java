@@ -84,6 +84,12 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
                 examPaperMapper.studentPage(requestVM));
     }
 
+    @Override
+    public PageInfo<ExamPaper> articlePage(ExamPaperPageVM requestVM) {
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
+                examPaperMapper.articlePage(requestVM));
+    }
+
 
     @Override
     @Transactional

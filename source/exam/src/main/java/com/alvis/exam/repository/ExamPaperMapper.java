@@ -44,4 +44,6 @@ public interface ExamPaperMapper extends BaseMapper<ExamPaper> {
     int clearTaskPaper(@Param("paperIds") List<Integer> paperIds);
 
     IntegralBasic findAll();
+
+    List<ExamPaper> articlePage(ExamPaperPageVM requestVM);
 }

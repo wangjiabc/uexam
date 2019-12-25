@@ -3,19 +3,15 @@ package com.alvis.exam.controller.wx.student;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.controller.wx.BaseWXApiController;
-import com.alvis.exam.domain.Article;
-import com.alvis.exam.domain.ReadState;
-import com.alvis.exam.domain.User;
-import com.alvis.exam.domain.ViewPager;
+import com.alvis.exam.domain.*;
 import com.alvis.exam.domain.dto.article.ArticleDTO;
-import com.alvis.exam.service.ArticleService;
-import com.alvis.exam.service.ReadService;
-import com.alvis.exam.service.UploadService;
-import com.alvis.exam.service.ViewPagerService;
+import com.alvis.exam.service.*;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.ListUtils;
 import com.alvis.exam.utility.PageInfoHelper;
 import com.alvis.exam.utility.UploadUtils;
+import com.alvis.exam.viewmodel.student.exam.ExamPaperPageResponseVM;
+import com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
@@ -24,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -51,9 +48,34 @@ public class ArticleController extends BaseWXApiController {
     private ArticleService articleService;
     @Resource
     private ViewPagerService viewPagerService;
+    @Resource
+    private ExamPaperService examPaperService;
+    @Resource
+    private SubjectService subjectService;
 
     /**
-     * 返回文章列表
+     * 根据文章绑定的试卷id传递试卷信息
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/pageList", method = RequestMethod.POST)
+    public RestResponse<PageInfo<ExamPaperPageResponseVM>> pageList(@Valid ExamPaperPageVM model) {
+        model.setUserId(getCurrentUser().getId());
+        PageInfo<ExamPaper> pageInfo = examPaperService.articlePage(model);
+        PageInfo<ExamPaperPageResponseVM> page = PageInfoHelper.copyMap(pageInfo, e -> {
+            ExamPaperPageResponseVM vm = modelMapper.map(e, ExamPaperPageResponseVM.class);
+            Subject subject = subjectService.selectById(vm.getSubjectId());
+            vm.setSubjectName(subject.getName());
+            vm.setCreateTime(DateTimeUtil.dateFormat(e.getCreateTime()));
+            return vm;
+        });
+        return RestResponse.ok(page);
+    }
+
+
+
+    /**
+     * 返回文章列表  : 节
      * @param
      */
     @RequestMapping(value = "/article")
@@ -63,6 +85,10 @@ public class ArticleController extends BaseWXApiController {
         PageInfo<ArticleDTO> pageInfo = articleService.studentPage(typeId,messageRequestVM);
         return RestResponse.ok(pageInfo);
     }
+
+
+
+
 
     /**
      * 返回文章详情

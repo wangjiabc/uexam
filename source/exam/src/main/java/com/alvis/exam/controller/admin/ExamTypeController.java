@@ -1,6 +1,7 @@
 package com.alvis.exam.controller.admin;
 
 import com.alvis.exam.base.BaseApiController;
+import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.ExamType;
 import com.alvis.exam.service.ExamTypeService;
 import lombok.AllArgsConstructor;
@@ -23,14 +24,11 @@ public class ExamTypeController extends BaseApiController {
 
     /**
      * 查询试卷分类
-     * @param
-     * @param
      * @return
      */
     @RequestMapping(value = "/queryExamType", method = RequestMethod.POST)
-    public List<ExamType> queryExamType() {
-
+    public RestResponse queryExamType() {
         List<ExamType> list= this.examTypeService.queryExamType();
-        return list;
+        return RestResponse.ok(list);
     }
 }
