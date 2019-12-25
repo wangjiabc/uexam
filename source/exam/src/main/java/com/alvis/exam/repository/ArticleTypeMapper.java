@@ -35,4 +35,6 @@ public interface ArticleTypeMapper {
     List<ArticleType> findType(Integer state);
 
     ArticleType findByTypeId(Integer typeId);
+
+    ArticleType findByTypeName(String typeName);
 }

@@ -1,20 +1,13 @@
 package com.alvis.exam.domain;
 
-/**
- * 试卷类型
- */
-public class ExamType {
+import java.io.Serializable;
 
-    private static final long serialVersionUID = 0L;
-
-    /**
-     * 试卷类型ID
-     */
+public class ExamType implements Serializable {
     private Integer id;
-    /**
-     * 试卷类型
-     */
-    private String  paperType;
+
+    private String paperType;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -29,6 +22,6 @@ public class ExamType {
     }
 
     public void setPaperType(String paperType) {
-        this.paperType = paperType;
+        this.paperType = paperType == null ? null : paperType.trim();
     }
 }

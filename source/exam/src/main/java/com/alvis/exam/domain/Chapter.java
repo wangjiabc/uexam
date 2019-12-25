@@ -1,40 +1,19 @@
 package com.alvis.exam.domain;
 
-import lombok.Data;
+import java.io.Serializable;
 
-/**
- * 章节管理
- */
-@Data
-public class Chapter {
+public class Chapter implements Serializable {
+    private Integer id;
 
-    private static final long serialVersionUID = 0L;
+    private String name;
 
-    /**
-     * ID
-     */
-   private Integer id;
-    /**
-     * 名称
-     */
-   private String name;
-    /**
-     * 分类ID
-     */
-   private Integer typeId;
-    /**
-     * 排序
-     */
-   private Integer sequence;
-    /**
-     * 考试合格分
-     */
+    private Integer typeId;
+
+    private Integer sequence;
+
     private Integer criterion;
-    /**
-     * 状态
-     * @return
-     */
-    private Integer state;
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -74,12 +53,5 @@ public class Chapter {
 
     public void setCriterion(Integer criterion) {
         this.criterion = criterion;
-    }
-    public Integer getState() {
-        return state;
-    }
-
-    public void setState(Integer state) {
-        this.state = state;
     }
 }

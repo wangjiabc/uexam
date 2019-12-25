@@ -85,15 +85,18 @@ public class ArticleTypeController {
     }
 
     /**
-     * 图片存到磁盘，添加分类
-     *
+     * 添加分类，图片存到磁盘
      * @param file
-     * @return 图片路径
+     * @param type  分类名字
+     * @return
      */
     @RequestMapping("saveType")
     public RestResponse saveType(MultipartFile file, String type) {
+        ArticleType name = articleTypeService.findByTypeName(type);
+        if(name != null){
+            return RestResponse.fail(500, "系统内部错误");
+        }
         ArticleType articleType = new ArticleType();
-
         //图片上传
         Map<String, String> stringMap = UploadUtils.upload(file,urlConfig.getUrl());
         String fileNameNew = stringMap.get("fileNameNew");    //图片原名称

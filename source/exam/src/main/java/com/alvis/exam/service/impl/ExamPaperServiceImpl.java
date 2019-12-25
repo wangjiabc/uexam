@@ -5,7 +5,9 @@ import com.alvis.exam.domain.enums.ExamPaperTypeEnum;
 import com.alvis.exam.domain.exam.ExamPaperQuestionItemObject;
 import com.alvis.exam.domain.exam.ExamPaperTitleItemObject;
 import com.alvis.exam.domain.other.KeyValue;
+import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.repository.ExamPaperMapper;
+import com.alvis.exam.repository.ExamTypeMapper;
 import com.alvis.exam.repository.QuestionMapper;
 import com.alvis.exam.service.ExamPaperService;
 import com.alvis.exam.service.QuestionService;
@@ -25,11 +27,13 @@ import com.alvis.exam.viewmodel.student.dashboard.PaperInfo;
 import com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.base.CharMatcher;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +49,11 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
     private final TextContentService textContentService;
     private final QuestionService questionService;
     private final SubjectService subjectService;
+
+    @Resource
+    private ChapterMapper chapterMapper;
+    @Resource
+    private ExamTypeMapper examTypeMapper;
 
     @Autowired
     public ExamPaperServiceImpl(ExamPaperMapper examPaperMapper, QuestionMapper questionMapper, TextContentService textContentService, QuestionService questionService, SubjectService subjectService) {
@@ -95,6 +104,22 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
             examPaper.setCreateUser(user.getId());
             examPaper.setDeleted(false);
             examPaper.setCount(examPaperEditRequestVM.getCount());  //设置积分
+
+            examPaper.setExamTypeId(examPaperEditRequestVM.getExamTypeId());
+
+            //通过传递过来的名称存ChapterId，TypeId
+            List<Integer> arr = examPaperEditRequestVM.getArr();
+            int size = arr.size();
+            if(size == 1){
+                examPaper.setTypeId(arr.get(0));
+            }
+            if(size == 2){
+                examPaper.setTypeId(arr.get(0));        //设置TypeId
+                examPaper.setChapterId(arr.get(1));    //设置ChapterId
+            }
+
+            examPaper.setPassScore(examPaperEditRequestVM.getPassScore());      //设置合格分
+
             examPaperFromVM(examPaperEditRequestVM, examPaper, titleItemsVM);
             examPaperMapper.insertSelective(examPaper);
         } else {

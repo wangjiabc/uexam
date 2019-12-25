@@ -45,4 +45,12 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
      * 获取下一排序号
      */
     Chapter getNextSequence(Integer typeId);
+
+    List<String> findByTypeId(Integer typeId);
+
+    String findNameByChapterId(Integer chapterId);
+
+    List<Chapter> findAllByTypeId(Integer typeId);
+
+    Integer findChapterIdByName(String chapter);
 }

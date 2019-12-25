@@ -12,29 +12,6 @@
     <sql id="Base_Column_List">
         id, code, name, route, user_id
     </sql>
-
-    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from t_xmind
-        where id = #{id,jdbcType=INTEGER}
-    </select>
-
-    <delete id="deleteXmindByIds">
-        delete from t_xmind where id in
-        <foreach item="id" collection="list" open="(" separator=","
-                 close=")">
-            #{id}
-        </foreach>
-    </delete>
-
-    <insert id="insertXmind" parameterType="com.alvis.exam.domain.Xmind">
-        insert into t_xmind (id, code, name,
-          route, user_id)
-        values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
-          #{route,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
-    </insert>
-
     <insert id="insertSelective" parameterType="com.alvis.exam.domain.Xmind">
         insert into t_xmind
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -72,7 +49,6 @@
             </if>
         </trim>
     </insert>
-
     <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.Xmind">
         update t_xmind
         <set>
@@ -91,6 +67,26 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_xmind
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteXmindByIds">
+        delete from t_xmind where id in
+        <foreach item="id" collection="list" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </delete>
+    <insert id="insertXmind" parameterType="com.alvis.exam.domain.Xmind">
+        insert into t_xmind (id, code, name,
+          route, user_id)
+        values (#{id,jdbcType=INTEGER}, #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
+          #{route,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER})
+    </insert>
 
     <update id="updateXmind" parameterType="com.alvis.exam.domain.Xmind">
         update t_xmind

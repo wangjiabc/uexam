@@ -82,7 +82,7 @@
     from t_article_type
   </select>
 
-  <select id="findAll"  resultMap="BaseResultMap" parameterType="java.util.List">
+  <select id="findAll"  resultMap="BaseResultMap" >
     select
     *
     from t_article_type
@@ -119,6 +119,14 @@
     *
     from t_article_type
     where id = #{typeId,jdbcType=INTEGER}
+  </select>
+
+
+  <select id="findByTypeName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    *
+    from t_article_type
+    where type_name = #{typeName,jdbcType=INTEGER}
   </select>
 
 

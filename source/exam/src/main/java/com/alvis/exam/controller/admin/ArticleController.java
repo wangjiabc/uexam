@@ -1,17 +1,21 @@
 package com.alvis.exam.controller.admin;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
+import com.alvis.exam.domain.Chapter;
 import com.alvis.exam.domain.ViewPager;
+import com.alvis.exam.domain.dto.KvobjDTO;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ArticleTypeService;
 import com.alvis.exam.service.ViewPagerService;
 import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.alvis.exam.viewmodel.wx.student.KeyObjDTO;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,20 +47,42 @@ public class ArticleController {
 
 
     /**
-     * 返回文章分类
+     * 返回文章分类+章节
      *
      * @param
      */
-    @ApiOperation(value = "返回文章分类")
+    @ApiOperation(value = "返回文章分类+章节")
     @RequestMapping(value = "typeList")
-    public List<String> typeList() {
-        List<String> arrayList = new ArrayList<>();
+    public RestResponse typeList() {
+//        List<String> arrayList = new ArrayList<>();
+//        List<ArticleType> articleTypes = articleTypeService.findArticleType();
+//        for (ArticleType articleType : articleTypes) {
+//            String typeName = articleType.getTypeName();
+//            arrayList.add(typeName);
+//        }
+        List<Object> arrayList = new ArrayList<>();
         List<ArticleType> articleTypes = articleTypeService.findArticleType();
         for (ArticleType articleType : articleTypes) {
+
             String typeName = articleType.getTypeName();
-            arrayList.add(typeName);
+            Integer typeId = articleType.getId();
+            List<Chapter> chapters = articleTypeService.findAllByTypeId(typeId);
+            KvobjDTO k1 = new KvobjDTO();
+            k1.setValue(typeId);
+            k1.setLabel(typeName);
+            List<Object> arrayList1 = new ArrayList<>();
+            for (Chapter chapter : chapters) {
+                Integer id = chapter.getId();
+                String name = chapter.getName();
+                KvobjDTO k2 = new KvobjDTO();
+                k2.setValue(id);
+                k2.setLabel(name);
+                arrayList1.add(k2);
+            }
+            k1.setChildren(arrayList1);
+            arrayList.add(k1);
         }
-        return arrayList;
+        return RestResponse.ok(arrayList);
     }
 
 
@@ -67,35 +93,37 @@ public class ArticleController {
      */
     @RequestMapping("saveArticle")
     public RestResponse save(@RequestBody JSONObject jsonObject) {
-        List<ArticleType> lists = articleService.findArticleType();
-        ArticleVM articleVM = new ArticleVM();
-        String name = jsonObject.getString("title");     //文章标题
-        String author = jsonObject.getString("author"); //文章作者
-        String doc = jsonObject.getString("content");       //文章内容
-        String a = jsonObject.getString("readTimeL");     //下限时长
-        String type = jsonObject.getString("selectType");   //文章类型
+        Article article = new ArticleVM();
+        String name = jsonObject.getString("title");            //文章标题
+        Article byName = articleService.findByName(name);
+        if(byName != null){
+            return RestResponse.fail(500, "系统内部错误");
+        }
+        String author = jsonObject.getString("author");         //文章作者
+        String doc = jsonObject.getString("content");           //文章内容
+        String a = jsonObject.getString("readTimeL");           //下限时长
         int down = Integer.parseInt(a);
-
-        String b = jsonObject.getString("readTimeU");   //文章积分
+        JSONArray arr = jsonObject.getJSONArray("typeName");    //文章类型+章节的id
+        String b = jsonObject.getString("readTimeU");           //文章积分
         int count = Integer.parseInt(b);
 
-        articleVM.setTitle(name);
-        articleVM.setAuthor(author);
-        articleVM.setContent(doc);
-        articleVM.setReadTimeL(down);
-        articleVM.setReadTimeU(count);
-        articleVM.setState(1);
+        article.setTitle(name);
+        article.setAuthor(author);
+        article.setContent(doc);
+        article.setReadTimeL(down);
+        article.setReadTimeU(count);
+        article.setState(1);
 
-        int typeId = 0; //接收typeId
-        for (ArticleType articleType : lists) {
-            String typeName = articleType.getTypeName();
-            if (typeName.equals(type)) {
-                Integer id = articleType.getId();
-                typeId = id;
-            }
+        int size = arr.size();
+        if(size == 1){
+            article.setTypeId((Integer) arr.get(0));
         }
-        articleVM.setTypeId(typeId);
-        articleService.saveArticle(articleVM);
+        if(size == 2){
+            article.setTypeId((Integer) arr.get(0));
+            article.setChapterId((Integer) arr.get(1));
+        }
+
+        articleService.saveArticle(article);
         return RestResponse.ok();
     }
 
@@ -114,6 +142,7 @@ public class ArticleController {
         String doc = jsonObject.getString("content");       //文章内容
         String a = jsonObject.getString("readTimeL");     //下限时长
         String type = jsonObject.getString("typeName");   //文章类型
+        String chapter = jsonObject.getString("chapter");   //章节
         int down = Integer.parseInt(a);
 
         String b = jsonObject.getString("readTimeU");   //文章积分
@@ -136,6 +165,8 @@ public class ArticleController {
             }
         }
         article.setTypeId(typeId);
+        Integer chapterId = articleService.findChapter(chapter);    //根据章节名返回章节id
+        article.setChapterId(chapterId);
         articleService.updateArticle(article);
         return RestResponse.ok();
     }
@@ -146,20 +177,22 @@ public class ArticleController {
      * @param
      */
     @ApiOperation(value = "展示文章信息")
-    @RequestMapping(value = "articleList", method = RequestMethod.POST)
+    @RequestMapping(value = "articleList")
     public RestResponse<PageInfo<Article>> pageList(@RequestBody MessagePageRequestVM model) {
         PageInfo<Article> pageInfo = articleService.page(model);
         for (Article article : pageInfo.getList()) {
-            Integer typeId = article.getTypeId();
-            ArticleType byTypeId = articleTypeService.findByTypeId(typeId);
-            String typeName = byTypeId.getTypeName();
+            String typeName = articleTypeService.findByTypeId(article.getTypeId()).getTypeName();    //分类名称
+            String chapterName = articleTypeService.findNameByChapterId(article.getChapterId());      //章节名称
             article.setTypeName(typeName);
+            article.setChapterName(chapterName);
+
         }
         return RestResponse.ok(pageInfo);
     }
 
     /**
      * 删除文章
+     *
      * @param article state 隐藏为0 显示为1  从前端传过来的
      * @return 返回状态码
      */
@@ -172,6 +205,7 @@ public class ArticleController {
 
     /**
      * 自定义上传图片:一张图片存一个地址
+     *
      * @param
      */
     @RequestMapping(value = "uploadImages")
@@ -198,6 +232,7 @@ public class ArticleController {
 
     /**
      * 删除上传图片:单个删除
+     *
      * @param
      */
     @RequestMapping(value = "delImages")

@@ -17,12 +17,16 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="task_exam_id" jdbcType="INTEGER" property="taskExamId" />
-      <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="exam_type_id" jdbcType="INTEGER" property="examTypeId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
+    <result column="pass_score" jdbcType="INTEGER" property="passScore" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, subject_id, paper_type, grade_level, score, question_count, suggest_time,
     limit_start_time, limit_end_time, frame_text_content_id, create_user, create_time,
-    deleted, task_exam_id, count
+    deleted, task_exam_id, count, exam_type_id, type_id, chapter_id, pass_score
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
@@ -34,22 +38,23 @@
     delete from t_exam_paper
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.alvis.exam.domain.ExamPaper" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="com.alvis.exam.domain.ExamPaper">
     insert into t_exam_paper (id, name, subject_id,
       paper_type, grade_level, score,
       question_count, suggest_time, limit_start_time,
       limit_end_time, frame_text_content_id, create_user,
-      create_time, deleted, task_exam_id, count
-      )
+      create_time, deleted, task_exam_id,
+      count, exam_type_id, type_id,
+      chapter_id, pass_score)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER},
       #{paperType,jdbcType=INTEGER}, #{gradeLevel,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},
       #{questionCount,jdbcType=INTEGER}, #{suggestTime,jdbcType=INTEGER}, #{limitStartTime,jdbcType=TIMESTAMP},
       #{limitEndTime,jdbcType=TIMESTAMP}, #{frameTextContentId,jdbcType=INTEGER}, #{createUser,jdbcType=INTEGER},
       #{createTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{taskExamId,jdbcType=INTEGER},
-      #{count,jdbcType=INTEGER})
-      )
+      #{count,jdbcType=INTEGER}, #{examTypeId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER},
+      #{chapterId,jdbcType=INTEGER}, #{passScore,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.alvis.exam.domain.ExamPaper" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.ExamPaper">
     insert into t_exam_paper
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -97,9 +102,21 @@
       <if test="taskExamId != null">
         task_exam_id,
       </if>
-        <if test="count != null">
-            count,
-        </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="examTypeId != null">
+        exam_type_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+      <if test="passScore != null">
+        pass_score,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -147,9 +164,21 @@
       <if test="taskExamId != null">
         #{taskExamId,jdbcType=INTEGER},
       </if>
-        <if test="count != null">
-            #{count,jdbcType=INTEGER},
-        </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="examTypeId != null">
+        #{examTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="passScore != null">
+        #{passScore,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.ExamPaper">
@@ -197,9 +226,21 @@
       <if test="taskExamId != null">
         task_exam_id = #{taskExamId,jdbcType=INTEGER},
       </if>
-        <if test="count != null">
-            count = #{count,jdbcType=INTEGER},
-        </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+      <if test="examTypeId != null">
+        exam_type_id = #{examTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="passScore != null">
+        pass_score = #{passScore,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -219,7 +260,11 @@
       create_time = #{createTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT},
       task_exam_id = #{taskExamId,jdbcType=INTEGER},
-      count = #{count,jdbcType=INTEGER}
+      count = #{count,jdbcType=INTEGER},
+      exam_type_id = #{examTypeId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER},
+      pass_score = #{passScore,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
