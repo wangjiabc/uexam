@@ -23,17 +23,17 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ExamPaperQuestionCustomerAnswerServiceImpl extends BaseServiceImpl<ExamPaperQuestionCustomerAnswer> implements ExamPaperQuestionCustomerAnswerService {
+    public class ExamPaperQuestionCustomerAnswerServiceImpl extends BaseServiceImpl<ExamPaperQuestionCustomerAnswer> implements ExamPaperQuestionCustomerAnswerService {
 
-    private final ExamPaperQuestionCustomerAnswerMapper examPaperQuestionCustomerAnswerMapper;
-    private final TextContentService textContentService;
+        private final ExamPaperQuestionCustomerAnswerMapper examPaperQuestionCustomerAnswerMapper;
+        private final TextContentService textContentService;
 
-    @Autowired
-    public ExamPaperQuestionCustomerAnswerServiceImpl(ExamPaperQuestionCustomerAnswerMapper examPaperQuestionCustomerAnswerMapper, TextContentService textContentService) {
-        super(examPaperQuestionCustomerAnswerMapper);
-        this.examPaperQuestionCustomerAnswerMapper = examPaperQuestionCustomerAnswerMapper;
-        this.textContentService = textContentService;
-    }
+        @Autowired
+        public ExamPaperQuestionCustomerAnswerServiceImpl(ExamPaperQuestionCustomerAnswerMapper examPaperQuestionCustomerAnswerMapper, TextContentService textContentService) {
+            super(examPaperQuestionCustomerAnswerMapper);
+            this.examPaperQuestionCustomerAnswerMapper = examPaperQuestionCustomerAnswerMapper;
+            this.textContentService = textContentService;
+        }
 
 
     @Override
