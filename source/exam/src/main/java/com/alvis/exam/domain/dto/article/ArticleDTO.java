@@ -1,17 +1,21 @@
 package com.alvis.exam.domain.dto.article;
 
-import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
+import com.alvis.exam.domain.Article;
 import lombok.Data;
 
 @Data
-public class ArticleDTO extends MessageRequestVM {
-    private Integer typeId;
+public class ArticleDTO extends Article {
 
-    public Integer getTypeId() {
-        return typeId;
+    private String readState;
+
+    private Integer examPaperId;
+
+
+    public String getReadState() {
+        return readState;
     }
 
-    public void setTypeId(Integer typeId) {
-        this.typeId = typeId;
+    public void setReadState(String readState) {
+        this.readState = readState;
     }
 }

@@ -8,10 +8,10 @@
     <result column="count" jdbcType="INTEGER" property="count" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
-    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="read_state" jdbcType="VARCHAR" property="readState" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, article_id, read_time, count, user_id, start_time, state
+    id, article_id, read_time, count, user_id, start_time, read_state
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -26,10 +26,10 @@
   <insert id="insert" parameterType="com.alvis.exam.domain.ReadState">
     insert into t_read_state (id, article_id, read_time, 
       count, user_id, start_time, 
-      state)
+      read_state)
     values (#{id,jdbcType=INTEGER}, #{articleId,jdbcType=INTEGER}, #{readTime,jdbcType=INTEGER}, 
       #{count,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{startTime,jdbcType=TIMESTAMP}, 
-      #{state,jdbcType=VARCHAR})
+      #{readState,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.ReadState">
     insert into t_read_state
@@ -52,8 +52,8 @@
       <if test="startTime != null">
         start_time,
       </if>
-      <if test="state != null">
-        state,
+      <if test="readState != null">
+        read_state,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -75,8 +75,8 @@
       <if test="startTime != null">
         #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="state != null">
-        #{state,jdbcType=VARCHAR},
+      <if test="readState != null">
+        #{readState,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -98,8 +98,8 @@
       <if test="startTime != null">
         start_time = #{startTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="state != null">
-        state = #{state,jdbcType=VARCHAR},
+      <if test="readState != null">
+        read_state = #{readState,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -111,7 +111,7 @@
       count = #{count,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
       start_time = #{startTime,jdbcType=TIMESTAMP},
-      state = #{state,jdbcType=VARCHAR}
+      read_state = #{readState,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 

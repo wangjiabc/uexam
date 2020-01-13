@@ -91,9 +91,39 @@ public class ExamPaperAnswerServiceImpl extends BaseServiceImpl<ExamPaperAnswer>
         return examPaperAnswerInfo;
     }
 
+
+    @Override
+    public ExamPaperAnswerInfo calculateExamPaperAnswerTest(ExamPaperSubmitVM examPaperSubmitVM, User user) {
+        ExamPaperAnswerInfo examPaperAnswerInfo = new ExamPaperAnswerInfo();
+        Date now = new Date();
+        ExamPaper examPaper = examPaperMapper.selectByPrimaryKey(examPaperSubmitVM.getId());
+        String frameTextContent = textContentService.selectById(examPaper.getFrameTextContentId()).getContent();
+        List<ExamPaperTitleItemObject> examPaperTitleItemObjects = JsonUtil.toJsonListObject(frameTextContent, ExamPaperTitleItemObject.class);
+        List<Integer> questionIds = examPaperTitleItemObjects.stream().flatMap(t -> t.getQuestionItems().stream().map(q -> q.getId())).collect(Collectors.toList());
+        List<Question> questions = questionMapper.selectByIds(questionIds);
+        List<ExamPaperQuestionCustomerAnswer> examPaperQuestionCustomerAnswers = examPaperTitleItemObjects.stream()
+                .flatMap(t -> t.getQuestionItems().stream()
+                        .map(q -> {
+                            Question question = questions.stream().filter(tq -> tq.getId().equals(q.getId())).findFirst().get();
+                            ExamPaperSubmitItemVM customerQuestionAnswer = examPaperSubmitVM.getAnswerItems().stream()
+                                    .filter(tq -> tq.getQuestionId().equals(q.getId()))
+                                    .findFirst()
+                                    .orElse(null);
+                            return ExamPaperQuestionCustomerAnswerFromVM(question, customerQuestionAnswer, examPaper, q.getItemOrder(), user, now);
+                        })
+                ).collect(Collectors.toList());
+        ExamPaperAnswer examPaperAnswer = ExamPaperAnswerFromVMTest(examPaperSubmitVM, examPaper, examPaperQuestionCustomerAnswers, user, now);
+        examPaperAnswerInfo.setExamPaper(examPaper);
+        examPaperAnswerInfo.setExamPaperAnswer(examPaperAnswer);
+        examPaperAnswerInfo.setExamPaperQuestionCustomerAnswers(examPaperQuestionCustomerAnswers);
+        return examPaperAnswerInfo;
+    }
+
     @Override
     @Transactional
     public String judge(ExamPaperSubmitVM examPaperSubmitVM) {
+        //取得试卷id
+
         ExamPaperAnswer examPaperAnswer = examPaperAnswerMapper.selectByPrimaryKey(examPaperSubmitVM.getId());
         List<ExamPaperSubmitItemVM> judgeItems = examPaperSubmitVM.getAnswerItems().stream().filter(d -> d.getDoRight() == null).collect(Collectors.toList());
         List<ExamPaperAnswerUpdate> examPaperAnswerUpdates = new ArrayList<>(judgeItems.size());
@@ -232,8 +262,36 @@ public class ExamPaperAnswerServiceImpl extends BaseServiceImpl<ExamPaperAnswer>
         examPaperAnswer.setPaperType(examPaper.getPaperType());
         examPaperAnswer.setSystemScore(systemScore);
         examPaperAnswer.setUserScore(systemScore);
+        examPaperAnswer.setIsTest("");
         examPaperAnswer.setTaskExamId(examPaper.getTaskExamId());
         examPaperAnswer.setQuestionCorrect((int) questionCorrect);
+        boolean needJudge = examPaperQuestionCustomerAnswers.stream().anyMatch(d -> QuestionTypeEnum.needSaveTextContent(d.getQuestionType()));
+        if (needJudge) {
+            examPaperAnswer.setStatus(ExamPaperAnswerStatusEnum.WaitJudge.getCode());
+        } else {
+            examPaperAnswer.setStatus(ExamPaperAnswerStatusEnum.Complete.getCode());
+        }
+        return examPaperAnswer;
+    }
+
+    private ExamPaperAnswer ExamPaperAnswerFromVMTest(ExamPaperSubmitVM examPaperSubmitVM, ExamPaper examPaper, List<ExamPaperQuestionCustomerAnswer> examPaperQuestionCustomerAnswers, User user, Date now) {
+        Integer systemScore = examPaperQuestionCustomerAnswers.stream().mapToInt(a -> a.getCustomerScore()).sum();
+        long questionCorrect = examPaperQuestionCustomerAnswers.stream().filter(a -> a.getCustomerScore().equals(a.getQuestionScore())).count();
+        ExamPaperAnswer examPaperAnswer = new ExamPaperAnswer();
+        examPaperAnswer.setPaperName(examPaper.getName());
+        examPaperAnswer.setDoTime(examPaperSubmitVM.getDoTime());
+        examPaperAnswer.setExamPaperId(examPaper.getId());
+        examPaperAnswer.setCreateUser(user.getId());
+        examPaperAnswer.setCreateTime(now);
+        examPaperAnswer.setSubjectId(examPaper.getSubjectId());
+        examPaperAnswer.setQuestionCount(examPaper.getQuestionCount());
+        examPaperAnswer.setPaperScore(examPaper.getScore());
+        examPaperAnswer.setPaperType(examPaper.getPaperType());
+        examPaperAnswer.setSystemScore(systemScore);
+        examPaperAnswer.setUserScore(systemScore);
+        examPaperAnswer.setTaskExamId(examPaper.getTaskExamId());
+        examPaperAnswer.setQuestionCorrect((int) questionCorrect);
+        examPaperAnswer.setIsTest("测试");
         boolean needJudge = examPaperQuestionCustomerAnswers.stream().anyMatch(d -> QuestionTypeEnum.needSaveTextContent(d.getQuestionType()));
         if (needJudge) {
             examPaperAnswer.setStatus(ExamPaperAnswerStatusEnum.WaitJudge.getCode());

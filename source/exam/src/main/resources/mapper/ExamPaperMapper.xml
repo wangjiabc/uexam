@@ -17,11 +17,18 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="deleted" jdbcType="BIT" property="deleted" />
     <result column="task_exam_id" jdbcType="INTEGER" property="taskExamId" />
+    <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="exam_type_id" jdbcType="INTEGER" property="examTypeId" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
+    <result column="pass_score" jdbcType="INTEGER" property="passScore" />
+    <result column="chapter_sequence" jdbcType="INTEGER" property="chapterSequence" />
+    <result column="exam_paper_id" jdbcType="INTEGER" property="examPaperId" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, subject_id, paper_type, grade_level, score, question_count, suggest_time,
     limit_start_time, limit_end_time, frame_text_content_id, create_user, create_time,
-    deleted, task_exam_id
+    deleted, task_exam_id, count, exam_type_id, type_id, chapter_id, pass_score, chapter_sequence
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
@@ -33,21 +40,25 @@
     delete from t_exam_paper
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.alvis.exam.domain.ExamPaper" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="com.alvis.exam.domain.ExamPaper">
     insert into t_exam_paper (id, name, subject_id,
       paper_type, grade_level, score,
       question_count, suggest_time, limit_start_time,
       limit_end_time, frame_text_content_id, create_user,
-      create_time, deleted, task_exam_id
+      create_time, deleted, task_exam_id,
+      count, exam_type_id, type_id,
+      chapter_id, pass_score, chapter_sequence
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{subjectId,jdbcType=INTEGER},
       #{paperType,jdbcType=INTEGER}, #{gradeLevel,jdbcType=INTEGER}, #{score,jdbcType=INTEGER},
       #{questionCount,jdbcType=INTEGER}, #{suggestTime,jdbcType=INTEGER}, #{limitStartTime,jdbcType=TIMESTAMP},
       #{limitEndTime,jdbcType=TIMESTAMP}, #{frameTextContentId,jdbcType=INTEGER}, #{createUser,jdbcType=INTEGER},
-      #{createTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{taskExamId,jdbcType=INTEGER}
+      #{createTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{taskExamId,jdbcType=INTEGER},
+      #{count,jdbcType=INTEGER}, #{examTypeId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER},
+      #{chapterId,jdbcType=INTEGER}, #{passScore,jdbcType=INTEGER}, #{chapterSequence,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.alvis.exam.domain.ExamPaper" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.ExamPaper">
     insert into t_exam_paper
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -94,6 +105,24 @@
       </if>
       <if test="taskExamId != null">
         task_exam_id,
+      </if>
+      <if test="count != null">
+        count,
+      </if>
+      <if test="examTypeId != null">
+        exam_type_id,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="chapterId != null">
+        chapter_id,
+      </if>
+      <if test="passScore != null">
+        pass_score,
+      </if>
+      <if test="chapterSequence != null">
+        chapter_sequence,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -142,6 +171,24 @@
       <if test="taskExamId != null">
         #{taskExamId,jdbcType=INTEGER},
       </if>
+      <if test="count != null">
+        #{count,jdbcType=INTEGER},
+      </if>
+      <if test="examTypeId != null">
+        #{examTypeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="chapterId != null">
+        #{chapterId,jdbcType=INTEGER},
+      </if>
+      <if test="passScore != null">
+        #{passScore,jdbcType=INTEGER},
+      </if>
+      <if test="chapterSequence != null">
+        #{chapterSequence,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.ExamPaper">
@@ -189,6 +236,14 @@
       <if test="taskExamId != null">
         task_exam_id = #{taskExamId,jdbcType=INTEGER},
       </if>
+      <if test="count != null">
+        count = #{count,jdbcType=INTEGER},
+      </if>
+        exam_type_id = #{examTypeId,jdbcType=INTEGER},
+        type_id = #{typeId,jdbcType=INTEGER},
+        chapter_id = #{chapterId,jdbcType=INTEGER},
+        pass_score = #{passScore,jdbcType=INTEGER},
+        chapter_sequence = #{chapterSequence,jdbcType=INTEGER}
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -207,7 +262,13 @@
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       deleted = #{deleted,jdbcType=BIT},
-      task_exam_id = #{taskExamId,jdbcType=INTEGER}
+      task_exam_id = #{taskExamId,jdbcType=INTEGER},
+      count = #{count,jdbcType=INTEGER},
+      exam_type_id = #{examTypeId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER},
+      pass_score = #{passScore,jdbcType=INTEGER},
+      chapter_sequence = #{chapterSequence,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -265,9 +326,28 @@
 
   <select id="studentPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM">
     SELECT tep.* FROM t_exam_paper tep LEFT JOIN
-    (SELECT exam_paper_id,create_user FROM t_exam_paper_answer WHERE create_user = #{userId}) tepa ON tep.id = tepa.exam_paper_id
-    WHERE tep.deleted=0 AND tepa.create_user is NULL
+    (SELECT exam_paper_id,create_user FROM t_exam_paper_answer WHERE isTest != '测试' AND create_user = #{userId} ) tepa ON tep.id = tepa.exam_paper_id
+    WHERE tep.deleted=0 AND tepa.create_user IS NULL AND  type_id IS NULL AND   chapter_id IS NULL
+  </select>
 
+  <select id="testPage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM">
+        SELECT	 tepa.exam_paper_id examPaperId,tep.*
+        FROM t_exam_paper_answer tepa
+        LEFT JOIN t_exam_paper tep
+        ON tepa.exam_paper_id = tep.id
+        WHERE tepa.create_user = #{userId,jdbcType=INTEGER}
+        and tepa.isTest = '测试'
+        and tep.deleted = 0
+        GROUP BY chapter_id
+
+  </select>
+
+
+
+  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM">
+    SELECT tep.* FROM t_exam_paper tep LEFT JOIN
+    (SELECT exam_paper_id,create_user FROM t_exam_paper_answer WHERE create_user = #{userId}) tepa ON tep.id = tepa.exam_paper_id
+    WHERE tep.deleted=0 AND tep.`type_id` = #{typeId,jdbcType=INTEGER} AND tep.`chapter_id` = #{chapterId,jdbcType=INTEGER}
   </select>
 
 
@@ -318,5 +398,43 @@
       #{id}
     </foreach>
   </update>
+
+
+  <select id="findAll" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic">
+    select
+    count(1) count3
+    from t_exam_paper
+  </select>
+
+  <select id="findByTypeIdAndChapterId" resultMap="BaseResultMap"  parameterType="com.alvis.exam.domain.Article">
+    select
+    *
+    from t_exam_paper where type_id = #{typeId} and chapter_id = #{chapterId} and deleted = 0 limit 1
+  </select>
+
+  <select id="findExamPaperByTypeId" resultMap="BaseResultMap"  parameterType="com.alvis.exam.domain.Article">
+    select
+    *
+    from t_exam_paper where type_id = #{typeId}  limit 1
+  </select>
+
+  <select id="findExamPaperByExamPaperId" resultMap="BaseResultMap"  parameterType="com.alvis.exam.domain.Article">
+    select
+    *
+    from t_exam_paper where id = #{examPaperId}
+  </select>
+
+  <select id="findIdByName" resultType="java.lang.Integer" parameterType="com.alvis.exam.domain.ExamPaper">
+    select
+    id
+    from t_exam_paper where name = #{name}
+  </select>
+
+  <select id="findExamPaperByName" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.ExamPaper">
+    select
+    *
+    from t_exam_paper where name = #{name}  and deleted=0
+  </select>
+
 
 </mapper>

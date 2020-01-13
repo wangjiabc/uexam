@@ -1,25 +1,28 @@
 package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.dto.article.UserDTO;
+import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
 import com.alvis.exam.exception.BusinessException;
 import com.alvis.exam.repository.ExamPaperAnswerMapper;
+import com.alvis.exam.repository.ExamPaperMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
-import com.alvis.exam.viewmodel.QueryTimeVO;
+import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +37,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private final static String CACHE_NAME = "User";
     private final UserMapper userMapper;
     private final ApplicationEventPublisher eventPublisher;
-    @Autowired
+    @Resource
     private ExamPaperAnswerMapper examPaperAnswerMapper;
-    @Autowired
+    @Resource
     private UserService userService;
 
     @Autowired
@@ -58,9 +61,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    @Cacheable(value = CACHE_NAME, key = "#username")
+//    @Cacheable(value = CACHE_NAME, key = "#username")
     public User getUserByUserName(String username) {
-        return userMapper.getUserByUserName(username);
+//        return userMapper.getUserByUserName(username);
+        return userMapper.getUserByName(username);
     }
 
     @Override
@@ -131,7 +135,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public void updateUser(User user) {
-        userMapper.updateUser(user);
+        userMapper.updateByPrimaryUser(user);
     }
 
     @Override
@@ -218,9 +222,73 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public PageInfo<UserDTO> selectUserRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM){
-
-        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "b.count desc").doSelectPageInfo(() ->
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "count desc").doSelectPageInfo(() ->
                 userMapper.selectUserRanking(queryTimeVO)
         );
+    }
+
+    @Override
+    public PageInfo<ExamDTO> selectExamRanking(QueryTimeVO queryTimeVO, MessageRequestVM requestVM) {
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "userScore desc").doSelectPageInfo(() ->
+                userMapper.selectExamRanking(queryTimeVO)
+        );
+    }
+
+    @Override
+    public User findUser(Integer id) {
+        User user = userMapper.selectByPrimaryKey(id);
+        return user;
+    }
+
+    @Override
+    public void updateUserImage(User user) {
+        userMapper.updateByPrimaryImage(user);
+    }
+
+    @Override
+    public IntegralBasic  userReadBasic(Integer id) {
+        IntegralBasic a1 = userMapper.findYiRead(id);        //已读
+        IntegralBasic a2 = userMapper.findZaiRead(id);       //在读
+        IntegralBasic a3 = userMapper.findWeiRead(id);       //未读
+        Integer integralCount = a1.getIntegralCount();          //積分
+        Integer count2 = a2.getCount2();
+        Integer count3 = a3.getCount3();
+        if(integralCount == null){
+            integralCount = 0;
+            a1.setIntegralCount(integralCount);
+        }
+        if(count2 == null){
+            count2 = 0;
+        }
+        if(count3 == null){
+            count3 = 0;
+        }
+        a1.setCount2(count2);
+        a1.setCount3(count3);
+        return a1;
+    }
+
+    @Resource
+    private ExamPaperMapper examPaperMapper;
+
+    @Override
+    public IntegralBasic userExamBasic(Integer id) {
+        IntegralBasic a1 = userMapper.findYiExam(id);           //已考
+        IntegralBasic a3 = examPaperMapper.findAll();           //总考试科目数
+        Integer count3 = a3.getCount3();
+        Integer integralCount = a1.getIntegralCount();          //積分
+        if(count3 == null){
+            count3 = 0;
+        }
+        if(integralCount == null){
+            integralCount = 0;
+            a1.setIntegralCount(integralCount);
+        }
+        else {
+            a1.setIntegralCount(integralCount/10);
+        }
+        int a = count3 - a1.getCount1();        //未考
+        a1.setCount3(a);
+        return a1;
     }
 }

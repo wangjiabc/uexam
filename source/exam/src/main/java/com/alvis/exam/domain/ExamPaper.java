@@ -1,12 +1,12 @@
 package com.alvis.exam.domain;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
 public class ExamPaper implements Serializable {
-
-    private static final long serialVersionUID = 8509645224550501395L;
-
     private Integer id;
 
     private String name;
@@ -36,6 +36,22 @@ public class ExamPaper implements Serializable {
     private Boolean deleted;
 
     private Integer taskExamId;
+
+    private Integer count;
+
+    private Integer examTypeId;     //试卷类型id
+
+    private Integer typeId;         //文章分类id
+
+    private Integer chapterId;      //文章章节id
+
+    private Integer passScore;      //阅读章节及格分
+
+    private Integer chapterSequence;    //章节序号
+
+
+
+    private static final long serialVersionUID = 1L;
 
     public Integer getId() {
         return id;
@@ -155,5 +171,13 @@ public class ExamPaper implements Serializable {
 
     public void setTaskExamId(Integer taskExamId) {
         this.taskExamId = taskExamId;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 }

@@ -11,6 +11,8 @@ public class ExamPaperPageRequestVM extends BasePage {
     private Integer level;
     private Integer paperType;
     private Integer taskExamId;
+	private Integer typeId;
+	private Integer chapterId;
 	public Integer getId() {
 		return id;
 	}

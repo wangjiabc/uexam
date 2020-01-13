@@ -6,12 +6,14 @@ import com.alvis.exam.service.ArticleTypeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+@CrossOrigin
 @Slf4j
 @Controller
 @RequestMapping(value = "/api/wx/student/type")

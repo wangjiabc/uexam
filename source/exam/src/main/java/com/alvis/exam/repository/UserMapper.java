@@ -1,10 +1,12 @@
 package com.alvis.exam.repository;
 
-import com.alvis.exam.domain.User;
-import com.alvis.exam.domain.dto.article.UserDTO;
+import com.alvis.exam.domain.dto.Integral.IntegralBasic;
+import com.alvis.exam.domain.dto.UserDTO;
+import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.other.KeyValue;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.viewmodel.QueryTimeVO;
+import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -55,6 +57,8 @@ public interface UserMapper extends BaseMapper<User> {
      * @return User
      */
     User getUserByUserName(String username);
+
+    User getUserByName(String username);
 
     /**
      * getUserByUserNamePwd
@@ -153,9 +157,28 @@ public interface UserMapper extends BaseMapper<User> {
 
     List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime);
 
+
     /**
      * 根据时间查询用户积分排名
-     * @param userDtoVM
+     * @param queryTimeVO
      */
     List<UserDTO> selectUserRanking(QueryTimeVO queryTimeVO);
+
+    List<ExamDTO> selectExamRanking(QueryTimeVO queryTimeVO);
+
+    int updateByPrimaryUser(User user);
+
+    int updateByPrimaryImage(User user);
+
+
+    IntegralBasic findYiRead(Integer id);
+
+    IntegralBasic findZaiRead(Integer id);
+
+    IntegralBasic findWeiRead(Integer id);
+
+
+    IntegralBasic findYiExam(Integer id);
+
+//    IntegralBasic findWeiExam(Integer id);
 }

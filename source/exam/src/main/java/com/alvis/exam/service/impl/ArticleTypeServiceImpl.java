@@ -1,9 +1,12 @@
 package com.alvis.exam.service.impl;
 
+import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
+import com.alvis.exam.domain.Chapter;
 import com.alvis.exam.repository.ArticleMapper;
 import com.alvis.exam.repository.ArticleTypeMapper;
+import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.service.ArticleTypeService;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
@@ -11,6 +14,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import io.swagger.models.auth.In;
+import net.sf.ezmorph.object.CharacterObjectMorpher;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -22,7 +27,8 @@ import java.util.List;
 public class ArticleTypeServiceImpl implements ArticleTypeService {
     @Resource
     private ArticleTypeMapper articleTypeMapper;
-
+    @Resource
+    private ChapterMapper chapterMapper;
 
 
     /**
@@ -35,6 +41,9 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
         return types;
     }
 
+
+    @Autowired
+    private UrlConfig urlConfig;
     /**
      * 动态查看所有分类信息
      * @return
@@ -44,12 +53,13 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
 //        List<ArticleType> list = pageInfo.getList();
 ////        for (ArticleType articleType : list) {
 ////            String origname = articleType.getOrigname();
-////            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+////            articleType.setPathDeposit("http://223.86.150.188:8091/images/" + origname);
 ////        }
         List<ArticleType> page = articleTypeMapper.page(requestVM);
         for (ArticleType articleType : page) {
             String origname = articleType.getOrigname();
-            articleType.setPathDeposit("http://192.168.100.185:8091/images/" + origname);
+//            articleType.setPathDeposit("http://223.86.150.188:8091/images/" + origname);
+            articleType.setPathDeposit(urlConfig.getUrl() + origname);
         }
         return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
                 articleTypeMapper.page(requestVM)
@@ -84,7 +94,39 @@ public class ArticleTypeServiceImpl implements ArticleTypeService {
     }
 
     @Override
+    public ArticleType findByTypeId(Integer typeId) {
+        ArticleType byTypeId = articleTypeMapper.findByTypeId(typeId);
+        return byTypeId;
+    }
+
+
+
+    @Override
     public void updateArticleType(ArticleType articleType) {
         articleTypeMapper.updateArticleType(articleType);
+    }
+
+
+
+    @Override
+    public List<String> findChapter(Integer typeId) {
+        List<String> list = chapterMapper.findByTypeId(typeId);
+        return list;
+    }
+
+    @Override
+    public String findNameByChapterId(Integer chapterId) {
+        String characterName = chapterMapper.findNameByChapterId(chapterId);
+        return characterName;
+    }
+
+    @Override
+    public List<Chapter> findAllByTypeId(Integer typeId) {
+        return chapterMapper.findAllByTypeId(typeId);
+    }
+
+    @Override
+    public ArticleType findByTypeName(String typeName) {
+        return articleTypeMapper.findByTypeName(typeName);
     }
 }

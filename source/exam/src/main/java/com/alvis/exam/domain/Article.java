@@ -1,10 +1,13 @@
 package com.alvis.exam.domain;
 
-import com.alvis.exam.base.BasePage;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-public class Article extends BasePage implements Serializable {
+import java.util.List;
+
+@Data
+public class Article implements Serializable {
     private Integer id;
 
     private String title;
@@ -17,13 +20,26 @@ public class Article extends BasePage implements Serializable {
 
     private Integer typeId;
 
-    private Integer readTimeU;
+    private Integer maxIntegral;
 
     private Integer readTimeL;
 
-    private Integer state =1;
+    private Integer state;
+
+    private Integer chapterId;
 
     private String content;
+
+    private String plainText;
+
+    private List<Integer> typeName;
+
+    private String articleTypeName;
+
+    private String chapterName;
+
+    private Integer examPaperId;
+
 
     private static final long serialVersionUID = 1L;
 
@@ -75,12 +91,12 @@ public class Article extends BasePage implements Serializable {
         this.typeId = typeId;
     }
 
-    public Integer getReadTimeU() {
-        return readTimeU;
+    public Integer getMaxIntegral() {
+        return maxIntegral;
     }
 
-    public void setReadTimeU(Integer readTimeU) {
-        this.readTimeU = readTimeU;
+    public void setMaxIntegral(Integer maxIntegral) {
+        this.maxIntegral = maxIntegral;
     }
 
     public Integer getReadTimeL() {
@@ -97,6 +113,14 @@ public class Article extends BasePage implements Serializable {
 
     public void setState(Integer state) {
         this.state = state;
+    }
+
+    public Integer getChapterId() {
+        return chapterId;
+    }
+
+    public void setChapterId(Integer chapterId) {
+        this.chapterId = chapterId;
     }
 
     public String getContent() {

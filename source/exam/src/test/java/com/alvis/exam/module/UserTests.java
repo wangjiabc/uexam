@@ -4,7 +4,6 @@ import com.alvis.exam.ExamApplicationTests;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
 import com.voucher.manage.tools.MyTestUtil;
 import org.junit.Test;
@@ -32,17 +31,19 @@ public class UserTests {
         //Assert.assertNotEquals(0, pageInfo.getTotal());
     }
 
-    @Test
-    public void test() {
-        MessageRequestVM requestVM = new MessageRequestVM();
-        requestVM.setReceiveUserId(24);
-        requestVM.setPageIndex(2);
-        requestVM.setPageSize(10);
-        //for (UserDTO userDto : userDtoPageInfo.getList()) {
-        //    userDto.setRank(1);
-        //}
-
-    }
+//    @Test
+//    public void test() {
+//        MessageRequestVM requestVM = new MessageRequestVM();
+//        requestVM.setReceiveUserId(24);
+//        requestVM.setPageIndex(1);
+//        requestVM.setPageSize(10);
+//        PageInfo<UserDTO> userDtoPageInfo = userService.selectUserRanking(DateTimeUtil.getMonthStartDay(), new Date(), requestVM);
+//        //for (UserDTO userDto : userDtoPageInfo.getList()) {
+//        //    userDto.setRank(1);
+//        //}
+//        System.out.println(userDtoPageInfo.getList());
+//
+//    }
 
 
 }

@@ -16,7 +16,7 @@ public class ReadState implements Serializable {
 
     private Date startTime;
 
-    private String state;
+    private String readState;
 
     private static final long serialVersionUID = 1L;
 
@@ -68,11 +68,11 @@ public class ReadState implements Serializable {
         this.startTime = startTime;
     }
 
-    public String getState() {
-        return state;
+    public String getReadState() {
+        return readState;
     }
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+    public void setReadState(String state) {
+        this.readState = state == null ? null : state.trim();
     }
 }

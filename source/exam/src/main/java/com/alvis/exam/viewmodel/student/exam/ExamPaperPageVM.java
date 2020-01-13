@@ -12,6 +12,8 @@ public class ExamPaperPageVM extends BasePage {
     private Integer subjectId;
     private Integer levelId;
     private Integer userId;
+    private Integer typeId;
+    private Integer chapterId;
 	public Integer getPaperType() {
 		return paperType;
 	}

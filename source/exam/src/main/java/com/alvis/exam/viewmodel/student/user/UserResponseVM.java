@@ -18,7 +18,7 @@ public class UserResponseVM extends BaseVM {
 
     private String userName;
 
-    private String realName;
+//    private String realName;
 
     private Integer age;
 
@@ -40,8 +40,18 @@ public class UserResponseVM extends BaseVM {
 
     private Integer userLevel;
 
+    private String duty;
+
     public static UserResponseVM from(User user) {
-        UserResponseVM vm = modelMapper.map(user, UserResponseVM.class);
+        UserResponseVM vm = new UserResponseVM();
+
+        vm.setPhone(user.getPhone());
+        vm.setUserName(user.getUserName());
+//        vm.setRealName(user.getRealName());
+        vm.setAge(user.getAge());
+        vm.setSex(user.getSex());
+        vm.setDuty(user.getDuty());
+
         vm.setBirthDay(DateTimeUtil.dateFormat(user.getBirthDay()));
         vm.setLastActiveTime(DateTimeUtil.dateFormat(user.getLastActiveTime()));
         vm.setCreateTime(DateTimeUtil.dateFormat(user.getCreateTime()));
@@ -73,13 +83,13 @@ public class UserResponseVM extends BaseVM {
 		this.userName = userName;
 	}
 
-	public String getRealName() {
-		return realName;
-	}
-
-	public void setRealName(String realName) {
-		this.realName = realName;
-	}
+//	public String getRealName() {
+//		return realName;
+//	}
+//
+//	public void setRealName(String realName) {
+//		this.realName = realName;
+//	}
 
 	public Integer getAge() {
 		return age;

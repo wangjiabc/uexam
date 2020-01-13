@@ -6,6 +6,7 @@ import com.alvis.exam.domain.ExamPaper;
 import com.alvis.exam.domain.Subject;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.enums.ExamPaperTypeEnum;
+import com.alvis.exam.repository.ArticleTypeMapper;
 import com.alvis.exam.service.ExamPaperService;
 import com.alvis.exam.service.SubjectService;
 import com.alvis.exam.utility.DateTimeUtil;
@@ -24,12 +25,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin
 @Controller("WXStudentExamController")
 @RequestMapping(value = "/api/wx/student/exampaper")
 @AllArgsConstructor
@@ -40,6 +43,8 @@ public class ExamPaperController extends BaseWXApiController {
     private  ExamPaperService examPaperService;
 	@Autowired
 	private SubjectService subjectService;
+	@Resource
+    private ArticleTypeMapper articleTypeMapper;
 
 
     @RequestMapping(value = "/select/{id}")
@@ -62,4 +67,21 @@ public class ExamPaperController extends BaseWXApiController {
         });
         return RestResponse.ok(page);
     }
+
+    @RequestMapping(value = "/testList", method = RequestMethod.POST)
+    public RestResponse<PageInfo<ExamPaperPageResponseVM>> testList(@Valid ExamPaperPageVM model) {
+        model.setUserId(getCurrentUser().getId());
+        PageInfo<ExamPaper> pageInfo = examPaperService.testPage(model);
+
+        PageInfo<ExamPaperPageResponseVM> page = PageInfoHelper.copyMap(pageInfo, e -> {
+            ExamPaperPageResponseVM vm = modelMapper.map(e, ExamPaperPageResponseVM.class);
+            Subject subject = subjectService.selectById(vm.getSubjectId());
+            vm.setSubjectName(subject.getName());
+            vm.setCreateTime(DateTimeUtil.dateFormat(e.getCreateTime()));
+            return vm;
+        });
+        return RestResponse.ok(page);
+    }
+
+
 }

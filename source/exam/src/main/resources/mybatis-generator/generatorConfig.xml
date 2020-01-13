@@ -40,23 +40,23 @@
         <!-- repository -->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.alvis.exam.repository"
                              targetProject="D:\entity\">
-<!--            C:\Users\Administrator\Desktop\uexam\generator\-->
+            <!--            C:\Users\Administrator\Desktop\uexam\generator\-->
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
 
-        <table tableName="t_read_state" domainObjectName="ReadState" enableCountByExample="false"
+        <table tableName="t_article" domainObjectName="Article" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
-<!--        <table tableName="t_article_type" domainObjectName="ArticleType" enableCountByExample="false"-->
-<!--               enableUpdateByExample="false"-->
-<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
-<!--        </table>-->
-<!--        <table tableName="t_user_article_look" domainObjectName="UserArticleLook" enableCountByExample="false"-->
-<!--               enableUpdateByExample="false"-->
-<!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
-<!--        </table>-->
+        <!--        <table tableName="t_article_type" domainObjectName="ArticleType" enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--        </table>-->
+        <!--        <table tableName="t_user_article_look" domainObjectName="UserArticleLook" enableCountByExample="false"-->
+        <!--               enableUpdateByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+        <!--        </table>-->
         <!--
        <table tableName="t_user" domainObjectName="User" enableCountByExample="false"
                enableUpdateByExample="false"

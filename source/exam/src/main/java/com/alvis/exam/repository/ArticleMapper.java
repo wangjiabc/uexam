@@ -1,8 +1,8 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.Article;
-import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.alvis.exam.domain.dto.ArticleDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -21,7 +21,7 @@ public interface ArticleMapper {
 
     int updateByPrimaryKeyWithBLOBs(Article record);
 
-    int updateByPrimaryKey(Article record);
+    int updateByPrimaryKey(Article article);
 
     List<Article> findAll();
 
@@ -33,10 +33,17 @@ public interface ArticleMapper {
 
     List<Article> findArticle(Integer typeId);
 
-    List<Article> studentPage(ArticleDTO articleDto);
+    List<com.alvis.exam.domain.dto.article.ArticleDTO> studentPage(ArticleDTO articleDto);
 
-    Article selectById(Article article);
+    List<com.alvis.exam.domain.dto.article.ArticleDTO> chapterPage(ArticleDTO articleDto);
+
+    Article selectById(Integer id);
 
     List<Article> articlePage(ArticleDTO articleDto);
 
+    Article findByName(String title);
+
+    Article findIsExitByChapterId(Integer chapterId);
+
+    List<Integer> findList();
 }

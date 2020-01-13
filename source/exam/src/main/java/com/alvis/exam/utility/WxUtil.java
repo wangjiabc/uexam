@@ -1,6 +1,7 @@
 package com.alvis.exam.utility;
 
 
+import com.voucher.manage.tools.MyTestUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -26,6 +27,7 @@ public class WxUtil {
             HttpEntity responseEntity = httpClient.execute(httpGet).getEntity();
             if (responseEntity != null) {
                 String responseStr = EntityUtils.toString(responseEntity);
+                MyTestUtil.print(responseStr);
                 if (responseStr.contains("openid")) {
                     WxResponse wxResponse = JsonUtil.toJsonObject(responseStr, WxResponse.class);
                     return wxResponse.getOpenid();

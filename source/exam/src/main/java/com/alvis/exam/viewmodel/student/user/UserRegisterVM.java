@@ -11,7 +11,6 @@ public class UserRegisterVM {
     @NotBlank
     private String userName;
 
-    @NotBlank
     private String password;
 
     @NotBlank
@@ -19,10 +18,42 @@ public class UserRegisterVM {
 
     private Integer userLevel;
 
-    private String telphone;
+    private String phone;
+
+    private Integer sex;
+
+    private Integer age;
+
+    private String duty;
+
+    private String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
 
     public String getUserName() {
         return userName;
+    }
+
+    public Integer getSex() {
+        return sex;
+    }
+
+    public void setSex(Integer sex) {
+        this.sex = sex;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public void setUserName(String userName) {
@@ -53,12 +84,12 @@ public class UserRegisterVM {
         this.userLevel = userLevel;
     }
 
-    public String getTelphone() {
-        return telphone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setTelphone(String telphone) {
-        this.telphone = telphone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getDuty() {
@@ -68,8 +99,4 @@ public class UserRegisterVM {
     public void setDuty(String duty) {
         this.duty = duty;
     }
-
-    private String duty;
-
-
 }

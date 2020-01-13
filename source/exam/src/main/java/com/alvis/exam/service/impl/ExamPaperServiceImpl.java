@@ -1,11 +1,14 @@
 package com.alvis.exam.service.impl;
 
+import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.*;
 import com.alvis.exam.domain.enums.ExamPaperTypeEnum;
 import com.alvis.exam.domain.exam.ExamPaperQuestionItemObject;
 import com.alvis.exam.domain.exam.ExamPaperTitleItemObject;
 import com.alvis.exam.domain.other.KeyValue;
+import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.repository.ExamPaperMapper;
+import com.alvis.exam.repository.ExamTypeMapper;
 import com.alvis.exam.repository.QuestionMapper;
 import com.alvis.exam.service.ExamPaperService;
 import com.alvis.exam.service.QuestionService;
@@ -25,11 +28,14 @@ import com.alvis.exam.viewmodel.student.dashboard.PaperInfo;
 import com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.google.common.base.CharMatcher;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +51,11 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
     private final TextContentService textContentService;
     private final QuestionService questionService;
     private final SubjectService subjectService;
+
+    @Resource
+    private ChapterMapper chapterMapper;
+    @Resource
+    private ExamTypeMapper examTypeMapper;
 
     @Autowired
     public ExamPaperServiceImpl(ExamPaperMapper examPaperMapper, QuestionMapper questionMapper, TextContentService textContentService, QuestionService questionService, SubjectService subjectService) {
@@ -75,6 +86,38 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
                 examPaperMapper.studentPage(requestVM));
     }
 
+    @Override
+    public PageInfo<ExamPaper> articlePage(ExamPaperPageVM requestVM) {
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
+                examPaperMapper.articlePage(requestVM));
+    }
+
+    @Override
+    public ExamPaper findByTypeIdAndChapterId(Article article) {
+        return examPaperMapper.findByTypeIdAndChapterId(article);
+    }
+
+    @Override
+    public ExamPaper findExamPaperByName(String name) {
+        return examPaperMapper.findExamPaperByName(name);
+    }
+
+    @Override
+    public ExamPaper findExamPaperByTypeId(Article article) {
+        return examPaperMapper.findExamPaperByTypeId(article);
+    }
+
+    @Override
+    public ExamPaper findExamPaperByExamPaperId(Article article) {
+        return examPaperMapper.findExamPaperByExamPaperId(article);
+    }
+
+    @Override
+    public PageInfo<ExamPaper> testPage(ExamPaperPageVM requestVM) {
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize()).doSelectPageInfo(() ->
+                examPaperMapper.testPage(requestVM));
+    }
+
 
     @Override
     @Transactional
@@ -94,10 +137,62 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
             examPaper.setCreateTime(now);
             examPaper.setCreateUser(user.getId());
             examPaper.setDeleted(false);
+            examPaper.setCount(examPaperEditRequestVM.getCount());  //设置积分
+
+            examPaper.setExamTypeId(examPaperEditRequestVM.getPaperType());
+            //通过传递过来的名称存ChapterId，TypeId
+            List<Integer> arr = examPaperEditRequestVM.getChapterType();    //设置试卷类型
+            if(arr != null){
+                int size = arr.size();
+                if(size == 1){
+                    examPaper.setTypeId(arr.get(0));
+                }
+                if(size == 2){
+                    examPaper.setTypeId(arr.get(0));        //设置TypeId
+                    examPaper.setChapterId(arr.get(1));    //设置ChapterId
+                    examPaper.setPassScore(examPaperEditRequestVM.getCriterion()*10);      //设置合格分/千分制
+                    Article article = new Article();
+                    article.setTypeId(arr.get(0));
+                    article.setChapterId(arr.get(1));
+                    Chapter chapter = chapterMapper.findChapterById(arr.get(1));
+                    examPaper.setChapterSequence(chapter.getSequence());
+                }
+            }
+
             examPaperFromVM(examPaperEditRequestVM, examPaper, titleItemsVM);
             examPaperMapper.insertSelective(examPaper);
+            Integer id = examPaperMapper.findIdByName(examPaper);
+            examPaper.setId(id);
         } else {
             examPaper = examPaperMapper.selectByPrimaryKey(examPaperEditRequestVM.getId());
+
+            Integer paperType = examPaperEditRequestVM.getPaperType();
+            if(paperType == 2){
+                examPaper.setExamTypeId(paperType);        //设置试卷类型
+                List<Integer> arr = examPaperEditRequestVM.getChapterType();
+                if(arr != null){
+                    int size = arr.size();
+                    if(size == 2){
+                        examPaper.setTypeId(arr.get(0));        //设置TypeId
+                        examPaper.setChapterId(arr.get(1));    //设置ChapterId
+                        examPaper.setPassScore(examPaperEditRequestVM.getCriterion()*10);      //设置合格分/千分制
+                        Article article = new Article();
+                        article.setTypeId(arr.get(0));
+                        article.setChapterId(arr.get(1));
+                        Chapter chapter = chapterMapper.findChapterById(arr.get(1));
+                        examPaper.setChapterSequence(chapter.getSequence());
+                    }
+                }
+            }
+            if(paperType == 1){
+                examPaper.setExamTypeId(paperType);        //设置试卷类型
+                examPaper.setTypeId(null);        //设置TypeId
+                examPaper.setChapterId(null);    //设置ChapterId
+                examPaper.setPassScore(null);      //设置合格分/千分制
+                examPaper.setChapterSequence(null);
+            }
+
+
             TextContent frameTextContent = textContentService.selectById(examPaper.getFrameTextContentId());
             frameTextContent.setContent(frameTextContentStr);
             textContentService.updateByIdFilter(frameTextContent);
@@ -137,6 +232,11 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
             List<String> limitDateTime = Arrays.asList(DateTimeUtil.dateFormat(examPaper.getLimitStartTime()), DateTimeUtil.dateFormat(examPaper.getLimitEndTime()));
             vm.setLimitDateTime(limitDateTime);
         }
+        List<Integer> arrayList = new ArrayList<>();
+        arrayList.add(examPaper.getTypeId());
+        arrayList.add(examPaper.getChapterId());
+        vm.setChapterType(arrayList);
+        vm.setCriterion(examPaper.getPaperType());
         return vm;
     }
 
