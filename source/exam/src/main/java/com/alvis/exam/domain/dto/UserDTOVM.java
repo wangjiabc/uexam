@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Data
-public class UserDtoVM extends MessageRequestVM {
+public class UserDTOVM extends MessageRequestVM {
 	/**
 	 * 开始时间
 	 */

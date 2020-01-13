@@ -2,6 +2,7 @@ package com.alvis.exam.service;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
+import com.alvis.exam.domain.dto.ExamPaperDTO;
 import com.alvis.exam.domain.dto.article.ArticleDTO;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
@@ -43,4 +44,17 @@ public interface ArticleService {
     Integer findChapter(String chapter);
 
     Article findByName(String name);
+
+    PageInfo<ArticleDTO> chapterPage(Integer typeId, Integer chapterId, MessageRequestVM messageRequestVM);
+
+    Article findIsExitByChapterId(Integer integer);
+
+    List<Integer> findList();
+
+
+    PageInfo<ExamPaperDTO> secondLevel(Integer typeId,MessageRequestVM messageRequestVM);
+
+    PageInfo<ExamPaperDTO> secondLevel1(int parseInt, MessageRequestVM messageRequestVM);
+
+    PageInfo<ExamPaperDTO> secondLevel2(int parseInt, MessageRequestVM messageRequestVM);
 }

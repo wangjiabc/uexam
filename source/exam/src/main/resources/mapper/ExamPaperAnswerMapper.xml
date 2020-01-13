@@ -18,11 +18,12 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="task_exam_id" jdbcType="INTEGER" property="taskExamId" />
     <result column="count" jdbcType="INTEGER" property="count" />
+    <result column="isTest" jdbcType="VARCHAR" property="istest" />
   </resultMap>
   <sql id="Base_Column_List">
     id, exam_paper_id, paper_name, paper_type, subject_id, system_score, user_score,
     paper_score, question_correct, question_count, do_time, status, create_user, create_time,
-    task_exam_id, count
+    task_exam_id, count, isTest
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
@@ -34,22 +35,21 @@
     delete from t_exam_paper_answer
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.alvis.exam.domain.ExamPaperAnswer" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insert" parameterType="com.alvis.exam.domain.ExamPaperAnswer">
     insert into t_exam_paper_answer (id, exam_paper_id, paper_name,
       paper_type, subject_id, system_score,
       user_score, paper_score, question_correct,
       question_count, do_time, status,
       create_user, create_time, task_exam_id,
-      count
-      )
+      count, isTest)
     values (#{id,jdbcType=INTEGER}, #{examPaperId,jdbcType=INTEGER}, #{paperName,jdbcType=VARCHAR},
       #{paperType,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{systemScore,jdbcType=INTEGER},
       #{userScore,jdbcType=INTEGER}, #{paperScore,jdbcType=INTEGER}, #{questionCorrect,jdbcType=INTEGER},
       #{questionCount,jdbcType=INTEGER}, #{doTime,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
-      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{taskExamId,jdbcType=INTEGER}
-      ),#{count,jdbcType=INTEGER})
+      #{createUser,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{taskExamId,jdbcType=INTEGER},
+      #{count,jdbcType=INTEGER}, #{istest,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.alvis.exam.domain.ExamPaperAnswer" useGeneratedKeys="true" keyProperty="id">
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.ExamPaperAnswer">
     insert into t_exam_paper_answer
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -99,6 +99,9 @@
       </if>
       <if test="count != null">
         count,
+      </if>
+      <if test="istest != null">
+        isTest,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -150,6 +153,9 @@
       <if test="count != null">
         #{count,jdbcType=INTEGER},
       </if>
+      <if test="istest != null">
+        #{istest,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.ExamPaperAnswer">
@@ -200,6 +206,9 @@
       <if test="count != null">
         count = #{count,jdbcType=INTEGER},
       </if>
+      <if test="istest != null">
+        isTest = #{istest,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -219,7 +228,8 @@
       create_user = #{createUser,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       task_exam_id = #{taskExamId,jdbcType=INTEGER},
-      count = #{count,jdbcType=INTEGER}
+      count = #{count,jdbcType=INTEGER},
+      isTest = #{istest,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
@@ -228,6 +238,7 @@
     <include refid="Base_Column_List"/>
     FROM t_exam_paper_answer
     <where>
+      isTest != '测试'
         and create_user = #{createUser}
      <if test="subjectId != null">
          and subject_id = #{subjectId}

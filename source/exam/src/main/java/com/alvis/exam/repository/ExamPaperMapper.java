@@ -1,5 +1,6 @@
 package com.alvis.exam.repository;
 
+import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ExamPaper;
 import com.alvis.exam.domain.dto.Integral.IntegralBasic;
 import com.alvis.exam.domain.other.KeyValue;
@@ -46,4 +47,16 @@ public interface ExamPaperMapper extends BaseMapper<ExamPaper> {
     IntegralBasic findAll();
 
     List<ExamPaper> articlePage(ExamPaperPageVM requestVM);
+
+    ExamPaper findByTypeIdAndChapterId(Article article);
+
+    Integer findIdByName(ExamPaper examPaper);
+
+    ExamPaper findExamPaperByName(String name);
+
+    ExamPaper findExamPaperByTypeId(Article article);
+
+    ExamPaper findExamPaperByExamPaperId(Article article);
+
+    List<ExamPaper> testPage(ExamPaperPageVM requestVM);
 }

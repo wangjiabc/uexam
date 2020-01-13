@@ -49,6 +49,52 @@ public class ExamPaperAnswerController extends BaseWXApiController {
 	@Autowired
 	private ExamPaperService examPaperService;
 
+    /**
+     * 用于测试试卷  可以重复做
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/examSubmit", method = RequestMethod.POST)
+    public RestResponse examSubmit(HttpServletRequest request) {
+        ExamPaperSubmitVM examPaperSubmitVM = requestToExamPaperSubmitVM(request);
+        User user = getCurrentUser();
+        ExamPaperAnswerInfo examPaperAnswerInfo = examPaperAnswerService.calculateExamPaperAnswerTest(examPaperSubmitVM, user);
+        ExamPaperAnswer examPaperAnswer = examPaperAnswerInfo.getExamPaperAnswer();
+        Integer userScore = examPaperAnswer.getUserScore();
+        String scoreVm = ExamUtil.scoreToVM(userScore);
+        UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
+        String content = user.getUserName() + " 提交试卷：" + examPaperAnswerInfo.getExamPaper().getName()
+                + " 得分：" + scoreVm
+                + " 耗时：" + ExamUtil.secondToVM(examPaperAnswer.getDoTime());
+        userEventLog.setContent(content);
+
+        Integer examPaperId = examPaperAnswer.getExamPaperId(); //试卷id
+        Article article = new Article();
+        article.setExamPaperId(examPaperId);
+        ExamPaper examPaper = examPaperService.findExamPaperByExamPaperId(article);
+        Integer passScore = examPaper.getPassScore();   //试卷合格分
+        if(passScore == null){
+            passScore = 0;
+        }
+        HashMap<String, Object> map = new HashMap<>();
+
+        int score = Integer.parseInt(scoreVm);
+        Boolean isTrue = true;  //判断是否合格
+        if(score < passScore/10){
+            isTrue = false;
+        }
+        map.put("score",score);
+        map.put("passScore",passScore/10);
+        map.put("isQualified",isTrue);
+
+        eventPublisher.publishEvent(new CalculateExamPaperAnswerCompleteEvent(examPaperAnswerInfo));
+        eventPublisher.publishEvent(new UserEvent(userEventLog));
+        return RestResponse.ok(map);
+    }
+
+
+
+
     @RequestMapping(value = "/pageList", method = RequestMethod.POST)
     public RestResponse<PageInfo<ExamPaperAnswerPageResponseVM>> pageList(@Valid ExamPaperAnswerPageVM model) {
         model.setCreateUser(getCurrentUser().getId());
@@ -68,9 +114,9 @@ public class ExamPaperAnswerController extends BaseWXApiController {
         return RestResponse.ok(page);
     }
 
-
+    //固定试卷所用提交方式
     @RequestMapping(value = "/answerSubmit", method = RequestMethod.POST)
-    public RestResponse<String> answerSubmit(HttpServletRequest request) {
+    public RestResponse answerSubmit(HttpServletRequest request) {
         ExamPaperSubmitVM examPaperSubmitVM = requestToExamPaperSubmitVM(request);
         User user = getCurrentUser();
         ExamPaperAnswerInfo examPaperAnswerInfo = examPaperAnswerService.calculateExamPaperAnswer(examPaperSubmitVM, user);
@@ -81,16 +127,33 @@ public class ExamPaperAnswerController extends BaseWXApiController {
         Integer userScore = examPaperAnswer.getUserScore();
         String scoreVm = ExamUtil.scoreToVM(userScore);
 
-
-
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         String content = user.getUserName() + " 提交试卷：" + examPaperAnswerInfo.getExamPaper().getName()
                 + " 得分：" + scoreVm
                 + " 耗时：" + ExamUtil.secondToVM(examPaperAnswer.getDoTime());
         userEventLog.setContent(content);
+
+        Integer examPaperId = examPaperAnswer.getExamPaperId(); //试卷id
+        Article article = new Article();
+        article.setExamPaperId(examPaperId);
+        ExamPaper examPaper = examPaperService.findExamPaperByExamPaperId(article);
+        Integer passScore = examPaper.getPassScore();   //试卷合格分(千分制)
+        if(passScore == null){
+            passScore = 0;
+        }
+        HashMap<String, Object> map = new HashMap<>();
+        int score = Integer.parseInt(scoreVm);
+        Boolean isTrue = true;  //判断是否合格
+        if(score < passScore/10){
+            isTrue = false;
+        }
+        map.put("score",score);
+        map.put("passScore",passScore/10);
+        map.put("isQualified",isTrue);
+
         eventPublisher.publishEvent(new CalculateExamPaperAnswerCompleteEvent(examPaperAnswerInfo));
         eventPublisher.publishEvent(new UserEvent(userEventLog));
-        return RestResponse.ok(scoreVm);
+        return RestResponse.ok(map);
     }
 
     private ExamPaperSubmitVM requestToExamPaperSubmitVM(HttpServletRequest request) {

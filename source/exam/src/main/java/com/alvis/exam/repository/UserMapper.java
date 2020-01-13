@@ -1,13 +1,11 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.dto.Integral.IntegralBasic;
-import com.alvis.exam.domain.dto.UserDto;
+import com.alvis.exam.domain.dto.UserDTO;
 import com.alvis.exam.domain.dto.article.ExamDTO;
-import com.alvis.exam.domain.dto.article.UserDTO;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.domain.dto.UserDtoVM;
 import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

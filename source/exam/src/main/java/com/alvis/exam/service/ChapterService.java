@@ -42,4 +42,6 @@ public interface ChapterService {
      * 获取下一排序号
      */
     Chapter getNextSequence(Integer typeId);
+
+    Chapter findChapterById(Integer chapterId);
 }

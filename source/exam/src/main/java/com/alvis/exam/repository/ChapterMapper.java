@@ -1,6 +1,8 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.Chapter;
+import com.alvis.exam.domain.dto.ArticleDTO;
+import com.alvis.exam.domain.dto.ExamPaperDTO;
 import com.alvis.exam.viewmodel.admin.user.ChapterVM;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -53,4 +55,16 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
     List<Chapter> findAllByTypeId(Integer typeId);
 
     Integer findChapterIdByName(String chapter);
+
+    Integer setCriterion(Chapter chapter);
+
+    Chapter findChapterById(Integer integer);
+
+
+    List<ExamPaperDTO> findExamPaperDTOByTypeId(ArticleDTO articleDto);
+
+    List<ExamPaperDTO>  findExamPaperDTOByTypeId1(ArticleDTO articleDto);
+
+
+    List<ExamPaperDTO> findExamPaperDTOByTypeId2(ArticleDTO articleDto);
 }

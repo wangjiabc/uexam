@@ -37,4 +37,6 @@ public interface ArticleTypeMapper {
     ArticleType findByTypeId(Integer typeId);
 
     ArticleType findByTypeName(String typeName);
+
+    List<Integer> find();
 }

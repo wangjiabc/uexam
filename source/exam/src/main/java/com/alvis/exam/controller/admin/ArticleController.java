@@ -11,6 +11,7 @@ import com.alvis.exam.domain.ViewPager;
 import com.alvis.exam.domain.dto.KvobjDTO;
 import com.alvis.exam.service.ArticleService;
 import com.alvis.exam.service.ArticleTypeService;
+import com.alvis.exam.service.ChapterService;
 import com.alvis.exam.service.ViewPagerService;
 import com.alvis.exam.utility.UploadUtils;
 import com.alvis.exam.viewmodel.admin.article.ArticleVM;
@@ -19,6 +20,7 @@ import com.alvis.exam.viewmodel.wx.student.KeyObjDTO;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.models.auth.In;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -44,6 +46,8 @@ public class ArticleController {
     private ViewPagerService viewPagerService;
     @Autowired
     private UrlConfig urlConfig;
+    @Resource
+    private ChapterService chapterService;
 
 
     /**
@@ -93,38 +97,61 @@ public class ArticleController {
      */
     @RequestMapping("saveArticle")
     public RestResponse save(@RequestBody JSONObject jsonObject) {
+
+//        List<Integer> list  = articleService.findList();
+//        if(list != null && list.size() > 0 ){
+//            for (Integer integer : list) {
+//                if(integer == null){
+//                    return RestResponse.fail(500, "请添加与之前文章相对应的试卷");
+//                }
+//            }
+//        }
         Article article = new ArticleVM();
         String name = jsonObject.getString("title");            //文章标题
         Article byName = articleService.findByName(name);
-        if(byName != null){
+        if (byName != null) {
             return RestResponse.fail(500, "系统内部错误");
-        }
-        String author = jsonObject.getString("author");         //文章作者
-        String doc = jsonObject.getString("content");           //文章内容
-        String a = jsonObject.getString("readTimeL");           //下限时长
-        int down = Integer.parseInt(a);
-        JSONArray arr = jsonObject.getJSONArray("typeName");    //文章类型+章节的id
-        String b = jsonObject.getString("readTimeU");           //文章积分
-        int count = Integer.parseInt(b);
+        } else {
+            String author = jsonObject.getString("author");         //文章作者
+            String doc = jsonObject.getString("content");           //文章内容
+            String a = jsonObject.getString("readTimeL");           //下限时长
+            int down = Integer.parseInt(a);
+            JSONArray arr = jsonObject.getJSONArray("typeName");    //文章类型+章节的id
+            String b = jsonObject.getString("maxIntegral");           //文章积分
+            int count = Integer.parseInt(b);
 
-        article.setTitle(name);
-        article.setAuthor(author);
-        article.setContent(doc);
-        article.setReadTimeL(down);
-        article.setReadTimeU(count);
-        article.setState(1);
+            String plainText = jsonObject.getString("plainText");            //存储纯文本
+            article.setPlainText(plainText);
 
-        int size = arr.size();
-        if(size == 1){
-            article.setTypeId((Integer) arr.get(0));
-        }
-        if(size == 2){
-            article.setTypeId((Integer) arr.get(0));
-            article.setChapterId((Integer) arr.get(1));
-        }
+            article.setTitle(name);
+            article.setAuthor(author);
+            article.setContent(doc);
+            article.setReadTimeL(down*60);
+            article.setMaxIntegral(count);
+            article.setState(1);
 
-        articleService.saveArticle(article);
-        return RestResponse.ok();
+            int size = arr.size();
+            if (size == 1) {
+                article.setTypeId((Integer) arr.get(0));
+            }
+            if (size == 2) {
+                article.setTypeId((Integer) arr.get(0));
+                article.setChapterId((Integer) arr.get(1));
+//                Article exit = articleService.findIsExitByChapterId((Integer) arr.get(1)); //文章章节只能被使用一次
+//                if (exit != null) {
+//                    return RestResponse.fail(500, "该章节目录已使用");
+//                }
+//                else {
+//                    articleService.saveArticle(article);
+//                    return RestResponse.ok();
+//                }
+            }
+//            else {
+//                return RestResponse.fail(500, "文章应对应相应章节");
+//            }
+            articleService.saveArticle(article);
+            return RestResponse.ok();
+        }
     }
 
     /**
@@ -134,41 +161,39 @@ public class ArticleController {
      */
     @RequestMapping("updateArticle")
     public RestResponse updateArticle(@RequestBody JSONObject jsonObject) {
-        List<ArticleType> lists = articleService.findArticleType();
-        Article article = new Article();
-        Integer id1 = jsonObject.getInteger("id");
-        String name = jsonObject.getString("title");     //文章标题
-        String author = jsonObject.getString("author"); //文章作者
-        String doc = jsonObject.getString("content");       //文章内容
-        String a = jsonObject.getString("readTimeL");     //下限时长
-        String type = jsonObject.getString("typeName");   //文章类型
-        String chapter = jsonObject.getString("chapter");   //章节
+        Article article = new ArticleVM();
+        Integer id = jsonObject.getInteger("id");
+        String name = jsonObject.getString("title");            //文章标题
+        String author = jsonObject.getString("author");         //文章作者
+        String doc = jsonObject.getString("content");           //文章内容
+        String a = jsonObject.getString("readTimeL");           //下限时长
         int down = Integer.parseInt(a);
-
-        String b = jsonObject.getString("readTimeU");   //文章积分
+        JSONArray arr = jsonObject.getJSONArray("typeName");    //文章类型+章节的id
+        String b = jsonObject.getString("maxIntegral");           //文章积分
         int count = Integer.parseInt(b);
 
-        article.setId(id1);
+        String plainText = jsonObject.getString("plainText");            //存储纯文本
+        article.setPlainText(plainText);
+
+        article.setId(id);
         article.setTitle(name);
         article.setAuthor(author);
         article.setContent(doc);
-        article.setReadTimeL(down);
-        article.setReadTimeU(count);
+        article.setReadTimeL(down*60);
+        article.setMaxIntegral(count);
         article.setState(1);
 
-        int typeId = 0; //接收typeId
-        for (ArticleType articleType : lists) {
-            String typeName = articleType.getTypeName();
-            if (typeName.equals(type)) {
-                Integer id = articleType.getId();
-                typeId = id;
-            }
+        int size = arr.size();
+        if (size == 1) {
+            article.setTypeId((Integer) arr.get(0));
         }
-        article.setTypeId(typeId);
-        Integer chapterId = articleService.findChapter(chapter);    //根据章节名返回章节id
-        article.setChapterId(chapterId);
+        if (size == 2) {
+            article.setTypeId((Integer) arr.get(0));
+            article.setChapterId((Integer) arr.get(1));
+        }
         articleService.updateArticle(article);
         return RestResponse.ok();
+
     }
 
     /**
@@ -181,10 +206,23 @@ public class ArticleController {
     public RestResponse<PageInfo<Article>> pageList(@RequestBody MessagePageRequestVM model) {
         PageInfo<Article> pageInfo = articleService.page(model);
         for (Article article : pageInfo.getList()) {
-            String typeName = articleTypeService.findByTypeId(article.getTypeId()).getTypeName();    //分类名称
-            String chapterName = articleTypeService.findNameByChapterId(article.getChapterId());      //章节名称
-            article.setTypeName(typeName);
-            article.setChapterName(chapterName);
+            Integer typeId = article.getTypeId();
+            List<Integer> arrayList = new ArrayList<>();
+            arrayList.add(typeId);
+            arrayList.add(article.getChapterId());
+            article.setTypeName(arrayList);
+            //秒变成分
+            Integer readTimeL = article.getReadTimeL();
+            article.setReadTimeL(readTimeL/60);
+
+            ArticleType articleType = articleTypeService.findByTypeId(typeId);
+            Chapter chapter = chapterService.findChapterById(article.getChapterId());
+            if(articleType != null){
+                article.setArticleTypeName(articleType.getTypeName());
+            }
+            if(chapter != null){
+                article.setChapterName(chapter.getName());
+            }
 
         }
         return RestResponse.ok(pageInfo);

@@ -1,7 +1,7 @@
 spring:
   redis:
-    host: 192.168.100.200
-    #    host: 127.0.0.1
+#    host: 192.168.100.200
+    host: 127.0.0.1
     password: redis
   datasource:
     #  serverTimezone=GMT%2B8使用东八区时间

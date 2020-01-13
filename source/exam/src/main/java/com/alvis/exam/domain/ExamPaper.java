@@ -47,6 +47,10 @@ public class ExamPaper implements Serializable {
 
     private Integer passScore;      //阅读章节及格分
 
+    private Integer chapterSequence;    //章节序号
+
+
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

@@ -1,11 +1,9 @@
 package com.alvis.exam.service.impl;
 
-import com.alvis.exam.domain.ExamPaper;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.dto.Integral.IntegralBasic;
-import com.alvis.exam.domain.dto.UserDto;
-import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
+import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.event.OnRegistrationCompleteEvent;
 import com.alvis.exam.exception.BusinessException;
@@ -14,14 +12,12 @@ import com.alvis.exam.repository.ExamPaperMapper;
 import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.service.UserService;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;
-import com.alvis.exam.domain.dto.UserDtoVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -277,8 +273,8 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public IntegralBasic userExamBasic(Integer id) {
-        IntegralBasic a1 = userMapper.findYiExam(id);         //已考
-        IntegralBasic a3 = examPaperMapper.findAll();//总考试科目数
+        IntegralBasic a1 = userMapper.findYiExam(id);           //已考
+        IntegralBasic a3 = examPaperMapper.findAll();           //总考试科目数
         Integer count3 = a3.getCount3();
         Integer integralCount = a1.getIntegralCount();          //積分
         if(count3 == null){
@@ -287,6 +283,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         if(integralCount == null){
             integralCount = 0;
             a1.setIntegralCount(integralCount);
+        }
+        else {
+            a1.setIntegralCount(integralCount/10);
         }
         int a = count3 - a1.getCount1();        //未考
         a1.setCount3(a);

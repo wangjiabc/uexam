@@ -109,15 +109,50 @@
     select
     name
     from t_chapter
-    where type_id = #{typeId,jdbcType=INTEGER}
+    where id = #{chapterId,jdbcType=INTEGER}
   </select>
 
   <select id="findAllByTypeId" parameterType="java.lang.Integer" resultType="com.alvis.exam.domain.Chapter">
-    select
-    *
-    from t_chapter
-    where type_id = #{typeId,jdbcType=INTEGER}
+    SELECT * from t_chapter
+    where state = 1 and type_id = #{typeId,jdbcType=INTEGER}
   </select>
+
+  <select id="findExamPaperDTOByTypeId" parameterType="com.alvis.exam.domain.dto.ArticleDTO" resultType="com.alvis.exam.domain.dto.ExamPaperDTO">
+      SELECT tc.id chapterId,tc.pass_score passScore,tc.name,tc.type_id typeId,tc.sequence,tc.criterion,tc.state,tc.chapter_sequence  FROM
+      (SELECT tc.*,tep.`pass_score`,tep.`chapter_sequence` FROM t_chapter tc LEFT JOIN t_exam_paper tep ON tc.`id` = tep.`chapter_id` where tep.deleted = 0 ) tc
+      LEFT JOIN
+      (SELECT tepa.user_score,tep.chapter_id FROM t_exam_paper_answer tepa LEFT JOIN t_exam_paper tep ON tepa.exam_paper_id = tep.id WHERE tepa.`create_user` = #{receiveUserId,jdbcType=INTEGER}) tepa
+      ON tc.id = tepa.chapter_id WHERE pass_score &lt;= user_score AND tc.type_id = #{typeId,jdbcType=INTEGER} AND tc.state = 1 GROUP BY id
+
+  </select>
+
+  <select id="findExamPaperDTOByTypeId1" parameterType="com.alvis.exam.domain.dto.ArticleDTO" resultType="com.alvis.exam.domain.dto.ExamPaperDTO">
+    SELECT id chapterId,pass_score passScore,NAME,type_id typeId,criterion,state,chapter_sequence chapterSequence FROM
+    (SELECT tc.id,tc.`name`,tc.`type_id`,tc.`criterion`,tc.`state`,tep.pass_score,tep.`chapter_sequence` FROM t_chapter tc LEFT JOIN t_exam_paper tep
+    ON tc.`id` =  tep.`chapter_id` where   tep.deleted = 0 and tc.sequence = 1 and tc.type_id = #{typeId,jdbcType=INTEGER}
+    AND tc.state = 1) a
+  </select>
+
+    <select id="findExamPaperDTOByTypeId2" parameterType="com.alvis.exam.domain.dto.ArticleDTO" resultType="com.alvis.exam.domain.dto.ExamPaperDTO">
+    SELECT id chapterId,pass_score passScore,NAME,type_id typeId,criterion,state,chapter_sequence chapterSequence FROM
+    (SELECT tc.id,tc.`name`,tc.`type_id`,tc.`criterion`,tc.`state`,tep.pass_score,tep.`chapter_sequence` FROM t_chapter tc LEFT JOIN t_exam_paper tep
+    ON tc.`id` =  tep.`chapter_id` where tep.deleted = 0 and tc.sequence &lt;=
+        (
+        SELECT MAX(tc.chapter_sequence)+1  FROM
+          (SELECT tc.*,tep.`pass_score`,tep.`chapter_sequence` FROM t_chapter tc LEFT JOIN t_exam_paper tep ON tc.`id` = tep.`chapter_id`) tc
+          LEFT JOIN
+          (SELECT tepa.user_score,tep.chapter_id FROM t_exam_paper_answer tepa LEFT JOIN t_exam_paper tep ON tepa.exam_paper_id = tep.id WHERE tepa.`create_user` = #{receiveUserId,jdbcType=INTEGER}) tepa
+          ON tc.id = tepa.chapter_id WHERE pass_score &lt;= user_score AND tc.type_id = #{typeId,jdbcType=INTEGER} AND tc.state = 1
+        )
+    and tc.type_id = #{typeId,jdbcType=INTEGER}
+    AND tc.state = 1) a
+  </select>
+
+
+  <select id="findChapterById" resultType="com.alvis.exam.domain.Chapter" parameterType="java.lang.Integer">
+    SELECT * FROM t_chapter where id=#{integer,jdbcType=INTEGER}
+  </select>
+
 
   <!-- 添加章节 -->
   <insert id="insertChapter" parameterType="com.alvis.exam.domain.Chapter">

@@ -5,8 +5,12 @@ import io.swagger.models.auth.In;
 import lombok.Data;
 
 @Data
-public class ArticleDto extends MessageRequestVM {
+public class ArticleDTO extends MessageRequestVM {
+
     private Integer typeId;
+
+    private Integer chapterId;
+
 
     private Integer receiveUserId;
 

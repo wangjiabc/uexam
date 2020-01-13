@@ -36,6 +36,16 @@ public class ExamPaperAnswer implements Serializable {
 
     private Integer count;
 
+    private String istest;
+
+    public String getIsTest() {
+        return istest;
+    }
+
+    public void setIsTest(String isTest) {
+        this.istest = isTest;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

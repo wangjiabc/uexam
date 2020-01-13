@@ -4,7 +4,10 @@ import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.*;
+import com.alvis.exam.domain.dto.ExamPaperDTO;
 import com.alvis.exam.domain.dto.article.ArticleDTO;
+import com.alvis.exam.repository.ArticleMapper;
+import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.service.*;
 import com.alvis.exam.utility.DateTimeUtil;
 import com.alvis.exam.utility.ListUtils;
@@ -18,10 +21,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
@@ -50,44 +50,108 @@ public class ArticleController extends BaseWXApiController {
     private ViewPagerService viewPagerService;
     @Resource
     private ExamPaperService examPaperService;
-    @Resource
-    private SubjectService subjectService;
-
-    /**
-     * 根据文章绑定的试卷id传递试卷信息
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/pageList", method = RequestMethod.POST)
-    public RestResponse<PageInfo<ExamPaperPageResponseVM>> pageList(@Valid ExamPaperPageVM model) {
-        model.setUserId(getCurrentUser().getId());
-        PageInfo<ExamPaper> pageInfo = examPaperService.articlePage(model);
-        PageInfo<ExamPaperPageResponseVM> page = PageInfoHelper.copyMap(pageInfo, e -> {
-            ExamPaperPageResponseVM vm = modelMapper.map(e, ExamPaperPageResponseVM.class);
-            Subject subject = subjectService.selectById(vm.getSubjectId());
-            vm.setSubjectName(subject.getName());
-            vm.setCreateTime(DateTimeUtil.dateFormat(e.getCreateTime()));
-            return vm;
-        });
-        return RestResponse.ok(page);
-    }
-
+    @Autowired
+    private UrlConfig urlConfig;
 
 
     /**
-     * 返回文章列表  : 节
+     * 文章二级目录 : 章
      * @param
      */
-    @RequestMapping(value = "/article")
-    public RestResponse<PageInfo<ArticleDTO>> pageList(Integer typeId,MessageRequestVM messageRequestVM) {
-        //根据分类id查询该类型下所有的文章
+    @RequestMapping(value = "/secondLevel")
+    public RestResponse pageList(String typeId,MessageRequestVM messageRequestVM) {
+
+        //根据章typeId查询章
         messageRequestVM.setReceiveUserId(getCurrentUser().getId());
-        PageInfo<ArticleDTO> pageInfo = articleService.studentPage(typeId,messageRequestVM);
-        return RestResponse.ok(pageInfo);
+        PageInfo<ExamPaperDTO> pageInfo = null;
+        pageInfo = articleService.secondLevel(Integer.parseInt(typeId),messageRequestVM);
+        List<ExamPaperDTO> list = pageInfo.getList();
+        if(list.size() == 0){
+            PageInfo<ExamPaperDTO> pageInfo1 = articleService.secondLevel1(Integer.parseInt(typeId), messageRequestVM);
+            List<ExamPaperDTO> list1 = pageInfo1.getList();
+            for (ExamPaperDTO examPaperDTO : list1) {
+                Integer chapterId = examPaperDTO.getChapterId();
+                Article article = new Article();
+                article.setChapterId(chapterId);
+                article.setTypeId(Integer.parseInt(typeId));
+                ExamPaper examPaper = examPaperService.findByTypeIdAndChapterId(article);
+                Integer passScore = examPaper.getPassScore();
+                if(passScore == null){
+                    passScore = 0;
+                }
+                examPaperDTO.setPassScore(passScore/10);    //试卷合格分
+                examPaperDTO.setExamPaperId(examPaper.getId()); //考试试卷id
+            }
+
+            Comparator<ExamPaperDTO> comparator = new Comparator<ExamPaperDTO>() {
+                @Override
+                public int compare(ExamPaperDTO o1, ExamPaperDTO o2) {
+                    return o1.getName().charAt(1) - o2.getName().charAt(1);
+                }
+            };
+            Collections.sort(list1,comparator);
+
+            return RestResponse.ok(pageInfo1);
+        }
+        else {
+            pageInfo = articleService.secondLevel2(Integer.parseInt(typeId),messageRequestVM);
+            List<ExamPaperDTO> list2 = pageInfo.getList();
+            for (ExamPaperDTO examPaperDTO : list2) {
+                Integer chapterId = examPaperDTO.getChapterId();
+                Article article = new Article();
+                article.setChapterId(chapterId);
+                article.setTypeId(Integer.parseInt(typeId));
+                ExamPaper examPaper = examPaperService.findByTypeIdAndChapterId(article);
+                Integer passScore = examPaper.getPassScore();
+                if(passScore == null){
+                    passScore = 0;
+                }
+                examPaperDTO.setPassScore(passScore/10);    //试卷合格分
+                examPaperDTO.setExamPaperId(examPaper.getId()); //考试试卷id
+            }
+
+            Comparator<ExamPaperDTO> comparator = new Comparator<ExamPaperDTO>() {
+                @Override
+                public int compare(ExamPaperDTO o1, ExamPaperDTO o2) {
+                    return o1.getName().charAt(1) - o2.getName().charAt(1);
+                }
+            };
+            Collections.sort(list2,comparator);
+
+
+            return RestResponse.ok(pageInfo);
+        }
     }
 
 
+    /**
+     * 文章部分信息 :节
+     * @param
+     */
+    @RequestMapping(value = "/threeLevel")
+    public RestResponse<PageInfo<ArticleDTO>> pageList(String typeId,String chapterId,MessageRequestVM messageRequestVM) {
+        //根据章id查询该章下所有的节
+        messageRequestVM.setReceiveUserId(getCurrentUser().getId());
+        PageInfo<ArticleDTO> pageInfo = articleService.chapterPage(Integer.parseInt(typeId),Integer.parseInt(chapterId),messageRequestVM);
+        List<ArticleDTO> list = pageInfo.getList();
+        for (ArticleDTO articleDTO : list) {
+            Article article = new Article();
+            article.setChapterId(Integer.parseInt(chapterId));
+            article.setTypeId(Integer.parseInt(typeId));
+            ExamPaper examPaper = examPaperService.findByTypeIdAndChapterId(article);
+            articleDTO.setExamPaperId(examPaper.getId()); //考试试卷id
+        }
 
+        Comparator<ArticleDTO> comparator = new Comparator<ArticleDTO>() {
+            @Override
+            public int compare(ArticleDTO o1, ArticleDTO o2) {
+                return o1.getTitle().charAt(1) - o2.getTitle().charAt(1);
+            }
+        };
+        Collections.sort(list,comparator);
+
+        return RestResponse.ok(pageInfo);
+    }
 
 
     /**
@@ -95,11 +159,12 @@ public class ArticleController extends BaseWXApiController {
      * @param article  含文章id
      */
     @RequestMapping(value = "details" ,produces = {"application/json;charset=utf-8"})
-    public Article pageList(Article article) {
+    public RestResponse pageList(Article article) {
         Integer id = article.getId();
+        //去考试试卷中找该文章绑定的试卷
+        Article article1 = articleService.find(id);
         String details = articleService.findDetails(id);
         //拿到下限时长
-        Article article1 = articleService.find(id);
         Integer lowerLimit = article1.getReadTimeL();    //下限时长
         //查询readState表中该用户读取这篇文章总时长
         User user = getCurrentUser();
@@ -109,12 +174,12 @@ public class ArticleController extends BaseWXApiController {
 
         Article article2 = new Article();
         article2.setContent(details);       //文章详情
-        article2.setReadTimeU(lowerLimit*1000 - count);  //用户阅读该文章，已读时长
+        article2.setMaxIntegral(lowerLimit*1000 - count);  //用户阅读该文章，已读时长
         article2.setReadTimeL(lowerLimit*1000);       //下限时长
         article2.setId(id);
-        return article2;
+        article2.setPlainText(article1.getPlainText());
+        return RestResponse.ok(article2);
     }
-
 
 
     /**
@@ -123,21 +188,21 @@ public class ArticleController extends BaseWXApiController {
      * @param time     用户阅读时长
      */
     @RequestMapping(value = "saveRead" ,produces = {"application/json;charset=utf-8"})
-    public RestResponse saveRead(Article article,Integer time) {
-
+    public RestResponse saveRead(Article article,String time) {
+        int timeNew = Integer.parseInt(time);
         Integer id = article.getId();
         //拿到下限时长
         Article article1 = articleService.find(id);
         Integer lowerLimit = article1.getReadTimeL();     //下限时长
-        Integer integrate = article1.getReadTimeU();    //积分
+        Integer integrate = article1.getMaxIntegral();    //积分
 
         //阅读总时长 小于  下限时长时  积分为0
         ReadState readState = new ReadState();
         readState.setArticleId(id);        //文章id
-        readState.setReadTime(time);          //阅读时长
+        readState.setReadTime(timeNew);          //阅读时长
         readState.setUserId(getCurrentUser().getId());
         readState.setStartTime(new Date());     //阅读结束时间
-        if(time < lowerLimit*1000){
+        if(timeNew < lowerLimit*1000){
             //将阅读信息存到read表中
             readState.setCount(0);             //文章积分
             readState.setReadState("在读");
@@ -173,10 +238,6 @@ public class ArticleController extends BaseWXApiController {
         List<Article> list = articlePageInfo.getList();
         return RestResponse.ok(articlePageInfo);
     }
-
-
-@Autowired
-private UrlConfig urlConfig;
 
 
     /**

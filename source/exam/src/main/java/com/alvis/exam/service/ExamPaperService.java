@@ -1,5 +1,6 @@
 package com.alvis.exam.service;
 
+import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ExamPaper;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.exam.ExamPaperEditRequestVM;
@@ -32,4 +33,14 @@ public interface ExamPaperService extends BaseService<ExamPaper> {
 
 
     PageInfo<ExamPaper> articlePage(ExamPaperPageVM model);
+
+    ExamPaper findByTypeIdAndChapterId(Article article);
+
+    ExamPaper findExamPaperByName(String name);
+
+    ExamPaper findExamPaperByTypeId(Article article);
+
+    ExamPaper findExamPaperByExamPaperId(Article article);
+
+    PageInfo<ExamPaper> testPage(ExamPaperPageVM model);
 }

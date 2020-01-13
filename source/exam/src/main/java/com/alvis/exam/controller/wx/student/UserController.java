@@ -93,6 +93,9 @@ public class UserController extends BaseWXApiController {
         user.setAge(model.getAge());
         user.setSex(model.getSex());
 
+        //职务作为工号使用  注册时必须传入工号
+        user.setDuty(model.getDuty());
+
 //        String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
 //        user.setPassword(encodePwd);
@@ -268,6 +271,9 @@ public class UserController extends BaseWXApiController {
     public  RestResponse updateUser(User user){
         Integer id = getCurrentUser().getId();
         user.setId(id);
+        if(user.getDuty() == null || user.getDuty() == ""){
+            return RestResponse.fail(500,"工号不能为空");
+        }
         userService.updateUser(user);
         return RestResponse.ok();
     }

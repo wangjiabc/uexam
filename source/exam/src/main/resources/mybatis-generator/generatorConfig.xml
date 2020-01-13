@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
 
-        <table tableName="t_exam_paper" domainObjectName="ExamPaper" enableCountByExample="false"
+        <table tableName="t_article" domainObjectName="Article" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>

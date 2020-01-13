@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class UserDto  extends User {
+public class UserDTO extends User {
 
     private static final long serialVersionUID = 0L;
 

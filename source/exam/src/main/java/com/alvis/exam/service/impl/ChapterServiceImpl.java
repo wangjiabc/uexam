@@ -7,6 +7,7 @@ import com.alvis.exam.viewmodel.admin.user.ChapterVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ import java.util.List;
  */
 @Service
 public class ChapterServiceImpl implements ChapterService {
-    @Autowired
+    @Resource
     private ChapterMapper chapterMapper;
 
     @Override
@@ -43,6 +44,11 @@ public class ChapterServiceImpl implements ChapterService {
     @Override
     public Chapter getNextSequence(Integer typeId) {
         return this.chapterMapper.getNextSequence(typeId);
+    }
+
+    @Override
+    public Chapter findChapterById(Integer chapterId) {
+        return chapterMapper.findChapterById(chapterId);
     }
 
 }

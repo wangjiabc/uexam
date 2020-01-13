@@ -2,14 +2,13 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.ArticleType;
-import com.alvis.exam.domain.dto.article.ArticleDTO;
+import com.alvis.exam.domain.dto.ExamPaperDTO;
 import com.alvis.exam.repository.ArticleMapper;
 import com.alvis.exam.repository.ArticleTypeMapper;
 import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.service.ArticleService;
-import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
-import com.alvis.exam.domain.dto.ArticleDto;
+import com.alvis.exam.domain.dto.ArticleDTO;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -50,7 +49,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public PageInfo<Article> page(MessagePageRequestVM requestVM) {
-        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "id desc").doSelectPageInfo(() ->
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "type_id desc").doSelectPageInfo(() ->
                 articleMapper.page(requestVM)
         );
     }
@@ -67,7 +66,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void updateArticle(Article article) {
-        articleMapper.updateByPrimaryKey(article);
+        articleMapper.updateByPrimaryKeySelective(article);
     }
 
     @Override
@@ -78,8 +77,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public PageInfo<ArticleDTO> studentPage(Integer typeId, MessageRequestVM requestVM) {
-        ArticleDto articleDto = new ArticleDto();
+    public PageInfo<com.alvis.exam.domain.dto.article.ArticleDTO> studentPage(Integer typeId, MessageRequestVM requestVM) {
+        ArticleDTO articleDto = new ArticleDTO();
         articleDto.setTypeId(typeId);
         articleDto.setPageIndex(requestVM.getPageIndex());
         articleDto.setPageSize(requestVM.getPageSize());
@@ -88,6 +87,70 @@ public class ArticleServiceImpl implements ArticleService {
                 articleMapper.studentPage(articleDto)
         );
     }
+
+    @Override
+    public PageInfo<ExamPaperDTO> secondLevel(Integer typeId,MessageRequestVM requestVM) {
+        ArticleDTO articleDto = new ArticleDTO();
+        articleDto.setTypeId(typeId);
+        articleDto.setPageIndex(requestVM.getPageIndex());
+        articleDto.setPageSize(requestVM.getPageSize());
+        articleDto.setReceiveUserId(requestVM.getReceiveUserId());
+        return PageHelper.startPage(articleDto.getPageIndex(), articleDto.getPageSize(), "tc.sequence desc").doSelectPageInfo(() ->
+                chapterMapper.findExamPaperDTOByTypeId(articleDto)
+        );
+    }
+
+    @Override
+    public PageInfo<ExamPaperDTO> secondLevel1(int typeId, MessageRequestVM requestVM) {
+        ArticleDTO articleDto = new ArticleDTO();
+        articleDto.setTypeId(typeId);
+        articleDto.setPageIndex(requestVM.getPageIndex());
+        articleDto.setPageSize(requestVM.getPageSize());
+        articleDto.setReceiveUserId(requestVM.getReceiveUserId());
+        return PageHelper.startPage(articleDto.getPageIndex(), articleDto.getPageSize()).doSelectPageInfo(() ->
+                chapterMapper.findExamPaperDTOByTypeId1(articleDto)
+        );
+    }
+
+    @Override
+    public PageInfo<ExamPaperDTO> secondLevel2(int typeId, MessageRequestVM requestVM) {
+        ArticleDTO articleDto = new ArticleDTO();
+        articleDto.setTypeId(typeId);
+        articleDto.setPageIndex(requestVM.getPageIndex());
+        articleDto.setPageSize(requestVM.getPageSize());
+        articleDto.setReceiveUserId(requestVM.getReceiveUserId());
+        return PageHelper.startPage(articleDto.getPageIndex(), articleDto.getPageSize()).doSelectPageInfo(() ->
+                chapterMapper.findExamPaperDTOByTypeId2(articleDto)
+        );
+    }
+
+
+    @Override
+    public Article findIsExitByChapterId(Integer chapterId) {
+        return articleMapper.findIsExitByChapterId(chapterId);
+    }
+
+    @Override
+    public List<Integer> findList() {
+        return articleMapper.findList();
+    }
+
+
+    @Override
+    public PageInfo<com.alvis.exam.domain.dto.article.ArticleDTO> chapterPage(Integer typeId, Integer chapterId, MessageRequestVM requestVM) {
+        ArticleDTO articleDto = new ArticleDTO();
+        articleDto.setTypeId(typeId);
+        articleDto.setChapterId(chapterId);
+        articleDto.setPageIndex(requestVM.getPageIndex());
+        articleDto.setPageSize(requestVM.getPageSize());
+        articleDto.setReceiveUserId(requestVM.getReceiveUserId());
+        return PageHelper.startPage(articleDto.getPageIndex(), articleDto.getPageSize(), "id desc").doSelectPageInfo(() ->
+                articleMapper.chapterPage(articleDto)
+        );
+    }
+
+
+
     /**
      * 根据文章id查询文章内容
      * @param id
@@ -107,9 +170,7 @@ public class ArticleServiceImpl implements ArticleService {
      */
     @Override
     public Article find(Integer id) {
-        Article article1 = new Article();
-        article1.setId(id);
-        Article article = articleMapper.selectById(article1);
+        Article article = articleMapper.selectById(id);
         return article;
     }
 
@@ -130,7 +191,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public PageInfo<Article> articlePage(Integer state,MessageRequestVM requestVM) {
-        ArticleDto articleDto = new ArticleDto();
+        ArticleDTO articleDto = new ArticleDTO();
         articleDto.setTypeId(state);
         articleDto.setReceiveUserId(requestVM.getReceiveUserId());
         articleDto.setPageIndex(requestVM.getPageIndex());
@@ -153,7 +214,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article findByName(String name) {
-        return articleMapper.findByName(name);
+    public Article findByName(String title) {
+        return articleMapper.findByName(title);
     }
 }

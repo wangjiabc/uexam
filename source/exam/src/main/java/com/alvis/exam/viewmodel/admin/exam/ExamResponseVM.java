@@ -1,6 +1,9 @@
 package com.alvis.exam.viewmodel.admin.exam;
 
+import io.swagger.models.auth.In;
 import lombok.Data;
+
+import java.util.List;
 
 @Data
 public class ExamResponseVM {
@@ -21,6 +24,14 @@ public class ExamResponseVM {
     private Integer paperType;
 
     private Integer frameTextContentId;
+
+	private Integer typeId;
+
+	private Integer chapterId;
+
+	private String articleTypeName;
+
+	private String chapterName;
 
 	public Integer getId() {
 		return id;

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 public class Article implements Serializable {
@@ -19,7 +20,7 @@ public class Article implements Serializable {
 
     private Integer typeId;
 
-    private Integer readTimeU;
+    private Integer maxIntegral;
 
     private Integer readTimeL;
 
@@ -29,9 +30,16 @@ public class Article implements Serializable {
 
     private String content;
 
-    private String typeName;
+    private String plainText;
+
+    private List<Integer> typeName;
+
+    private String articleTypeName;
 
     private String chapterName;
+
+    private Integer examPaperId;
+
 
     private static final long serialVersionUID = 1L;
 
@@ -83,12 +91,12 @@ public class Article implements Serializable {
         this.typeId = typeId;
     }
 
-    public Integer getReadTimeU() {
-        return readTimeU;
+    public Integer getMaxIntegral() {
+        return maxIntegral;
     }
 
-    public void setReadTimeU(Integer readTimeU) {
-        this.readTimeU = readTimeU;
+    public void setMaxIntegral(Integer maxIntegral) {
+        this.maxIntegral = maxIntegral;
     }
 
     public Integer getReadTimeL() {

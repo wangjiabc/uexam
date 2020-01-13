@@ -84,7 +84,7 @@
 
   <select id="findAll"  resultType="com.alvis.exam.domain.ArticleType" >
     select
-    *
+    id,type_name typeName,path_deposit pathDeposit,origname,state
     from t_article_type
   </select>
 
@@ -116,7 +116,7 @@
   </update>
   <select id="findByTypeId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
-    *
+    <include refid="Base_Column_List" />
     from t_article_type
     where id = #{typeId,jdbcType=INTEGER}
   </select>
@@ -127,6 +127,12 @@
     *
     from t_article_type
     where type_name = #{typeName,jdbcType=INTEGER}
+  </select>
+
+  <select id="find"  resultType="java.lang.Integer">
+    select
+    id
+    from t_article_type
   </select>
 
 

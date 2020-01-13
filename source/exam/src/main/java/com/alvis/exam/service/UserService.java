@@ -1,9 +1,8 @@
 package com.alvis.exam.service;
 
 import com.alvis.exam.domain.dto.Integral.IntegralBasic;
-import com.alvis.exam.domain.dto.UserDto;
-import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.dto.article.UserDTO;
+import com.alvis.exam.domain.dto.article.ExamDTO;
 import com.alvis.exam.domain.other.KeyValue;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.viewmodel.admin.user.UserPageRequestVM;

@@ -8,22 +8,25 @@
     <result column="upload_day" jdbcType="TIMESTAMP" property="uploadDay" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
-    <result column="read_time_u" jdbcType="INTEGER" property="readTimeU" />
+    <result column="max_integral" jdbcType="INTEGER" property="maxIntegral" />
     <result column="read_time_l" jdbcType="INTEGER" property="readTimeL" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="chapter_id" jdbcType="INTEGER" property="chapterId" />
+    <result column="plain_text" jdbcType="LONGVARCHAR" property="plainText" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.alvis.exam.domain.Article">
     <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    <result column="plain_text" jdbcType="LONGVARCHAR" property="plainText" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, title, author, upload_day, user_id, type_id, read_time_u, read_time_l, state,chapter_id
+    id, title, author, upload_day, user_id, type_id, max_integral, read_time_l, state,
+    chapter_id
   </sql>
   <sql id="Blob_Column_List">
-    content
+    content, plain_text
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
-    select 
+    select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
@@ -35,14 +38,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.alvis.exam.domain.Article">
-    insert into t_article (id, title, author, 
-      upload_day, user_id, type_id, 
-      read_time_u, read_time_l, state, 
-      chapter_id, content)
+    insert into t_article (id, title, author,
+      upload_day, user_id, type_id,
+      max_integral, read_time_l, state,
+      chapter_id, content, plain_text
+      )
     values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{author,jdbcType=VARCHAR},
       #{uploadDay,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, #{typeId,jdbcType=INTEGER},
-      #{readTimeU,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{state,jdbcType=INTEGER},
-      #{chapterId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR})
+      #{maxIntegral,jdbcType=INTEGER}, #{readTimeL,jdbcType=INTEGER}, #{state,jdbcType=INTEGER},
+      #{chapterId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, #{plainText,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.Article">
     insert into t_article
@@ -65,8 +70,8 @@
       <if test="typeId != null">
         type_id,
       </if>
-      <if test="readTimeU != null">
-        read_time_u,
+      <if test="maxIntegral != null">
+        max_integral,
       </if>
       <if test="readTimeL != null">
         read_time_l,
@@ -79,6 +84,9 @@
       </if>
       <if test="content != null">
         content,
+      </if>
+      <if test="plainText != null">
+        plain_text,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -100,8 +108,8 @@
       <if test="typeId != null">
         #{typeId,jdbcType=INTEGER},
       </if>
-      <if test="readTimeU != null">
-        #{readTimeU,jdbcType=INTEGER},
+      <if test="maxIntegral != null">
+        #{maxIntegral,jdbcType=INTEGER},
       </if>
       <if test="readTimeL != null">
         #{readTimeL,jdbcType=INTEGER},
@@ -115,7 +123,9 @@
       <if test="content != null">
         #{content,jdbcType=LONGVARCHAR},
       </if>
-
+      <if test="plainText != null">
+        #{plainText,jdbcType=LONGVARCHAR},
+      </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.Article">
@@ -136,8 +146,8 @@
       <if test="typeId != null">
         type_id = #{typeId,jdbcType=INTEGER},
       </if>
-      <if test="readTimeU != null">
-        read_time_u = #{readTimeU,jdbcType=INTEGER},
+      <if test="maxIntegral != null">
+        max_integral = #{maxIntegral,jdbcType=INTEGER},
       </if>
       <if test="readTimeL != null">
         read_time_l = #{readTimeL,jdbcType=INTEGER},
@@ -150,6 +160,9 @@
       </if>
       <if test="content != null">
         content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="plainText != null">
+        plain_text = #{plainText,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -161,50 +174,27 @@
       upload_day = #{uploadDay,jdbcType=TIMESTAMP},
       user_id = #{userId,jdbcType=INTEGER},
       type_id = #{typeId,jdbcType=INTEGER},
-      read_time_u = #{readTimeU,jdbcType=INTEGER},
+      max_integral = #{maxIntegral,jdbcType=INTEGER},
       read_time_l = #{readTimeL,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER},
       chapter_id = #{chapterId,jdbcType=INTEGER},
-      content = #{content,jdbcType=LONGVARCHAR}
+      content = #{content,jdbcType=LONGVARCHAR},
+      plain_text = #{plainText,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.Article">
     update t_article
-    <set>
-      <if test="title != null">
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="author != null">
-        author = #{author,jdbcType=VARCHAR},
-      </if>
-      <if test="uploadDay != null">
-        upload_day = #{uploadDay,jdbcType=TIMESTAMP},
-      </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="typeId != null">
-        type_id = #{typeId,jdbcType=INTEGER},
-      </if>
-      <if test="readTimeU != null">
-        read_time_u = #{readTimeU,jdbcType=INTEGER},
-      </if>
-      <if test="readTimeL != null">
-        read_time_l = #{readTimeL,jdbcType=INTEGER},
-      </if>
-      <if test="state != null">
-        state = #{state,jdbcType=INTEGER},
-      </if>
-      <if test="chapterId != null">
-        chapter_id = #{chapterId,jdbcType=INTEGER},
-      </if>
-      <if test="content != null">
-        content = #{content,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
+    set title = #{title,jdbcType=VARCHAR},
+      author = #{author,jdbcType=VARCHAR},
+      upload_day = #{uploadDay,jdbcType=TIMESTAMP},
+      user_id = #{userId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=INTEGER},
+      max_integral = #{maxIntegral,jdbcType=INTEGER},
+      read_time_l = #{readTimeL,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      chapter_id = #{chapterId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
 <!--  ======================-->
   <select id="page" resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM">
     select
@@ -232,7 +222,7 @@
       upload_day = #{uploadDay,jdbcType=TIMESTAMP},
       user_id = #{userId,jdbcType=INTEGER},
       type_id = #{typeId,jdbcType=INTEGER},
-      read_time_u = #{readTimeU,jdbcType=INTEGER},
+      max_integral = #{maxIntegral,jdbcType=INTEGER},
       read_time_l = #{readTimeL,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
@@ -242,7 +232,7 @@
     SELECT * FROM t_article WHERE type_id = #{type_id,jdbcType=INTEGER};
   </select>
 
-  <select id="studentPage" resultMap="atMap" parameterType="com.alvis.exam.domain.dto.ArticleDto">
+  <select id="studentPage" resultMap="atMap" parameterType="com.alvis.exam.domain.dto.ArticleDTO">
 
       SELECT ta.*,'已读' AS readState
       FROM t_article as ta
@@ -258,8 +248,27 @@
       FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL
       and type_id = #{typeId,jdbcType=INTEGER} and state = 1
       ;
-
   </select>
+
+
+  <select id="chapterPage" resultMap="atMap" parameterType="com.alvis.exam.domain.dto.ArticleDTO">
+      SELECT ta.*,'已读' AS readState
+      FROM t_article as ta
+      RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) as trs
+      ON trs.article_id = ta.id
+      where type_id = #{typeId,jdbcType=INTEGER} and  chapter_id = #{chapterId,jdbcType=INTEGER} and state = 1
+      UNION ALL
+      SELECT ta.*,'在读' AS readState
+      FROM t_article ta RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs ON trs.article_id = ta.id
+      where type_id = #{typeId,jdbcType=INTEGER} and  chapter_id = #{chapterId,jdbcType=INTEGER} and state = 1
+      UNION ALL
+      SELECT ta.*,'未读' AS readState
+      FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{receiveUserId,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL
+      and type_id = #{typeId,jdbcType=INTEGER} and  chapter_id = #{chapterId,jdbcType=INTEGER} and state = 1
+      ;
+  </select>
+
+
 
 
   <resultMap id="atMap" type="com.alvis.exam.domain.dto.article.ArticleDTO">
@@ -269,7 +278,7 @@
     <result column="upload_day" jdbcType="TIMESTAMP" property="uploadDay" />
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="type_id" jdbcType="INTEGER" property="typeId" />
-    <result column="read_time_u" jdbcType="INTEGER" property="readTimeU" />
+    <result column="max_integral" jdbcType="INTEGER" property="maxIntegral" />
     <result column="read_time_l" jdbcType="INTEGER" property="readTimeL" />
     <result column="state" jdbcType="INTEGER" property="state" />
     <result column="readState" jdbcType="VARCHAR" property="readState" />
@@ -279,13 +288,16 @@
 
 
 
-  <select id="selectById" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.Article">
-    select *
+  <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from t_article
-    WHERE id = #{id,jdbcType=INTEGER};
+    WHERE id = #{id,jdbcType=INTEGER}
   </select>
 
-  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.dto.ArticleDto">
+  <select id="articlePage" resultMap="BaseResultMap" parameterType="com.alvis.exam.domain.dto.ArticleDTO">
     <if test="typeId == 1">
       SELECT *
       FROM t_article as ta
@@ -315,8 +327,21 @@
   <select id="findByName" parameterType="java.lang.String" resultMap="BaseResultMap">
     select
     *
-    from t_article_type
-    where title = #{name,jdbcType=INTEGER}
+    from t_article
+    where title = #{title,jdbcType=INTEGER} limit 1
   </select>
+
+
+  <select id="findIsExitByChapterId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    *
+    from t_article
+    where chapter_id = #{chapterId,jdbcType=INTEGER} limit 1
+  </select>
+
+  <select id="findList" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    SELECT tep.id FROM t_article ta LEFT JOIN t_exam_paper tep ON ta.chapter_id = tep.chapter_id
+  </select>
+
 
 </mapper>

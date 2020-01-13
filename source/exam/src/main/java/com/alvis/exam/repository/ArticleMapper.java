@@ -1,10 +1,8 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.Article;
-import com.alvis.exam.domain.dto.article.ArticleDTO;
-import com.alvis.exam.viewmodel.admin.article.ArticleVM;
 import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
-import com.alvis.exam.domain.dto.ArticleDto;
+import com.alvis.exam.domain.dto.ArticleDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -35,11 +33,17 @@ public interface ArticleMapper {
 
     List<Article> findArticle(Integer typeId);
 
-    List<ArticleDTO> studentPage(ArticleDto articleDto);
+    List<com.alvis.exam.domain.dto.article.ArticleDTO> studentPage(ArticleDTO articleDto);
 
-    Article selectById(Article article);
+    List<com.alvis.exam.domain.dto.article.ArticleDTO> chapterPage(ArticleDTO articleDto);
 
-    List<Article> articlePage(ArticleDto articleDto);
+    Article selectById(Integer id);
 
-    Article findByName(String name);
+    List<Article> articlePage(ArticleDTO articleDto);
+
+    Article findByName(String title);
+
+    Article findIsExitByChapterId(Integer chapterId);
+
+    List<Integer> findList();
 }

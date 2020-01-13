@@ -12,7 +12,6 @@ import java.util.List;
 @Data
 public class ExamPaperEditRequestVM {
     private Integer id;
-    @NotNull
     private Integer level;
     @NotNull
     private Integer subjectId;
@@ -31,9 +30,9 @@ public class ExamPaperEditRequestVM {
 
 	private Integer examTypeId;     //试卷类型id
 
-	private List<Integer> arr;		//文章类型+章节
+	private List<Integer> chapterType;		//文章类型+章节
 
-	private Integer passScore;      //阅读章节及格分
+	private Integer criterion;      //阅读章节及格分
 
 	public Integer getCount() {
 		return count;

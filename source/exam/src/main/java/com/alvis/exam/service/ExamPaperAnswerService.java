@@ -29,6 +29,7 @@ public interface ExamPaperAnswerService extends BaseService<ExamPaperAnswer> {
      * @return
      */
     ExamPaperAnswerInfo calculateExamPaperAnswer(ExamPaperSubmitVM examPaperSubmitVM, User user);
+    ExamPaperAnswerInfo calculateExamPaperAnswerTest(ExamPaperSubmitVM examPaperSubmitVM, User user);
 
 
     /**

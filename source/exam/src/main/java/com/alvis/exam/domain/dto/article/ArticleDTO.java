@@ -5,7 +5,11 @@ import lombok.Data;
 
 @Data
 public class ArticleDTO extends Article {
+
     private String readState;
+
+    private Integer examPaperId;
+
 
     public String getReadState() {
         return readState;
