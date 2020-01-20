@@ -4,8 +4,17 @@ spring:
     host: 127.0.0.1
     password: redis
   datasource:
-    #  serverTimezone=GMT%2B8使用东八区时间
-    url: jdbc:mysql://192.168.100.200:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
-#        url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
-    username: root
-    password: root
+    sqlserver:
+      hikari:
+        jdbc-url: jdbc:sqlserver://39.100.229.32:5649;DatabaseName=RoomManage
+  #      driverClassName:  com.microsoft.sqlserver.jdbc.SQLServerDriver
+        username: sa
+        password: Fhc123456
+    mysql:
+      hikari:
+      #  serverTimezone=GMT%2B8使用东八区时间
+        jdbc-url: jdbc:mysql://192.168.100.200:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+  #      driverClassName:  com.mysql.jdbc.Driver
+        #    url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+        username: root
+        password: root
