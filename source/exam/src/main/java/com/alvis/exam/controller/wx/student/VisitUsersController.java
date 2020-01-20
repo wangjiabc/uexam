@@ -6,6 +6,8 @@ import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.Users;
 import com.alvis.exam.domain.VisitedUsers;
 import com.alvis.exam.domain.dto.VisitUsersDTO;
+import com.alvis.exam.repository.UserMapper;
+import com.alvis.exam.repository.UsersMapper;
 import com.alvis.exam.service.VisitUserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +35,8 @@ public class VisitUsersController {
 
     @Resource
     private VisitUserService visitUserService;
+    @Resource
+    private UserMapper userMapper;
 
     /**
      * 根据usersId查询信息
@@ -107,6 +111,47 @@ public class VisitUsersController {
         //存被拜访人结束拜访时间
         visitUserService.saveEndDate(visitedUsers); //实则修改
         return RestResponse.ok();
+    }
+
+    //查看所有拜访人
+    @RequestMapping(value = "findUser")
+    public RestResponse findUser() {
+        Integer id = wxContext.getCurrentUser().getId();
+        User user = userMapper.getUserById(id);
+        Integer wxRole = user.getWxRole();
+        if(wxRole != 1){
+            return RestResponse.fail(500,"无访问权限");
+        }
+        else {
+            List<User> list = visitUserService.findUser();
+            return RestResponse.ok(list);
+        }
+    }
+
+    /**
+     * 根据拜访人查看他的行动路线
+     * @return
+     */
+    @RequestMapping(value = "visitUserSim", method = RequestMethod.POST)
+    public RestResponse visitUserSim(String startDate,String endDate,User user) throws ParseException {
+        SimpleDateFormat slf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date startDate1 = slf.parse(startDate);
+        Date endDate1 = slf.parse(endDate);
+//        Integer userId = wxContext.getCurrentUser().getId();
+        VisitedUsers visitedUsers = new VisitedUsers();
+        visitedUsers.setVisitStartDate(startDate1);
+        visitedUsers.setVisitEndDate(endDate1);
+        visitedUsers.setUserId(user.getId());
+        List<Integer> list = visitUserService.findUsersId(visitedUsers);
+        List<Users> list1 = new ArrayList<>();
+        for (Integer usersId : list) {
+            Users users = new Users();
+            users.setUserId(user.getId());
+            users.setId(usersId+"");
+            Users users1 = visitUserService.findVisiter(users);
+            list1.add(users1);
+        }
+        return RestResponse.ok(list1);
     }
 
     /**

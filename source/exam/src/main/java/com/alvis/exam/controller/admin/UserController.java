@@ -151,4 +151,11 @@ public class UserController extends BaseApiController {
         return RestResponse.ok(keyValues);
     }
 
+    @RequestMapping(value = "/wxRole")
+    public RestResponse wxRole(Integer userId,Integer wxRole) {
+        userService.updateWxRole(userId,wxRole);
+        return RestResponse.ok();
+    }
+
+
 }

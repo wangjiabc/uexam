@@ -47,6 +47,16 @@ public class User implements Serializable {
 
     private String duty;
 
+    private Integer wxRole;
+
+    public Integer getWxRole() {
+        return wxRole;
+    }
+
+    public void setWxRole(Integer wxRole) {
+        this.wxRole = wxRole;
+    }
+
     public Integer getId() {
         return id;
     }

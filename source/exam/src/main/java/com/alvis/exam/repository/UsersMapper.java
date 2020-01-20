@@ -1,5 +1,6 @@
 package com.alvis.exam.repository;
 
+import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.Users;
 import com.alvis.exam.domain.dto.VisitUsersDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,4 +18,6 @@ public interface UsersMapper {
     Users findConById(Integer usersId);
 
     Users findVisiter(Users users);
+
+    List<User> findUser();
 }
