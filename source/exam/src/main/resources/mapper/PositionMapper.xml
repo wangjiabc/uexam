@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.PositionMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.Position">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="license" jdbcType="VARCHAR" property="license" />
+    <result column="is_license" jdbcType="VARCHAR" property="isLicense" />
+    <result column="check_id" jdbcType="VARCHAR" property="checkId" />
+    <result column="neaten_id" jdbcType="VARCHAR" property="neatenId" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="street" jdbcType="VARCHAR" property="street" />
+    <result column="street_number" jdbcType="VARCHAR" property="streetNumber" />
+    <result column="lng" jdbcType="VARCHAR" property="lng" />
+    <result column="lat" jdbcType="VARCHAR" property="lat" />
+    <result column="wgs84_lng" jdbcType="VARCHAR" property="wgs84Lng" />
+    <result column="wgs84_lat" jdbcType="VARCHAR" property="wgs84Lat" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+  </resultMap>
+  <insert id="insert" parameterType="com.alvis.exam.domain.Position">
+    insert into position (id, license, is_license, 
+      check_id, neaten_id, province, 
+      city, district, street, 
+      street_number, lng, lat, 
+      wgs84_lng, wgs84_lat, date
+      )
+    values (#{id,jdbcType=VARCHAR}, #{license,jdbcType=VARCHAR}, #{isLicense,jdbcType=VARCHAR}, 
+      #{checkId,jdbcType=VARCHAR}, #{neatenId,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, #{street,jdbcType=VARCHAR}, 
+      #{streetNumber,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{lat,jdbcType=VARCHAR}, 
+      #{wgs84Lng,jdbcType=VARCHAR}, #{wgs84Lat,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.Position">
+    insert into position
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="license != null">
+        license,
+      </if>
+      <if test="isLicense != null">
+        is_license,
+      </if>
+      <if test="checkId != null">
+        check_id,
+      </if>
+      <if test="neatenId != null">
+        neaten_id,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="street != null">
+        street,
+      </if>
+      <if test="streetNumber != null">
+        street_number,
+      </if>
+      <if test="lng != null">
+        lng,
+      </if>
+      <if test="lat != null">
+        lat,
+      </if>
+      <if test="wgs84Lng != null">
+        wgs84_lng,
+      </if>
+      <if test="wgs84Lat != null">
+        wgs84_lat,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="license != null">
+        #{license,jdbcType=VARCHAR},
+      </if>
+      <if test="isLicense != null">
+        #{isLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="checkId != null">
+        #{checkId,jdbcType=VARCHAR},
+      </if>
+      <if test="neatenId != null">
+        #{neatenId,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null">
+        #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="streetNumber != null">
+        #{streetNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="lng != null">
+        #{lng,jdbcType=VARCHAR},
+      </if>
+      <if test="lat != null">
+        #{lat,jdbcType=VARCHAR},
+      </if>
+      <if test="wgs84Lng != null">
+        #{wgs84Lng,jdbcType=VARCHAR},
+      </if>
+      <if test="wgs84Lat != null">
+        #{wgs84Lat,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

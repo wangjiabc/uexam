@@ -97,7 +97,6 @@ public class ArticleController {
      */
     @RequestMapping("saveArticle")
     public RestResponse save(@RequestBody JSONObject jsonObject) {
-
 //        List<Integer> list  = articleService.findList();
 //        if(list != null && list.size() > 0 ){
 //            for (Integer integer : list) {
