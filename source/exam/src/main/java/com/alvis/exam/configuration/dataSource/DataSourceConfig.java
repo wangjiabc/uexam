@@ -28,8 +28,8 @@ public class DataSourceConfig {
      *
      * @return
      */
-    @Bean("sqlserver") // bean的名称
-    @ConfigurationProperties(prefix = "spring.datasource.sqlserver.hikari") // application.properteis中对应属性的前缀
+    @Bean("mysql2") // bean的名称
+    @ConfigurationProperties(prefix = "spring.datasource.mysql2.hikari") // application.properteis中对应属性的前缀
     public DataSource sqlserverDataSource() {
         return DataSourceBuilder.create().build();
     }
@@ -38,8 +38,8 @@ public class DataSourceConfig {
      *
      * @return
      */
-    @Bean("mysql") // bean的名称
-    @ConfigurationProperties(prefix = "spring.datasource.mysql.hikari") // application.properteis中对应属性的前缀
+    @Bean("mysql1") // bean的名称
+    @ConfigurationProperties(prefix = "spring.datasource.mysql1.hikari") // application.properteis中对应属性的前缀
     public DataSource mysqlDataSource() {
         return DataSourceBuilder.create().build();
     }
@@ -52,13 +52,13 @@ public class DataSourceConfig {
      */
     @Primary
     @Bean("dataSource")
-    public DynamicDataSource dataSource(@Qualifier("mysql") DataSource mysql,
-                                        @Qualifier("sqlserver") DataSource sqlserver) {
+    public DynamicDataSource dataSource(@Qualifier("mysql1") DataSource mysql,
+                                        @Qualifier("mysql2") DataSource mysql2) {
         DynamicDataSource dynamicDataSource = new DynamicDataSource();
 
         Map<Object, Object> targetDataSources = new HashMap<>();
-        targetDataSources.put(DataSourceDialect.MYSQL, mysql);
-        targetDataSources.put(DataSourceDialect.SQLSERVER, sqlserver);
+        targetDataSources.put(DataSourceDialect.MYSQL1, mysql);
+        targetDataSources.put(DataSourceDialect.MYSQL2, mysql2);
         dynamicDataSource.setTargetDataSources(targetDataSources);
         // 设置默认的数据源
         dynamicDataSource.setDefaultTargetDataSource(mysql);
@@ -68,10 +68,10 @@ public class DataSourceConfig {
 
     @Primary
     @Bean("sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("mysql") DataSource mysql, @Qualifier("sqlserver") DataSource sqlserver) throws Exception {
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("mysql1") DataSource mysql1, @Qualifier("mysql2") DataSource mysql2) throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 
-        sessionFactory.setDataSource(this.dataSource(mysql, sqlserver));
+        sessionFactory.setDataSource(this.dataSource(mysql1, mysql2));
         sessionFactory.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapper-locations")));
 

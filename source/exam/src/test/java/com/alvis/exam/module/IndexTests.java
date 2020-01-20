@@ -20,7 +20,7 @@ public class IndexTests {
 
     @Test
     public void sumTest() {
-        DataSourceSwitch.switchToSqlserver();
+        DataSourceSwitch.switchDataSource();
         Integer count = examPaperService.selectAllCount();
         List<Integer> kv = examPaperService.selectMothCount();
         System.out.print(kv);
