@@ -15,8 +15,8 @@ public class DataSourceSwitch {
         contextHolder.set(dataSourceType);
     }
 
-    public static void switchToSqlserver() {
-        setDataSourceType(DataSourceDialect.SQLSERVER);
+    public static void switchDataSource() {
+        setDataSourceType(DataSourceDialect.MYSQL2);
     }
 
     /**

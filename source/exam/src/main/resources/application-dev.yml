@@ -4,13 +4,13 @@ spring:
     host: 127.0.0.1
     password: redis
   datasource:
-    sqlserver:
+    mysql2:
       hikari:
-        jdbc-url: jdbc:sqlserver://39.100.229.32:5649;DatabaseName=RoomManage
+        jdbc-url: jdbc:mysql://192.168.100.200:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
   #      driverClassName:  com.microsoft.sqlserver.jdbc.SQLServerDriver
         username: sa
         password: Fhc123456
-    mysql:
+    mysql1:
       hikari:
       #  serverTimezone=GMT%2B8使用东八区时间
         jdbc-url: jdbc:mysql://192.168.100.200:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
