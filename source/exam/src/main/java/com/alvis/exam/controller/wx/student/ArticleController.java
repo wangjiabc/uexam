@@ -5,16 +5,9 @@ import com.alvis.exam.configuration.property.UrlConfig;
 import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.*;
 import com.alvis.exam.domain.dto.ExamPaperDTO;
+import com.alvis.exam.domain.dto.VisitUsersDTO;
 import com.alvis.exam.domain.dto.article.ArticleDTO;
-import com.alvis.exam.repository.ArticleMapper;
-import com.alvis.exam.repository.ChapterMapper;
 import com.alvis.exam.service.*;
-import com.alvis.exam.utility.DateTimeUtil;
-import com.alvis.exam.utility.ListUtils;
-import com.alvis.exam.utility.PageInfoHelper;
-import com.alvis.exam.utility.UploadUtils;
-import com.alvis.exam.viewmodel.student.exam.ExamPaperPageResponseVM;
-import com.alvis.exam.viewmodel.student.exam.ExamPaperPageVM;
 import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
@@ -22,18 +15,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import javax.validation.Valid;
-import java.io.File;
-import java.text.ParseException;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 @CrossOrigin
 @Slf4j
 @Controller
@@ -60,7 +47,6 @@ public class ArticleController extends BaseWXApiController {
      */
     @RequestMapping(value = "/secondLevel")
     public RestResponse pageList(String typeId,MessageRequestVM messageRequestVM) {
-
         //根据章typeId查询章
         messageRequestVM.setReceiveUserId(getCurrentUser().getId());
         PageInfo<ExamPaperDTO> pageInfo = null;
@@ -256,5 +242,6 @@ public class ArticleController extends BaseWXApiController {
         }
         return arrayList;
     }
+
 
 }

@@ -54,8 +54,7 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
 
     @Resource
     private ChapterMapper chapterMapper;
-    @Resource
-    private ExamTypeMapper examTypeMapper;
+
 
     @Autowired
     public ExamPaperServiceImpl(ExamPaperMapper examPaperMapper, QuestionMapper questionMapper, TextContentService textContentService, QuestionService questionService, SubjectService subjectService) {
