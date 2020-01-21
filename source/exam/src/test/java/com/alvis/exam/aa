@@ -1,0 +1,18 @@
+
+a(16) = "Name|" & Me.txtName.Text    '承租人
+a(17) = "CharterProperty|" & Me.comCharterProperty.Text '承租人性质
+a(18) = "Sex|" & Me.comSex.Text     '性别
+a(19) = "CreditRating|" & Me.comCreditRating.Text    '信誉等级
+a(20) = "Phone|" & Me.txtPhone.Text   '联系电话
+a(21) = "Corporation|" & Me.txtCorporation.Text     '法人代表
+a(22) = "CardType|" & Me.ComCardType.Text    '证件类型
+a(23) = "IDNo|" & Me.txtIDNo.Text        '证件号码
+a(24) = "HomeAddress|" & Me.txtHomeAddress.Text '联系地址
+a(25) = "LowProtect|" & Me.comLowProtect.Text  '是否低保
+a(26) = "PlacementFees|" & Me.txtPlacementFees.Text   '房屋安置费
+a(27) = "GasInstallationFees|" & Me.txtGasInstallationFees.Text '天然气安装费
+a(28) = "HireWXType|" & Me.ComHireWXType.Text  '微信单次交租月数
+a(29) = "Type|" & Me.comType.Text    '承租类型
+a(30) = "ChartPropery|" & Me.comChartPropery.Text    '租赁性质
+a(31) = "Opt|" & Me.txtOpt.Text     '经办人
+
