@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
 
-        <table tableName="visited_users" domainObjectName="VisitedUsers" enableCountByExample="false"
+        <table tableName="fxdhqkb_fgs_xqxsbb" domainObjectName="fxdhqkbFgsXqxsbb" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>

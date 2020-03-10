@@ -54,10 +54,14 @@ public class VisitUsersController {
      */
     @RequestMapping(value = "userCon", method = RequestMethod.POST)
     public RestResponse userCon() {
+        long start = System.currentTimeMillis();
+
         List<VisitUsersDTO> list = visitUserService.findVisits();
         for (VisitUsersDTO visitUsersDTO : list) {
             visitUsersDTO.setId(visitUsersDTO.getUsersId());
         }
+        long end = System.currentTimeMillis();
+        System.out.println("cessssssssssss------"+(end-start));
         return RestResponse.ok(list);
     }
 

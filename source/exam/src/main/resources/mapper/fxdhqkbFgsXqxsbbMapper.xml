@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.fxdhqkbFgsXqxsbbMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.fxdhqkbFgsXqxsbb">
+    <result column="yxzx" jdbcType="VARCHAR" property="yxzx" />
+    <result column="xqsl" jdbcType="VARCHAR" property="xqsl" />
+    <result column="dhsl" jdbcType="VARCHAR" property="dhsl" />
+    <result column="dhje" jdbcType="VARCHAR" property="dhje" />
+    <result column="ddmzl" jdbcType="VARCHAR" property="ddmzl" />
+    <result column="khml" jdbcType="VARCHAR" property="khml" />
+    <result column="dhcs" jdbcType="VARCHAR" property="dhcs" />
+    <result column="date" jdbcType="DATE" property="date" />
+  </resultMap>
+  <insert id="insert" parameterType="com.alvis.exam.domain.fxdhqkbFgsXqxsbb">
+    insert into fxdhqkb_fgs_xqxsbb (yxzx, xqsl, dhsl, 
+      dhje, ddmzl, khml, 
+      dhcs, date)
+    values (#{yxzx,jdbcType=VARCHAR}, #{xqsl,jdbcType=VARCHAR}, #{dhsl,jdbcType=VARCHAR}, 
+      #{dhje,jdbcType=VARCHAR}, #{ddmzl,jdbcType=VARCHAR}, #{khml,jdbcType=VARCHAR}, 
+      #{dhcs,jdbcType=VARCHAR}, #{date,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.fxdhqkbFgsXqxsbb">
+    insert into fxdhqkb_fgs_xqxsbb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yxzx != null">
+        yxzx,
+      </if>
+      <if test="xqsl != null">
+        xqsl,
+      </if>
+      <if test="dhsl != null">
+        dhsl,
+      </if>
+      <if test="dhje != null">
+        dhje,
+      </if>
+      <if test="ddmzl != null">
+        ddmzl,
+      </if>
+      <if test="khml != null">
+        khml,
+      </if>
+      <if test="dhcs != null">
+        dhcs,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yxzx != null">
+        #{yxzx,jdbcType=VARCHAR},
+      </if>
+      <if test="xqsl != null">
+        #{xqsl,jdbcType=VARCHAR},
+      </if>
+      <if test="dhsl != null">
+        #{dhsl,jdbcType=VARCHAR},
+      </if>
+      <if test="dhje != null">
+        #{dhje,jdbcType=VARCHAR},
+      </if>
+      <if test="ddmzl != null">
+        #{ddmzl,jdbcType=VARCHAR},
+      </if>
+      <if test="khml != null">
+        #{khml,jdbcType=VARCHAR},
+      </if>
+      <if test="dhcs != null">
+        #{dhcs,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.fxdhqkbFgsSmhzcxbMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.fxdhqkbFgsSmhzcxb">
+    <result column="yxpq" jdbcType="VARCHAR" property="yxpq" />
+    <result column="khjl" jdbcType="VARCHAR" property="khjl" />
+    <result column="ysmkhs" jdbcType="VARCHAR" property="ysmkhs" />
+    <result column="sjsmkhs" jdbcType="VARCHAR" property="sjsmkhs" />
+    <result column="wsmkhs" jdbcType="VARCHAR" property="wsmkhs" />
+    <result column="date" jdbcType="DATE" property="date" />
+  </resultMap>
+  <insert id="insert" parameterType="com.alvis.exam.domain.fxdhqkbFgsSmhzcxb">
+    insert into fxdhqkb_fgs_smhzcxb (yxpq, khjl, ysmkhs, 
+      sjsmkhs, wsmkhs, date)
+    values (#{yxpq,jdbcType=VARCHAR}, #{khjl,jdbcType=VARCHAR}, #{ysmkhs,jdbcType=VARCHAR}, 
+      #{sjsmkhs,jdbcType=VARCHAR}, #{wsmkhs,jdbcType=VARCHAR}, #{date,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.fxdhqkbFgsSmhzcxb">
+    insert into fxdhqkb_fgs_smhzcxb
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="yxpq != null">
+        yxpq,
+      </if>
+      <if test="khjl != null">
+        khjl,
+      </if>
+      <if test="ysmkhs != null">
+        ysmkhs,
+      </if>
+      <if test="sjsmkhs != null">
+        sjsmkhs,
+      </if>
+      <if test="wsmkhs != null">
+        wsmkhs,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="yxpq != null">
+        #{yxpq,jdbcType=VARCHAR},
+      </if>
+      <if test="khjl != null">
+        #{khjl,jdbcType=VARCHAR},
+      </if>
+      <if test="ysmkhs != null">
+        #{ysmkhs,jdbcType=VARCHAR},
+      </if>
+      <if test="sjsmkhs != null">
+        #{sjsmkhs,jdbcType=VARCHAR},
+      </if>
+      <if test="wsmkhs != null">
+        #{wsmkhs,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+</mapper>
