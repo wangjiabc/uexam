@@ -7,6 +7,9 @@ import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
+import com.github.pagehelper.PageInfo;
+
 
 public interface SaleService {
     PageInfo<FxdhqkbFgsKhxxcx> findBasic(MessageRequestVM requestVM);

@@ -1,7 +1,6 @@
 package com.alvis.exam.module;
 
 import com.alvis.exam.ExamApplication;
-import com.alvis.exam.configuration.dataSource.DataSourceSwitch;
 import com.alvis.exam.service.ExamPaperService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +19,7 @@ public class IndexTests {
 
     @Test
     public void sumTest() {
-        DataSourceSwitch.switchDataSource();
+        //DataSourceSwitch.switchDataSource();
         Integer count = examPaperService.selectAllCount();
         List<Integer> kv = examPaperService.selectMothCount();
         System.out.print(kv);
