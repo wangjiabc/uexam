@@ -352,7 +352,7 @@
 
   <select id="findBasic"  resultMap="BaseResultMap">
     select
-    xh,jydz,fzr
+    *
     from fxdhqkb_fgs_khxxcx
   </select>
 

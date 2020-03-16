@@ -127,4 +127,51 @@
       </if>
     </trim>
   </insert>
+
+
+  <select id="findBasic"  resultMap="BaseResultMap" parameterType="com.alvis.exam.viewmodel.student.user.MessageRequestVM">
+    select
+    *
+    from fxdhqkb_fgs_pqxsjdb
+    where
+      date &gt; #{startDate,jdbcType=DATE}
+      and date &lt; #{endDate,jdbcType=DATE}
+    <if test="khjl != null">
+      and khjl = #{khjl,jdbcType=VARCHAR}
+    </if>
+  </select>
+
+
+  <select id="findDetails"  resultMap="BaseResultMap" parameterType="java.lang.String">
+    select
+    *
+    from fxdhqkb_fgs_pqxsjdb
+    where khbh = #{khbh,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findManager" resultType="java.lang.String">
+    SELECT
+    khjl
+    FROM fxdhqkb_fgs_pqxsjdb WHERE fgs LIKE '%江阳%' GROUP BY khjl
+  </select>
+
+
+  <select id="findDYJE" resultType="java.lang.Double">
+           SELECT SUM(dhje) FROM fxdhqkb_fgs_pqxsjdb WHERE khjl LIKE #{khjl,jdbcType=VARCHAR}
+  </select>
+
+  <select id="findCount" resultType="java.lang.Integer">
+           SELECT SUM(dhsl) FROM fxdhqkb_fgs_pqxsjdb WHERE khjl LIKE #{khjl,jdbcType=VARCHAR}
+  </select>
+
+
+
+  <select id="findDYJE1" resultType="java.lang.Double">
+           SELECT SUM(dhje) FROM fxdhqkb_fgs_pqxsjdb
+  </select>
+
+  <select id="findCount1" resultType="java.lang.Integer">
+           SELECT SUM(dhsl) FROM fxdhqkb_fgs_pqxsjdb
+  </select>
+
 </mapper>

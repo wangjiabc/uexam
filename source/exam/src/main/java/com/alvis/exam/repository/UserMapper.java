@@ -153,7 +153,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     User selectByWxOpenId(@Param("wxOpenId") String wxOpenId);
 
-    int calculateUserArticleScore(@Param("userId")Integer userId, @Param("startTime")Date startTime, @Param("endTime")Date endTime);
+    int calculateUserArticleScore(@Param("userId") Integer userId, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 
     List<Map<String, Object>> calculateUsersArticleScore(Date startTime, Date endTime);
 

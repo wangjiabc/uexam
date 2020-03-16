@@ -29,15 +29,15 @@ import java.time.Duration;
 @EnableCaching
 public class CacheConfig extends CachingConfigurerSupport {
 
-  @Autowired
-    private CacheProperties cacheProperties;
+/*  @Autowired
+    private CacheProperties cacheProperties;*/
 
     /**
      * redis序列化修改为ObjectMapper
      *
      * @return RedisCacheConfiguration
      */
-    @Bean
+/*    @Bean
     public RedisCacheConfiguration redisCacheConfiguration() {
         Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
         ObjectMapper objectMapper = new ObjectMapper();
@@ -46,7 +46,7 @@ public class CacheConfig extends CachingConfigurerSupport {
         serializer.setObjectMapper(objectMapper);
         return RedisCacheConfiguration.defaultCacheConfig().entryTtl(cacheProperties.getRedis().getTimeToLive())
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(serializer));
-    }
+    }*/
 
 
     /**

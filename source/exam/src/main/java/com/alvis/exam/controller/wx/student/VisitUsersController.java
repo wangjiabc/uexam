@@ -7,7 +7,6 @@ import com.alvis.exam.domain.Users;
 import com.alvis.exam.domain.VisitedUsers;
 import com.alvis.exam.domain.dto.VisitUsersDTO;
 import com.alvis.exam.repository.UserMapper;
-import com.alvis.exam.repository.UsersMapper;
 import com.alvis.exam.service.VisitUserService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -35,6 +34,7 @@ public class VisitUsersController {
 
     @Resource
     private VisitUserService visitUserService;
+
     @Resource
     private UserMapper userMapper;
 
@@ -54,14 +54,10 @@ public class VisitUsersController {
      */
     @RequestMapping(value = "userCon", method = RequestMethod.POST)
     public RestResponse userCon() {
-        long start = System.currentTimeMillis();
-
         List<VisitUsersDTO> list = visitUserService.findVisits();
         for (VisitUsersDTO visitUsersDTO : list) {
             visitUsersDTO.setId(visitUsersDTO.getUsersId());
         }
-        long end = System.currentTimeMillis();
-        System.out.println("cessssssssssss------"+(end-start));
         return RestResponse.ok(list);
     }
 
@@ -183,6 +179,5 @@ public class VisitUsersController {
         }
         return RestResponse.ok(list1);
     }
-
 
 }

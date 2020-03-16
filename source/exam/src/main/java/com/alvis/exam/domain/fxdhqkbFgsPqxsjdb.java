@@ -2,6 +2,7 @@ package com.alvis.exam.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
 public class fxdhqkbFgsPqxsjdb implements Serializable {
     private String khbh;
@@ -33,6 +34,35 @@ public class fxdhqkbFgsPqxsjdb implements Serializable {
     private String khjl;
 
     private Date date;
+
+    private Date startDate;
+    private Date endDate;
+
+    Map<String, Object> map;
+
+    public Map<String, Object> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, Object> map) {
+        this.map = map;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
     private static final long serialVersionUID = 1L;
 

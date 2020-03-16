@@ -221,6 +221,7 @@ public class ArticleController extends BaseWXApiController {
 
         messageRequestVM.setReceiveUserId(getCurrentUser().getId());
         PageInfo<Article> articlePageInfo = articleService.articlePage(state,messageRequestVM);
+        List<Article> list = articlePageInfo.getList();
         return RestResponse.ok(articlePageInfo);
     }
 

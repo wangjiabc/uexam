@@ -35,7 +35,7 @@ public interface ChapterMapper extends BaseMapper<Chapter> {
      *删除章节
      * @param id
      */
-    void deleteChapterById(Integer id,Integer state);
+    void deleteChapterById(Integer id, Integer state);
 
     /**
      * 查询思维导图

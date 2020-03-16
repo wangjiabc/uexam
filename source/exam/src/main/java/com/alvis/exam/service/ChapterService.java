@@ -29,7 +29,7 @@ public interface ChapterService {
      *删除章节
      * @param id
      */
-    void deleteChapterById(Integer id,Integer state);
+    void deleteChapterById(Integer id, Integer state);
 
     /**
      * queryChapter

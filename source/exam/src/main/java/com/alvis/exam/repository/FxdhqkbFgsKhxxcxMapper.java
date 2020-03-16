@@ -1,7 +1,6 @@
 package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.FxdhqkbFgsKhxxcx;
-import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

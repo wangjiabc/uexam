@@ -1,6 +1,5 @@
 package com.alvis.exam.configuration.dataSource;
 
-import cn.stylefeng.roses.core.mutidatasource.DynamicDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class DataSourceConfig {
      * @return
      */
     @Bean("mysql2") // bean的名称
-    @ConfigurationProperties(prefix = "spring.datasource.mysql2.hikari") // application.properteis中对应属性的前缀
+    @ConfigurationProperties(prefix = "spring.datasource.mysql2") // application.properteis中对应属性的前缀
     public DataSource sqlserverDataSource() {
         return DataSourceBuilder.create().build();
     }
@@ -40,7 +39,7 @@ public class DataSourceConfig {
      * @return
      */
     @Bean("mysql1") // bean的名称
-    @ConfigurationProperties(prefix = "spring.datasource.mysql1.hikari") // application.properteis中对应属性的前缀
+    @ConfigurationProperties(prefix = "spring.datasource.mysql1") // application.properteis中对应属性的前缀
     public DataSource mysqlDataSource() {
         return DataSourceBuilder.create().build();
     }

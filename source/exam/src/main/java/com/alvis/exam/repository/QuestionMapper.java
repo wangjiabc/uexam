@@ -29,5 +29,5 @@ public interface QuestionMapper extends BaseMapper<Question> {
 
     Integer selectAllCount();
 
-    List<KeyValue> selectCountByDate(@Param("startTime") Date startTime,@Param("endTime") Date endTime);
+    List<KeyValue> selectCountByDate(@Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

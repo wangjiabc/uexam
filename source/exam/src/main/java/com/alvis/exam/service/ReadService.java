@@ -17,7 +17,7 @@ public interface ReadService {
 
     void saveReadState(ReadState readState);
 
-    int findIntegrate(Integer useId,Integer articleId);
+    int findIntegrate(Integer useId, Integer articleId);
 
 
     Integer findJiFen(Integer userId, Integer id);

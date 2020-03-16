@@ -45,7 +45,7 @@ public class AuthController extends BaseWXApiController {
         if (null == openid) {
             return RestResponse.fail(4, "获取微信OpenId失败");
         }
-        com.alvis.exam.domain.User user = userService.selectByWxOpenId(openid);
+        User user = userService.selectByWxOpenId(openid);
         //com.alvis.exam.domain.User user = userService.getUserByUserName(model.getUserName());
         if (user == null) {
             return RestResponse.fail(5, "用户未绑定微信,请注册");

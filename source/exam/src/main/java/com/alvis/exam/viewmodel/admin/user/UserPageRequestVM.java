@@ -12,8 +12,6 @@ public class UserPageRequestVM extends BasePage {
 
     private String userName;
     private Integer role;
-
-
 	public String getUserName() {
 		return userName;
 	}
@@ -26,7 +24,5 @@ public class UserPageRequestVM extends BasePage {
 	public void setRole(Integer role) {
 		this.role = role;
 	}
-
-
 
 }

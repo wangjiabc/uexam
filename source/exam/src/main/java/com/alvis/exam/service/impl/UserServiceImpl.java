@@ -291,12 +291,4 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         a1.setCount3(a);
         return a1;
     }
-
-    @Override
-    public void updateWxRole(Integer userId,Integer wxRole) {
-        User user = new User();
-        user.setId(userId);
-        user.setWxRole(wxRole);
-        userMapper.updateByPrimaryKeySelective(user);
-    }
 }
