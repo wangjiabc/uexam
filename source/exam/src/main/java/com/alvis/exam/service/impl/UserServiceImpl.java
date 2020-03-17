@@ -291,4 +291,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         a1.setCount3(a);
         return a1;
     }
+
+    @Override
+    public void updateByUser(User user) {
+        userMapper.updateByPrimaryKeySelective(user);
+    }
 }

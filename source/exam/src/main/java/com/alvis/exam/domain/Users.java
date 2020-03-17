@@ -32,7 +32,6 @@ public class Users implements Serializable {
     private Integer userId; //user表的id
 
 
-
     private static final long serialVersionUID = 1L;
 
     public Integer getUserId() {

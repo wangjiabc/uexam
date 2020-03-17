@@ -37,7 +37,7 @@ public interface ArticleService {
 
     List<Integer> findArticleId();
 
-    PageInfo<Article> articlePage( Integer x,MessageRequestVM messageRequestVM);
+    PageInfo<Article> articlePage(Integer x, MessageRequestVM messageRequestVM);
 
     void trunCate();
 
@@ -52,7 +52,7 @@ public interface ArticleService {
     List<Integer> findList();
 
 
-    PageInfo<ExamPaperDTO> secondLevel(Integer typeId,MessageRequestVM messageRequestVM);
+    PageInfo<ExamPaperDTO> secondLevel(Integer typeId, MessageRequestVM messageRequestVM);
 
     PageInfo<ExamPaperDTO> secondLevel1(int parseInt, MessageRequestVM messageRequestVM);
 

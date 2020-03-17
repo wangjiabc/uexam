@@ -45,7 +45,7 @@ public class AuthController extends BaseWXApiController {
         if (null == openid) {
             return RestResponse.fail(4, "获取微信OpenId失败");
         }
-        com.alvis.exam.domain.User user = userService.selectByWxOpenId(openid);
+        User user = userService.selectByWxOpenId(openid);
         //com.alvis.exam.domain.User user = userService.getUserByUserName(model.getUserName());
         if (user == null) {
             return RestResponse.fail(5, "用户未绑定微信,请注册");
@@ -71,7 +71,6 @@ public class AuthController extends BaseWXApiController {
         user.setId(id);
         user.setImagePath(image);
         userService.updateUserImage(user);
-
         return RestResponse.ok();
     }
 
@@ -94,7 +93,6 @@ public class AuthController extends BaseWXApiController {
       //  userToken2.setWxOpenId(openid);
       //  return RestResponse.ok(userToken);
     }
-
 
     @RequestMapping(value = "/unBind", method = RequestMethod.POST)
     public RestResponse unBind() {

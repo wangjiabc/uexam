@@ -31,5 +31,5 @@ public interface ExamPaperAnswerMapper extends BaseMapper<ExamPaperAnswer> {
 
     ExamPaperAnswer getByPidUid(@Param("pid") Integer paperId, @Param("uid") Integer uid);
 
-    int calculateExamPaperScore(@Param("userId")Integer userId,@Param("startTime") Date startTime, @Param("endTime") Date endTime);
+    int calculateExamPaperScore(@Param("userId") Integer userId, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
 }

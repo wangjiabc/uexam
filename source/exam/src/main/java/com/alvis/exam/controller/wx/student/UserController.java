@@ -288,4 +288,32 @@ public class UserController extends BaseWXApiController {
 //        Integer status = user.getStatus();
 //        return status;
 //    }
+
+
+    /**
+     * 给个人设置月度指标1，季度指标2，设置管理员3
+     * @param form  取值为1或2或3
+     * @param id    t_user表的id
+     * @return
+     */
+    @RequestMapping(value = "setNorm")
+    public  RestResponse setNorm(Integer form,Integer value,Integer id){
+        User user = new User();
+        user.setId(id);
+        if(form == 1){
+            user.setMonthSaleNorm(value);
+            userService.updateByUser(user);
+        }
+        else if(form == 2){
+            user.setQuarterSaleNorm(value);
+            userService.updateByUser(user);
+        }
+        else {
+            user.setIsLook(value);
+            userService.updateByUser(user);
+        }
+        return RestResponse.ok();
+    }
+
+
 }
