@@ -86,7 +86,6 @@ public class UserController extends BaseWXApiController {
         if (null == openid) {
             return RestResponse.fail(4, "获取微信OpenId失败");
         }
-
         User user = modelMapper.map(model, User.class);
         user.setPhone(model.getPhone());
         user.setUserName(model.getUserName());
@@ -95,7 +94,6 @@ public class UserController extends BaseWXApiController {
 
         //职务作为工号使用  注册时必须传入工号
         user.setDuty(model.getDuty());
-
 //        String encodePwd = authenticationService.pwdEncode(model.getPassword());
         user.setUserUuid(UUID.randomUUID().toString());
 //        user.setPassword(encodePwd);
@@ -106,8 +104,8 @@ public class UserController extends BaseWXApiController {
         user.setDeleted(false);
         user.setWxOpenId(openid);
         user.setImagePath(model.getImagePath());    //传入头像
-
         userService.insertByFilter(user);
+
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         userEventLog.setContent("欢迎 " + user.getUserName() + " 注册来到系统");
         eventPublisher.publishEvent(new UserEvent(userEventLog));

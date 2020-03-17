@@ -95,10 +95,10 @@
   </insert>
 
   <select id="findVisits"  resultType="com.alvis.exam.domain.dto.VisitUsersDTO">
-    SELECT con.*,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat,pos.id positionId  FROM (
-        SELECT u.id usersId,u.`name`,u.id_number idNumber,ul.license,ul.address FROM users u LEFT JOIN user_license ul
-        ON u.phone LIKE ul.phone WHERE area = '2'
-    ) con LEFT JOIN position pos on con.license LIKE pos.license  WHERE  wgs84_lng is not NULL and wgs84_lat is not NULL
+     SELECT con.*,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat,pos.id positionId  FROM (
+        SELECT u.id usersId,u.`name`,u.id_number idNumber,ul.license,ul.address FROM users u INNER JOIN user_license ul
+        ON area = 2 AND u.phone = ul.phone
+    ) con INNER JOIN position pos on wgs84_lng is not NULL and wgs84_lat is not NULL and con.license = pos.license
   </select>
 
   <select id="findConById" resultType="com.alvis.exam.domain.Users"  parameterType="java.lang.Integer">

@@ -37,6 +37,7 @@ public class VisitUsersController {
     @Resource
     private UserMapper userMapper;
 
+
     /**
      * 根据usersId查询信息
      */
@@ -58,6 +59,47 @@ public class VisitUsersController {
             visitUsersDTO.setId(visitUsersDTO.getUsersId());
         }
         return RestResponse.ok(list);
+    }
+
+    //查看所有拜访人
+    @RequestMapping(value = "findUser")
+    public RestResponse findUser() {
+        Integer id = wxContext.getCurrentUser().getId();
+        User user = userMapper.getUserById(id);
+        Integer wxRole = user.getWxRole();
+        if(wxRole != 1){
+            return RestResponse.fail(500,"无访问权限");
+        }
+        else {
+            List<User> list = visitUserService.findUser();
+            return RestResponse.ok(list);
+        }
+    }
+
+    /**
+     * 根据拜访人查看他的行动路线
+     * @return
+     */
+    @RequestMapping(value = "visitUserSim", method = RequestMethod.POST)
+    public RestResponse visitUserSim(String startDate,String endDate,User user) throws ParseException {
+        SimpleDateFormat slf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date startDate1 = slf.parse(startDate);
+        Date endDate1 = slf.parse(endDate);
+//        Integer userId = wxContext.getCurrentUser().getId();
+        VisitedUsers visitedUsers = new VisitedUsers();
+        visitedUsers.setVisitStartDate(startDate1);
+        visitedUsers.setVisitEndDate(endDate1);
+        visitedUsers.setUserId(user.getId());
+        List<Integer> list = visitUserService.findUsersId(visitedUsers);
+        List<Users> list1 = new ArrayList<>();
+        for (Integer usersId : list) {
+            Users users = new Users();
+            users.setUserId(user.getId());
+            users.setId(usersId+"");
+            Users users1 = visitUserService.findVisiter(users);
+            list1.add(users1);
+        }
+        return RestResponse.ok(list1);
     }
 
     @Autowired
@@ -112,46 +154,6 @@ public class VisitUsersController {
         return RestResponse.ok();
     }
 
-    //查看所有拜访人
-    @RequestMapping(value = "findUser")
-    public RestResponse findUser() {
-        Integer id = wxContext.getCurrentUser().getId();
-        User user = userMapper.getUserById(id);
-        Integer wxRole = user.getWxRole();
-        if(wxRole != 1){
-            return RestResponse.fail(500,"无访问权限");
-        }
-        else {
-            List<User> list = visitUserService.findUser();
-            return RestResponse.ok(list);
-        }
-    }
-
-    /**
-     * 根据拜访人查看他的行动路线
-     * @return
-     */
-    @RequestMapping(value = "visitUserSim", method = RequestMethod.POST)
-    public RestResponse visitUserSim(String startDate,String endDate,User user) throws ParseException {
-        SimpleDateFormat slf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date startDate1 = slf.parse(startDate);
-        Date endDate1 = slf.parse(endDate);
-//        Integer userId = wxContext.getCurrentUser().getId();
-        VisitedUsers visitedUsers = new VisitedUsers();
-        visitedUsers.setVisitStartDate(startDate1);
-        visitedUsers.setVisitEndDate(endDate1);
-        visitedUsers.setUserId(user.getId());
-        List<Integer> list = visitUserService.findUsersId(visitedUsers);
-        List<Users> list1 = new ArrayList<>();
-        for (Integer usersId : list) {
-            Users users = new Users();
-            users.setUserId(user.getId());
-            users.setId(usersId+"");
-            Users users1 = visitUserService.findVisiter(users);
-            list1.add(users1);
-        }
-        return RestResponse.ok(list1);
-    }
 
     /**
      * 返回拜访人行动路线

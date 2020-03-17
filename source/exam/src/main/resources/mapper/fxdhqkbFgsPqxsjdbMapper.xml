@@ -152,7 +152,7 @@
   <select id="findManager" resultType="java.lang.String">
     SELECT
     khjl
-    FROM fxdhqkb_fgs_pqxsjdb WHERE fgs LIKE '%江阳%' GROUP BY khjl
+    FROM fxdhqkb_fgs_pqxsjdb  GROUP BY khjl
   </select>
 
 
