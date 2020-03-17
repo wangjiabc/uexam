@@ -71,7 +71,6 @@ public class AuthController extends BaseWXApiController {
         user.setId(id);
         user.setImagePath(image);
         userService.updateUserImage(user);
-
         return RestResponse.ok();
     }
 
@@ -94,7 +93,6 @@ public class AuthController extends BaseWXApiController {
       //  userToken2.setWxOpenId(openid);
       //  return RestResponse.ok(userToken);
     }
-
 
     @RequestMapping(value = "/unBind", method = RequestMethod.POST)
     public RestResponse unBind() {
