@@ -45,7 +45,7 @@
         </javaClientGenerator>
 
 
-            <table tableName="source_put" domainObjectName="SourcePut" enableCountByExample="false"
+            <table tableName="t_sale_data" domainObjectName="SaleData" enableCountByExample="false"
                enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>

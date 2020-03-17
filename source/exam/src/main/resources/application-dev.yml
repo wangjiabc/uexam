@@ -8,8 +8,8 @@ spring:
 #      hikari:
         jdbc-url: jdbc:mysql://192.168.100.200:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
   #      driverClassName:  com.microsoft.sqlserver.jdbc.SQLServerDriver
-        username: sa
-        password: Fhc123456
+        username: root
+        password: root
     mysql1:
 #      hikari:
       #  serverTimezone=GMT%2B8使用东八区时间
