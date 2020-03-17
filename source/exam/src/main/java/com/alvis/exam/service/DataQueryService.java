@@ -40,7 +40,7 @@ public interface DataQueryService {
     /**
      * 本月完成进度宽窄
      */
-    WideNarrow queryWideNarrow(String userid);
+    WideNarrow queryWideNarrow(String uuid);
 
     /**
      * 阶段性考核指标

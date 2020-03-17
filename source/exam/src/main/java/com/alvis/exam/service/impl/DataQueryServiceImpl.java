@@ -59,8 +59,8 @@ public class DataQueryServiceImpl implements DataQueryService {
      * 本月完成进度宽窄
      */
     @Override
-    public WideNarrow queryWideNarrow(String userid) {
-        return this.queryWideNarrow(userid);
+    public WideNarrow queryWideNarrow(String uuid) {
+        return this.queryWideNarrow(uuid);
     }
 
     /**

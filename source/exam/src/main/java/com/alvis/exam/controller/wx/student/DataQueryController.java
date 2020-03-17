@@ -1,4 +1,4 @@
-package com.alvis.exam.controller.admin;
+package com.alvis.exam.controller.wx.student;
 
 import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
