@@ -30,7 +30,16 @@ public class NewsController {
      */
     @RequestMapping("select")
     public RestResponse select() {
-        List<News> list = newsService.select();
+        List<News> list = newsService.selectLimit();
         return RestResponse.ok(list);
+    }
+
+    /**
+     * 根据id返回内容
+     */
+    @RequestMapping("returnDoc")
+    public RestResponse returnDoc(Integer id) {
+        News news = newsService.findById(id);
+        return RestResponse.ok(news.getContent());
     }
 }

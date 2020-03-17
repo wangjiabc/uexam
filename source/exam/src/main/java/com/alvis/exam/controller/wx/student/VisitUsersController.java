@@ -118,6 +118,9 @@ public class VisitUsersController {
         Integer id = wxContext.getCurrentUser().getId();
         User user = userMapper.getUserById(id);
         Integer wxRole = user.getWxRole();
+        if(wxRole == null){
+            wxRole = 0;
+        }
         if(wxRole != 1){
             return RestResponse.fail(500,"无访问权限");
         }

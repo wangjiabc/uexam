@@ -21,5 +21,8 @@ public interface NewsMapper {
 
     int updateByPrimaryKey(News record);
 
-    List<News> selectAll(); //查询所有
+    List<News> selectLimit(); //查询所有  用于小程序上  只查了最新十条
+
+    List<News> page();      //管理后台查询所有  进行了分页
+
 }

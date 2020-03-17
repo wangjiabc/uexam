@@ -31,7 +31,7 @@ public class DataQueryController extends BaseApiController {
      * @param
      * @return
      */
-    @RequestMapping(value = "/queryXmind", method = RequestMethod.POST)
+    @RequestMapping(value = "/querySourcePut", method = RequestMethod.POST)
     public RestResponse<PageInfo<SourcePut>> querySourcePut(@RequestBody SourcePutVM sourcePut) {
 
         PageInfo<SourcePut> sourcePutPageInfo = dataQueryService.querySourcePut(sourcePut);
@@ -41,7 +41,7 @@ public class DataQueryController extends BaseApiController {
     /**
      * 根据个人ID 查询本月完成进度
      */
-    @RequestMapping(value = "/queryXmind", method = RequestMethod.POST)
+    @RequestMapping(value = "/queryCompletionSchedule", method = RequestMethod.POST)
     public RestResponse  queryCompletionSchedule(String uuid){
         List<String>  list= this.dataQueryService.queryCompletionSchedule(uuid);
 
@@ -51,7 +51,7 @@ public class DataQueryController extends BaseApiController {
     /**
      * 本月完成进度总销
      */
-    @RequestMapping(value = "/queryXmind", method = RequestMethod.POST)
+    @RequestMapping(value = "/queryTotalSale", method = RequestMethod.POST)
     public RestResponse queryTotalSale(String uuid){
         SaleData saleData=this.dataQueryService.queryTotalSale(uuid);
         return RestResponse.ok(saleData);
