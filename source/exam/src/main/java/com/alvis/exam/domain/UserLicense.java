@@ -29,7 +29,15 @@ public class UserLicense implements Serializable {
 
     private String weight;
 
-    private String area;
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    private Integer area;
 
     private String stopStartDate;
 
@@ -141,14 +149,6 @@ public class UserLicense implements Serializable {
 
     public void setWeight(String weight) {
         this.weight = weight == null ? null : weight.trim();
-    }
-
-    public String getArea() {
-        return area;
-    }
-
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
     }
 
     public String getStopStartDate() {

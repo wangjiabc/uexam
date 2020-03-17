@@ -2,6 +2,8 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.SaleData;
 import com.alvis.exam.domain.SourcePut;
+import com.alvis.exam.domain.User;
+import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.repository.DataQueryMapper;
 import com.alvis.exam.service.DataQueryService;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
@@ -11,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 数据查询
@@ -21,6 +24,11 @@ public class DataQueryServiceImpl implements DataQueryService {
 
     @Autowired
     private DataQueryMapper dataQueryMapper;
+
+    @Override
+    public User queryuser(String wxOpenId) {
+        return this.dataQueryMapper.queryuser(wxOpenId);
+    }
 
     /**
      * 分页查询本轮货源投放
@@ -36,7 +44,7 @@ public class DataQueryServiceImpl implements DataQueryService {
      * 根据个人ID 查询本月完成进度
      */
     @Override
-    public List<String> queryCompletionSchedule(String uuid){
+    public List<Map<String,Object>> queryCompletionSchedule(String uuid){
         return this.dataQueryMapper.queryCompletionSchedule(uuid);
     }
 
@@ -46,4 +54,16 @@ public class DataQueryServiceImpl implements DataQueryService {
     public SaleData queryTotalSale(String uuid){
         return this.dataQueryMapper.queryTotalSale(uuid);
     }
+
+    /**
+     * 本月完成进度宽窄
+     */
+    @Override
+    public WideNarrow queryWideNarrow(String uuid) {
+        return this.queryWideNarrow(uuid);
+    }
+
+    /**
+     * 阶段性考核指标
+     */
 }
