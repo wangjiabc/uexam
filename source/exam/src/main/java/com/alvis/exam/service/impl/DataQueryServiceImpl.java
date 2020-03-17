@@ -50,7 +50,7 @@ public class DataQueryServiceImpl implements DataQueryService {
     }
 
     @Override
-    public WideNarrow queryWideNarrow() {
-        return this.queryWideNarrow();
+    public WideNarrow queryWideNarrow(String userid) {
+        return this.queryWideNarrow(userid);
     }
 }

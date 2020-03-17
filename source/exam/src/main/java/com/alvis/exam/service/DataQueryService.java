@@ -33,6 +33,6 @@ public interface DataQueryService {
     /**
      * 本月完成进度宽窄
      */
-    WideNarrow queryWideNarrow();
+    WideNarrow queryWideNarrow(String userid);
 
 }

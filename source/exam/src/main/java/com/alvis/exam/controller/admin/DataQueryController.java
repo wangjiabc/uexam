@@ -44,7 +44,7 @@ public class DataQueryController extends BaseApiController {
      * 根据个人ID 查询本月完成进度
      */
     @RequestMapping(value = "/queryCompletionSchedule", method = RequestMethod.POST)
-    public RestResponse  queryCompletionSchedule(String uuid){
+    public RestResponse  queryCompletionSchedule(@RequestBody String uuid){
         List<Map<String,Object>>  list= this.dataQueryService.queryCompletionSchedule(uuid);
 
         return RestResponse.ok(list);
@@ -54,21 +54,19 @@ public class DataQueryController extends BaseApiController {
      * 本月完成进度总销
      */
     @RequestMapping(value = "/queryTotalSale", method = RequestMethod.POST)
-    public RestResponse queryTotalSale(String uuid){
+    public RestResponse queryTotalSale(@RequestBody String uuid){
         SaleData saleData=this.dataQueryService.queryTotalSale(uuid);
         return RestResponse.ok(saleData);
     }
-
 
     /**
      * 本月完成进度宽窄
      */
     @RequestMapping(value = "/queryWideNarrow", method = RequestMethod.POST)
-    public RestResponse queryWideNarrow(){
-        WideNarrow wideNarrow=this.dataQueryService.queryWideNarrow();
+    public RestResponse queryWideNarrow(@RequestBody String userid){
+        WideNarrow wideNarrow=this.dataQueryService.queryWideNarrow(userid);
         return RestResponse.ok(wideNarrow);
     }
-
 
     /**
      * 阶段性考核指标

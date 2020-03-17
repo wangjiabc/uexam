@@ -41,6 +41,6 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 本月完成进度宽窄
      */
-    @Select("select * from wide_narrow")
-    WideNarrow queryWideNarrow();
+    @Select("select a.* from wide_narrow a ,t_user b where a.user_id=b.user_uuid and a.user_id='${userid}'")
+    WideNarrow queryWideNarrow(@Param("userid") String userid);
 }
