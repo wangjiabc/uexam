@@ -7,6 +7,7 @@ import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangsy
@@ -22,7 +23,7 @@ public interface DataQueryService {
     /**
      * 根据个人ID 查询本月完成进度
      */
-    List<String> queryCompletionSchedule(String uuid);
+    List<Map<String,Object>> queryCompletionSchedule(String uuid);
 
     /**
      * 根据个人ID 查询本月完成总销

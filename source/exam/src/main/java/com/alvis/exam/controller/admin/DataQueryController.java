@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author yangsy
@@ -44,7 +45,7 @@ public class DataQueryController extends BaseApiController {
      */
     @RequestMapping(value = "/queryCompletionSchedule", method = RequestMethod.POST)
     public RestResponse  queryCompletionSchedule(String uuid){
-        List<String>  list= this.dataQueryService.queryCompletionSchedule(uuid);
+        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionSchedule(uuid);
 
         return RestResponse.ok(list);
     }

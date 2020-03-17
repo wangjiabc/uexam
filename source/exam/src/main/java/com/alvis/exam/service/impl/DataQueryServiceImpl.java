@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 数据查询
@@ -37,7 +38,7 @@ public class DataQueryServiceImpl implements DataQueryService {
      * 根据个人ID 查询本月完成进度
      */
     @Override
-    public List<String> queryCompletionSchedule(String uuid){
+    public List<Map<String,Object>> queryCompletionSchedule(String uuid){
         return this.dataQueryMapper.queryCompletionSchedule(uuid);
     }
 

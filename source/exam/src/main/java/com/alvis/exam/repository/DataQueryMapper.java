@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *  数据查询
@@ -29,7 +30,7 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
      * 根据个人ID 查询本月完成进度
      */
     @Select("SELECT a.real_sale,a.date,b.user_name,b.month_sale_norm,(b.month_sale_norm/a.real_sale)*100 as completionRate FROM t_sale_data a ,t_user b where a.users_id=b.user_uuid and month_sale_norm >0 and a.users_id='${uuid}'")
-    List<String> queryCompletionSchedule(@Param("uuid") String uuid);
+    List<Map<String,Object>> queryCompletionSchedule(@Param("uuid") String uuid);
 
     /**
      * 根据个人ID 查询本月完成总销
