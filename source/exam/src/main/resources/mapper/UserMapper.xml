@@ -29,7 +29,7 @@
     <sql id="Base_Column_List">
     id, user_uuid, user_name, password, real_name, age, sex, birth_day, user_level, phone,
     role, status, image_path, create_time, modify_time, last_active_time, deleted, wx_open_id,
-    telphone, duty, is_look, month_sale_norm, quarter_sale_norm
+    telphone, duty, is_look, month_sale_norm, quarter_sale_norm,wx_role wxRole
   </sql>
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
@@ -309,11 +309,11 @@
         from t_user where deleted=0
     </select>
 
-    <select id="getUserById" resultMap="BaseResultMap">
+    <select id="getUserById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
         <include refid="Base_Column_List"/>
         from t_user
-        where id=#{value}
+        where id=#{id,jdbcType=INTEGER}
     </select>
 
     <select id="getUserByUserName" resultMap="BaseResultMap">
