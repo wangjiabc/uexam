@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * 思维导图
+ *  数据查询
  * @author yangsy
  */
 
