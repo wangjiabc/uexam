@@ -2,6 +2,7 @@ package com.alvis.exam.service;
 
 import com.alvis.exam.domain.SaleData;
 import com.alvis.exam.domain.SourcePut;
+import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
 import com.github.pagehelper.PageInfo;
 
@@ -28,5 +29,9 @@ public interface DataQueryService {
      */
     SaleData queryTotalSale(String uuid);
 
+    /**
+     * 本月完成进度宽窄
+     */
+    WideNarrow queryWideNarrow();
 
 }

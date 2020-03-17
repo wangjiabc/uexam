@@ -2,6 +2,7 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.SaleData;
 import com.alvis.exam.domain.SourcePut;
+import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.repository.DataQueryMapper;
 import com.alvis.exam.service.DataQueryService;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
@@ -45,5 +46,10 @@ public class DataQueryServiceImpl implements DataQueryService {
      */
     public SaleData queryTotalSale(String uuid){
         return this.dataQueryMapper.queryTotalSale(uuid);
+    }
+
+    @Override
+    public WideNarrow queryWideNarrow() {
+        return this.queryWideNarrow();
     }
 }
