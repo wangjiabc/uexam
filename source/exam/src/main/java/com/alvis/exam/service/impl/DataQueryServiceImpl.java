@@ -49,8 +49,15 @@ public class DataQueryServiceImpl implements DataQueryService {
         return this.dataQueryMapper.queryTotalSale(uuid);
     }
 
+    /**
+     * 本月完成进度宽窄
+     */
     @Override
     public WideNarrow queryWideNarrow(String userid) {
         return this.queryWideNarrow(userid);
     }
+
+    /**
+     * 阶段性考核指标
+     */
 }

@@ -35,4 +35,8 @@ public interface DataQueryService {
      */
     WideNarrow queryWideNarrow(String userid);
 
+    /**
+     * 阶段性考核指标
+     */
+
 }
