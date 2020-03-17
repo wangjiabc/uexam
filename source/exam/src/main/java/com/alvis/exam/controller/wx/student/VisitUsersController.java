@@ -34,7 +34,6 @@ public class VisitUsersController {
 
     @Resource
     private VisitUserService visitUserService;
-
     @Resource
     private UserMapper userMapper;
 

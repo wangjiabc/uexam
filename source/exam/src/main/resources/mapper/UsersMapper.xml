@@ -12,21 +12,17 @@
     <result column="causa" jdbcType="VARCHAR" property="causa" />
     <result column="date" jdbcType="VARCHAR" property="date" />
     <result column="up_date" jdbcType="VARCHAR" property="upDate" />
-    <result column="is_look" jdbcType="INTEGER" property="isLook" />
-    <result column="month_sale_norm" jdbcType="INTEGER" property="monthSaleNorm" />
-    <result column="quarter_sale_norm" jdbcType="INTEGER" property="quarterSaleNorm" />
+
   </resultMap>
   <insert id="insert" parameterType="com.alvis.exam.domain.Users">
     insert into users (id, open_id, name, 
       card_type, sex, id_number, 
       phone, causa, date, 
-      up_date,, is_look, month_sale_norm,
-      quarter_sale_norm)
+      up_date)
     values (#{id,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
       #{cardType,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{causa,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, 
-      #{upDate,jdbcType=VARCHAR},, #{isLook,jdbcType=INTEGER}, #{monthSaleNorm,jdbcType=INTEGER},
-      #{quarterSaleNorm,jdbcType=INTEGER})
+      #{upDate,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.alvis.exam.domain.Users">
     insert into users
@@ -61,15 +57,7 @@
       <if test="upDate != null">
         up_date,
       </if>
-      <if test="isLook != null">
-        is_look,
-      </if>
-      <if test="monthSaleNorm != null">
-        month_sale_norm,
-      </if>
-      <if test="quarterSaleNorm != null">
-        quarter_sale_norm,
-      </if>
+
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -102,15 +90,7 @@
       <if test="upDate != null">
         #{upDate,jdbcType=VARCHAR},
       </if>
-      <if test="isLook != null">
-        #{isLook,jdbcType=INTEGER},
-      </if>
-      <if test="monthSaleNorm != null">
-        #{monthSaleNorm,jdbcType=INTEGER},
-      </if>
-      <if test="quarterSaleNorm != null">
-        #{quarterSaleNorm,jdbcType=INTEGER},
-      </if>
+
     </trim>
   </insert>
 

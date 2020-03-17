@@ -1,11 +1,9 @@
 package com.alvis.exam.controller.admin;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alvis.exam.base.RestResponse;
-import com.alvis.exam.domain.Article;
 import com.alvis.exam.domain.News;
-import com.alvis.exam.viewmodel.admin.article.ArticleVM;
+import com.alvis.exam.service.NewsService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 @CrossOrigin
 @AllArgsConstructor
@@ -22,11 +22,14 @@ import java.util.Date;
 @Api(value = "新闻controller")
 public class NewsController {
 
+    @Resource
+    private NewsService newsService;
+
     /**
      * 存储上传新闻
      * @param jsonObject
      */
-    @RequestMapping("saveArticle")
+    @RequestMapping("save")
     public RestResponse save(@RequestBody JSONObject jsonObject) {
         //拿到信息
         String title = jsonObject.getString("title");         //新闻标题
@@ -40,7 +43,52 @@ public class NewsController {
         news.setAddTime(new Date());    //时间
         news.setContent(content);
 
-
+        newsService.insert(news);
         return RestResponse.ok();
+    }
+
+
+    /**
+     * 删除新闻 :实际是修改状态
+     * @param jsonObject
+     */
+    @RequestMapping("delete")
+    public RestResponse delete(@RequestBody JSONObject jsonObject) {
+        //根据id删除
+        Integer id = jsonObject.getInteger("id");
+        newsService.delete(id);
+        return RestResponse.ok();
+    }
+
+    /**
+     * 修改新闻
+     * @param jsonObject
+     */
+    @RequestMapping("update")
+    public RestResponse update(@RequestBody JSONObject jsonObject) {
+        //拿到信息
+        String title = jsonObject.getString("title");         //新闻标题
+        String writer = jsonObject.getString("writer");         //新闻作者
+        String content = jsonObject.getString("content");           //新闻内容
+        Integer id = jsonObject.getInteger("id");
+        //插入
+        News news = new News();
+        news.setTitle(title);
+        news.setWriter(writer);
+        news.setStatus(1);              //状态
+        news.setAddTime(new Date());    //时间
+        news.setContent(content);
+        //根据id修改
+        newsService.update(news);
+        return RestResponse.ok();
+    }
+
+    /**
+     * 查询新闻
+     */
+    @RequestMapping("select")
+    public RestResponse select() {
+        List<News> list = newsService.select();
+        return RestResponse.ok(list);
     }
 }

@@ -3,6 +3,8 @@ package com.alvis.exam.repository;
 import com.alvis.exam.domain.News;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 @Mapper
 public interface NewsMapper {
     int deleteByPrimaryKey(Integer id);
@@ -18,4 +20,6 @@ public interface NewsMapper {
     int updateByPrimaryKeyWithBLOBs(News record);
 
     int updateByPrimaryKey(News record);
+
+    List<News> selectAll(); //查询所有
 }

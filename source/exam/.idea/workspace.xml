@@ -2,364 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1fd261-0a45-4eb2-9eec-ca383616ee73" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/alvis/exam/Hello.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/alvis/exam/SomeTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/alvis/exam/aa" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/exam.kotlin_module" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application-dev.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application-pre.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application-prod.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application-test.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/ExamApplication.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/base/BaseApiController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/base/BaseEntity.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/base/BasePage.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/base/RestResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/base/SystemCode.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/application/ApplicationContextProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/dataSource/DataSourceConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/dataSource/DataSourceDialect.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/dataSource/DataSourceSwitch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/dataSource/DynamicDataSource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/property/CookieConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/property/PasswordKeyConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/property/QnConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/property/SystemConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/property/UrlConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/property/WxConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/cache/CacheConfig.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/exception/ExceptionHandle.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/mvc/WebMvcConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/AuthUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/AuthenticationBean.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/LoginAuthenticationEntryPoint.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestAccessDeniedHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestAuthenticationFailureHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestAuthenticationProvider.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestAuthenticationSuccessHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestDetailsServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestLoginAuthenticationFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestLogoutSuccessHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestTokenBasedRememberMeServices.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/RestUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/SecurityConfigurer$FormLoginWebSecurityConfigurerAdapter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/security/SecurityConfigurer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/spring/wx/TokenHandlerInterceptor.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/configuration/swager/Swagger2Config.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/context/WebContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/context/WxContext.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/ErrorController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/ArticleController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/ArticleTypeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/ChapterController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/DashboardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/EducationController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/ExamPaperController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/ExamTypeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/MessageController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/QuestionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/TaskController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/UploadController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/UploadEditorController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/admin/XmindController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/DashboardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/EducationController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/ExamPaperAnswerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/ExamPaperController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/QuestionAnswerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/QuestionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/student/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/BaseWXApiController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ArticleController$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ArticleController$2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ArticleController$3.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ArticleController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ArticleTypeController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/AuthController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/DashboardController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ExamPaperAnswerController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/ExamPaperController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/SaleController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/UserController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/VisitUsersController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/controller/wx/student/XmindController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Article.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ArticleType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Chapter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ExamPaper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ExamPaperAnswer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ExamPaperAnswerInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ExamPaperQuestionCustomerAnswer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ExamType.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ExcelImport.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/FxdhqkbFgsKhxxcx.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Message.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/MessageUser.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Position.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Question.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ReadState.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Subject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/TaskExam.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/TaskExamCustomerAnswer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/TextContent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/User.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/UserEventLog.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/UserLicense.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/UserToken.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Users.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/ViewPager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/VisitedUsers.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/Xmind.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/ArticleDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/ExamPaperDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/Integral/IntegralBasic.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/KvobjDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/UserDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/UserDTOVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/VisitUsersDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/article/ArticleDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/article/ExamDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/dto/article/UserDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/ExamPaperAnswerStatusEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/ExamPaperTypeEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/QuestionStatusEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/QuestionTypeEnum$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/QuestionTypeEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/RoleEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/enums/UserStatusEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/exam/ExamPaperQuestionItemObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/exam/ExamPaperTitleItemObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/fxdhqkbFgsPqxsjdb.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/fxdhqkbFgsSmhzcxb.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/fxdhqkbFgsXqxsbb.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/other/ExamPaperAnswerUpdate.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/other/KeyValue.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/properties/Property.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/question/QuestionItemObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/question/QuestionObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/task/TaskItemAnswerObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/domain/task/TaskItemObject.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/event/CalculateExamPaperAnswerCompleteEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/event/OnRegistrationCompleteEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/event/UserEvent.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/exception/BusinessException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/listener/CalculateExamPaperAnswerListener$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/listener/CalculateExamPaperAnswerListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/listener/EmailSendListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/listener/UserLogListener.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ArticleMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ArticleTypeMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/BaseMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ChapterMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ExamPaperAnswerMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ExamPaperMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ExamPaperQuestionCustomerAnswerMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ExamTypeMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/FxdhqkbFgsKhxxcxMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/MessageMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/MessageUserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/PositionMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/QuestionMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ReadStateMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/SubjectMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/TaskExamCustomerAnswerMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/TaskExamMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/TextContentMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/UserEventLogMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/UserLicenseMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/UserMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/UserTokenMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/UsersMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/ViewPagerMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/VisitedUsersMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/XmindMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/fxdhqkbFgsPqxsjdbMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/fxdhqkbFgsSmhzcxbMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/repository/fxdhqkbFgsXqxsbbMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ArticleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ArticleTypeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/AuthenticationService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/BaseService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ChapterService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ExamPaperAnswerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ExamPaperQuestionCustomerAnswerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ExamPaperService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ExamTypeService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/FileUpload.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/MessageService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/QuestionService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ReadService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/SaleService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/SubjectService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/TaskExamCustomerAnswerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/TaskExamService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/TextContentService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/UploadService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/UserEventLogService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/UserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/UserTokenService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/ViewPagerService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/VisitUserService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/XmindService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/enums/ActionEnum.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ArticleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ArticleTypeServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/AuthenticationServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/BaseServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ChapterServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ExamPaperAnswerServiceImpl$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ExamPaperAnswerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ExamPaperQuestionCustomerAnswerServiceImpl$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ExamPaperQuestionCustomerAnswerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ExamPaperServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ExamTypeServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/FileUploadImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/MessageServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/QuestionServiceImpl$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/QuestionServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ReadServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/SaleServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/SubjectServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/TaskExamCustomerAnswerImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/TaskExamServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/TextContentServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/UploadServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/UserEventLogServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/UserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/UserTokenServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/ViewPagerServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/VisitUserServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/service/impl/XmindServiceImpl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/DateTimeUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/ErrorUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/ExamUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/HtmlUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/JsonUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/ListUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/Md5Util.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/ModelMapperSingle.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/PageInfoHelper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/RsaUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/UploadUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/WxResponse.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/utility/WxUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/BaseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/article/ArticleTypeVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/article/ArticleVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/article/PageInfoVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/dashboard/IndexVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/education/SubjectEditRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/education/SubjectPageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/education/SubjectResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/exam/ExamPaperEditRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/exam/ExamPaperPageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/exam/ExamPaperTitleItemVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/exam/ExamResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/file/UeditorConfigVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/file/UploadResultVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/message/MessagePageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/message/MessageResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/message/MessageSendVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/question/QuestionEditItemVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/question/QuestionEditRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/question/QuestionPageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/question/QuestionResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/task/TaskPageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/task/TaskPageResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/task/TaskRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/ChapterAndIdVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/ChapterVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/UserCreateVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/UserEventLogVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/UserEventPageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/UserPageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/UserResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/UserUpdateVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/admin/user/XmindVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/dashboard/IndexVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/dashboard/PaperFilter.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/dashboard/PaperInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/dashboard/PaperInfoVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/dashboard/TaskItemPaperVm.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/dashboard/TaskItemVm.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/education/SubjectEditRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/education/SubjectVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exam/ExamPaperPageResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exam/ExamPaperPageVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exam/ExamPaperReadVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exam/ExamPaperSubmitItemVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exam/ExamPaperSubmitVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exampaper/ExamPaperAnswerPageResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/exampaper/ExamPaperAnswerPageVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/question/answer/QuestionAnswerVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/question/answer/QuestionPageStudentRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/question/answer/QuestionPageStudentResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/user/MessageRequestVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/user/MessageResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/user/UserEventLogVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/user/UserRegisterVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/user/UserResponseVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/student/user/UserUpdateVM.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/wx/student/KeyObjDTO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/wx/student/user/BindInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/wx/student/user/QueryTimeVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/alvis/exam/viewmodel/wx/student/user/QueryUserScoreVO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/voucher/manage/tools/MyTestUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/logback-spring.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ArticleMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ArticleTypeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ChapterMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ExamPaperAnswerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ExamPaperMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ExamPaperQuestionCustomerAnswerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ExamTypeMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/FxdhqkbFgsKhxxcxMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/MessageMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/MessageUserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/PositionMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/QuestionMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ReadStateMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/SubjectMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/TaskExamCustomerAnswerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/TaskExamMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/TextContentMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/UserEventLogMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/UserLicenseMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/UserTokenMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/UsersMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/ViewPagerMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/VisitedUsersMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/XmindMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/fxdhqkbFgsPqxsjdbMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/fxdhqkbFgsSmhzcxbMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/fxdhqkbFgsXqxsbbMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mybatis-generator/generatorConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/A.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/B.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/ExamApplicationTests.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/Hello.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/SomeTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/module/IndexTests.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/module/UserTests.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/utility/RSATests.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/alvis/exam/utility/RedisTests.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/SaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/SaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/SaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/SaleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/NewsMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/NewsMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/NewsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/NewsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/NewsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/NewsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FxdhqkbFgsKhxxcxMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FxdhqkbFgsKhxxcxMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/alvis/exam/module/IndexTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/alvis/exam/module/IndexTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -370,55 +31,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/application/ApplicationContextProvider.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DataSourceConfig.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DynamicDataSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/context/WxContext.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/voucher/manage/tools/MyTestUtil.java">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="275">
+              <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>updateByPrimaryUser</find>
+      <find>updateByPrimaryImage</find>
+      <find>updateByPrimaryKeySelective</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -426,12 +55,29 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/viewmodel/admin/exam/ExamResponseVM.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/viewmodel/admin/exam/ExamPaperEditRequestVM.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Article.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/application/application/ApplicationContextProvider.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/NewsService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/NewsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/NewsMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/AuthController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Users.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml" />
       </list>
     </option>
   </component>
@@ -446,7 +92,28 @@
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
-      <expand />
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="exam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="exam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="exam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="exam" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="mybatis-generator" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+      </expand>
       <select />
     </treeState>
   </component>
@@ -463,6 +130,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -475,12 +144,155 @@
               <item name="exam" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="wx" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="wx" type="462c0819:PsiDirectoryNode" />
+              <item name="student" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="alvis" type="462c0819:PsiDirectoryNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
+              <item name="exam" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mybatis-generator" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -490,7 +302,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584329704466" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584410088292" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -547,7 +359,8 @@
       <workItem from="1583890462552" duration="1008000" />
       <workItem from="1583976513912" duration="44000" />
       <workItem from="1584322213564" duration="109000" />
-      <workItem from="1584329125104" duration="579000" />
+      <workItem from="1584329125104" duration="11524000" />
+      <workItem from="1584404263941" duration="5750000" />
     </task>
     <task id="LOCAL-00001" summary="3.16_zsc01">
       <created>1584328974386</created>
@@ -563,16 +376,24 @@
       <option name="project" value="LOCAL" />
       <updated>1584329368221</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="1">
+      <created>1584329743272</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1584329743272</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3198000" />
+    <option name="totallyTimeSpent" value="19893000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -582,19 +403,19 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1724512" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.27548808" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.17570499" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.28850326" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.50053304" side_tool="true" visible="true" weight="0.329718" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.329718" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.49946696" visible="true" weight="0.329718" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.329718" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.4989339" weight="0.329718" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.24403471" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -610,98 +431,22 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="3.16_zsc01" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.16_zsc01" />
+    <MESSAGE value="1" />
+    <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="36" column="43" lean-forward="true" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://E:/maven/maven_repository/org/projectlombok/lombok/1.18.8/lombok-1.18.8.jar!/lombok/Data.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/ChapterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1129">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/DashboardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/EducationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/MessageController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/QuestionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/TaskController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/UploadController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="27" column="13" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/UploadEditorController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/viewmodel/admin/exam/ExamResponseVM.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -892,16 +637,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/voucher/manage/tools/MyTestUtil.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/application/ApplicationContextProvider.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DataSourceConfig.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DynamicDataSource.java">
@@ -911,10 +647,265 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/News.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/application/ApplicationContextProvider.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DataSourceConfig.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/NewsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/VisitUserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="46" column="33" selection-start-line="46" selection-start-column="22" selection-end-line="46" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/DashboardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1667">
+          <caret line="35" column="13" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/XmindController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/utility/JsonUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="24" selection-end-line="27" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/maven_repository/org/apache/httpcomponents/httpcore/4.4.11/httpcore-4.4.11.jar!/org/apache/http/util/EntityUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="185" column="25" selection-start-line="185" selection-start-column="25" selection-end-line="185" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/maven_repository/org/springframework/spring-web/5.1.8.RELEASE/spring-web-5.1.8.RELEASE.jar!/org/springframework/web/method/support/InvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="39" selection-start-line="39" selection-end-line="40" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/utility/WxUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="21" selection-start-line="21" selection-end-line="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/property/SystemConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="521">
+          <caret line="40" column="25" selection-start-line="40" selection-start-column="20" selection-end-line="40" selection-end-column="25" />
+          <folding>
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#919#920#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/property/WxConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="13" column="26" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="26" />
+          <folding>
+            <element signature="e#308#309#0" expanded="true" />
+            <element signature="e#327#328#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/NewsServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="32" column="29" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+          <folding>
+            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#772#773#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/NewsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="23" column="24" selection-start-line="23" selection-start-column="15" selection-end-line="23" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/NewsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3400">
+          <caret line="136" column="67" selection-start-line="136" selection-start-column="67" selection-end-line="136" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/UserTokenService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="12" column="14" selection-start-line="12" selection-start-column="14" selection-end-line="12" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/UserTokenServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="30" column="76" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="416">
+          <caret line="92" column="5" lean-forward="true" selection-start-line="92" selection-start-column="5" selection-end-line="92" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Users.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="57" column="32" selection-start-line="57" selection-start-column="32" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="e#976#977#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#1098#1099#0" expanded="true" />
+            <element signature="e#1134#1135#0" expanded="true" />
+            <element signature="e#1193#1194#0" expanded="true" />
+            <element signature="e#1243#1244#0" expanded="true" />
+            <element signature="e#1286#1287#0" expanded="true" />
+            <element signature="e#1324#1325#0" expanded="true" />
+            <element signature="e#1387#1388#0" expanded="true" />
+            <element signature="e#1441#1442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="25">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="557">
+          <caret line="47" column="67" selection-start-line="47" selection-start-column="67" selection-end-line="47" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1671">
+          <caret line="267" column="17" lean-forward="true" selection-start-line="267" selection-start-column="17" selection-end-line="267" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="32" column="35" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/UserServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="482">
+          <caret line="296" column="30" selection-start-line="296" selection-start-column="30" selection-end-line="296" selection-end-column="30" />
+          <folding>
+            <element signature="e#4375#4376#0" expanded="true" />
+            <element signature="e#4427#4428#0" expanded="true" />
+            <element signature="e#7560#7561#0" expanded="true" />
+            <element signature="e#7613#7614#0" expanded="true" />
+            <element signature="e#9166#9167#0" expanded="true" />
+            <element signature="e#9221#9222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="165" column="33" selection-start-line="165" selection-start-column="33" selection-end-line="165" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="308" column="43" lean-forward="true" selection-start-line="308" selection-start-column="43" selection-end-line="308" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="45" column="38" lean-forward="true" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
         </state>
       </provider>
     </entry>

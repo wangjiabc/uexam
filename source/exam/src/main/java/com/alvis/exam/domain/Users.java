@@ -31,35 +31,6 @@ public class Users implements Serializable {
 
     private Integer userId; //user表的id
 
-    private Integer isLook;
-
-    private Integer monthSaleNorm;
-
-    private Integer quarterSaleNorm;
-
-    public Integer getIsLook() {
-        return isLook;
-    }
-
-    public void setIsLook(Integer isLook) {
-        this.isLook = isLook;
-    }
-
-    public Integer getMonthSaleNorm() {
-        return monthSaleNorm;
-    }
-
-    public void setMonthSaleNorm(Integer monthSaleNorm) {
-        this.monthSaleNorm = monthSaleNorm;
-    }
-
-    public Integer getQuarterSaleNorm() {
-        return quarterSaleNorm;
-    }
-
-    public void setQuarterSaleNorm(Integer quarterSaleNorm) {
-        this.quarterSaleNorm = quarterSaleNorm;
-    }
 
     private static final long serialVersionUID = 1L;
 

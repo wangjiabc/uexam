@@ -162,4 +162,6 @@ public interface UserService extends BaseService<User> {
     IntegralBasic userReadBasic(Integer id);
 
     IntegralBasic userExamBasic(Integer id);
+
+    void updateByUser(User user);
 }
