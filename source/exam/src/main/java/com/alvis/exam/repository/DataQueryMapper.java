@@ -2,6 +2,7 @@ package com.alvis.exam.repository;
 
 import com.alvis.exam.domain.SaleData;
 import com.alvis.exam.domain.SourcePut;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
 import org.apache.ibatis.annotations.Mapper;
@@ -18,6 +19,13 @@ import java.util.Map;
 
 @Mapper
 public interface DataQueryMapper extends BaseMapper<SourcePut> {
+
+
+    /**
+     * 根据openId查询用户uuid
+     */
+    @Select("select * from t_user where wx_open_id='${wxOpenId}'")
+    User queryuser(@Param("wxOpenId") String wxOpenId);
 
     /**
      * 分页查询本轮货源投放

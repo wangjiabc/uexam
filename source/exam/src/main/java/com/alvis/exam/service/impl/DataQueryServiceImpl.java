@@ -2,6 +2,7 @@ package com.alvis.exam.service.impl;
 
 import com.alvis.exam.domain.SaleData;
 import com.alvis.exam.domain.SourcePut;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.repository.DataQueryMapper;
 import com.alvis.exam.service.DataQueryService;
@@ -23,6 +24,11 @@ public class DataQueryServiceImpl implements DataQueryService {
 
     @Autowired
     private DataQueryMapper dataQueryMapper;
+
+    @Override
+    public User queryuser(String wxOpenId) {
+        return this.dataQueryMapper.queryuser(wxOpenId);
+    }
 
     /**
      * 分页查询本轮货源投放
