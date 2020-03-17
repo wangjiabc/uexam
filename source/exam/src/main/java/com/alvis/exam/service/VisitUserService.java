@@ -1,11 +1,11 @@
 package com.alvis.exam.service;
 
 
+import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.Users;
 import com.alvis.exam.domain.VisitedUsers;
 import com.alvis.exam.domain.dto.VisitUsersDTO;
 
-import java.util.Date;
 import java.util.List;
 
 public interface VisitUserService {
@@ -24,4 +24,6 @@ public interface VisitUserService {
     List<Integer> findUsersId(VisitedUsers visitedUsers);
 
     Users findVisiter(Users users);
+
+    List<User> findUser();
 }

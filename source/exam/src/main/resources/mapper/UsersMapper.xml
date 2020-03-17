@@ -113,4 +113,8 @@
   </select>
 
 
+  <select id="findUser" resultType="com.alvis.exam.domain.User">
+    SELECT tu.id,tu.user_name userName FROM visited_users vu LEFT JOIN t_user tu on vu.user_id = tu.id GROUP BY user_id
+  </select>
+
 </mapper>

@@ -1,5 +1,6 @@
 package com.alvis.exam.service.impl;
 
+import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.Users;
 import com.alvis.exam.domain.VisitedUsers;
 import com.alvis.exam.domain.dto.VisitUsersDTO;
@@ -9,7 +10,6 @@ import com.alvis.exam.service.VisitUserService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -61,5 +61,10 @@ public class VisitUserServiceImpl implements VisitUserService {
     @Override
     public Users findVisiter(Users users) {
         return usersMapper.findVisiter(users);
+    }
+
+    @Override
+    public List<User> findUser() {
+        return usersMapper.findUser();
     }
 }
