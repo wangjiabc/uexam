@@ -1,37 +1,54 @@
 package com.alvis.exam.domain;
 
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Table;
 
+@Table(name = "source_put")
 public class SourcePut {
+    @Column(name = "id")
     private Integer id;
 
-    private String customernumber;
+    @Column(name = "customerNumber")
+    private String customerNumber;
 
-    private String customername;
+    @Column(name = "customerName")
+    private String customerName;
 
-    private String customergrade;
+    @Column(name = "customerGrade")
+    private String customerGrade;
 
-    private String ordercycle;
+    @Column(name = "orderCycle")
+    private String orderCycle;
 
-    private String orderphone;
+    @Column(name = "orderPhone")
+    private String orderPhone;
 
+    @Column(name = "address")
     private String address;
 
+    @Column(name = "responsible")
     private String responsible;
 
-    private String marketingarea;
+    @Column(name = "marketingArea")
+    private String marketingArea;
 
-    private String accountmanager;
+    @Column(name = "accountManager")
+    private String accountManager;
 
-    private Integer putnumber;
+    @Column(name = "putNumber")
+    private Integer putNumber;
 
-    private Integer ordernumber;
+    @Column(name = "orderNumber")
+    private Integer orderNumber;
 
-    private Integer neednumber;
+    @Column(name = "needNumber")
+    private Integer needNumber;
 
-    private String utilizationrate;
+    @Column(name = "utilizationRate")
+    private String utilizationRate;
 
-    private String satisfactionrate;
+    @Column(name = "satisfactionRate")
+    private String satisfactionRate;
 
     private static final long serialVersionUID = 1L;
 
@@ -43,44 +60,44 @@ public class SourcePut {
         this.id = id;
     }
 
-    public String getCustomernumber() {
-        return customernumber;
+    public String getCustomerNumber() {
+        return customerNumber;
     }
 
-    public void setCustomernumber(String customernumber) {
-        this.customernumber = customernumber == null ? null : customernumber.trim();
+    public void setCustomerNumber(String customerNumber) {
+        this.customerNumber = customerNumber;
     }
 
-    public String getCustomername() {
-        return customername;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setCustomername(String customername) {
-        this.customername = customername == null ? null : customername.trim();
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getCustomergrade() {
-        return customergrade;
+    public String getCustomerGrade() {
+        return customerGrade;
     }
 
-    public void setCustomergrade(String customergrade) {
-        this.customergrade = customergrade == null ? null : customergrade.trim();
+    public void setCustomerGrade(String customerGrade) {
+        this.customerGrade = customerGrade;
     }
 
-    public String getOrdercycle() {
-        return ordercycle;
+    public String getOrderCycle() {
+        return orderCycle;
     }
 
-    public void setOrdercycle(String ordercycle) {
-        this.ordercycle = ordercycle == null ? null : ordercycle.trim();
+    public void setOrderCycle(String orderCycle) {
+        this.orderCycle = orderCycle;
     }
 
-    public String getOrderphone() {
-        return orderphone;
+    public String getOrderPhone() {
+        return orderPhone;
     }
 
-    public void setOrderphone(String orderphone) {
-        this.orderphone = orderphone == null ? null : orderphone.trim();
+    public void setOrderPhone(String orderPhone) {
+        this.orderPhone = orderPhone;
     }
 
     public String getAddress() {
@@ -88,7 +105,7 @@ public class SourcePut {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
     public String getResponsible() {
@@ -96,62 +113,66 @@ public class SourcePut {
     }
 
     public void setResponsible(String responsible) {
-        this.responsible = responsible == null ? null : responsible.trim();
+        this.responsible = responsible;
     }
 
-    public String getMarketingarea() {
-        return marketingarea;
+    public String getMarketingArea() {
+        return marketingArea;
     }
 
-    public void setMarketingarea(String marketingarea) {
-        this.marketingarea = marketingarea == null ? null : marketingarea.trim();
+    public void setMarketingArea(String marketingArea) {
+        this.marketingArea = marketingArea;
     }
 
-    public String getAccountmanager() {
-        return accountmanager;
+    public String getAccountManager() {
+        return accountManager;
     }
 
-    public void setAccountmanager(String accountmanager) {
-        this.accountmanager = accountmanager == null ? null : accountmanager.trim();
+    public void setAccountManager(String accountManager) {
+        this.accountManager = accountManager;
     }
 
-    public Integer getPutnumber() {
-        return putnumber;
+    public Integer getPutNumber() {
+        return putNumber;
     }
 
-    public void setPutnumber(Integer putnumber) {
-        this.putnumber = putnumber;
+    public void setPutNumber(Integer putNumber) {
+        this.putNumber = putNumber;
     }
 
-    public Integer getOrdernumber() {
-        return ordernumber;
+    public Integer getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setOrdernumber(Integer ordernumber) {
-        this.ordernumber = ordernumber;
+    public void setOrderNumber(Integer orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public Integer getNeednumber() {
-        return neednumber;
+    public Integer getNeedNumber() {
+        return needNumber;
     }
 
-    public void setNeednumber(Integer neednumber) {
-        this.neednumber = neednumber;
+    public void setNeedNumber(Integer needNumber) {
+        this.needNumber = needNumber;
     }
 
-    public String getUtilizationrate() {
-        return utilizationrate;
+    public String getUtilizationRate() {
+        return utilizationRate;
     }
 
-    public void setUtilizationrate(String utilizationrate) {
-        this.utilizationrate = utilizationrate == null ? null : utilizationrate.trim();
+    public void setUtilizationRate(String utilizationRate) {
+        this.utilizationRate = utilizationRate;
     }
 
-    public String getSatisfactionrate() {
-        return satisfactionrate;
+    public String getSatisfactionRate() {
+        return satisfactionRate;
     }
 
-    public void setSatisfactionrate(String satisfactionrate) {
-        this.satisfactionrate = satisfactionrate == null ? null : satisfactionrate.trim();
+    public void setSatisfactionRate(String satisfactionRate) {
+        this.satisfactionRate = satisfactionRate;
     }
+
+
+
+
 }
