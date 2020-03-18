@@ -21,13 +21,14 @@ import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 @CrossOrigin
 @Slf4j
 @Controller
-@RequestMapping(value = "/api/wx/student/visit" )
+@RequestMapping(value = "/api/wx/student/visit")
 @AllArgsConstructor
 @ResponseBody
 public class VisitUsersController {
@@ -50,6 +51,7 @@ public class VisitUsersController {
 
     /**
      * users的部分信息
+     *
      * @return
      */
     @RequestMapping(value = "userCon", method = RequestMethod.POST)
@@ -67,10 +69,9 @@ public class VisitUsersController {
         Integer id = wxContext.getCurrentUser().getId();
         User user = userMapper.getUserById(id);
         Integer wxRole = user.getWxRole();
-        if(wxRole != 1){
-            return RestResponse.fail(500,"无访问权限");
-        }
-        else {
+        if (wxRole != 1) {
+            return RestResponse.ok(Arrays.asList(user));
+        } else {
             List<User> list = visitUserService.findUser();
             return RestResponse.ok(list);
         }
@@ -78,10 +79,11 @@ public class VisitUsersController {
 
     /**
      * 根据拜访人查看他的行动路线
+     *
      * @return
      */
     @RequestMapping(value = "visitUserSim", method = RequestMethod.POST)
-    public RestResponse visitUserSim(String startDate,String endDate,User user) throws ParseException {
+    public RestResponse visitUserSim(String startDate, String endDate, User user) throws ParseException {
         SimpleDateFormat slf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date startDate1 = slf.parse(startDate);
         Date endDate1 = slf.parse(endDate);
@@ -89,13 +91,13 @@ public class VisitUsersController {
         VisitedUsers visitedUsers = new VisitedUsers();
         visitedUsers.setVisitStartDate(startDate1);
         visitedUsers.setVisitEndDate(endDate1);
-        visitedUsers.setUserId(user.getId());
+        visitedUsers.setUserId(user.getId() == null ? wxContext.getCurrentUser().getId() : user.getId());
         List<Integer> list = visitUserService.findUsersId(visitedUsers);
         List<Users> list1 = new ArrayList<>();
         for (Integer usersId : list) {
             Users users = new Users();
             users.setUserId(user.getId());
-            users.setId(usersId+"");
+            users.setId(usersId + "");
             Users users1 = visitUserService.findVisiter(users);
             list1.add(users1);
         }
@@ -107,6 +109,7 @@ public class VisitUsersController {
 
     /**
      * 拜访开始
+     *
      * @return
      */
     @RequestMapping(value = "visitStart", method = RequestMethod.POST)
@@ -122,10 +125,9 @@ public class VisitUsersController {
         Integer id = wxContext.getCurrentUser().getId();
         visitedUsers.setUserId(id); //操作人id
         VisitedUsers visitedUsers1 = visitUserService.findMaxTime(visitedUsers);
-        if(visitedUsers1 != null){
+        if (visitedUsers1 != null) {
             visitedUsers.setTime(visitedUsers1.getTime() + 1);
-        }
-        else {
+        } else {
             visitedUsers.setTime(1);    //被拜访人第一次被该人访问
         }
         //存被拜访人信息
@@ -135,6 +137,7 @@ public class VisitUsersController {
 
     /**
      * 拜访结束
+     *
      * @return
      */
     @RequestMapping(value = "visitEnd", method = RequestMethod.POST)
@@ -157,10 +160,11 @@ public class VisitUsersController {
 
     /**
      * 返回拜访人行动路线
+     *
      * @return
      */
     @RequestMapping(value = "visitUser", method = RequestMethod.POST)
-    public RestResponse visitUser(String startDate,String endDate) throws ParseException {
+    public RestResponse visitUser(String startDate, String endDate) throws ParseException {
         SimpleDateFormat slf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date startDate1 = slf.parse(startDate);
         Date endDate1 = slf.parse(endDate);
@@ -174,7 +178,7 @@ public class VisitUsersController {
         for (Integer usersId : list) {
             Users users = new Users();
             users.setUserId(userId);
-            users.setId(usersId+"");
+            users.setId(usersId + "");
             Users users1 = visitUserService.findVisiter(users);
             list1.add(users1);
         }

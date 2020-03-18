@@ -14,4 +14,7 @@ public class VisitUsersDTO {
     private String wgs84Lng;
     private String wgs84Lat;
     private Integer positionId;
+    private String lat;
+    private String lng;
+
 }

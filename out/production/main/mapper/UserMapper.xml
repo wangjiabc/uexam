@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.UserMapper">
+    <resultMap id="BaseResultMap" type="com.alvis.exam.domain.User">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_uuid" jdbcType="VARCHAR" property="userUuid"/>
+        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="age" jdbcType="INTEGER" property="age"/>
+        <result column="sex" jdbcType="INTEGER" property="sex"/>
+        <result column="birth_day" jdbcType="TIMESTAMP" property="birthDay"/>
+        <result column="user_level" jdbcType="INTEGER" property="userLevel"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="role" jdbcType="INTEGER" property="role"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="image_path" jdbcType="VARCHAR" property="imagePath"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="last_active_time" jdbcType="TIMESTAMP" property="lastActiveTime"/>
+        <result column="deleted" jdbcType="BIT" property="deleted"/>
+        <result column="wx_open_id" jdbcType="VARCHAR" property="wxOpenId"/>
+        <result column="telphone" jdbcType="VARCHAR" property="telphone"/>
+        <result column="duty" jdbcType="VARCHAR" property="duty"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, user_uuid, user_name, password, real_name, age, sex, birth_day, user_level, phone,
+    role, status, image_path, create_time, modify_time, last_active_time, deleted, wx_open_id,
+    telphone, duty
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.alvis.exam.domain.User">
+    insert into t_user (id, user_uuid, user_name,
+      password, real_name, age,
+      sex, birth_day, user_level,
+      phone, role, status,
+      image_path, create_time, modify_time,
+      last_active_time, deleted, wx_open_id,
+      telphone, duty)
+    values (#{id,jdbcType=INTEGER}, #{userUuid,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
+      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
+      #{sex,jdbcType=INTEGER}, #{birthDay,jdbcType=TIMESTAMP}, #{userLevel,jdbcType=INTEGER},
+      #{phone,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
+      #{imagePath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
+      #{lastActiveTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{wxOpenId,jdbcType=VARCHAR},
+      #{telphone,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.alvis.exam.domain.User">
+        insert into t_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="userUuid != null">
+                user_uuid,
+            </if>
+            <if test="userName != null">
+                user_name,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="birthDay != null">
+                birth_day,
+            </if>
+            <if test="userLevel != null">
+                user_level,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="role != null">
+                role,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="imagePath != null">
+                image_path,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="lastActiveTime != null">
+                last_active_time,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+            <if test="wxOpenId != null">
+                wx_open_id,
+            </if>
+            <if test="telphone != null">
+                telphone,
+            </if>
+            <if test="duty != null">
+                duty,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="userUuid != null">
+                #{userUuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="birthDay != null">
+                #{birthDay,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userLevel != null">
+                #{userLevel,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="role != null">
+                #{role,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="imagePath != null">
+                #{imagePath,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastActiveTime != null">
+                #{lastActiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=BIT},
+            </if>
+            <if test="wxOpenId != null">
+                #{wxOpenId,jdbcType=VARCHAR},
+            </if>
+            <if test="telphone != null">
+                #{telphone,jdbcType=VARCHAR},
+            </if>
+            <if test="duty != null">
+                #{duty,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.User">
+        update t_user
+        <set>
+            <if test="userUuid != null">
+                user_uuid = #{userUuid,jdbcType=VARCHAR},
+            </if>
+            <if test="userName != null">
+                user_name = #{userName,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=INTEGER},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
+            <if test="birthDay != null">
+                birth_day = #{birthDay,jdbcType=TIMESTAMP},
+            </if>
+            <if test="userLevel != null">
+                user_level = #{userLevel,jdbcType=INTEGER},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="role != null">
+                role = #{role,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="imagePath != null">
+                image_path = #{imagePath,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastActiveTime != null">
+                last_active_time = #{lastActiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=BIT},
+            </if>
+            <if test="wxOpenId != null">
+                wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+            </if>
+            <if test="telphone != null">
+                telphone = #{telphone,jdbcType=VARCHAR},
+            </if>
+            <if test="duty != null">
+                duty = #{duty,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.User">
+    update t_user
+    set user_uuid = #{userUuid,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      real_name = #{realName,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      birth_day = #{birthDay,jdbcType=TIMESTAMP},
+      user_level = #{userLevel,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      image_path = #{imagePath,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      last_active_time = #{lastActiveTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+      wx_open_id = #{wxOpenId,jdbcType=VARCHAR},
+      telphone = #{telphone,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+    <select id="getAllUser" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user where deleted=0
+    </select>
+
+    <select id="getUserById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id=#{value}
+    </select>
+
+    <select id="getUserByUserName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where deleted=0 and user_name=#{value} limit 1
+    </select>
+
+    <select id="getUserByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        *
+        from t_user
+        where deleted=0 and user_name = #{username,jdbcType=VARCHAR} limit 1
+    </select>
+
+    <select id="getUserByUserNamePwd" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where deleted=0 and user_name=#{username} and password=#{pwd} limit 1
+    </select>
+
+    <select id="getUserByUuid" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where deleted=0 and user_uuid=#{value,jdbcType=VARCHAR}
+    </select>
+
+
+    <select id="userPageList" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_user
+        <where>
+            and deleted=0
+            <if test="name != null and name != ''">
+                and real_name like concat('%',#{name},'%')
+            </if>
+        </where>
+        ORDER BY id
+        <if test="offset != null and limit != null ">
+            <bind name="patternAdd" value="limit*offset"/>
+            limit #{limit} OFFSET #{offset}
+        </if>
+    </select>
+
+
+    <select id="userPageCount" resultType="java.lang.Integer">
+        select count(*) from t_user
+        <where>
+            and deleted=0
+            <if test="name != null and name != ''">
+                and real_name like concat('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+
+
+    <select id="userPage" resultMap="BaseResultMap"
+            parameterType="com.alvis.exam.viewmodel.admin.user.UserPageRequestVM">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_user
+        <where>
+            and deleted=0
+            <if test="userName != null and userName != ''">
+                and user_name like concat('%',#{userName},'%')
+            </if>
+            <if test="role != null ">
+                and role= #{role}
+            </if>
+        </where>
+    </select>
+
+
+    <insert id="insertUser" parameterType="com.alvis.exam.domain.User"
+            useGeneratedKeys="true" keyProperty="id">
+		insert into t_user
+		(user_uuid,user_name,password,real_name,age, last_active_time)
+		values
+		(#{userUuid,jdbcType=VARCHAR},#{userName},#{password},#{realName},#{age},#{lastActiveTime})
+	</insert>
+
+    <insert id="insertUsers" parameterType="java.util.List"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into t_user
+        (user_uuid,user_name,password,real_name,age,last_active_time)
+        values
+        <foreach collection="list" item="item" index="index"
+                 separator=",">
+            (#{item.userUuid},#{item.userName},#{item.password},#{item.realName},#{item.age},
+            #{item.lastActiveTime})
+        </foreach>
+    </insert>
+
+
+    <update id="updateUser" parameterType="com.alvis.exam.domain.User">
+        update t_user
+        <set>
+            <if test="realName != null">real_name = #{realName},</if>
+            <if test="age != null">age = #{age},</if>
+            <if test="lastActiveTime != null">last_active_time = #{lastActiveTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+
+    <update id="updateUsersAge">
+        update t_user set age = #{age} where id in
+        <foreach item="id" collection="idslist" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </update>
+
+
+    <delete id="deleteUsersByIds">
+        delete from t_user where id in
+        <foreach item="id" collection="list" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="selectAllCount" resultType="java.lang.Integer">
+		SELECT count(*) from t_user where deleted=0
+  </select>
+
+
+    <select id="selectByUserName" resultType="com.alvis.exam.domain.other.KeyValue">
+		SELECT  id as value,user_name as name
+		from t_user
+		where deleted=0  and user_name like concat('%',#{value},'%')
+		limit 5
+  </select>
+
+
+    <select id="selectByIds" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id in
+        <foreach item="id" collection="list" open="(" separator=","
+                 close=")">
+            #{id}
+        </foreach>
+    </select>
+
+
+    <select id="selectByWxOpenId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where deleted=0 and wx_open_id = #{wxOpenId}
+        limit 1
+    </select>
+    <select id="calculateUserArticleScore" resultType="java.lang.Integer">
+        SELECT sum(read_score) FROM t_user_article_look
+        WHERE user_id = #{userId} AND create_time >= #{startTime}
+        <if test="endTime != null">
+            AND create_time <![CDATA[ < ]]> #{endTime}
+        </if>
+    </select>
+    <select id="calculateUsersArticleScore" resultType="java.util.Map">
+        SELECT user_name,sum(read_score) score
+        FROM t_user_article_look
+        WHERE create_time >= #{startTime}
+        <if test="endTime != null">
+            AND create_time <![CDATA[ < ]]> #{endTime}
+        </if>
+        GROUP BY user_id ORDER BY score desc
+    </select>
+
+    <select id="selectUserRanking" resultType="com.alvis.exam.domain.dto.article.UserDTO" parameterType="com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO">
+        SELECT
+        a.user_name userName,
+        a.real_name realName,
+        a.age,
+        a.phone,
+        a.sex,
+        a.image_path imagePath,
+        sum(b.count) count,
+        b.start_time startTime
+        FROM
+        t_user a,
+        t_read_state b
+        WHERE
+        a.id = b.user_id
+        AND count > 0
+        <if test="startTime != null">
+            AND start_time <![CDATA[ > ]]> #{startTime}
+        </if>
+        <if test="endTime != null">
+            AND start_time <![CDATA[ < ]]> #{endTime}
+        </if>
+        GROUP BY
+        userName
+    </select>
+
+    <select id="selectExamRanking" resultType="com.alvis.exam.domain.dto.article.ExamDTO" parameterType="com.alvis.exam.viewmodel.wx.student.user.QueryTimeVO">
+        SELECT
+        a.user_name userName,
+        a.real_name realName,
+        a.age,
+        a.phone,
+        a.sex,
+        a.image_path imagePath,
+        SUM(b.user_score) userScore,
+        b.create_time startTime
+        FROM
+        t_user a,
+        t_exam_paper_answer b
+        WHERE
+        a.id = b.create_user
+        <if test="startTime != null">
+            AND b.create_time <![CDATA[ > ]]> #{startTime}
+        </if>
+        <if test="endTime != null">
+            AND b.create_time <![CDATA[ < ]]> #{endTime}
+        </if>
+        GROUP BY
+        userName
+    </select>
+
+    <update id="updateByPrimaryUser" parameterType="com.alvis.exam.domain.User">
+    update t_user
+    set
+      user_name = #{userName,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      sex = #{sex,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+    <update id="updateByPrimaryImage" parameterType="com.alvis.exam.domain.User">
+    update t_user
+    set
+      image_path = #{imagePath,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+<!-- start 阅读-->
+    <select id="findYiRead" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+        SELECT COUNT(ta.read_time_l) count1,SUM(ta.read_time_l) integralCount
+        FROM t_article ta
+        RIGHT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER} AND COUNT > 0 GROUP BY article_id) trs
+        ON trs.article_id = ta.id
+    </select>
+
+    <select id="findZaiRead" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+        SELECT COUNT(ta.read_time_l) count2
+        FROM t_article ta
+        RIGHT JOIN  (SELECT article_id,MAX(COUNT) maxCount FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER}  GROUP BY article_id HAVING maxCount = 0) trs
+        ON trs.article_id = ta.id
+    </select>
+
+    <select id="findWeiRead" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+        SELECT COUNT(ta.read_time_l) count3 FROM t_article ta LEFT JOIN  (SELECT article_id FROM t_read_state WHERE user_id = #{id,jdbcType=INTEGER}  GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL
+    </select>
+    <!-- end 阅读-->
+
+
+    <!-- start 考试-->
+    <select id="findYiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">
+          SELECT COUNT(1) count1,SUM(integralCount) integralCount FROM (SELECT COUNT(1) count1,SUM(user_score) integralCount FROM `t_exam_paper_answer` WHERE create_user = #{id,jdbcType=INTEGER} GROUP BY exam_paper_id) a
+    </select>
+
+<!--    <select id="findWeiExam" resultType="com.alvis.exam.domain.dto.Integral.IntegralBasic" parameterType="java.lang.Integer">-->
+<!--      SELECT COUNT(ta.read_time_l) count3-->
+<!--      FROM t_article ta-->
+<!--      LEFT JOIN  (SELECT article_id-->
+<!--      FROM t_read_state-->
+<!--      WHERE user_id = #{id,jdbcType=INTEGER}-->
+<!--      GROUP BY article_id) trs ON trs.article_id = ta.id WHERE trs.article_id IS NULL;-->
+<!--    </select>-->
+    <!-- end 考试-->
+
+
+
+</mapper>

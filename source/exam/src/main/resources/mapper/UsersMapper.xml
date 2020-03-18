@@ -95,10 +95,10 @@
   </insert>
 
   <select id="findVisits"  resultType="com.alvis.exam.domain.dto.VisitUsersDTO">
-     SELECT con.*,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat,pos.id positionId  FROM (
+     SELECT con.*,lat,lng,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat,pos.id positionId  FROM (
         SELECT u.id usersId,u.`name`,u.id_number idNumber,ul.license,ul.address FROM users u INNER JOIN user_license ul
         ON area = 2 AND u.phone = ul.phone
-    ) con INNER JOIN position pos on wgs84_lng is not NULL and wgs84_lat is not NULL and con.license = pos.license
+    ) con INNER JOIN position pos on wgs84_lng is not NULL and wgs84_lat is not NULL and con.license = pos.license  LIMIT 100
   </select>
 
   <select id="findConById" resultType="com.alvis.exam.domain.Users"  parameterType="java.lang.Integer">
@@ -117,7 +117,7 @@
 
 
   <select id="findUser" resultType="com.alvis.exam.domain.User">
-    SELECT tu.id,tu.user_name userName FROM visited_users vu LEFT JOIN t_user tu on vu.user_id = tu.id GROUP BY user_id
+    SELECT id,user_name userName FROM t_user
   </select>
 
 </mapper>

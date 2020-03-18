@@ -132,8 +132,13 @@
   </update>
 
   <!-- ================================== -->
-  <!--查询所有-->
-  <select id="selectAll" resultMap="BaseResultMap">
+  <!--小程序查询最新十条-->
+  <select id="selectLimit" resultMap="BaseResultMap">
     select * from t_news where status = 1 order by id desc limit 10
+  </select>
+
+  <!--管理后台查询所有-->
+  <select id="page" resultMap="BaseResultMap">
+    select * from t_news where status = 1
   </select>
 </mapper>
