@@ -11,7 +11,11 @@ import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -20,7 +24,7 @@ import java.util.Map;
  * @author yangsy
  */
 @CrossOrigin
-@RestController("AdminDataQueryController")
+@Controller("WXDataQueryController")
 @RequestMapping(value = "/api/wx/student/dataQuery")
 @AllArgsConstructor
 @ResponseBody
