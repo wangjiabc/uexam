@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.SourcePutMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.SourcePut">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="customerNumber" jdbcType="VARCHAR" property="customernumber" />
+    <result column="customerName" jdbcType="VARCHAR" property="customername" />
+    <result column="customerGrade" jdbcType="VARCHAR" property="customergrade" />
+    <result column="orderCycle" jdbcType="VARCHAR" property="ordercycle" />
+    <result column="orderPhone" jdbcType="VARCHAR" property="orderphone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="responsible" jdbcType="VARCHAR" property="responsible" />
+    <result column="marketingArea" jdbcType="VARCHAR" property="marketingarea" />
+    <result column="accountManager" jdbcType="VARCHAR" property="accountmanager" />
+    <result column="putNumber" jdbcType="INTEGER" property="putnumber" />
+    <result column="orderNumber" jdbcType="INTEGER" property="ordernumber" />
+    <result column="needNumber" jdbcType="INTEGER" property="neednumber" />
+    <result column="utilizationRate" jdbcType="VARCHAR" property="utilizationrate" />
+    <result column="satisfactionRate" jdbcType="VARCHAR" property="satisfactionrate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, customerNumber, customerName, customerGrade, orderCycle, orderPhone, address, 
+    responsible, marketingArea, accountManager, putNumber, orderNumber, needNumber, utilizationRate, 
+    satisfactionRate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from source_put
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from source_put
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.alvis.exam.domain.SourcePut">
+    insert into source_put (id, customerNumber, customerName, 
+      customerGrade, orderCycle, orderPhone, 
+      address, responsible, marketingArea, 
+      accountManager, putNumber, orderNumber, 
+      needNumber, utilizationRate, satisfactionRate
+      )
+    values (#{id,jdbcType=INTEGER}, #{customernumber,jdbcType=VARCHAR}, #{customername,jdbcType=VARCHAR}, 
+      #{customergrade,jdbcType=VARCHAR}, #{ordercycle,jdbcType=VARCHAR}, #{orderphone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{responsible,jdbcType=VARCHAR}, #{marketingarea,jdbcType=VARCHAR}, 
+      #{accountmanager,jdbcType=VARCHAR}, #{putnumber,jdbcType=INTEGER}, #{ordernumber,jdbcType=INTEGER}, 
+      #{neednumber,jdbcType=INTEGER}, #{utilizationrate,jdbcType=VARCHAR}, #{satisfactionrate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.SourcePut">
+    insert into source_put
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="customernumber != null">
+        customerNumber,
+      </if>
+      <if test="customername != null">
+        customerName,
+      </if>
+      <if test="customergrade != null">
+        customerGrade,
+      </if>
+      <if test="ordercycle != null">
+        orderCycle,
+      </if>
+      <if test="orderphone != null">
+        orderPhone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="responsible != null">
+        responsible,
+      </if>
+      <if test="marketingarea != null">
+        marketingArea,
+      </if>
+      <if test="accountmanager != null">
+        accountManager,
+      </if>
+      <if test="putnumber != null">
+        putNumber,
+      </if>
+      <if test="ordernumber != null">
+        orderNumber,
+      </if>
+      <if test="neednumber != null">
+        needNumber,
+      </if>
+      <if test="utilizationrate != null">
+        utilizationRate,
+      </if>
+      <if test="satisfactionrate != null">
+        satisfactionRate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="customernumber != null">
+        #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null">
+        #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customergrade != null">
+        #{customergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="ordercycle != null">
+        #{ordercycle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderphone != null">
+        #{orderphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="responsible != null">
+        #{responsible,jdbcType=VARCHAR},
+      </if>
+      <if test="marketingarea != null">
+        #{marketingarea,jdbcType=VARCHAR},
+      </if>
+      <if test="accountmanager != null">
+        #{accountmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="putnumber != null">
+        #{putnumber,jdbcType=INTEGER},
+      </if>
+      <if test="ordernumber != null">
+        #{ordernumber,jdbcType=INTEGER},
+      </if>
+      <if test="neednumber != null">
+        #{neednumber,jdbcType=INTEGER},
+      </if>
+      <if test="utilizationrate != null">
+        #{utilizationrate,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfactionrate != null">
+        #{satisfactionrate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.alvis.exam.domain.SourcePut">
+    update source_put
+    <set>
+      <if test="customernumber != null">
+        customerNumber = #{customernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="customername != null">
+        customerName = #{customername,jdbcType=VARCHAR},
+      </if>
+      <if test="customergrade != null">
+        customerGrade = #{customergrade,jdbcType=VARCHAR},
+      </if>
+      <if test="ordercycle != null">
+        orderCycle = #{ordercycle,jdbcType=VARCHAR},
+      </if>
+      <if test="orderphone != null">
+        orderPhone = #{orderphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="responsible != null">
+        responsible = #{responsible,jdbcType=VARCHAR},
+      </if>
+      <if test="marketingarea != null">
+        marketingArea = #{marketingarea,jdbcType=VARCHAR},
+      </if>
+      <if test="accountmanager != null">
+        accountManager = #{accountmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="putnumber != null">
+        putNumber = #{putnumber,jdbcType=INTEGER},
+      </if>
+      <if test="ordernumber != null">
+        orderNumber = #{ordernumber,jdbcType=INTEGER},
+      </if>
+      <if test="neednumber != null">
+        needNumber = #{neednumber,jdbcType=INTEGER},
+      </if>
+      <if test="utilizationrate != null">
+        utilizationRate = #{utilizationrate,jdbcType=VARCHAR},
+      </if>
+      <if test="satisfactionrate != null">
+        satisfactionRate = #{satisfactionrate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.alvis.exam.domain.SourcePut">
+    update source_put
+    set customerNumber = #{customernumber,jdbcType=VARCHAR},
+      customerName = #{customername,jdbcType=VARCHAR},
+      customerGrade = #{customergrade,jdbcType=VARCHAR},
+      orderCycle = #{ordercycle,jdbcType=VARCHAR},
+      orderPhone = #{orderphone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      responsible = #{responsible,jdbcType=VARCHAR},
+      marketingArea = #{marketingarea,jdbcType=VARCHAR},
+      accountManager = #{accountmanager,jdbcType=VARCHAR},
+      putNumber = #{putnumber,jdbcType=INTEGER},
+      orderNumber = #{ordernumber,jdbcType=INTEGER},
+      needNumber = #{neednumber,jdbcType=INTEGER},
+      utilizationRate = #{utilizationrate,jdbcType=VARCHAR},
+      satisfactionRate = #{satisfactionrate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

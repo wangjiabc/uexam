@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alvis.exam.repository.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.alvis.exam.domain.Users">
+    <result column="id" jdbcType="VARCHAR" property="id" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="card_type" jdbcType="VARCHAR" property="cardType" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="causa" jdbcType="VARCHAR" property="causa" />
+    <result column="date" jdbcType="VARCHAR" property="date" />
+    <result column="up_date" jdbcType="VARCHAR" property="upDate" />
+
+  </resultMap>
+  <insert id="insert" parameterType="com.alvis.exam.domain.Users">
+    insert into users (id, open_id, name, 
+      card_type, sex, id_number, 
+      phone, causa, date, 
+      up_date)
+    values (#{id,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{idNumber,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{causa,jdbcType=VARCHAR}, #{date,jdbcType=VARCHAR}, 
+      #{upDate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.alvis.exam.domain.Users">
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="idNumber != null">
+        id_number,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="causa != null">
+        causa,
+      </if>
+      <if test="date != null">
+        date,
+      </if>
+      <if test="upDate != null">
+        up_date,
+      </if>
+
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null">
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="causa != null">
+        #{causa,jdbcType=VARCHAR},
+      </if>
+      <if test="date != null">
+        #{date,jdbcType=VARCHAR},
+      </if>
+      <if test="upDate != null">
+        #{upDate,jdbcType=VARCHAR},
+      </if>
+
+    </trim>
+  </insert>
+
+  <select id="findVisits"  resultType="com.alvis.exam.domain.dto.VisitUsersDTO">
+     SELECT con.*,lat,lng,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat,pos.id positionId  FROM (
+        SELECT u.id usersId,u.`name`,u.id_number idNumber,ul.license,ul.address FROM users u INNER JOIN user_license ul
+        ON area = 2 AND u.phone = ul.phone
+    ) con INNER JOIN position pos on wgs84_lng is not NULL and wgs84_lat is not NULL and con.license = pos.license  LIMIT 100
+  </select>
+
+  <select id="findConById" resultType="com.alvis.exam.domain.Users"  parameterType="java.lang.Integer">
+        SELECT a.*,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat
+        FROM
+        (SELECT u.*,ul.address,ul.license FROM users u LEFT JOIN user_license ul ON u.phone = ul.phone WHERE u.id  = #{usersId,jdbcType=INTEGER} ) a
+         LEFT JOIN position pos on a.license = pos.license
+  </select>
+
+  <select id="findVisiter" resultMap="BaseResultMap"  parameterType="com.alvis.exam.domain.Users">
+        SELECT a.*,pos.wgs84_lng wgs84Lng,pos.wgs84_lat wgs84Lat
+        FROM (SELECT u.*,ul.address,ul.license FROM (SELECT * FROM users WHERE id  like #{id,jdbcType=INTEGER} ) u
+        LEFT JOIN user_license ul  ON u.phone  = ul.phone
+) a LEFT JOIN position pos on a.license  = pos.license
+  </select>
+
+
+  <select id="findUser" resultType="com.alvis.exam.domain.User">
+    SELECT id,user_name userName FROM t_user
+  </select>
+
+</mapper>
