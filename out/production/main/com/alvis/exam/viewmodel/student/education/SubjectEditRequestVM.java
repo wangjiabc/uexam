@@ -1,0 +1,47 @@
+package com.alvis.exam.viewmodel.student.education;
+
+import com.alvis.exam.viewmodel.BaseVM;
+import lombok.Data;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@Data
+public class SubjectEditRequestVM extends BaseVM {
+
+    private Integer id;
+
+    @NotBlank
+    private String name;
+
+    @NotNull
+    private Integer level;
+
+    @NotBlank
+    private String levelName;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getLevel() {
+		return level;
+	}
+
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+
+	public String getLevelName() {
+		return levelName;
+	}
+
+	public void setLevelName(String levelName) {
+		this.levelName = levelName;
+	}
+
+}
