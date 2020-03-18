@@ -43,7 +43,7 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 根据个人ID 查询本月完成总销
      */
-    @Select("select a.real_sale from t_sale_data a where a.users_id='${uuid}'")
+    @Select("select * from t_sale_data a where a.users_id='${uuid}'")
     SaleData queryTotalSale(@Param("uuid") String uuid);
 
     /**
