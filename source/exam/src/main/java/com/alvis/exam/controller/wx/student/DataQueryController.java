@@ -21,7 +21,7 @@ import java.util.Map;
  */
 @CrossOrigin
 @RestController("AdminDataQueryController")
-@RequestMapping(value = "/api/admin/dataQuery")
+@RequestMapping(value = "/api/wx/student/dataQuery")
 @AllArgsConstructor
 public class DataQueryController extends BaseApiController {
 	
