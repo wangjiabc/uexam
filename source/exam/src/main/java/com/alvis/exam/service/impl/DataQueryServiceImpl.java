@@ -60,7 +60,7 @@ public class DataQueryServiceImpl implements DataQueryService {
      */
     @Override
     public WideNarrow queryWideNarrow(String uuid) {
-        return this.queryWideNarrow(uuid);
+        return this.dataQueryMapper.queryWideNarrow(uuid);
     }
 
     /**
