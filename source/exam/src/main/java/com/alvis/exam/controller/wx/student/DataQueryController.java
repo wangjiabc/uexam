@@ -30,7 +30,7 @@ import java.util.Map;
 @AllArgsConstructor
 @ResponseBody
 public class DataQueryController extends BaseWXApiController {
-
+	
 	@Autowired
     private DataQueryService dataQueryService;
 
