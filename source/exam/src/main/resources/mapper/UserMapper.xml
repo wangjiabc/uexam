@@ -48,14 +48,14 @@
       phone, role, status,
       image_path, create_time, modify_time,
       last_active_time, deleted, wx_open_id,
-      telphone, duty, is_look, month_sale_norm, quarter_sale_norm)
+      telphone, duty,wx_role, is_look, month_sale_norm, quarter_sale_norm)
     values (#{id,jdbcType=INTEGER}, #{userUuid,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR},
       #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER},
       #{sex,jdbcType=INTEGER}, #{birthDay,jdbcType=TIMESTAMP}, #{userLevel,jdbcType=INTEGER},
       #{phone,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, #{status,jdbcType=INTEGER},
       #{imagePath,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
       #{lastActiveTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT}, #{wxOpenId,jdbcType=VARCHAR},
-      #{telphone,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, #{isLook,jdbcType=INTEGER}, #{monthSaleNorm,jdbcType=INTEGER},
+      #{telphone,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR},#{wxRole,jdbcType=VARCHAR}, #{isLook,jdbcType=INTEGER}, #{monthSaleNorm,jdbcType=INTEGER},
       #{quarterSaleNorm,jdbcType=INTEGER})
   </insert>
     <insert id="insertSelective" parameterType="com.alvis.exam.domain.User">

@@ -48,6 +48,7 @@ public class ArticleController extends BaseWXApiController {
     @RequestMapping(value = "/secondLevel")
     public RestResponse pageList(String typeId,MessageRequestVM messageRequestVM) {
         //根据章typeId查询章
+        
         messageRequestVM.setReceiveUserId(getCurrentUser().getId());
         PageInfo<ExamPaperDTO> pageInfo = null;
         pageInfo = articleService.secondLevel(Integer.parseInt(typeId),messageRequestVM);

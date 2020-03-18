@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.domain.News;
 import com.alvis.exam.service.NewsService;
+import com.alvis.exam.viewmodel.admin.message.MessagePageRequestVM;
+import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
 
 @CrossOrigin
 @AllArgsConstructor
@@ -78,6 +79,7 @@ public class NewsController {
         news.setStatus(1);              //状态
         news.setAddTime(new Date());    //时间
         news.setContent(content);
+        news.setId(id);
         //根据id修改
         newsService.update(news);
         return RestResponse.ok();
@@ -86,9 +88,9 @@ public class NewsController {
     /**
      * 查询新闻
      */
-    @RequestMapping("select")
-    public RestResponse select() {
-        List<News> list = newsService.select();
-        return RestResponse.ok(list);
+    @RequestMapping("selectAll")
+    public RestResponse selectAll(@RequestBody MessagePageRequestVM model) {
+        PageInfo<News> pageInfo = newsService.selectAll(model);
+        return RestResponse.ok(pageInfo);
     }
 }

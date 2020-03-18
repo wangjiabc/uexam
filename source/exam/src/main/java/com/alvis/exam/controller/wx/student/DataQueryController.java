@@ -78,5 +78,10 @@ public class DataQueryController extends BaseApiController {
     /**
      * 阶段性考核指标
      */
-
+    @RequestMapping(value = "/userQuery", method = RequestMethod.POST)
+    public RestResponse userQuery(){
+        String wxOpenId = getCurrentUser().getWxOpenId();
+        User user=this.dataQueryService.queryuser(wxOpenId);
+        return RestResponse.ok(user);
+    }
 }
