@@ -5,6 +5,7 @@ import com.alvis.exam.domain.SourcePut;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -51,6 +52,12 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
      */
     @Select("select a.* from wide_narrow a ,t_user b where a.user_id=b.user_uuid and a.user_id='${uuid}'")
     WideNarrow queryWideNarrow(@Param("uuid") String uuid);
+
+    /**
+     * 本月完成进度宽窄(管理员)
+     */
+    @Select("select a.* from wide_narrow a ,t_user b where a.user_id=b.user_uuid")
+    WideNarrow queryWideNarrowMag(WideNarrowVM wideNarrow);
 
     /**
      * 阶段性考核指标

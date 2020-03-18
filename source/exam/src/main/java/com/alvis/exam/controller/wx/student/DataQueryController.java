@@ -9,6 +9,7 @@ import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.service.DataQueryService;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,10 @@ public class DataQueryController extends BaseWXApiController {
     }
 
     /**
+     * 根据个人ID 查询本月完成进度（管理员）
+     */
+
+    /**
      * 本月完成进度总销
      */
     @RequestMapping(value = "/queryTotalSale", method = RequestMethod.POST)
@@ -69,6 +74,10 @@ public class DataQueryController extends BaseWXApiController {
         SaleData saleData=this.dataQueryService.queryTotalSale(user.getUserUuid());
         return RestResponse.ok(saleData);
     }
+
+    /**
+     * 本月完成进度总销（管理员）
+     */
 
     /**
      * 本月完成进度宽窄
@@ -82,6 +91,16 @@ public class DataQueryController extends BaseWXApiController {
     }
 
     /**
+     * 本月完成进度宽窄（管理员）
+     */
+    @RequestMapping(value = "/queryWideNarrowMag", method = RequestMethod.POST)
+    public RestResponse<PageInfo<WideNarrow>> queryWideNarrowMag(WideNarrowVM wideNarrow) {
+
+        PageInfo<WideNarrow> wideNarrowPageInfo = dataQueryService.queryWideNarrowMag(wideNarrow);
+        return RestResponse.ok(wideNarrowPageInfo);
+    }
+
+    /**
      * 阶段性考核指标
      */
     @RequestMapping(value = "/userQuery", method = RequestMethod.POST)
@@ -90,4 +109,8 @@ public class DataQueryController extends BaseWXApiController {
         User user=this.dataQueryService.queryuser(wxOpenId);
         return RestResponse.ok(user);
     }
+
+    /**
+     * 阶段性考核指标（管理员）
+     */
 }

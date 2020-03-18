@@ -7,6 +7,7 @@ import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.repository.DataQueryMapper;
 import com.alvis.exam.service.DataQueryService;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,16 @@ public class DataQueryServiceImpl implements DataQueryService {
     @Override
     public WideNarrow queryWideNarrow(String uuid) {
         return this.dataQueryMapper.queryWideNarrow(uuid);
+    }
+
+    /**
+     * 本月完成进度宽窄（管理员）
+     */
+    @Override
+    public PageInfo<WideNarrow> queryWideNarrowMag(WideNarrowVM wideNarrow) {
+        return PageHelper.startPage(wideNarrow.getPageIndex(),wideNarrow.getPageSize(),"id desc").doSelectPageInfo(() ->
+                dataQueryMapper.queryWideNarrowMag(wideNarrow)
+        );
     }
 
     /**
