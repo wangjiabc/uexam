@@ -62,19 +62,18 @@ public class DataSourceConfig {
         dynamicDataSource.setTargetDataSources(targetDataSources);
         // 设置默认的数据源
         dynamicDataSource.setDefaultTargetDataSource(mysql);
-
         return dynamicDataSource;
     }
 
     @Primary
     @Bean("sqlSessionFactory")
-    public SqlSessionFactory sqlSessionFactory(@Qualifier("mysql1") DataSource mysql1, @Qualifier("mysql2") DataSource mysql2) throws Exception {
+    public SqlSessionFactory sqlSessionFactory(@Qualifier("mysql1") DataSource mysql1, @Qualifier("mysql2") DataSource mysql2,org.apache.ibatis.session.Configuration configuration) throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 
         sessionFactory.setDataSource(this.dataSource(mysql1, mysql2));
         sessionFactory.setTypeAliasesPackage(env.getProperty("mybatis.typeAliasesPackage"));
         sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources(env.getProperty("mybatis.mapper-locations")));
-
+        sessionFactory.setConfiguration(configuration);
         return sessionFactory.getObject();
     }
 
@@ -83,4 +82,9 @@ public class DataSourceConfig {
         return new DataSourceTransactionManager(dataSource);
     }
 
+    @Bean
+    @ConfigurationProperties(prefix = "mybatis.configuration")
+    public org.apache.ibatis.session.Configuration globalConfiguration(){
+        return new org.apache.ibatis.session.Configuration();
+    }
 }

@@ -24,6 +24,7 @@ mybatis:
   mapper-locations: classpath:/mapper/*.xml
   configuration:
     log-prefix: repository.
+    map-underscore-to-camel-case: true
 
 system:
   security-ignore-urls:

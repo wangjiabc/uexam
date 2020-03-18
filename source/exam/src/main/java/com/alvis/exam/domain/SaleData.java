@@ -10,7 +10,7 @@ public class SaleData implements Serializable {
     private Integer id;
 
     @Column(name = "users_id")
-    private Integer usersId;
+    private String usersId;
 
     @Column(name = "real_sale")
     private Integer realSale;
@@ -28,14 +28,6 @@ public class SaleData implements Serializable {
         this.id = id;
     }
 
-    public Integer getUsersId() {
-        return usersId;
-    }
-
-    public void setUsersId(Integer usersId) {
-        this.usersId = usersId;
-    }
-
     public Integer getRealSale() {
         return realSale;
     }
@@ -50,5 +42,13 @@ public class SaleData implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getUsersId() {
+        return usersId;
+    }
+
+    public void setUsersId(String usersId) {
+        this.usersId = usersId;
     }
 }
