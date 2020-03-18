@@ -23,6 +23,7 @@ import java.util.Map;
 @RestController("AdminDataQueryController")
 @RequestMapping(value = "/api/wx/student/dataQuery")
 @AllArgsConstructor
+@ResponseBody
 public class DataQueryController extends BaseApiController {
 	
 	@Autowired
@@ -35,7 +36,7 @@ public class DataQueryController extends BaseApiController {
      * @return
      */
     @RequestMapping(value = "/querySourcePut", method = RequestMethod.POST)
-    public RestResponse<PageInfo<SourcePut>> querySourcePut(@RequestBody SourcePutVM sourcePut) {
+    public RestResponse<PageInfo<SourcePut>> querySourcePut(SourcePutVM sourcePut) {
 
         PageInfo<SourcePut> sourcePutPageInfo = dataQueryService.querySourcePut(sourcePut);
         return RestResponse.ok(sourcePutPageInfo);
