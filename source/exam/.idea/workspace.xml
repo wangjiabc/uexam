@@ -2,307 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bb1fd261-0a45-4eb2-9eec-ca383616ee73" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/WideNarrow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/SaleDataMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mapper/SourcePutMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/application-dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/application-pre.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/application-prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/application-test.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/ExamApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/base/BaseApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/base/BaseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/base/BasePage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/base/RestResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/base/SystemCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/application/ApplicationContextProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/property/CookieConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/property/PasswordKeyConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/property/QnConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/property/SystemConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/property/UrlConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/property/WxConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/cache/CacheConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/exception/ExceptionHandle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/mvc/WebMvcConfiguration.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/AuthUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/AuthenticationBean.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/LoginAuthenticationEntryPoint.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestAccessDeniedHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestAuthenticationFailureHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestAuthenticationProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestAuthenticationSuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestDetailsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestLoginAuthenticationFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestLogoutSuccessHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestTokenBasedRememberMeServices.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/RestUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/security/SecurityConfigurer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/spring/wx/TokenHandlerInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/configuration/swager/Swagger2Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/context/WebContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/context/WxContext.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/ErrorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/ArticleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/ArticleTypeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/ChapterController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/DashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/EducationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/ExamPaperController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/ExamTypeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/MessageController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/QuestionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/TaskController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/UploadController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/UploadEditorController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/admin/XmindController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/DashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/EducationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/ExamPaperAnswerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/ExamPaperController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/QuestionAnswerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/QuestionController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/student/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/BaseWXApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/ArticleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/ArticleTypeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/DashboardController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/ExamPaperAnswerController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/ExamPaperController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/controller/wx/student/XmindController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/Article.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ArticleType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/Chapter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ExamPaper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ExamPaperAnswer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ExamPaperAnswerInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ExamPaperQuestionCustomerAnswer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ExamType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ExcelImport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/Message.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/MessageUser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/Question.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ReadState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/Subject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/TaskExam.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/TaskExamCustomerAnswer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/TextContent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/UserEventLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/UserToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/ViewPager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/Xmind.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/ArticleDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/ExamPaperDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/Integral/IntegralBasic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/KvobjDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/UserDTOVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/article/ArticleDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/article/ExamDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/dto/article/UserDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/enums/ExamPaperAnswerStatusEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/enums/ExamPaperTypeEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/enums/QuestionStatusEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/enums/QuestionTypeEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/enums/RoleEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/enums/UserStatusEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/exam/ExamPaperQuestionItemObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/exam/ExamPaperTitleItemObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/other/ExamPaperAnswerUpdate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/other/KeyValue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/properties/Property.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/question/QuestionItemObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/question/QuestionObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/task/TaskItemAnswerObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/domain/task/TaskItemObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/event/CalculateExamPaperAnswerCompleteEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/event/OnRegistrationCompleteEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/event/UserEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/exception/BusinessException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/listener/CalculateExamPaperAnswerListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/listener/EmailSendListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/listener/UserLogListener.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ArticleMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ArticleTypeMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/BaseMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ChapterMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ExamPaperAnswerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ExamPaperMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ExamPaperQuestionCustomerAnswerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ExamTypeMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/MessageMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/MessageUserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/QuestionMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ReadStateMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/SubjectMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/TaskExamCustomerAnswerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/TaskExamMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/TextContentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/UserEventLogMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/UserMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/UserTokenMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/ViewPagerMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/repository/XmindMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ArticleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ArticleTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/AuthenticationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/BaseService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ChapterService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ExamPaperAnswerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ExamPaperQuestionCustomerAnswerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ExamPaperService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ExamTypeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/FileUpload.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/MessageService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/QuestionService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ReadService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/SubjectService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/TaskExamCustomerAnswerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/TaskExamService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/TextContentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/UploadService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/UserEventLogService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/UserTokenService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/ViewPagerService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/XmindService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/enums/ActionEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ArticleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ArticleTypeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/AuthenticationServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/BaseServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ChapterServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ExamPaperAnswerServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ExamPaperQuestionCustomerAnswerServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ExamPaperServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ExamTypeServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/FileUploadImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/MessageServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/QuestionServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ReadServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/SubjectServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/TaskExamCustomerAnswerImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/TaskExamServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/TextContentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/UploadServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/UserEventLogServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/UserTokenServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/ViewPagerServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/service/impl/XmindServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/DateTimeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/ErrorUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/ExamUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/GetUseInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/HtmlUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/JsonUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/ListUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/Md5Util.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/ModelMapperSingle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/PageInfoHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/RsaUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/UploadUtils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/WxResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/utility/WxUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/BaseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/article/ArticleTypeVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/article/ArticleVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/article/PageInfoVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/dashboard/IndexVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/education/SubjectEditRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/education/SubjectPageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/education/SubjectResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/exam/ExamPaperEditRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/exam/ExamPaperPageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/exam/ExamPaperTitleItemVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/exam/ExamResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/file/UeditorConfigVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/file/UploadResultVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/message/MessagePageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/message/MessageResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/message/MessageSendVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/question/QuestionEditItemVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/question/QuestionEditRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/question/QuestionPageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/question/QuestionResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/task/TaskPageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/task/TaskPageResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/task/TaskRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/ChapterAndIdVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/ChapterVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/UserCreateVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/UserEventLogVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/UserEventPageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/UserPageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/UserResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/UserUpdateVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/admin/user/XmindVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/dashboard/IndexVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/dashboard/PaperFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/dashboard/PaperInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/dashboard/PaperInfoVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/dashboard/TaskItemPaperVm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/dashboard/TaskItemVm.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/education/SubjectEditRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/education/SubjectVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exam/ExamPaperPageResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exam/ExamPaperPageVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exam/ExamPaperReadVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exam/ExamPaperSubmitItemVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exam/ExamPaperSubmitVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exampaper/ExamPaperAnswerPageResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/exampaper/ExamPaperAnswerPageVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/question/answer/QuestionAnswerVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/question/answer/QuestionPageStudentRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/question/answer/QuestionPageStudentResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/user/MessageRequestVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/user/MessageResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/user/UserEventLogVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/user/UserRegisterVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/user/UserResponseVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/student/user/UserUpdateVM.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/wx/student/KeyObjDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/wx/student/user/BindInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/wx/student/user/QueryTimeVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/alvis/exam/viewmodel/wx/student/user/QueryUserScoreVO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/com/voucher/manage/tools/MyTestUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ArticleMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ArticleTypeMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ChapterMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ExamPaperAnswerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ExamPaperMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ExamPaperQuestionCustomerAnswerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ExamTypeMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/MessageMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/MessageUserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/QuestionMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ReadStateMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/SubjectMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/TaskExamCustomerAnswerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/TaskExamMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/TextContentMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/UserEventLogMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/UserMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/UserTokenMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/ViewPagerMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mapper/XmindMapper.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../out/production/main/mybatis-generator/generatorConfig.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/DataQueryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/DataQueryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/UserLicense.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/UserLicense.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/DataQueryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/DataQueryMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/DataQueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/DataQueryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/DataQueryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/DataQueryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-test.yml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -313,35 +18,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="519">
-              <caret line="88" column="11" selection-start-line="88" selection-start-column="11" selection-end-line="88" selection-end-column="11" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/DataQueryController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="174" column="39" lean-forward="true" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="400">
+              <caret line="40" column="44" lean-forward="true" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -381,16 +80,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/viewmodel/admin/exam/ExamPaperEditRequestVM.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Article.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/application/application/ApplicationContextProvider.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/AuthController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/User.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Users.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UsersMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
         <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator/generatorConfig.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/fxdhqkbFgsPqxsjdbMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/DataQueryController.java" />
@@ -404,6 +99,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/ArticleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/NewsController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-prod.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-dev.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-test.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
       </list>
     </option>
   </component>
@@ -531,18 +233,6 @@
               <item name="alvis" type="462c0819:PsiDirectoryNode" />
               <item name="exam" type="462c0819:PsiDirectoryNode" />
               <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="exam" type="b2602c69:ProjectViewProjectNode" />
-              <item name="exam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="alvis" type="462c0819:PsiDirectoryNode" />
-              <item name="exam" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
               <item name="wx" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -568,10 +258,7 @@
             <path>
               <item name="exam" type="b2602c69:ProjectViewProjectNode" />
               <item name="exam" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -586,7 +273,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584436805583" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1584496712653" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -647,7 +334,8 @@
       <workItem from="1583976513912" duration="44000" />
       <workItem from="1584322213564" duration="109000" />
       <workItem from="1584329125104" duration="11524000" />
-      <workItem from="1584404263941" duration="24063000" />
+      <workItem from="1584404263941" duration="26594000" />
+      <workItem from="1584491614400" duration="2696000" />
     </task>
     <task id="LOCAL-00001" summary="3.16_zsc01">
       <created>1584328974386</created>
@@ -691,17 +379,24 @@
       <option name="project" value="LOCAL" />
       <updated>1584436563639</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="3.17_zsc_03">
+      <created>1584436838386</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1584436838386</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38206000" />
+    <option name="totallyTimeSpent" value="43433000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2553305" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -711,8 +406,8 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.34056398" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" weight="0.30694142" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" weight="0.35140997" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49946696" visible="true" weight="0.31236443" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -722,7 +417,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5010661" side_tool="true" weight="0.329718" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="13" sideWeight="0.4989339" visible="true" weight="0.29392624" />
+      <window_info anchor="bottom" id="Version Control" order="13" sideWeight="0.4989339" weight="0.22885032" />
       <window_info anchor="bottom" id="Messages" order="14" weight="0.24403471" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -755,22 +450,10 @@
     <MESSAGE value="3.17_ZSC_01" />
     <MESSAGE value="3.17_ZSC_02" />
     <MESSAGE value="3.17_ZSC_03" />
-    <option name="LAST_COMMIT_MESSAGE" value="3.17_ZSC_03" />
+    <MESSAGE value="3.17_zsc_03" />
+    <option name="LAST_COMMIT_MESSAGE" value="3.17_zsc_03" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DynamicDataSource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/application/ApplicationContextProvider.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/configuration/dataSource/DataSourceConfig.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/DashboardController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1667">
@@ -803,13 +486,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
         </state>
       </provider>
     </entry>
@@ -877,28 +553,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="106" column="41" lean-forward="true" selection-start-line="106" selection-start-column="41" selection-end-line="106" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/repository/fxdhqkbFgsPqxsjdbMapper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="20" column="31" selection-start-line="20" selection-start-column="31" selection-end-line="20" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
-          <folding>
-            <element signature="e#1767#1768#0" expanded="true" />
-            <element signature="e#1820#1821#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -942,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/SaleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="112" column="47" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
@@ -977,20 +628,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/DataQueryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="19" column="22" lean-forward="true" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/admin/DataQueryController.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/ArticleServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1102,13 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="11" selection-end-line="39" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/domain/Article.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
@@ -1149,18 +780,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/DataQueryController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
+        <state relative-caret-position="132">
           <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/VisitUsersController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="174" column="39" lean-forward="true" selection-start-line="174" selection-start-column="39" selection-end-line="174" selection-end-column="39" />
+        <state relative-caret-position="655">
+          <caret line="186" selection-start-line="186" selection-end-line="186" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/service/impl/SaleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="39" column="85" selection-start-line="39" selection-start-column="85" selection-end-line="39" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://E:/maven/maven_repository/org/mybatis/mybatis/3.5.2/mybatis-3.5.2.jar!/org/apache/ibatis/executor/CachingExecutor.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/SaleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="650">
+          <caret line="135" lean-forward="true" selection-start-line="135" selection-end-line="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/alvis/exam/controller/wx/student/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="315" lean-forward="true" selection-start-line="315" selection-end-line="315" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-test.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="40" column="44" lean-forward="true" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
         </state>
       </provider>
     </entry>

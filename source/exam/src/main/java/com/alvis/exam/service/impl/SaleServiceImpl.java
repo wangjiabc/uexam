@@ -37,7 +37,7 @@ public class SaleServiceImpl implements SaleService {
 
     @Override
     public PageInfo<fxdhqkbFgsPqxsjdb> findB2(MessageRequestVM requestVM) {
-        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize(), "khbh desc").doSelectPageInfo(() ->
+        return PageHelper.startPage(requestVM.getPageIndex(), requestVM.getPageSize()).doSelectPageInfo(() ->
                 fgsPqxsjdbMapper.findBasic(requestVM)
         );
     }

@@ -1,15 +1,20 @@
-server:
-  ssl:
-    key-store: /usr/local/exam/ssl/tomcat.jks
-    key-password: Qwer!@#$%
-
 spring:
   redis:
+    #    host: 192.168.100.200
     host: 127.0.0.1
     password: redis
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
-    username: root
-    password: 123
-
-
+    mysql2:
+      #      hikari:
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/exam02?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      #      driverClassName:  com.microsoft.sqlserver.jdbc.SQLServerDriver
+      username: root
+      password: 123
+    mysql1:
+      #      hikari:
+      #  serverTimezone=GMT%2B8使用东八区时间
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      #      driverClassName:  com.mysql.jdbc.Driver
+      #    url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      username: root
+      password: 123

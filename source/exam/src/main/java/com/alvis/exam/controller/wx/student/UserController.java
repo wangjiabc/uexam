@@ -307,7 +307,8 @@ public class UserController extends BaseWXApiController {
             userService.updateByUser(user);
         }
         else {
-            user.setIsLook(value);
+//            user.setIsLook(value);
+            user.setWxRole(value);
             userService.updateByUser(user);
         }
         return RestResponse.ok();
