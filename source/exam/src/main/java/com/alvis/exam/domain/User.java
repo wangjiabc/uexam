@@ -1,58 +1,83 @@
 package com.alvis.exam.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
-
+@Table(name = "t_user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = -7797183521247423117L;
-
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "user_uuid")
     private String userUuid;
 
+    @Column(name = "user_name")
     private String userName;
 
+    @Column(name = "password")
     private String password;
 
+    @Column(name = "real_name")
     private String realName;
 
+    @Column(name = "age")
     private Integer age;
 
+    @Column(name = "sex")
     private Integer sex;
 
+    @Column(name = "birth_day")
     private Date birthDay;
 
+    @Column(name = "user_level")
     private Integer userLevel;
 
+    @Column(name = "phone")
     private String phone;
 
+    @Column(name = "role")
     private Integer role;
 
+    @Column(name = "status")
     private Integer status;
 
+    @Column(name = "image_path")
     private String imagePath;
 
+    @Column(name = "create_time")
     private Date createTime;
 
+    @Column(name = "modify_time")
     private Date modifyTime;
 
+    @Column(name = "last_active_time")
     private Date lastActiveTime;
 
+    @Column(name = "deleted")
     private Boolean deleted;
 
+    @Column(name = "wx_open_id")
     private String wxOpenId;
 
+    @Column(name = "telphone")
     private String telphone;
 
+    @Column(name = "duty")
     private String duty;
 
+    @Column(name = "wx_role")
     private Integer wxRole;
 
+    @Column(name = "is_look")
     private Integer isLook;
 
+    @Column(name = "month_sale_norm")
     private Integer monthSaleNorm;
 
+    @Column(name = "quarter_sale_norm")
     private Integer quarterSaleNorm;
 
     public Integer getIsLook() {

@@ -2,6 +2,7 @@ package com.alvis.exam.controller.wx.student;
 
 import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
+import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.SaleData;
 import com.alvis.exam.domain.SourcePut;
 import com.alvis.exam.domain.User;
@@ -28,7 +29,7 @@ import java.util.Map;
 @RequestMapping(value = "/api/wx/student/dataQuery")
 @AllArgsConstructor
 @ResponseBody
-public class DataQueryController extends BaseApiController {
+public class DataQueryController extends BaseWXApiController {
 	
 	@Autowired
     private DataQueryService dataQueryService;
