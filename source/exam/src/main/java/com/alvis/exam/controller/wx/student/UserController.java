@@ -114,6 +114,7 @@ public class UserController extends BaseWXApiController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public RestResponse<UserResponseVM> update(@Valid UserUpdateVM model) {
+        System.out.println("1");
         if (StringUtils.isBlank(model.getBirthDay())) {
             model.setBirthDay(null);
         }

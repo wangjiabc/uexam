@@ -2,6 +2,7 @@ package com.alvis.exam.controller.wx.student;
 
 import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.ArticleType;
+import com.alvis.exam.domain.User;
 import com.alvis.exam.service.ArticleTypeService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
