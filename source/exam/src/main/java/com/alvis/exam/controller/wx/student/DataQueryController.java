@@ -9,6 +9,7 @@ import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.service.DataQueryService;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.UserVM;
 import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
@@ -113,4 +114,10 @@ public class DataQueryController extends BaseWXApiController {
     /**
      * 阶段性考核指标（管理员）
      */
+    @RequestMapping(value = "/queryUserMag", method = RequestMethod.POST)
+    public RestResponse<PageInfo<User>> queryUserMag(UserVM user) {
+
+        PageInfo<User> userPageInfo = dataQueryService.queryuserMge(user);
+        return RestResponse.ok(userPageInfo);
+    }
 }

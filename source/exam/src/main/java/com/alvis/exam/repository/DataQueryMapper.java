@@ -5,6 +5,7 @@ import com.alvis.exam.domain.SourcePut;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.UserVM;
 import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -62,4 +63,6 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 阶段性考核指标
      */
+    @Select("select * from t_user")
+    List<User> queryuserMge(UserVM user);
 }

@@ -7,6 +7,7 @@ import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.repository.DataQueryMapper;
 import com.alvis.exam.service.DataQueryService;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.UserVM;
 import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -75,6 +76,12 @@ public class DataQueryServiceImpl implements DataQueryService {
     }
 
     /**
-     * 阶段性考核指标
+     * 阶段性考核指标（管理员）
      */
+    @Override
+    public PageInfo<User> queryuserMge(UserVM user) {
+        return PageHelper.startPage(user.getPageIndex(),user.getPageSize(),"id desc").doSelectPageInfo(() ->
+                dataQueryMapper.queryuserMge(user)
+        );
+    }
 }
