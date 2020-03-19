@@ -107,6 +107,8 @@ public class UserController extends BaseApiController {
                 user.setPassword(encodePwd);
             }
             user.setModifyTime(new Date());
+            user.setMonthSaleNorm(model.getMonthSaleNorm());
+            user.setQuarterSaleNorm(model.getQuarterSaleNorm());
             userService.updateByIdFilter(user);
         }
         return RestResponse.ok(user);
