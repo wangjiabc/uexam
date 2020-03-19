@@ -121,6 +121,9 @@
             <if test="duty != null">
                 duty,
             </if>
+            <if test="wxRole != null">
+                wx_role,
+            </if>
             <if test="isLook != null">
                 is_look,
             </if>
@@ -262,6 +265,9 @@
             </if>
             <if test="duty != null">
                 duty = #{duty,jdbcType=VARCHAR},
+            </if>
+            <if test="wxRole != null">
+                wx_role = #{wxRole,jdbcType=VARCHAR},
             </if>
             <if test="isLook != null">
                 is_look = #{isLook,jdbcType=INTEGER},

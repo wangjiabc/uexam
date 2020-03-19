@@ -35,6 +35,8 @@ public class UserCreateVM {
 
 	private Integer quarterSaleNorm;
 
+	private Boolean wxRole;
+
 	public Integer getMonthSaleNorm() {
 		return monthSaleNorm;
 	}
