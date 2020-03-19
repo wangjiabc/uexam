@@ -50,6 +50,15 @@ public class DataQueryServiceImpl implements DataQueryService {
         return this.dataQueryMapper.queryCompletionSchedule(uuid);
     }
 
+
+    /**
+     * 查询阶段完成进度
+     */
+    @Override
+    public List<Map<String, Object>> queryCompletionStage(String uuid) {
+        return this.dataQueryMapper.queryCompletionStage(uuid);
+    }
+
     /**
      * 根据个人ID 查询本月完成总销
      */

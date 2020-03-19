@@ -30,9 +30,14 @@ public interface DataQueryService {
     PageInfo<SourcePut> querySourcePut(SourcePutVM sourcePut);
 
     /**
-     * 根据个人ID 查询本月完成进度
+     * 查询本月完成进度
      */
     List<Map<String,Object>> queryCompletionSchedule(String uuid);
+
+    /**
+     * 查询阶段完成进度
+     */
+    List<Map<String,Object>> queryCompletionStage(String uuid);
 
     /**
      * 根据个人ID 查询本月完成总销

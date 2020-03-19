@@ -102,13 +102,15 @@ public class DataQueryController extends BaseWXApiController {
     }
 
     /**
-     * 阶段性考核指标
+     * 阶段性考核指标完成率
      */
     @RequestMapping(value = "/userQuery", method = RequestMethod.POST)
     public RestResponse userQuery(){
         String wxOpenId = getCurrentUser().getWxOpenId();
         User user=this.dataQueryService.queryuser(wxOpenId);
-        return RestResponse.ok(user);
+        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionStage(user.getUserUuid());
+
+        return RestResponse.ok(list);
     }
 
     /**
