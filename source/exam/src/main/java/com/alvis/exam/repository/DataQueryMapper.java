@@ -45,7 +45,7 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 查询阶段完成进度
      */
-    @Select("select a.real_name,(b.orderNumber/a.quarter_sale_norm)*100 from t_user a, wide_narrow b where a.user_uuid=b.user_id and b.user_id='${uuid}'")
+    @Select("select a.real_name,(b.orderNumber/a.quarter_sale_norm)*100 as stage from t_user a, wide_narrow b where a.user_uuid=b.user_id and b.user_id='${uuid}'")
     List<Map<String,Object>> queryCompletionStage(@Param("uuid") String uuid);
 
     /**
@@ -83,6 +83,6 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 查询阶段完成进度
      */
-    @Select("select a.real_name,(b.orderNumber/a.quarter_sale_norm)*100 from t_user a, wide_narrow b where a.user_uuid=b.user_id and b.user_id='${uuid}'")
+    @Select("select a.real_name,(b.orderNumber/a.quarter_sale_norm)*100 as stage from t_user a, wide_narrow b where a.user_uuid=b.user_id and b.user_id='${uuid}'")
     List<Map<String,Object>> queryCompletionStageMGE(@Param("uuid") String uuid);
 }
