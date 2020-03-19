@@ -93,4 +93,21 @@ public class DataQueryServiceImpl implements DataQueryService {
                 dataQueryMapper.queryuserMge(user)
         );
     }
+
+
+    /**
+     * 查询本月完成进度(管理员)
+     */
+    @Override
+    public List<Map<String, Object>> queryCompletionScheduleMGE(String uuid) {
+        return this.dataQueryMapper.queryCompletionScheduleMGE(uuid);
+    }
+
+    /**
+     * 查询阶段完成进度（管理员）
+     */
+    @Override
+    public List<Map<String, Object>> queryCompletionStageMGE(String uuid) {
+        return this.dataQueryMapper.queryCompletionStageMGE(uuid);
+    }
 }

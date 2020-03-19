@@ -8,6 +8,7 @@ import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
 import com.alvis.exam.viewmodel.admin.user.UserVM;
 import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import com.github.pagehelper.PageInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -58,5 +59,15 @@ public interface DataQueryService {
      * 阶段性考核指标（管理员）
      */
     PageInfo<User> queryuserMge(UserVM user);
+
+    /**
+     * 查询本月完成进度(管理员)
+     */
+    List<Map<String,Object>> queryCompletionScheduleMGE(String uuid);
+
+    /**
+     * 查询阶段完成进度（管理员）
+     */
+    List<Map<String,Object>> queryCompletionStageMGE(String uuid);
 
 }

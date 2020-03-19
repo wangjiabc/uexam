@@ -71,4 +71,18 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
      */
     @Select("select * from t_user")
     List<User> queryuserMge(UserVM user);
+
+
+    /**
+     * 查询本月完成进度(管理员)
+     */
+    @Select("SELECT a.real_sale,a.date,b.user_name,b.month_sale_norm,(b.month_sale_norm/a.real_sale)*100 as completionRate FROM t_sale_data a ,t_user b where a.users_id=b.user_uuid and month_sale_norm >0 and a.users_id='${uuid}'")
+    List<Map<String,Object>> queryCompletionScheduleMGE(@Param("uuid") String uuid);
+
+
+    /**
+     * 查询阶段完成进度
+     */
+    @Select("select a.user_name, (a.quarter_sale_norm/b.real_sale)*100 as rate from t_user a ,t_sale_data b where a.user_uuid=b.users_id and a.users_id='${uuid}'")
+    List<Map<String,Object>> queryCompletionStageMGE(@Param("uuid") String uuid);
 }

@@ -122,4 +122,25 @@ public class DataQueryController extends BaseWXApiController {
         PageInfo<User> userPageInfo = dataQueryService.queryuserMge(user);
         return RestResponse.ok(userPageInfo);
     }
+
+    /**
+     * 查询本月完成进度(管理员)
+     */
+    @RequestMapping(value = "/queryCompletionScheduleMGE", method = RequestMethod.POST)
+    public RestResponse queryCompletionScheduleMGE(String uuid){
+
+        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionScheduleMGE(uuid);
+        return RestResponse.ok(list);
+    }
+
+    /**
+     * 查询阶段完成进度（管理员）
+     */
+    @RequestMapping(value = "/queryCompletionStageMGE", method = RequestMethod.POST)
+    public RestResponse queryCompletionStageMGE(String uuid){
+
+        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionStageMGE(uuid);
+        return RestResponse.ok(list);
+    }
+
 }
