@@ -45,7 +45,7 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 查询阶段完成进度
      */
-    @Select("select a.user_name, (a.quarter_sale_norm/b.real_sale)*100 as rate from t_user a ,t_sale_data b where a.user_uuid=b.users_id and a.users_id='${uuid}'")
+    @Select("select a.user_name, (a.quarter_sale_norm/b.real_sale)*100 as rate from t_user a ,t_sale_data b where a.user_uuid=b.users_id and b.users_id='${uuid}'")
     List<Map<String,Object>> queryCompletionStage(@Param("uuid") String uuid);
 
     /**

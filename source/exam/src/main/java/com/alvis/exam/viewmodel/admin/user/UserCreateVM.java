@@ -31,6 +31,26 @@ public class UserCreateVM {
 
     private Integer userLevel;
 
+	private Integer monthSaleNorm;
+
+	private Integer quarterSaleNorm;
+
+	public Integer getMonthSaleNorm() {
+		return monthSaleNorm;
+	}
+
+	public void setMonthSaleNorm(Integer monthSaleNorm) {
+		this.monthSaleNorm = monthSaleNorm;
+	}
+
+	public Integer getQuarterSaleNorm() {
+		return quarterSaleNorm;
+	}
+
+	public void setQuarterSaleNorm(Integer quarterSaleNorm) {
+		this.quarterSaleNorm = quarterSaleNorm;
+	}
+
 	public Integer getId() {
 		return id;
 	}
