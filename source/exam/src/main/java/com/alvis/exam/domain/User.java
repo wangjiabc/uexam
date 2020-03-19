@@ -1,8 +1,10 @@
 package com.alvis.exam.domain;
 
+import org.junit.platform.commons.annotation.Testable;
+
 import java.io.Serializable;
 import java.util.Date;
-
+@Testable
 public class User implements Serializable {
 
     private static final long serialVersionUID = -7797183521247423117L;
