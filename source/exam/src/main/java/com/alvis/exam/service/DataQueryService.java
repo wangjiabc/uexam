@@ -5,6 +5,8 @@ import com.alvis.exam.domain.SourcePut;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.UserVM;
+import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
@@ -43,7 +45,13 @@ public interface DataQueryService {
     WideNarrow queryWideNarrow(String uuid);
 
     /**
-     * 阶段性考核指标
+     * 本月完成进度宽窄（管理员）
      */
+    PageInfo<WideNarrow> queryWideNarrowMag(WideNarrowVM wideNarrow);
+
+    /**
+     * 阶段性考核指标（管理员）
+     */
+    PageInfo<User> queryuserMge(UserVM user);
 
 }

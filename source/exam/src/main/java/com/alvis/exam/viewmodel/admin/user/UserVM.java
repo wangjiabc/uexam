@@ -1,9 +1,13 @@
-package com.alvis.exam.domain;
+package com.alvis.exam.viewmodel.admin.user;
 
-import java.io.Serializable;
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
+
 import java.util.Date;
 
-public class User implements Serializable {
+/**
+ * 用户
+ */
+public class UserVM extends MessageRequestVM {
 
     private static final long serialVersionUID = -7797183521247423117L;
 
@@ -46,6 +50,46 @@ public class User implements Serializable {
     private String telphone;
 
     private String duty;
+
+    private Integer wxRole;
+
+    private Integer isLook;
+
+    private Integer monthSaleNorm;
+
+    private Integer quarterSaleNorm;
+
+    public Integer getIsLook() {
+        return isLook;
+    }
+
+    public void setIsLook(Integer isLook) {
+        this.isLook = isLook;
+    }
+
+    public Integer getMonthSaleNorm() {
+        return monthSaleNorm;
+    }
+
+    public void setMonthSaleNorm(Integer monthSaleNorm) {
+        this.monthSaleNorm = monthSaleNorm;
+    }
+
+    public Integer getQuarterSaleNorm() {
+        return quarterSaleNorm;
+    }
+
+    public void setQuarterSaleNorm(Integer quarterSaleNorm) {
+        this.quarterSaleNorm = quarterSaleNorm;
+    }
+
+    public Integer getWxRole() {
+        return wxRole;
+    }
+
+    public void setWxRole(Integer wxRole) {
+        this.wxRole = wxRole;
+    }
 
     public Integer getId() {
         return id;

@@ -5,6 +5,8 @@ import com.alvis.exam.domain.SourcePut;
 import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.WideNarrow;
 import com.alvis.exam.viewmodel.admin.user.SourcePutVM;
+import com.alvis.exam.viewmodel.admin.user.UserVM;
+import com.alvis.exam.viewmodel.admin.user.WideNarrowVM;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -43,7 +45,7 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     /**
      * 根据个人ID 查询本月完成总销
      */
-    @Select("select a.real_sale from t_sale_data a where a.users_id='${uuid}'")
+    @Select("select * from t_sale_data a where a.users_id='${uuid}'")
     SaleData queryTotalSale(@Param("uuid") String uuid);
 
     /**
@@ -53,6 +55,14 @@ public interface DataQueryMapper extends BaseMapper<SourcePut> {
     WideNarrow queryWideNarrow(@Param("uuid") String uuid);
 
     /**
+     * 本月完成进度宽窄(管理员)
+     */
+    @Select("select a.* from wide_narrow a ,t_user b where a.user_id=b.user_uuid")
+    WideNarrow queryWideNarrowMag(WideNarrowVM wideNarrow);
+
+    /**
      * 阶段性考核指标
      */
+    @Select("select * from t_user")
+    List<User> queryuserMge(UserVM user);
 }

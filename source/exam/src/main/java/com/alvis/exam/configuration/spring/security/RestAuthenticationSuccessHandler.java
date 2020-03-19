@@ -7,6 +7,7 @@ import com.alvis.exam.event.UserEvent;
 import com.alvis.exam.service.UserService;
 import lombok.AllArgsConstructor;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.Authentication;
@@ -27,6 +28,7 @@ import java.util.Date;
  */
 @Component
 @AllArgsConstructor
+@Slf4j
 public class RestAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	@Autowired
     private  ApplicationEventPublisher eventPublisher;
@@ -39,6 +41,7 @@ public class RestAuthenticationSuccessHandler extends SimpleUrlAuthenticationSuc
         com.alvis.exam.domain.User user = userService.getUserByUserName(springUser.getUsername());
         UserEventLog userEventLog = new UserEventLog(user.getId(), user.getUserName(), user.getRealName(), new Date());
         userEventLog.setContent(user.getUserName() + " 登录了江阳区局学习平台");
+        log.debug(userEventLog.getContent());
         eventPublisher.publishEvent(new UserEvent(userEventLog));
         RestUtil.response(response, SystemCode.OK);
     }

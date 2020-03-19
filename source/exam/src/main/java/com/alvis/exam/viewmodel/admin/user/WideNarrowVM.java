@@ -1,13 +1,13 @@
-package com.alvis.exam.domain;
+package com.alvis.exam.viewmodel.admin.user;
+
+import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 
 import javax.persistence.Column;
-import javax.persistence.Table;
 
 /**
- * 宽窄数据
+ * 宽窄
  */
-@Table(name = "wide_narrow")
-public class WideNarrow {
+public class WideNarrowVM extends MessageRequestVM {
 
     private static final long serialVersionUID = 0L;
     @Column(name = "accountManager")

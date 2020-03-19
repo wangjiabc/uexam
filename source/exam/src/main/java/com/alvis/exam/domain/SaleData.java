@@ -1,15 +1,21 @@
 package com.alvis.exam.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
-
+@Table(name = "t_sale_data")
 public class SaleData implements Serializable {
+    @Column(name = "id")
     private Integer id;
 
-    private Integer usersId;
+    @Column(name = "users_id")
+    private String usersId;
 
+    @Column(name = "real_sale")
     private Integer realSale;
 
+    @Column(name = "date")
     private Date date;
 
     private static final long serialVersionUID = 1L;
@@ -20,14 +26,6 @@ public class SaleData implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getUsersId() {
-        return usersId;
-    }
-
-    public void setUsersId(Integer usersId) {
-        this.usersId = usersId;
     }
 
     public Integer getRealSale() {
@@ -44,5 +42,13 @@ public class SaleData implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getUsersId() {
+        return usersId;
+    }
+
+    public void setUsersId(String usersId) {
+        this.usersId = usersId;
     }
 }
