@@ -599,6 +599,8 @@
 <!--    </select>-->
     <!-- end 考试-->
 
-
+<select id="findUser" resultType="com.alvis.exam.domain.User">
+    SELECT * FROM t_user
+</select>
 
 </mapper>
