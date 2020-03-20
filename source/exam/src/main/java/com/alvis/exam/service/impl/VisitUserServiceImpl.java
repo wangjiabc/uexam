@@ -4,6 +4,7 @@ import com.alvis.exam.domain.User;
 import com.alvis.exam.domain.Users;
 import com.alvis.exam.domain.VisitedUsers;
 import com.alvis.exam.domain.dto.VisitUsersDTO;
+import com.alvis.exam.repository.UserMapper;
 import com.alvis.exam.repository.UsersMapper;
 import com.alvis.exam.repository.VisitedUsersMapper;
 import com.alvis.exam.service.VisitUserService;
@@ -19,6 +20,8 @@ public class VisitUserServiceImpl implements VisitUserService {
     private UsersMapper usersMapper;
     @Resource
     private VisitedUsersMapper visitedUsersMapper;
+    @Resource
+    private UserMapper userMapper;
 
     @Override
     public List<VisitUsersDTO> findVisits() {
@@ -65,6 +68,6 @@ public class VisitUserServiceImpl implements VisitUserService {
 
     @Override
     public List<User> findUser() {
-        return usersMapper.findUser();
+        return userMapper.findUser();
     }
 }

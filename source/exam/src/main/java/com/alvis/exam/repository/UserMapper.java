@@ -180,5 +180,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     IntegralBasic findYiExam(Integer id);
 
+    List<User> findUser();
+
 //    IntegralBasic findWeiExam(Integer id);
 }
