@@ -84,10 +84,16 @@ public class DataQueryController extends BaseWXApiController {
      * 本月完成进度宽窄
      */
     @RequestMapping(value = "/queryWideNarrow", method = RequestMethod.POST)
-    public RestResponse queryWideNarrow(){
-        String wxOpenId = getCurrentUser().getWxOpenId();
-        User user=this.dataQueryService.queryuser(wxOpenId);
-        WideNarrow wideNarrow=this.dataQueryService.queryWideNarrow(user.getUserUuid());
+    public RestResponse queryWideNarrow(String uuid){
+        String userid=uuid;
+        WideNarrow wideNarrow=null;
+        if(userid==null){
+            String wxOpenId = getCurrentUser().getWxOpenId();
+            User user=this.dataQueryService.queryuser(wxOpenId);
+            wideNarrow=this.dataQueryService.queryWideNarrow(user.getUserUuid());
+        }else{
+             wideNarrow=this.dataQueryService.queryWideNarrow(userid);
+        }
         return RestResponse.ok(wideNarrow);
     }
 
@@ -128,8 +134,16 @@ public class DataQueryController extends BaseWXApiController {
      */
     @RequestMapping(value = "/queryCompletionScheduleMGE", method = RequestMethod.POST)
     public RestResponse queryCompletionScheduleMGE(String uuid){
+        String userid=uuid;
+        List<Map<String,Object>> list=null;
+        if(userid==null){
+            String wxOpenId = getCurrentUser().getWxOpenId();
+            User user=this.dataQueryService.queryuser(wxOpenId);
+             list= this.dataQueryService.queryCompletionScheduleMGE(user.getUserUuid());
 
-        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionScheduleMGE(uuid);
+        }else{
+            list= this.dataQueryService.queryCompletionScheduleMGE(userid);
+        }
         return RestResponse.ok(list);
     }
 
@@ -138,8 +152,15 @@ public class DataQueryController extends BaseWXApiController {
      */
     @RequestMapping(value = "/queryCompletionStageMGE", method = RequestMethod.POST)
     public RestResponse queryCompletionStageMGE(String uuid){
-
-        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionStageMGE(uuid);
+        String userid=uuid;
+        List<Map<String,Object>> list=null;
+        if(userid==null){
+            String wxOpenId = getCurrentUser().getWxOpenId();
+            User user=this.dataQueryService.queryuser(wxOpenId);
+            list= this.dataQueryService.queryCompletionStageMGE(user.getUserUuid());
+        }else{
+            list= this.dataQueryService.queryCompletionStageMGE(userid);
+        }
         return RestResponse.ok(list);
     }
 
