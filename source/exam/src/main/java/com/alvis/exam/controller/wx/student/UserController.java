@@ -91,7 +91,7 @@ public class UserController extends BaseWXApiController {
         user.setUserName(model.getUserName());
         user.setAge(model.getAge());
         user.setSex(model.getSex());
-
+        user.setWxRole(0);  //注册时默认不是管理员  1为管理员
         //职务作为工号使用  注册时必须传入工号
         user.setDuty(model.getDuty());
 //        String encodePwd = authenticationService.pwdEncode(model.getPassword());

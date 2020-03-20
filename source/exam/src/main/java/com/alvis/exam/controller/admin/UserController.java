@@ -64,7 +64,17 @@ public class UserController extends BaseApiController {
     @RequestMapping(value = "/select/{id}", method = RequestMethod.POST)
     public RestResponse<UserResponseVM> select(@PathVariable Integer id) {
         User user = userService.getUserById(id);
+        Integer wxRole = user.getWxRole();
+        if(wxRole == null){
+            wxRole = 0;
+        }
         UserResponseVM userVm = UserResponseVM.from(user);
+        if(wxRole == 1){
+            userVm.setWxRole(true);
+        }
+        else {
+            userVm.setWxRole(false);
+        }
         return RestResponse.ok(userVm);
     }
 
@@ -109,6 +119,12 @@ public class UserController extends BaseApiController {
             user.setModifyTime(new Date());
             user.setMonthSaleNorm(model.getMonthSaleNorm());
             user.setQuarterSaleNorm(model.getQuarterSaleNorm());
+            Boolean wxRole = model.getWxRole();
+            if(wxRole == true){
+                user.setWxRole(1);
+            }else {
+                user.setWxRole(0);
+            }
             userService.updateByIdFilter(user);
         }
         return RestResponse.ok(user);
