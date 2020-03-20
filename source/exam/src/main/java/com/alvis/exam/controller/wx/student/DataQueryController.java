@@ -1,6 +1,5 @@
 package com.alvis.exam.controller.wx.student;
 
-import com.alvis.exam.base.BaseApiController;
 import com.alvis.exam.base.RestResponse;
 import com.alvis.exam.controller.wx.BaseWXApiController;
 import com.alvis.exam.domain.SaleData;
@@ -53,32 +52,38 @@ public class DataQueryController extends BaseWXApiController {
      * 根据个人ID 查询本月完成进度
      */
     @RequestMapping(value = "/queryCompletionSchedule", method = RequestMethod.POST)
-    public RestResponse  queryCompletionSchedule(){
-        String wxOpenId = getCurrentUser().getWxOpenId();
-        User user=this.dataQueryService.queryuser(wxOpenId);
-        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionSchedule(user.getUserUuid());
+    public RestResponse  queryCompletionSchedule(String uuid){
+        String userid=uuid;
+        List<Map<String,Object>>  list=null;
+         if(userid==null){
+             String wxOpenId = getCurrentUser().getWxOpenId();
+             User user=this.dataQueryService.queryuser(wxOpenId);
+             list= this.dataQueryService.queryCompletionSchedule(user.getUserUuid());
+         }else{
+             list= this.dataQueryService.queryCompletionSchedule(userid);
+         }
+
 
         return RestResponse.ok(list);
     }
 
     /**
-     * 根据个人ID 查询本月完成进度（管理员）
-     */
-
-    /**
      * 本月完成进度总销
      */
     @RequestMapping(value = "/queryTotalSale", method = RequestMethod.POST)
-    public RestResponse queryTotalSale(){
-        String wxOpenId = getCurrentUser().getWxOpenId();
-        User user=this.dataQueryService.queryuser(wxOpenId);
-        SaleData saleData=this.dataQueryService.queryTotalSale(user.getUserUuid());
+    public RestResponse queryTotalSale(String uuid){
+        String userid=uuid;
+        SaleData saleData=null;
+        if(userid==null){
+            String wxOpenId = getCurrentUser().getWxOpenId();
+            User user=this.dataQueryService.queryuser(wxOpenId);
+            saleData=this.dataQueryService.queryTotalSale(user.getUserUuid());
+        }else{
+            saleData=this.dataQueryService.queryTotalSale(userid);
+        }
+
         return RestResponse.ok(saleData);
     }
-
-    /**
-     * 本月完成进度总销（管理员）
-     */
 
     /**
      * 本月完成进度宽窄
@@ -111,11 +116,16 @@ public class DataQueryController extends BaseWXApiController {
      * 阶段性考核指标完成率
      */
     @RequestMapping(value = "/userQuery", method = RequestMethod.POST)
-    public RestResponse userQuery(){
-        String wxOpenId = getCurrentUser().getWxOpenId();
-        User user=this.dataQueryService.queryuser(wxOpenId);
-        List<Map<String,Object>>  list= this.dataQueryService.queryCompletionStage(user.getUserUuid());
-
+    public RestResponse userQuery(String uuid){
+        String userid=uuid;
+        List<Map<String,Object>>  list=null;
+        if(userid==null){
+            String wxOpenId = getCurrentUser().getWxOpenId();
+            User user=this.dataQueryService.queryuser(wxOpenId);
+            list= this.dataQueryService.queryCompletionStage(user.getUserUuid());
+        }else{
+            list= this.dataQueryService.queryCompletionStage(userid);
+        }
         return RestResponse.ok(list);
     }
 
