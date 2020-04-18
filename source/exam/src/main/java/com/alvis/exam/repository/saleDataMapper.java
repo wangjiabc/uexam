@@ -88,7 +88,7 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     /**
      * 红码管家（传客户经理和状态和手机订烟）
      */
-    @Select("select distinct manager from logsituation")
+    @Select("select distinct customerManager from logsituation")
     List<String> querylogManager();
 
 }
