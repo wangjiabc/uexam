@@ -25,13 +25,13 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     /**
      * 查询宽窄系列指标
      */
-    @Select("select * from brand where manager='#{manager}' and type='#{type}'")
+    @Select("select * from brand where manager=#{manager} and type=#{type}")
     brank queryBrank(@Param("manager") String manager, @Param("type") String type);
 
     /**
      * 查询扫码进度
      */
-    @Select("SELECT * FROM sweepcode where manager='#{manager}'")
+    @Select("SELECT * FROM sweepcode where manager=#{manager}")
     sweepcode querySweepcode(@Param("manager") String manager);
 
     /**
@@ -44,13 +44,13 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     /**
      * 本月完成进度
      */
-    @Select("select * from saleprogress where manager='#{manager}' and month='#{month}'")
+    @Select("select * from saleprogress where manager=#{manager} and month=#{month}")
     saleProgress querysaleProgress(@Param("manager") String manager,@Param("month") String month);
 
     /**
      * 红码管家
      */
-    @Select("select * from logSituation where phoneOrder='#{phoneOrder}' and status='#{status}' and customerManager='#{customerManager}'")
+    @Select("select * from logSituation where phoneOrder=#{phoneOrder} and status=#{status} and customerManager=#{customerManager}")
     List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder);
 
     //////////////////////给前端提供参数//////////////////////////////
