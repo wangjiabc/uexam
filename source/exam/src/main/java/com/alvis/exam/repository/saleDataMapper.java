@@ -20,7 +20,7 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
      * 分页查询本轮货源投放
      * @param source
      */
-    PageInfo<Source> querySource(Source source);
+    List<Source> querySource(Source source);
 
     /**
      * 查询宽窄系列指标
@@ -39,7 +39,7 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
      * @param cashregist
      */
     @Select("select * from cashregister")
-    PageInfo<cashregister> queryCashregister(cashregister cashregist);
+    List<cashregister> queryCashregister(cashregister cashregist);
 
     /**
      * 本月完成进度
