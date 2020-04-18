@@ -73,4 +73,22 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     @Select("select manager from saleprogress")
     List<String> queryProgressManager();
 
+    /**
+     * 分页查询本轮货源投放明细(返回出参数客户经理)
+     */
+    @Select("select manager from source")
+    List<String> querySourceManager();
+
+    /**
+     * 扫码进度(返回出参数客户经理)
+     */
+    @Select("select manager from sweepcode")
+    List<String> querycodeManager();
+
+    /**
+     * 红码管家（传客户经理和状态和手机订烟）
+     */
+    @Select("select manager from logsituation")
+    List<String> querylogManager();
+
 }

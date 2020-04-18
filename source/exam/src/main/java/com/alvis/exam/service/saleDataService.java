@@ -61,5 +61,20 @@ public interface saleDataService {
      */
     List<String> queryProgressManager();
 
+    /**
+     * 分页查询本轮货源投放明细(返回出参数客户经理)
+     */
+    List<String> querySourceManager();
+
+    /**
+     * 扫码进度(返回出参数客户经理)
+     */
+    List<String> querycodeManager();
+
+    /**
+     * 红码管家（传客户经理和状态和手机订烟）
+     */
+    List<String> querylogManager();
+
 
 }

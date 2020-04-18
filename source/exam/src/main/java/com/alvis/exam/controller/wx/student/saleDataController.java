@@ -136,4 +136,34 @@ public class saleDataController extends BaseWXApiController {
         return RestResponse.ok(data);
     }
 
+    /**
+     * 分页查询本轮货源投放明细(返回出参数客户经理)
+     */
+    @RequestMapping(value = "/querySourceManager", method = RequestMethod.POST)
+    public RestResponse querySourceManager(){
+        List<String> data=saleDataService.querySourceManager();
+
+        return RestResponse.ok(data);
+    }
+
+    /**
+     * 扫码进度(返回出参数客户经理)
+     */
+    @RequestMapping(value = "/querycodeManager", method = RequestMethod.POST)
+    public RestResponse querycodeManager(){
+        List<String> data=saleDataService.querycodeManager();
+
+        return RestResponse.ok(data);
+    }
+
+    /**
+     * 红码管家（传客户经理和状态和手机订烟）
+     */
+    @RequestMapping(value = "/querylogManager", method = RequestMethod.POST)
+    public RestResponse querylogManager(){
+        List<String> data=saleDataService.querylogManager();
+
+        return RestResponse.ok(data);
+    }
+
 }

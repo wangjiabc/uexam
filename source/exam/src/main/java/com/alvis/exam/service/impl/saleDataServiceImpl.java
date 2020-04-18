@@ -107,4 +107,29 @@ public class saleDataServiceImpl implements saleDataService {
     public List<String> queryProgressManager() {
         return this.saleDataMapper.queryProgressManager();
     }
+
+    /**
+     * 分页查询本轮货源投放明细(返回出参数客户经理)
+     */
+    @Override
+    public List<String> querySourceManager() {
+        return this.saleDataMapper.querySourceManager();
+    }
+
+    /**
+     * 扫码进度(返回出参数客户经理)
+     */
+    @Override
+    public List<String> querycodeManager() {
+        return this.saleDataMapper.querycodeManager();
+    }
+
+
+    /**
+     * 红码管家（传客户经理和状态和手机订烟）
+     */
+    @Override
+    public List<String> querylogManager() {
+        return this.saleDataMapper.querylogManager();
+    }
 }
