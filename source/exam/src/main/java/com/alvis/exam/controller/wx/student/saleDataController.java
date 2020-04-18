@@ -43,7 +43,7 @@ public class saleDataController extends BaseWXApiController {
     }
 
     /**
-     * 本月完成进度
+     * 宽窄系列指标
      */
     @RequestMapping(value = "/queryBrank", method = RequestMethod.POST)
     public RestResponse queryBrank(String manager,String type){
@@ -90,7 +90,7 @@ public class saleDataController extends BaseWXApiController {
     }
 
     /**
-     * 红码管家（传客户经理和状态和手机订烟订烟）
+     * 红码管家（传客户经理和状态和手机订烟）
      * @param customerManager
      * @param status
      * @param phoneOrde
