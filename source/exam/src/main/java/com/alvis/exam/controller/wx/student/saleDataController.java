@@ -52,9 +52,9 @@ public class saleDataController extends BaseWXApiController {
         return RestResponse.ok(data);
     }
 
-    /**
-     * 扫码进度
-     */
+        /**
+         * 扫码进度
+         */
     @RequestMapping(value = "/querySweepcode", method = RequestMethod.POST)
     public RestResponse querySweepcode(String manager){
         sweepcode data=saleDataService.querySweepcode(manager);
@@ -99,6 +99,29 @@ public class saleDataController extends BaseWXApiController {
     @RequestMapping(value = "/querylogSituation", method = RequestMethod.POST)
     public RestResponse querylogSituation (String customerManager, String status, String phoneOrde) {
         List<logSituation> data=saleDataService.querylogSituation(customerManager,status,phoneOrde);
+
+        return RestResponse.ok(data);
+    }
+
+    //////////////////////给前端提供参数//////////////////////////////
+
+
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
+    @RequestMapping(value = "/queryBrankManager", method = RequestMethod.POST)
+    public RestResponse queryBrankManager(){
+        List<String> data=saleDataService.queryBrankManager();
+
+        return RestResponse.ok(data);
+    }
+
+    /**
+     * 宽窄系列指标(返回类型)
+     */
+    @RequestMapping(value = "/queryBrankType", method = RequestMethod.POST)
+    public RestResponse queryBrankType(){
+        List<String> data=saleDataService.queryBrankType();
 
         return RestResponse.ok(data);
     }

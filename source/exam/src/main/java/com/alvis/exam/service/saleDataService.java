@@ -42,4 +42,19 @@ public interface saleDataService {
     List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder);
 
 
+
+
+    //////////////////////给前端提供参数//////////////////////////////
+
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
+    List<String> queryBrankManager();
+
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
+    List<String> queryBrankType();
+
+
 }

@@ -53,4 +53,18 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     @Select("select * from logSituation where phoneOrder='#{phoneOrder}' and status='#{status}' and customerManager='#{customerManager}'")
     List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder);
 
+    //////////////////////给前端提供参数//////////////////////////////
+
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
+    @Select("select manager from brand")
+    List<String> queryBrankManager();
+
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
+    @Select("select distinct  type from brand")
+    List<String> queryBrankType();
+
 }

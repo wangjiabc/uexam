@@ -5,7 +5,7 @@ import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
-@Table(name = "brank")
+@Table(name = "logsituation")
 public class logSituation extends MessageRequestVM {
 
     private static final long serialVersionUID = 1L;

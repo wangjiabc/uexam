@@ -5,7 +5,7 @@ import com.alvis.exam.viewmodel.student.user.MessageRequestVM;
 import javax.persistence.Column;
 import javax.persistence.Table;
 
-@Table(name = "brank")
+@Table(name = "saleprogress")
 public class saleProgress extends MessageRequestVM {
     @Column(name = "id")
     private Integer id;

@@ -79,6 +79,18 @@ public class saleDataServiceImpl implements saleDataService {
      */
     @Override
     public List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder) {
-        return this.querylogSituation(customerManager,status,phoneOrder);
+        return this.saleDataMapper.querylogSituation(customerManager,status,phoneOrder);
+    }
+
+    //////////////////////给前端提供参数//////////////////////////////
+
+    @Override
+    public List<String> queryBrankManager() {
+        return this.saleDataMapper.queryBrankManager();
+    }
+
+    @Override
+    public List<String> queryBrankType() {
+        return this.saleDataMapper.queryBrankType();
     }
 }
