@@ -1,10 +1,9 @@
 package com.alvis.exam.service;
 
-import com.alvis.exam.domain.Source;
-import com.alvis.exam.domain.brank;
-import com.alvis.exam.domain.cashregister;
-import com.alvis.exam.domain.sweepcode;
+import com.alvis.exam.domain.*;
 import com.github.pagehelper.PageInfo;
+
+import java.util.List;
 
 /**
  * @author yangsy
@@ -32,6 +31,15 @@ public interface saleDataService {
      */
     PageInfo<cashregister> queryCashregister(cashregister cashregist);
 
+    /**
+     * 本月完成进度
+     */
+    saleProgress querysaleProgress(String manager, String month);
+
+    /**
+     *红码管家
+     */
+    List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder);
 
 
 }

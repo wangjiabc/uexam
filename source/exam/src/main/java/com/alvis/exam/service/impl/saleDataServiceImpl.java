@@ -1,15 +1,14 @@
 package com.alvis.exam.service.impl;
 
-import com.alvis.exam.domain.Source;
-import com.alvis.exam.domain.brank;
-import com.alvis.exam.domain.cashregister;
-import com.alvis.exam.domain.sweepcode;
+import com.alvis.exam.domain.*;
 import com.alvis.exam.repository.saleDataMapper;
 import com.alvis.exam.service.saleDataService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * 数据查询
@@ -54,10 +53,32 @@ public class saleDataServiceImpl implements saleDataService {
         return this.saleDataMapper.querySweepcode(manager);
     }
 
+    /**
+     * 智慧收银机进度（传分页参数）
+     * @param cashregist
+     * @param
+     * @return
+     */
     @Override
     public PageInfo<cashregister> queryCashregister(cashregister cashregist) {
         return PageHelper.startPage(cashregist.getPageIndex(),cashregist.getPageSize(),"id desc").doSelectPageInfo(() ->
                 saleDataMapper.queryCashregister(cashregist)
         );
+    }
+
+    /**
+     * 本月完成进度
+     */
+    @Override
+    public saleProgress querysaleProgress(String manager, String month) {
+        return this.saleDataMapper.querysaleProgress(manager,month);
+    }
+
+    /**
+     *红码管家
+     */
+    @Override
+    public List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder) {
+        return this.querylogSituation(customerManager,status,phoneOrder);
     }
 }

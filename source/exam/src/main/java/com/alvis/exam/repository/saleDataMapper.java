@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 /**
  *  数据查询
  * @author yangsy
@@ -38,5 +40,17 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
      */
     @Select("select * from cashregister")
     PageInfo<cashregister> queryCashregister(cashregister cashregist);
+
+    /**
+     * 本月完成进度
+     */
+    @Select("select * from saleprogress where manager='#{manager}' and month='#{month}'")
+    saleProgress querysaleProgress(@Param("manager") String manager,@Param("month") String month);
+
+    /**
+     * 红码管家
+     */
+    @Select("select * from logSituation where phoneOrder='#{phoneOrder}' and status='#{status}' and customerManager='#{customerManager}'")
+    List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder);
 
 }
