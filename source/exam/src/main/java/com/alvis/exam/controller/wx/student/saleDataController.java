@@ -64,13 +64,13 @@ public class saleDataController extends BaseWXApiController {
 
     /**
      * 智慧收银机进度（传分页参数）
-     * @param cashregist
+     * @param
      * @param
      * @return
      */
     @RequestMapping(value = "/queryCashregister", method = RequestMethod.POST)
-    public RestResponse<PageInfo<cashregister>> queryCashregister(cashregister cashregist) {
-        PageInfo<cashregister> cashregisterPageInfo = saleDataService.queryCashregister(cashregist);
+    public RestResponse queryCashregister() {
+        List<cashregister> cashregisterPageInfo = saleDataService.queryCashregister();
 
         return RestResponse.ok(cashregisterPageInfo);
     }

@@ -55,15 +55,13 @@ public class saleDataServiceImpl implements saleDataService {
 
     /**
      * 智慧收银机进度（传分页参数）
-     * @param cashregist
+     * @param
      * @param
      * @return
      */
     @Override
-    public PageInfo<cashregister> queryCashregister(cashregister cashregist) {
-        return PageHelper.startPage(cashregist.getPageIndex(),cashregist.getPageSize(),"id desc").doSelectPageInfo(() ->
-                saleDataMapper.queryCashregister(cashregist)
-        );
+    public List<cashregister> queryCashregister() {
+       return this.saleDataMapper.queryCashregister();
     }
 
     /**

@@ -29,7 +29,7 @@ public interface saleDataService {
     /**
      * 智慧收银机进度
      */
-    PageInfo<cashregister> queryCashregister(cashregister cashregist);
+    List<cashregister> queryCashregister();
 
     /**
      * 本月完成进度

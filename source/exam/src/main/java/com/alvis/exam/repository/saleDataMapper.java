@@ -36,10 +36,10 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
 
     /**
      * 智慧收银机进度
-     * @param cashregist
+     * @param
      */
     @Select("select * from cashregister")
-    List<cashregister> queryCashregister(cashregister cashregist);
+    List<cashregister> queryCashregister();
 
     /**
      * 本月完成进度

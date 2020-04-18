@@ -11,10 +11,10 @@ public class cashregister extends MessageRequestVM {
     private Integer id;
 
     @Column(name = "shoopName")
-    private Integer shoopName;
+    private String shoopName;
 
     @Column(name = "customerCode")
-    private Integer customerCode;
+    private String customerCode;
 
     @Column(name = "saleNumber")
     private Integer saleNumber;
