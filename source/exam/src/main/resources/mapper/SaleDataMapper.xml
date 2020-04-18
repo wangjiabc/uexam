@@ -6,7 +6,7 @@
     select * from source
     <where>
       <if test="manager != null">
-        and manager= #{manager}
+         manager= #{manager}
       </if>
     </where>
   </select>

@@ -58,7 +58,7 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     /**
      * 宽窄系列指标(返回出参数客户经理)
      */
-    @Select("select manager from brand")
+    @Select("select distinct manager from brand")
     List<String> queryBrankManager();
 
     /**
@@ -76,19 +76,19 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     /**
      * 分页查询本轮货源投放明细(返回出参数客户经理)
      */
-    @Select("select manager from source")
+    @Select("select distinct manager from source")
     List<String> querySourceManager();
 
     /**
      * 扫码进度(返回出参数客户经理)
      */
-    @Select("select manager from sweepcode")
+    @Select("select distinct manager from sweepcode")
     List<String> querycodeManager();
 
     /**
      * 红码管家（传客户经理和状态和手机订烟）
      */
-    @Select("select manager from logsituation")
+    @Select("select distinct manager from logsituation")
     List<String> querylogManager();
 
 }
