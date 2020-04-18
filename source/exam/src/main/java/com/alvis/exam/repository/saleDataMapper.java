@@ -50,7 +50,7 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     /**
      * 红码管家
      */
-    @Select("select * from logSituation where phoneOrder='#{phoneOrder}' and status='#{status}' and customerManager='#{customerManager}'")
+    @Select("select * from logSituation where phoneOrder='#{phoneOrder}' and customerStatus='#{status}' and customerManager='#{customerManager}'")
     List<logSituation> querylogSituation(String customerManager, String status, String phoneOrder);
 
     //////////////////////给前端提供参数//////////////////////////////
