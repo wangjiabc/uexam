@@ -67,4 +67,10 @@ public interface saleDataMapper extends BaseMapper<SourcePut> {
     @Select("select distinct  type from brand")
     List<String> queryBrankType();
 
+    /**
+     * 本月完成进度(返回出参数客户经理)
+     */
+    @Select("select manager from saleprogress")
+    List<String> queryProgressManager();
+
 }

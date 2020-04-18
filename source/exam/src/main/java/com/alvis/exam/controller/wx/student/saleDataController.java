@@ -126,4 +126,14 @@ public class saleDataController extends BaseWXApiController {
         return RestResponse.ok(data);
     }
 
+    /**
+     * 本月完成进度(返回出参数客户经理)
+     */
+    @RequestMapping(value = "/queryProgressManager", method = RequestMethod.POST)
+    public RestResponse queryProgressManager(){
+        List<String> data=saleDataService.queryProgressManager();
+
+        return RestResponse.ok(data);
+    }
+
 }

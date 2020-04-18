@@ -84,13 +84,27 @@ public class saleDataServiceImpl implements saleDataService {
 
     //////////////////////给前端提供参数//////////////////////////////
 
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
     @Override
     public List<String> queryBrankManager() {
         return this.saleDataMapper.queryBrankManager();
     }
 
+    /**
+     * 宽窄系列指标(返回出参数客户经理)
+     */
     @Override
     public List<String> queryBrankType() {
         return this.saleDataMapper.queryBrankType();
+    }
+
+    /**
+     * 本月完成进度(返回出参数客户经理)
+     */
+    @Override
+    public List<String> queryProgressManager() {
+        return this.saleDataMapper.queryProgressManager();
     }
 }

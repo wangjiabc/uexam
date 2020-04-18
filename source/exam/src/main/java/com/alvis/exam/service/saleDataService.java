@@ -56,5 +56,10 @@ public interface saleDataService {
      */
     List<String> queryBrankType();
 
+    /**
+     * 本月完成进度(返回出参数客户经理)
+     */
+    List<String> queryProgressManager();
+
 
 }
