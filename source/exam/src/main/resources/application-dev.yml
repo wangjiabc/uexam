@@ -6,15 +6,15 @@ spring:
   datasource:
     mysql2:
       #      hikari:
-      jdbc-url: jdbc:mysql://39.100.229.32:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/exam02?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
       #      driverClassName:  com.microsoft.sqlserver.jdbc.SQLServerDriver
       username: root
-      password: fhc123456
+      password: 123
     mysql1:
       #      hikari:
       #  serverTimezone=GMT%2B8使用东八区时间
-      jdbc-url: jdbc:mysql://39.100.229.32:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
       #      driverClassName:  com.mysql.jdbc.Driver
       #    url: jdbc:mysql://127.0.0.1:3306/exam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8&useSSL=false
       username: root
-      password: fhc123456
+      password: 123
